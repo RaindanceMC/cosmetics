@@ -23,7 +23,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 import java.util.UUID;
 
-/** {@code /cosmetics}: the doors to your name and your particle, each showing what you wear now. */
+/** {@code /cosmetics}: the doors to your name, tags and particle, each showing what you wear now. */
 public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
 
     private static final MiniMessage MINI = MiniMessage.miniMessage();
@@ -76,6 +76,15 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
                         MINI.serialize(services.messages().get("cosmetics.teleport.menu.door")),
                         MINI.serialize(services.messages().get("cosmetics.teleport.menu.door-lore"))),
                 click -> new TeleportMenu(services, viewer, this).open());
+
+        int tags = TagMenu.offered(viewer.getUniqueId()).size();
+        long off = TagMenu.offered(viewer.getUniqueId()).stream()
+                .filter(tag -> !services.tags().wears(viewer.getUniqueId(), tag.wearable().owner())).count();
+        band(MenuLayout.RULES, 4, Icons.of(Material.NAME_TAG, "<white>Tags",
+                        tags == 0 ? "<gray>None right now." : "<gray>" + (tags - off) + " of " + tags + " worn.",
+                        "<dark_gray>Your guild's tag and more,", "<dark_gray>in front of your name.", "",
+                        "<dark_gray>Click to choose."),
+                click -> new TagMenu(services, viewer, this).open());
 
         ItemStack unlocksIcon = Icons.of(Material.GOLD_INGOT, "<white>Unlocks",
                 "<gray>What this server sells: colours,", "<gray>gradients, particles and more.", "",

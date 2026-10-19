@@ -22,7 +22,7 @@ import java.util.function.BooleanSupplier;
  */
 public final class DataWatch implements ICosmeticsService {
 
-    private record Seen(TeleportLookChoice look, ParticleChoice worn, ParticleChoice wings) {
+    private record Seen(TeleportLookChoice look, ParticleChoice worn, ParticleChoice wings, java.util.Set<String> tags) {
     }
 
     private static final long PERIOD_TICKS = 20;
@@ -30,6 +30,7 @@ public final class DataWatch implements ICosmeticsService {
     private final ParticleService particles;
     private final TeleportLookService teleports;
     private final BooleanSupplier following;
+    private final TagService tags;
     private final Map<UUID, Seen> seen = new ConcurrentHashMap<>();
     private volatile ScheduledTask timer;
 
@@ -38,9 +39,16 @@ public final class DataWatch implements ICosmeticsService {
      *                  decided there, so the data is taken as it is
      */
     public DataWatch(ParticleService particles, TeleportLookService teleports, BooleanSupplier following) {
+        this(particles, teleports, following, null);
+    }
+
+    /** @param tags reloaded too when the name tags taken off change; null when nobody wears tags here */
+    public DataWatch(ParticleService particles, TeleportLookService teleports, BooleanSupplier following,
+                     TagService tags) {
         this.particles = particles;
         this.teleports = teleports;
         this.following = following;
+        this.tags = tags;
     }
 
     @Override
@@ -71,6 +79,9 @@ public final class DataWatch implements ICosmeticsService {
         if (now.equals(seen.get(who.getUniqueId()))) {
             return;
         }
+        if (tags != null) {
+            tags.load(who);
+        }
         if (following.getAsBoolean()) {
             teleports.refresh(who);
         } else {
@@ -85,6 +96,7 @@ public final class DataWatch implements ICosmeticsService {
     }
 
     private Seen read(Player who) {
-        return new Seen(teleports.stored(who), particles.current(who), particles.wings(who));
+        return new Seen(teleports.stored(who), particles.current(who), particles.wings(who),
+                tags == null ? java.util.Set.of() : tags.stored(who));
     }
 }

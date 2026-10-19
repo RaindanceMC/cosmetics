@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.18.1")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.19.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -97,8 +97,15 @@ public final class CosmeticsModule implements FlexModule {
         context.closeWith(teleports::stop);
         // The teleport look is read back from the player's data whenever that changes: on a network Core puts what
         // they chose elsewhere on them a moment after they join, and joins here are covered by the same check.
+        // Core's wardrobe for name tags: which of a guild's tag and stars somebody wears, from their data.
+        de.raindancer.modules.cosmetics.service.TagService tags = new de.raindancer.modules.cosmetics.service.TagService(
+                // Chat asks on every line and nametags every tick; the tablist only on its timer, so nudge it.
+                player -> Scheduling.global(context.plugin(), () -> context.core().tablists().refresh()));
+        tags.install();
+        context.closeWith(tags::uninstall);
         de.raindancer.modules.cosmetics.service.DataWatch watch =
-                new de.raindancer.modules.cosmetics.service.DataWatch(particles, teleports, context.core()::linkFollows);
+                new de.raindancer.modules.cosmetics.service.DataWatch(particles, teleports, context.core()::linkFollows,
+                        tags);
         watch.start(context.plugin(), server);
         context.closeWith(watch::stop);
         if (context.core().networkPlayers().isPresent() && context.core().networkCalls().isPresent()) {
@@ -123,7 +130,7 @@ public final class CosmeticsModule implements FlexModule {
         services = new CosmeticsServices(context.plugin(), server, log, context.core().messages(),
                 context.chat().brand(), catalogue::current, settings::current, names, particles, reloading,
                 clearing, teleports, watch, context.core().vanish(), new LiveScreens(), unlocks,
-                context.core());
+                context.core(), tags);
         // What admin mode swaps with the rest of a side: the worn particle, wings and teleport looks (all kept under
         // rainscosmetics: in the player's data) and the name style, so an admin wears different cosmetics as admin.
         de.raindancer.core.data.loadout.SideData.Part worn =

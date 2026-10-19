@@ -33,7 +33,7 @@ import java.util.function.Supplier;
  * {@code /cosmetics} — the menus, plus what is quicker typed than clicked:
  * {@code name preset <id>}, {@code name set <colours…> [decorations…]}, {@code name reset [player]},
  * {@code particle <name>|off|shape <shape>|colour <colour>}, {@code clear [name|particles|all] [player]},
- * {@code teleport depart|arrive|wait <sound|particle|default|none>}, {@code reload}.
+ * {@code teleport depart|arrive|wait <sound|particle|default|none>}, {@code tags}, {@code reload}.
  */
 public final class CosmeticsCommand implements ICosmeticsCommand {
 
@@ -92,6 +92,7 @@ public final class CosmeticsCommand implements ICosmeticsCommand {
                 case "wings" -> new de.raindancer.modules.cosmetics.screen.ParticleMenu(live, player, null,
                         live.particles().wings()).open();
                 case "teleport", "tp" -> live.screens().teleports(player);
+                case "tags", "tag" -> new de.raindancer.modules.cosmetics.screen.TagMenu(live, player, null).open();
                 default -> live.screens().hub(player);
             }
             return;
@@ -361,6 +362,7 @@ public final class CosmeticsCommand implements ICosmeticsCommand {
             options.add("name");
             options.add("particle");
             options.add("wings");
+            options.add("tags");
             options.add("clear");
             options.add("teleport");
             if (admin) {

@@ -38,7 +38,8 @@ public record CosmeticsServices(
         Vanish vanish,
         ICosmeticsScreensOpener screens,
         de.raindancer.modules.cosmetics.service.UnlockService unlocks,
-        RainsCore core) {
+        RainsCore core,
+        de.raindancer.modules.cosmetics.service.TagService tags) {
 
     public Catalogue offered() {
         return catalogue.get();

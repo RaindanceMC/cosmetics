@@ -33,7 +33,8 @@
         <!-- 0.17.0: RainsCore 2.0 network — the palette and presets are catalogue.yml, purchases and wing reservations are the network's documents (a purchase follows the player, a reservation holds on every server), all read again when another server writes. -->
         <!-- 0.18.0: network — the teleport look is read back from the player's data whenever it changes (a look chosen on another server now plays after arriving, no relog), and /cosmetics clear takes the particle off somebody on another server. -->
         <!-- 0.18.1: its per-player store is Core's KeyedDocument (no change in behaviour). -->
-        <plugin.version>0.18.1</plugin.version>
+        <!-- 0.19.0: /cosmetics tags — players take the guild tag and its stars off their name, or wear them again; kept in their data, so on every server. Needs RainsCore with NameBadges wardrobe. -->
+        <plugin.version>0.19.0</plugin.version>
     </properties>
 
     <dependencies>

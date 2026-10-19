@@ -22,6 +22,8 @@ public final class JoinListener implements ICosmeticsListener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onJoin(PlayerJoinEvent event) {
+        // Before the first chat line: a tag they took off must not flash back on for the second until DataWatch looks.
+        services.tags().load(event.getPlayer());
         if (services.core().linkFollows()) {
             // What they may wear is decided on survival; their choices come over from there (RainsCore's link).
             return;
@@ -44,5 +46,6 @@ public final class JoinListener implements ICosmeticsListener {
     public void forget(UUID player) {
         services.teleports().forget(player);
         services.watch().forget(player);
+        services.tags().forget(player);
     }
 }
