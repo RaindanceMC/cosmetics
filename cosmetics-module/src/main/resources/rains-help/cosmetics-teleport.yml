@@ -1,0 +1,27 @@
+id: cosmetics-teleport
+title: Teleport effects
+summary: "Your own sounds and particles for setting off, waiting and landing — on every teleport."
+intro: |
+  If you must vanish, vanish with style.
+icon: ENDER_PEARL
+category: Looks & cosmetics
+order: 12
+module: cosmetics
+when: cosmetics:teleport-looks
+permission: rainscosmetics.teleport
+aliases: [teleport sounds, tp sound, teleport effect]
+keywords: [sound, depart, arrive, wait, tick, countdown, homes, warps, tpa, spawn]
+related: [cosmetics]
+sections:
+  - question: What can I change?
+    title: The parts
+    text: |
+      For every teleport — homes, warps, /tpa, spawn — you pick four things: the sound as you set off (<b>depart</b>), a ding for each second of the countdown (<b>tick</b>, only you hear it), particles around you while you stand still (<b>wait</b>) and the sound as you land (<b>arrive</b>).
+  - question: How do I pick?
+    title: Picking
+    text: |
+      Open {run:/cosmetics} and the Teleports page: left-click to pick, right-click for the server's own, shift-click for nothing at all. Or type {cmd:/cosmetics teleport depart|tick|wait|arrive <sound or particle>}, or <white>default</white> or <white>none</white> instead.
+  - question: Which sounds may I choose?
+    title: Sound list
+    text: |
+      Everybody nearby hears a teleport, so the server keeps the deafening ones off the list: <white>{setting:cosmetics:teleport-sounds}</white>. Holders of rainscosmetics.teleport.any-sound may pick any. An effect you may no longer use goes back to the server's own.

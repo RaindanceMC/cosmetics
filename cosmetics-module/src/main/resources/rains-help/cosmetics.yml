@@ -1,0 +1,41 @@
+id: cosmetics
+title: Cosmetics
+summary: "Paint your name with colours, gradients and presets, and take it all off again."
+intro: |
+  Everybody else gets a plain name. You, dear {player}, can do better.
+icon: NAME_TAG
+category: Looks & cosmetics
+order: 10
+module: cosmetics
+permission: rainscosmetics.use
+aliases: [cosmetic, name, nametag, colour, color, gradient, preset, nickname colour]
+keywords: [name style, bold, italic, decoration, hex, animated, palette]
+commands: [cosmetics]
+related: [cosmetics-particles, cosmetics-teleport, cosmetics-shop, cosmetics-staff]
+sections:
+  - question: How do I open the cosmetics?
+    title: The menu
+    text: |
+      {run:/cosmetics} opens the menu: your name, particles, teleport effects and, where cosmetics are for sale, the unlocks. {cmd:/cosmetics name} and {cmd:/cosmetics particle} open those pages directly. Your choices are kept; on other servers of the network they come from survival, so change them there.
+  - question: How do I style my name?
+    title: Name styles
+    text: |
+      On the name page, pick a ready-made <b>preset</b> or build your own: one colour, or several for a gradient running from the first to the last across your name. {cmd:/cosmetics name preset <id>} wears a preset; {cmd:/cosmetics name set <colours> [bold|italic|…]} sets colours in the order typed; {cmd:/cosmetics name reset} makes it plain again. It shows in chat, the player list and on your nickname.
+  - question: What may I use?
+    title: Colours and effects
+    text: |
+      What you can pick depends on what you have unlocked: one palette colour, gradients, colours outside the palette (typed as #hex), a flowing gradient, each decoration (bold, italic, underlined…) and each restricted preset. Anything locked is shown as such, with why. A gradient has at most <white>{setting:cosmetics:name-max-stops|count}</white> colours (presets are not held to this).
+  - question: Is my name styled above my head?
+    title: Above heads
+    text: |
+      {if:cosmetics:name-above-head}Yes: the name over your head shows your colours, gradient, decorations and nickname.{else}No: over heads it is the plain vanilla nametag; styles show in chat and the player list only.{/if}
+  - question: What if I lose the rank?
+    title: Losing a style
+    when: cosmetics:name-drop-without-permission
+    text: |
+      When you join, a style you no longer have the permission for is taken off and you are told — your name is plain again.
+  - question: How do I take things off?
+    title: Clearing
+    permission: rainscosmetics.clear
+    text: |
+      {cmd:/cosmetics clear [name|particles|all]} takes your own name style and/or particle off. Without a word it clears what you picked.

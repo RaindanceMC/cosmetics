@@ -1,0 +1,25 @@
+id: cosmetics-staff
+title: Cosmetics administration
+summary: "Clearing other players' cosmetics, reloading the palette and presets, and what the permissions do."
+intro: |
+  Somebody's name is too bright? You know what to do.
+icon: COMMAND_BLOCK
+category: Staff
+order: 10
+module: cosmetics
+permission: rainscosmetics.admin
+keywords: [reset, clear, reload, palette, presets, reserve, wings, permissions]
+related: [cosmetics]
+sections:
+  - question: How do I take somebody's cosmetics off?
+    title: Clearing others
+    text: |
+      {cmd:/cosmetics name reset <player>} makes their name plain. {cmd:/cosmetics clear [name|particles|all] <player>} (needs rainscosmetics.clear.others) clears more; they are told. A particle only comes off while its owner is online; the name style can be cleared offline.
+  - question: How do I reload the palette?
+    title: Reload
+    text: |
+      {cmd:/cosmetics reload} re-reads the palette colours and presets and reports how many.
+  - question: Which permissions matter?
+    title: Permissions
+    text: |
+      rainscosmetics.use opens the menu and public presets; rainscosmetics.name.colour, .gradient, .any-colour, .animated and .decoration.* gate the name features (obfuscated is staff only by default); rainscosmetics.particles, rainscosmetics.particles.ultra, rainscosmetics.wings.reserve, rainscosmetics.teleport, rainscosmetics.teleport.any-sound, rainscosmetics.clear, rainscosmetics.free and one node per restricted preset. With a price set, nobody wears a feature without buying it (or rainscosmetics.free).

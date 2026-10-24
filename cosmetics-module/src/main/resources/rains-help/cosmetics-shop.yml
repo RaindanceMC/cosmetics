@@ -1,0 +1,30 @@
+id: cosmetics-shop
+title: Buying cosmetics
+summary: "What is for sale under Unlocks, what it costs, and what you keep for good."
+intro: |
+  Pretty things cost money. That is, famously, how pretty things work.
+icon: GOLD_NUGGET
+category: Looks & cosmetics
+order: 13
+module: cosmetics
+when: cosmetics:sell-cosmetics
+aliases: [unlocks, buy cosmetics]
+keywords: [price, unlock, buy, purchase, free]
+related: [cosmetics]
+sections:
+  - question: How do I buy one?
+    title: Unlocks
+    text: |
+      Open {run:/cosmetics}, then <b>Unlocks</b>. Click what you want; the price is taken once and it is yours for good — also after restarts. Locked items elsewhere in the menu tell you their price.
+  - question: What does it cost?
+    title: Prices
+    text: |
+      {if:cosmetics:price-name-colour != 0}One name colour: {setting:cosmetics:price-name-colour|money}.{/if}
+      {if:cosmetics:price-name-gradient != 0}Gradients: {setting:cosmetics:price-name-gradient|money}.{/if}
+      {if:cosmetics:price-name-any-colour != 0}Colours outside the palette: {setting:cosmetics:price-name-any-colour|money}.{/if}
+      {if:cosmetics:price-name-animated != 0}A flowing gradient: {setting:cosmetics:price-name-animated|money}.{/if}
+      {if:cosmetics:price-name-decoration != 0}Each decoration: {setting:cosmetics:price-name-decoration|money}.{/if}
+      {if:cosmetics:price-preset != 0}Each preset (unless it has its own price): {setting:cosmetics:price-preset|money}.{/if}
+      {if:cosmetics:price-particles != 0}Particles and wings together: {setting:cosmetics:price-particles|money}.{/if}
+      {if:cosmetics:price-teleport-looks != 0}Teleport effects: {setting:cosmetics:price-teleport-looks|money}.{/if}
+      Anything not listed has no price: rank permissions decide who wears it. Holders of rainscosmetics.free wear everything that is for sale without paying.

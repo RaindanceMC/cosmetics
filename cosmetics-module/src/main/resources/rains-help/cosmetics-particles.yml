@@ -1,0 +1,31 @@
+id: cosmetics-particles
+title: Particles & wings
+summary: "A vanilla particle around you, how it is drawn and coloured, and wings on top."
+intro: |
+  Sparkle responsibly. The server watches the density, and so do I.
+icon: BLAZE_POWDER
+category: Looks & cosmetics
+order: 11
+module: cosmetics
+when: cosmetics:particles-enabled
+permission: rainscosmetics.particles
+aliases: [particle, particles, wings, aura, halo, trail]
+keywords: [spiral, density, speed, colour, gradient, reserve, effects]
+related: [cosmetics]
+sections:
+  - question: How do I wear a particle?
+    title: Wearing one
+    text: |
+      On the particle page, left-click a particle to preview it, right-click to wear it. Or type {cmd:/cosmetics particle <particle>}; {cmd:/cosmetics particle off} takes it off. It is hidden while you are vanished, invisible or spectating. Some particles are not allowed: <white>{setting:cosmetics:particles-blocked}</white> — they cover or shake everybody's screen.
+  - question: How is it drawn?
+    title: Shapes
+    text: |
+      {cmd:/cosmetics particle shape ambient|aura|halo|trail|spiral}: around you, above your head, behind you and so on. Dust and the tinted particles take a colour: {cmd:/cosmetics particle colour <colour>}, and {cmd:/cosmetics particle gradient <colour|off>} blends into a second colour along the shape.
+  - question: How thick and how fast?
+    title: Density and speed
+    text: |
+      {cmd:/cosmetics particle density light|normal|dense|very_dense} — you may pick up to <white>{setting:cosmetics:particles-max-count|count}</white> particles per point; the default is {setting:cosmetics:particles-count|count}. Staff with the ultra permission go past the ceiling. {cmd:/cosmetics particle speed slow|normal|fast|very_fast} sets how fast it moves. Everything is drawn every {setting:cosmetics:particles-every-ticks|ticks}.
+  - question: What about wings?
+    title: Wings
+    text: |
+      {cmd:/cosmetics wings} puts wings on top of your particle: angel, bat, butterfly, hummingbird, dragon, phoenix, fairy, seraph or grand. They take {cmd:/cosmetics wings shape|colour|gradient|density|style}; style crisp draws sharp points in your colours, natural draws the particle itself (flames rise, leaves fall). {cmd:/cosmetics wings off} takes them off. Staff can reserve a combination, so nobody else wears the same.
