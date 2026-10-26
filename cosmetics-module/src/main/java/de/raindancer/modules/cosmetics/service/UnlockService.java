@@ -102,6 +102,9 @@ public final class UnlockService implements ICosmeticsService, Entitlements {
         if (!priced(key)) {
             return who.hasPermission(node);
         }
+        if ((key.equals(Unlock.PARTICLES) || key.equals(Unlock.TELEPORT)) && who.hasPermission(PermissionNodes.LIBRARY)) {
+            return true;
+        }
         return who.hasPermission(PermissionNodes.FREE) || (who instanceof Player player && owns(player.getUniqueId(), key));
     }
 

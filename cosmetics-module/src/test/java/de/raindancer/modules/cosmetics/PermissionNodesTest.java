@@ -46,6 +46,19 @@ class PermissionNodesTest {
     }
 
     @Test
+    @DisplayName("the supporters' library: every particle and teleport look and any sound, operators' by default")
+    void library() {
+        Permission library = PermissionNodes.declared().stream()
+                .filter(p -> p.getName().equals(PermissionNodes.LIBRARY)).findFirst().orElseThrow();
+
+        assertThat(library.getDefault()).isEqualTo(PermissionDefault.OP);
+        assertThat(library.getChildren()).containsEntry(PermissionNodes.PARTICLES, true)
+                .containsEntry(PermissionNodes.TELEPORT, true)
+                .containsEntry(PermissionNodes.TELEPORT_ANY_SOUND, true)
+                .doesNotContainKey(PermissionNodes.PARTICLES_ULTRA);
+    }
+
+    @Test
     @DisplayName("only a restricted preset gets a node")
     void presetNodes() {
         List<Permission> nodes = PermissionNodes.declaredFor(List.of(

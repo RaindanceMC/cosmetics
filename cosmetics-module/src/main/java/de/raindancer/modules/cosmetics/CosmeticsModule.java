@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.22.2")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.23.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -139,6 +139,7 @@ public final class CosmeticsModule implements FlexModule {
         var supporter = de.raindancer.core.social.support.SupporterPermission.permission(server.getPluginManager());
         supporter.getChildren().put(PermissionNodes.SKINS, true);
         supporter.getChildren().put(PermissionNodes.PARTICLE_COFFEE, true);
+        supporter.getChildren().put(PermissionNodes.LIBRARY, true);
         supporter.recalculatePermissibles();
         de.raindancer.modules.cosmetics.skins.SkinPack.contribute(context.plugin(), context.core());
         context.closeWith(() -> de.raindancer.modules.cosmetics.skins.SkinPack.withdraw(context.core()));

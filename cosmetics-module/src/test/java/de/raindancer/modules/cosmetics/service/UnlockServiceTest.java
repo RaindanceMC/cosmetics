@@ -104,6 +104,24 @@ class UnlockServiceTest {
     }
 
     @Test
+    @DisplayName("the supporters' library opens particles and teleport looks even when they are for sale")
+    void libraryOpensPricedEffects() {
+        CosmeticsSettings d = CosmeticsSettings.DEFAULTS;
+        UnlockService unlocks = service(new CosmeticsSettings(d.maxStops(), d.dropWithoutPermission(), d.nameAboveHead(),
+                d.particlesEnabled(), d.particleEveryTicks(), d.particleCount(), d.particleMaxCount(),
+                d.blockedParticles(), d.teleportLooks(), d.teleportSounds(), true, "0", "40", "0", "0", "0", "0", "60", "50"));
+
+        assertThat(unlocks.allowed(player, Unlock.PARTICLES, PermissionNodes.PARTICLES)).isFalse();
+        assertThat(unlocks.allowed(player, Unlock.TELEPORT, PermissionNodes.TELEPORT)).isFalse();
+
+        when(player.hasPermission(PermissionNodes.LIBRARY)).thenReturn(true);
+        assertThat(unlocks.allowed(player, Unlock.PARTICLES, PermissionNodes.PARTICLES)).isTrue();
+        assertThat(unlocks.allowed(player, Unlock.TELEPORT, PermissionNodes.TELEPORT)).isTrue();
+        assertThat(unlocks.allowed(player, Unlock.NAME_GRADIENT, PermissionNodes.NAME_GRADIENT))
+                .as("name styles are not part of the library").isFalse();
+    }
+
+    @Test
     @DisplayName("buying charges the price with the names source and unlocks it for good")
     void buy() {
         UnlockService unlocks = service(priced("40", "0", "0"));

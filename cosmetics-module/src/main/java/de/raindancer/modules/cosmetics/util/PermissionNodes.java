@@ -51,6 +51,11 @@ public final class PermissionNodes {
     public static final String SKIN_UNLOCKS_PREFIX = "rainscosmetics.skins.unlocks.";
     /** The coffee-bean trail — every supporter has it through {@code rains.supporter}. */
     public static final String PARTICLE_COFFEE = "rainscosmetics.particle.coffee";
+    /**
+     * The whole sounds and particles library: particles and teleport looks even where they are for sale, and any
+     * sound — every supporter has it through {@code rains.supporter}. Not Ultra density: that one is about load.
+     */
+    public static final String LIBRARY = "rainscosmetics.library";
 
     private PermissionNodes() {
     }
@@ -98,6 +103,9 @@ public final class PermissionNodes {
         nodes.add(new Permission(SKINS_ALL, "Have every weapon skin without unlocking any", PermissionDefault.OP));
         nodes.add(new Permission(PARTICLE_COFFEE, "Wear the coffee-bean trail (every supporter has it)",
                 PermissionDefault.OP));
+        nodes.add(new Permission(LIBRARY, "Every particle, teleport look and sound, without buying them "
+                + "(every supporter has it)", PermissionDefault.OP,
+                java.util.Map.of(PARTICLES, true, TELEPORT, true, TELEPORT_ANY_SOUND, true)));
         return nodes;
     }
 
