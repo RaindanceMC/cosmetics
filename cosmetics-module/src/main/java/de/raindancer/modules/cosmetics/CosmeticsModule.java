@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.20.0")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.21.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -126,6 +126,7 @@ public final class CosmeticsModule implements FlexModule {
                         context.core().messages(), settings.current());
         names.entitlements(unlocks);
         particles.entitlements(unlocks);
+        particles.supporters(context.core().supporters()::isSupporter);
         teleports.entitlements(unlocks);
         services = new CosmeticsServices(context.plugin(), server, log, context.core().messages(),
                 context.chat().brand(), catalogue::current, settings::current, names, particles, reloading,

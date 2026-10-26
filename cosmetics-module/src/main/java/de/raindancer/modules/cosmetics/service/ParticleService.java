@@ -137,6 +137,8 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
 
     // ------------------------------------------------------------------ choosing
 
+    private volatile java.util.function.Predicate<java.util.UUID> supporters = who -> false;
+
     /** Hands in what decides who has bought what. Without it, permissions alone decide, as ever. */
     public void entitlements(Entitlements fresh) {
         this.entitlements = fresh == null ? Entitlements.PERMISSIONS : fresh;
@@ -159,14 +161,24 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
     }
 
     public Verdict judge(Player who, String particle) {
-        return rule.judge(particle, mayUse(who), settings.blocked(), ParticleShows.canShow(particle));
+        return rule.judge(particle, mayUse(who), settings.blocked(), ParticleShows.canShow(particle),
+                supporters.test(who.getUniqueId()));
     }
 
-    /** Every vanilla particle a player could wear here, for the picker and tab completion. */
+    /**
+     * Every particle a player could wear here, for the picker and tab completion — Core's coffee too, which
+     * only a supporter may wear; anybody else picking it is told how to become one.
+     */
     public List<String> offered() {
         java.util.Set<String> blocked = settings.blocked();
-        return Arrays.stream(Particle.values()).map(Enum::name)
+        return java.util.stream.Stream.concat(Arrays.stream(Particle.values()).map(Enum::name),
+                        java.util.stream.Stream.of(ParticleShows.COFFEE))
                 .filter(ParticleShows::canShow).filter(name -> !blocked.contains(name)).sorted().toList();
+    }
+
+    /** Who has bought the owner a coffee; nobody until the module hands Core's list in. */
+    public void supporters(java.util.function.Predicate<java.util.UUID> fresh) {
+        this.supporters = fresh == null ? who -> false : fresh;
     }
 
     public boolean wear(Player who, String particle, boolean announce) {

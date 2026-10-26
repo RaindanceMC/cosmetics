@@ -179,4 +179,19 @@ class ParticleRuleTest {
         org.assertj.core.api.Assertions.assertThat(rule.wingDensity(null)).isEqualTo(ParticleDensity.DENSE);
         org.assertj.core.api.Assertions.assertThat(rule.wingDensity(ParticleDensity.ULTRA)).isEqualTo(ParticleDensity.ULTRA);
     }
+
+    @org.junit.jupiter.api.Test
+    @org.junit.jupiter.api.DisplayName("the coffee-bean trail is a supporter's thank-you: anybody else is pointed at /support")
+    void coffeeForSupporters() {
+        var rule = new de.raindancer.modules.cosmetics.rules.ParticleRule();
+
+        org.assertj.core.api.Assertions.assertThat(rule.judge("COFFEE", true, java.util.Set.of(), true, true)
+                .isAllowed()).isTrue();
+        org.assertj.core.api.Assertions.assertThat(rule.judge("coffee", true, java.util.Set.of(), true, false)
+                .reason()).isEqualTo("cosmetics.refused.particle-supporters");
+        org.assertj.core.api.Assertions.assertThat(rule.judge("FLAME", true, java.util.Set.of(), true, false)
+                .isAllowed()).as("everything else as before").isTrue();
+        org.assertj.core.api.Assertions.assertThat(rule.judge("COFFEE", true, java.util.Set.of("COFFEE"), true, true)
+                .reason()).as("an owner can still block it").isEqualTo("cosmetics.refused.particle-blocked");
+    }
 }

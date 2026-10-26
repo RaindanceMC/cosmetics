@@ -93,6 +93,7 @@ cosmetics:
     particles: "<red>You may not wear particles."
     particle-unknown: "<red><white><detail></white> is not a particle that can be worn."
     particle-blocked: "<red><white><detail></white> is not allowed here — it would cover everybody's screen."
+    particle-supporters: "<#C8A27A>☕ <#D9BFA0>The coffee-bean trail is a thank-you for supporters. <white>/support</white> <#D9BFA0>says how."
 
   help:
     - "<gold><bold>Your name"

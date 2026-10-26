@@ -13,6 +13,22 @@ public final class ParticleRule implements ICosmeticsRule {
      *                 {@code ParticleShows.canShow} by the caller, so this stays a plain function
      */
     public Verdict judge(String particle, boolean mayUse, Set<String> blocked, boolean showable) {
+        return judge(particle, mayUse, blocked, showable, false);
+    }
+
+    /** @param supporter whether they bought the owner a coffee — Core's own coffee particle is their thank-you */
+    public Verdict judge(String particle, boolean mayUse, Set<String> blocked, boolean showable, boolean supporter) {
+        Verdict plain = judgePlain(particle, mayUse, blocked, showable);
+        if (plain.isRefused()) {
+            return plain;
+        }
+        if (de.raindancer.core.ui.effect.ParticleShows.isOwn(particle) && !supporter) {
+            return Verdict.refused("cosmetics.refused.particle-supporters");
+        }
+        return plain;
+    }
+
+    private Verdict judgePlain(String particle, boolean mayUse, Set<String> blocked, boolean showable) {
         if (!mayUse) {
             return Verdict.refused("cosmetics.refused.particles");
         }
