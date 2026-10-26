@@ -1,0 +1,1279 @@
+[
+ {
+  "id": "3d-equipment",
+  "title": "Actually 3D Equipment!",
+  "pack": 2,
+  "packTitle": "Actually 3D Equipment! (3D Tools & Weapons)",
+  "category": "3D Classic",
+  "author": "MattCrowberry",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/3d-equipment",
+  "looks": {
+   "wooden_sword": "rainsskins:3d-equipment/wooden_sword",
+   "stone_sword": "rainsskins:3d-equipment/stone_sword",
+   "copper_sword": "rainsskins:3d-equipment/copper_sword",
+   "iron_sword": "rainsskins:3d-equipment/iron_sword",
+   "golden_sword": "rainsskins:3d-equipment/golden_sword",
+   "diamond_sword": "rainsskins:3d-equipment/diamond_sword",
+   "netherite_sword": "rainsskins:3d-equipment/netherite_sword",
+   "wooden_axe": "rainsskins:3d-equipment/wooden_axe",
+   "stone_axe": "rainsskins:3d-equipment/stone_axe",
+   "copper_axe": "rainsskins:3d-equipment/copper_axe",
+   "iron_axe": "rainsskins:3d-equipment/iron_axe",
+   "golden_axe": "rainsskins:3d-equipment/golden_axe",
+   "diamond_axe": "rainsskins:3d-equipment/diamond_axe",
+   "netherite_axe": "rainsskins:3d-equipment/netherite_axe",
+   "wooden_pickaxe": "rainsskins:3d-equipment/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:3d-equipment/stone_pickaxe",
+   "copper_pickaxe": "rainsskins:3d-equipment/copper_pickaxe",
+   "iron_pickaxe": "rainsskins:3d-equipment/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:3d-equipment/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:3d-equipment/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:3d-equipment/netherite_pickaxe",
+   "wooden_spear": "rainsskins:3d-equipment/wooden_spear",
+   "stone_spear": "rainsskins:3d-equipment/stone_spear",
+   "copper_spear": "rainsskins:3d-equipment/copper_spear",
+   "iron_spear": "rainsskins:3d-equipment/iron_spear",
+   "golden_spear": "rainsskins:3d-equipment/golden_spear",
+   "diamond_spear": "rainsskins:3d-equipment/diamond_spear",
+   "netherite_spear": "rainsskins:3d-equipment/netherite_spear",
+   "trident": "rainsskins:3d-equipment/trident",
+   "bow": "rainsskins:3d-equipment/bow",
+   "crossbow": "rainsskins:3d-equipment/crossbow"
+  }
+ },
+ {
+  "id": "epicswordspack",
+  "title": "Epic swords pack",
+  "pack": 3,
+  "packTitle": "(not) Epic swords pack",
+  "category": "Fantasy",
+  "author": "EpicSurg",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/epicswordspack",
+  "looks": {
+   "trident": "rainsskins:epicswordspack/trident"
+  }
+ },
+ {
+  "id": "epicswordspack-uki",
+  "title": "Epic swords pack: Uki",
+  "pack": 3,
+  "packTitle": "(not) Epic swords pack",
+  "category": "Fantasy",
+  "author": "EpicSurg",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/epicswordspack",
+  "looks": {
+   "wooden_sword": "rainsskins:epicswordspack-uki/wooden_sword",
+   "stone_sword": "rainsskins:epicswordspack-uki/stone_sword",
+   "copper_sword": "rainsskins:epicswordspack-uki/copper_sword",
+   "iron_sword": "rainsskins:epicswordspack-uki/iron_sword",
+   "golden_sword": "rainsskins:epicswordspack-uki/golden_sword",
+   "diamond_sword": "rainsskins:epicswordspack-uki/diamond_sword",
+   "netherite_sword": "rainsskins:epicswordspack-uki/netherite_sword",
+   "wooden_axe": "rainsskins:epicswordspack-uki/wooden_axe",
+   "stone_axe": "rainsskins:epicswordspack-uki/stone_axe",
+   "copper_axe": "rainsskins:epicswordspack-uki/copper_axe",
+   "iron_axe": "rainsskins:epicswordspack-uki/iron_axe",
+   "golden_axe": "rainsskins:epicswordspack-uki/golden_axe",
+   "diamond_axe": "rainsskins:epicswordspack-uki/diamond_axe",
+   "netherite_axe": "rainsskins:epicswordspack-uki/netherite_axe"
+  }
+ },
+ {
+  "id": "epicswordspack-kazue",
+  "title": "Epic swords pack: Kazue",
+  "pack": 3,
+  "packTitle": "(not) Epic swords pack",
+  "category": "Fantasy",
+  "author": "EpicSurg",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/epicswordspack",
+  "looks": {
+   "wooden_sword": "rainsskins:epicswordspack-kazue/wooden_sword",
+   "stone_sword": "rainsskins:epicswordspack-kazue/stone_sword",
+   "copper_sword": "rainsskins:epicswordspack-kazue/copper_sword",
+   "iron_sword": "rainsskins:epicswordspack-kazue/iron_sword",
+   "golden_sword": "rainsskins:epicswordspack-kazue/golden_sword",
+   "diamond_sword": "rainsskins:epicswordspack-kazue/diamond_sword",
+   "netherite_sword": "rainsskins:epicswordspack-kazue/netherite_sword",
+   "wooden_axe": "rainsskins:epicswordspack-kazue/wooden_axe",
+   "stone_axe": "rainsskins:epicswordspack-kazue/stone_axe",
+   "copper_axe": "rainsskins:epicswordspack-kazue/copper_axe",
+   "iron_axe": "rainsskins:epicswordspack-kazue/iron_axe",
+   "golden_axe": "rainsskins:epicswordspack-kazue/golden_axe",
+   "diamond_axe": "rainsskins:epicswordspack-kazue/diamond_axe",
+   "netherite_axe": "rainsskins:epicswordspack-kazue/netherite_axe"
+  }
+ },
+ {
+  "id": "epicswordspack-akimizu",
+  "title": "Epic swords pack: Akimizu",
+  "pack": 3,
+  "packTitle": "(not) Epic swords pack",
+  "category": "Fantasy",
+  "author": "EpicSurg",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/epicswordspack",
+  "looks": {
+   "wooden_sword": "rainsskins:epicswordspack-akimizu/wooden_sword",
+   "stone_sword": "rainsskins:epicswordspack-akimizu/stone_sword",
+   "copper_sword": "rainsskins:epicswordspack-akimizu/copper_sword",
+   "iron_sword": "rainsskins:epicswordspack-akimizu/iron_sword",
+   "golden_sword": "rainsskins:epicswordspack-akimizu/golden_sword",
+   "diamond_sword": "rainsskins:epicswordspack-akimizu/diamond_sword",
+   "netherite_sword": "rainsskins:epicswordspack-akimizu/netherite_sword",
+   "wooden_axe": "rainsskins:epicswordspack-akimizu/wooden_axe",
+   "stone_axe": "rainsskins:epicswordspack-akimizu/stone_axe",
+   "copper_axe": "rainsskins:epicswordspack-akimizu/copper_axe",
+   "iron_axe": "rainsskins:epicswordspack-akimizu/iron_axe",
+   "golden_axe": "rainsskins:epicswordspack-akimizu/golden_axe",
+   "diamond_axe": "rainsskins:epicswordspack-akimizu/diamond_axe",
+   "netherite_axe": "rainsskins:epicswordspack-akimizu/netherite_axe"
+  }
+ },
+ {
+  "id": "epicswordspack-penguin-sword",
+  "title": "Epic swords pack: Penguin sword",
+  "pack": 3,
+  "packTitle": "(not) Epic swords pack",
+  "category": "Fantasy",
+  "author": "EpicSurg",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/epicswordspack",
+  "looks": {
+   "wooden_sword": "rainsskins:epicswordspack-penguin-sword/wooden_sword",
+   "stone_sword": "rainsskins:epicswordspack-penguin-sword/stone_sword",
+   "copper_sword": "rainsskins:epicswordspack-penguin-sword/copper_sword",
+   "iron_sword": "rainsskins:epicswordspack-penguin-sword/iron_sword",
+   "golden_sword": "rainsskins:epicswordspack-penguin-sword/golden_sword",
+   "diamond_sword": "rainsskins:epicswordspack-penguin-sword/diamond_sword",
+   "netherite_sword": "rainsskins:epicswordspack-penguin-sword/netherite_sword",
+   "wooden_axe": "rainsskins:epicswordspack-penguin-sword/wooden_axe",
+   "stone_axe": "rainsskins:epicswordspack-penguin-sword/stone_axe",
+   "copper_axe": "rainsskins:epicswordspack-penguin-sword/copper_axe",
+   "iron_axe": "rainsskins:epicswordspack-penguin-sword/iron_axe",
+   "golden_axe": "rainsskins:epicswordspack-penguin-sword/golden_axe",
+   "diamond_axe": "rainsskins:epicswordspack-penguin-sword/diamond_axe",
+   "netherite_axe": "rainsskins:epicswordspack-penguin-sword/netherite_axe"
+  }
+ },
+ {
+  "id": "epicswordspack-yoko-and-chiasa",
+  "title": "Epic swords pack: Yoko and Chiasa",
+  "pack": 3,
+  "packTitle": "(not) Epic swords pack",
+  "category": "Fantasy",
+  "author": "EpicSurg",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/epicswordspack",
+  "looks": {
+   "wooden_sword": "rainsskins:epicswordspack-yoko-and-chiasa/wooden_sword",
+   "stone_sword": "rainsskins:epicswordspack-yoko-and-chiasa/stone_sword",
+   "copper_sword": "rainsskins:epicswordspack-yoko-and-chiasa/copper_sword",
+   "iron_sword": "rainsskins:epicswordspack-yoko-and-chiasa/iron_sword",
+   "golden_sword": "rainsskins:epicswordspack-yoko-and-chiasa/golden_sword",
+   "diamond_sword": "rainsskins:epicswordspack-yoko-and-chiasa/diamond_sword",
+   "netherite_sword": "rainsskins:epicswordspack-yoko-and-chiasa/netherite_sword",
+   "wooden_axe": "rainsskins:epicswordspack-yoko-and-chiasa/wooden_axe",
+   "stone_axe": "rainsskins:epicswordspack-yoko-and-chiasa/stone_axe",
+   "copper_axe": "rainsskins:epicswordspack-yoko-and-chiasa/copper_axe",
+   "iron_axe": "rainsskins:epicswordspack-yoko-and-chiasa/iron_axe",
+   "golden_axe": "rainsskins:epicswordspack-yoko-and-chiasa/golden_axe",
+   "diamond_axe": "rainsskins:epicswordspack-yoko-and-chiasa/diamond_axe",
+   "netherite_axe": "rainsskins:epicswordspack-yoko-and-chiasa/netherite_axe"
+  }
+ },
+ {
+  "id": "epicswordspack-oozora",
+  "title": "Epic swords pack: Oozora",
+  "pack": 3,
+  "packTitle": "(not) Epic swords pack",
+  "category": "Fantasy",
+  "author": "EpicSurg",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/epicswordspack",
+  "looks": {
+   "wooden_sword": "rainsskins:epicswordspack-oozora/wooden_sword",
+   "stone_sword": "rainsskins:epicswordspack-oozora/stone_sword",
+   "copper_sword": "rainsskins:epicswordspack-oozora/copper_sword",
+   "iron_sword": "rainsskins:epicswordspack-oozora/iron_sword",
+   "golden_sword": "rainsskins:epicswordspack-oozora/golden_sword",
+   "diamond_sword": "rainsskins:epicswordspack-oozora/diamond_sword",
+   "netherite_sword": "rainsskins:epicswordspack-oozora/netherite_sword",
+   "wooden_axe": "rainsskins:epicswordspack-oozora/wooden_axe",
+   "stone_axe": "rainsskins:epicswordspack-oozora/stone_axe",
+   "copper_axe": "rainsskins:epicswordspack-oozora/copper_axe",
+   "iron_axe": "rainsskins:epicswordspack-oozora/iron_axe",
+   "golden_axe": "rainsskins:epicswordspack-oozora/golden_axe",
+   "diamond_axe": "rainsskins:epicswordspack-oozora/diamond_axe",
+   "netherite_axe": "rainsskins:epicswordspack-oozora/netherite_axe"
+  }
+ },
+ {
+  "id": "epicswordspack-onyxia",
+  "title": "Epic swords pack: Onyxia",
+  "pack": 3,
+  "packTitle": "(not) Epic swords pack",
+  "category": "Fantasy",
+  "author": "EpicSurg",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/epicswordspack",
+  "looks": {
+   "wooden_sword": "rainsskins:epicswordspack-onyxia/wooden_sword",
+   "stone_sword": "rainsskins:epicswordspack-onyxia/stone_sword",
+   "copper_sword": "rainsskins:epicswordspack-onyxia/copper_sword",
+   "iron_sword": "rainsskins:epicswordspack-onyxia/iron_sword",
+   "golden_sword": "rainsskins:epicswordspack-onyxia/golden_sword",
+   "diamond_sword": "rainsskins:epicswordspack-onyxia/diamond_sword",
+   "netherite_sword": "rainsskins:epicswordspack-onyxia/netherite_sword",
+   "wooden_axe": "rainsskins:epicswordspack-onyxia/wooden_axe",
+   "stone_axe": "rainsskins:epicswordspack-onyxia/stone_axe",
+   "copper_axe": "rainsskins:epicswordspack-onyxia/copper_axe",
+   "iron_axe": "rainsskins:epicswordspack-onyxia/iron_axe",
+   "golden_axe": "rainsskins:epicswordspack-onyxia/golden_axe",
+   "diamond_axe": "rainsskins:epicswordspack-onyxia/diamond_axe",
+   "netherite_axe": "rainsskins:epicswordspack-onyxia/netherite_axe"
+  }
+ },
+ {
+  "id": "epicswordspack-tupizza",
+  "title": "Epic swords pack: Tupizza",
+  "pack": 3,
+  "packTitle": "(not) Epic swords pack",
+  "category": "Fantasy",
+  "author": "EpicSurg",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/epicswordspack",
+  "looks": {
+   "wooden_sword": "rainsskins:epicswordspack-tupizza/wooden_sword",
+   "stone_sword": "rainsskins:epicswordspack-tupizza/stone_sword",
+   "copper_sword": "rainsskins:epicswordspack-tupizza/copper_sword",
+   "iron_sword": "rainsskins:epicswordspack-tupizza/iron_sword",
+   "golden_sword": "rainsskins:epicswordspack-tupizza/golden_sword",
+   "diamond_sword": "rainsskins:epicswordspack-tupizza/diamond_sword",
+   "netherite_sword": "rainsskins:epicswordspack-tupizza/netherite_sword",
+   "wooden_axe": "rainsskins:epicswordspack-tupizza/wooden_axe",
+   "stone_axe": "rainsskins:epicswordspack-tupizza/stone_axe",
+   "copper_axe": "rainsskins:epicswordspack-tupizza/copper_axe",
+   "iron_axe": "rainsskins:epicswordspack-tupizza/iron_axe",
+   "golden_axe": "rainsskins:epicswordspack-tupizza/golden_axe",
+   "diamond_axe": "rainsskins:epicswordspack-tupizza/diamond_axe",
+   "netherite_axe": "rainsskins:epicswordspack-tupizza/netherite_axe"
+  }
+ },
+ {
+  "id": "berserker-tools-weapons",
+  "title": "Berserker Tools & Weapons",
+  "pack": 4,
+  "packTitle": "Berserker Tools & Weapons",
+  "category": "Fantasy",
+  "author": "O3kar",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/berserker-tools-weapons",
+  "looks": {
+   "netherite_sword": "rainsskins:berserker-tools-weapons/netherite_sword",
+   "netherite_axe": "rainsskins:berserker-tools-weapons/netherite_axe",
+   "netherite_pickaxe": "rainsskins:berserker-tools-weapons/netherite_pickaxe",
+   "netherite_spear": "rainsskins:berserker-tools-weapons/netherite_spear",
+   "mace": "rainsskins:berserker-tools-weapons/mace",
+   "crossbow": "rainsskins:berserker-tools-weapons/crossbow"
+  }
+ },
+ {
+  "id": "karambit-swords",
+  "title": "Karambit Swords",
+  "pack": 5,
+  "packTitle": "Karambit Swords",
+  "category": "Katana & Blades",
+  "author": "subzerofr",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/karambit-swords",
+  "looks": {
+   "wooden_sword": "rainsskins:karambit-swords/wooden_sword",
+   "stone_sword": "rainsskins:karambit-swords/stone_sword",
+   "copper_sword": "rainsskins:karambit-swords/copper_sword",
+   "iron_sword": "rainsskins:karambit-swords/iron_sword",
+   "golden_sword": "rainsskins:karambit-swords/golden_sword",
+   "diamond_sword": "rainsskins:karambit-swords/diamond_sword",
+   "netherite_sword": "rainsskins:karambit-swords/netherite_sword"
+  }
+ },
+ {
+  "id": "simple-katana-swords",
+  "title": "Simple Katana Swords",
+  "pack": 6,
+  "packTitle": "Simple Katana Swords",
+  "category": "Katana & Blades",
+  "author": "creeperguy14",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/simple-katana-swords",
+  "looks": {
+   "wooden_sword": "rainsskins:simple-katana-swords/wooden_sword",
+   "stone_sword": "rainsskins:simple-katana-swords/stone_sword",
+   "copper_sword": "rainsskins:simple-katana-swords/copper_sword",
+   "iron_sword": "rainsskins:simple-katana-swords/iron_sword",
+   "golden_sword": "rainsskins:simple-katana-swords/golden_sword",
+   "diamond_sword": "rainsskins:simple-katana-swords/diamond_sword",
+   "netherite_sword": "rainsskins:simple-katana-swords/netherite_sword"
+  }
+ },
+ {
+  "id": "initial-katanas-algid-gleam",
+  "title": "Initial Katanas: Algid Gleam",
+  "pack": 7,
+  "packTitle": "Initial Katanas",
+  "category": "Katana & Blades",
+  "author": "Fikket_",
+  "license": "CC0-1.0",
+  "url": "https://modrinth.com/resourcepack/initial-katanas",
+  "looks": {
+   "diamond_sword": "rainsskins:initial-katanas-algid-gleam/diamond_sword",
+   "netherite_sword": "rainsskins:initial-katanas-algid-gleam/netherite_sword"
+  }
+ },
+ {
+  "id": "initial-katanas-bloody-grief",
+  "title": "Initial Katanas: Bloody Grief",
+  "pack": 7,
+  "packTitle": "Initial Katanas",
+  "category": "Katana & Blades",
+  "author": "Fikket_",
+  "license": "CC0-1.0",
+  "url": "https://modrinth.com/resourcepack/initial-katanas",
+  "looks": {
+   "diamond_sword": "rainsskins:initial-katanas-bloody-grief/diamond_sword",
+   "netherite_sword": "rainsskins:initial-katanas-bloody-grief/netherite_sword"
+  }
+ },
+ {
+  "id": "initial-katanas-faint-quasar",
+  "title": "Initial Katanas: Faint Quasar",
+  "pack": 7,
+  "packTitle": "Initial Katanas",
+  "category": "Katana & Blades",
+  "author": "Fikket_",
+  "license": "CC0-1.0",
+  "url": "https://modrinth.com/resourcepack/initial-katanas",
+  "looks": {
+   "diamond_sword": "rainsskins:initial-katanas-faint-quasar/diamond_sword",
+   "netherite_sword": "rainsskins:initial-katanas-faint-quasar/netherite_sword"
+  }
+ },
+ {
+  "id": "katana-flower-of-the-sea-flower-of-the-sea",
+  "title": "Katana \u00abFlower of the Sea\u00bb: Flower Of The Sea\u0446\u0432\u0435\u0442\u043e\u043a \u041c\u043e\u0440\u044f\u0446\u0432\u0435\u0442\u043e\u043a \u041c\u043e\u0440\u044f\u0446\u0432\u0435\u0442\u043e\u043a \u041c\u043e\u0440\u044f\u0446\u0432\u0435\u0442\u043e\u043a \u041c\u043e\u0440\u044f",
+  "pack": 8,
+  "packTitle": "Katana \u00abFlower of the Sea\u00bb",
+  "category": "Katana & Blades",
+  "author": "CLASS565",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/katana-flower-of-the-sea",
+  "looks": {
+   "iron_sword": "rainsskins:katana-flower-of-the-sea-flower-of-the-sea/iron_sword",
+   "golden_sword": "rainsskins:katana-flower-of-the-sea-flower-of-the-sea/golden_sword",
+   "diamond_sword": "rainsskins:katana-flower-of-the-sea-flower-of-the-sea/diamond_sword",
+   "netherite_sword": "rainsskins:katana-flower-of-the-sea-flower-of-the-sea/netherite_sword"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack",
+  "title": "Scythes Vanilla Pack",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "wooden_sword": "rainsskins:scythes-vanilla-pack/wooden_sword",
+   "stone_sword": "rainsskins:scythes-vanilla-pack/stone_sword",
+   "copper_sword": "rainsskins:scythes-vanilla-pack/copper_sword",
+   "iron_sword": "rainsskins:scythes-vanilla-pack/iron_sword",
+   "golden_sword": "rainsskins:scythes-vanilla-pack/golden_sword",
+   "diamond_sword": "rainsskins:scythes-vanilla-pack/diamond_sword",
+   "netherite_sword": "rainsskins:scythes-vanilla-pack/netherite_sword",
+   "mace": "rainsskins:scythes-vanilla-pack/mace"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack-wooden-scythe",
+  "title": "Scythes Vanilla Pack: Wooden Scythe",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "wooden_sword": "rainsskins:scythes-vanilla-pack-wooden-scythe/wooden_sword"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack-stone-scythe",
+  "title": "Scythes Vanilla Pack: Stone Scythe",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "stone_sword": "rainsskins:scythes-vanilla-pack-stone-scythe/stone_sword"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack-copper-scythe",
+  "title": "Scythes Vanilla Pack: Copper Scythe",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "copper_sword": "rainsskins:scythes-vanilla-pack-copper-scythe/copper_sword"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack-iron-scythe",
+  "title": "Scythes Vanilla Pack: Iron Scythe",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "iron_sword": "rainsskins:scythes-vanilla-pack-iron-scythe/iron_sword"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack-golden-scythe",
+  "title": "Scythes Vanilla Pack: Golden Scythe",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "golden_sword": "rainsskins:scythes-vanilla-pack-golden-scythe/golden_sword"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack-diamond-scythe",
+  "title": "Scythes Vanilla Pack: Diamond Scythe",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "diamond_sword": "rainsskins:scythes-vanilla-pack-diamond-scythe/diamond_sword"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack-netherite-scythe",
+  "title": "Scythes Vanilla Pack: Netherite Scythe",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "netherite_sword": "rainsskins:scythes-vanilla-pack-netherite-scythe/netherite_sword"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack-lukah-scythe",
+  "title": "Scythes Vanilla Pack: Lukah Scythe",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "netherite_sword": "rainsskins:scythes-vanilla-pack-lukah-scythe/netherite_sword"
+  }
+ },
+ {
+  "id": "scythes-vanilla-pack-scythe",
+  "title": "Scythes Vanilla Pack: Scythe",
+  "pack": 9,
+  "packTitle": "Scythes Vanilla Pack",
+  "category": "Scythe",
+  "author": "Drift007_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/scythes-vanilla-pack",
+  "looks": {
+   "mace": "rainsskins:scythes-vanilla-pack-scythe/mace"
+  }
+ },
+ {
+  "id": "netherite-sword-plus",
+  "title": "Netherite Sword Plus",
+  "pack": 10,
+  "packTitle": "Netherite Sword Plus (Scythe)",
+  "category": "Scythe",
+  "author": "memphis_",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/netherite-sword-plus",
+  "looks": {
+   "netherite_sword": "rainsskins:netherite-sword-plus/netherite_sword"
+  }
+ },
+ {
+  "id": "diamond-sword-plus",
+  "title": "Diamond Sword Plus",
+  "pack": 11,
+  "packTitle": "Diamond Sword Plus (Scythe)",
+  "category": "Scythe",
+  "author": "memphis_",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/diamond-sword-plus",
+  "looks": {
+   "diamond_sword": "rainsskins:diamond-sword-plus/diamond_sword"
+  }
+ },
+ {
+  "id": "cool-scythe",
+  "title": "Cool Scythe",
+  "pack": 12,
+  "packTitle": "Cool Scythe",
+  "category": "Scythe",
+  "author": "snapeed7",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/cool-scythe",
+  "looks": {
+   "wooden_sword": "rainsskins:cool-scythe/wooden_sword",
+   "stone_sword": "rainsskins:cool-scythe/stone_sword",
+   "iron_sword": "rainsskins:cool-scythe/iron_sword",
+   "golden_sword": "rainsskins:cool-scythe/golden_sword",
+   "diamond_sword": "rainsskins:cool-scythe/diamond_sword",
+   "netherite_sword": "rainsskins:cool-scythe/netherite_sword"
+  }
+ },
+ {
+  "id": "custom-3d-swords-titan-blade",
+  "title": "Custom 3D Swords: Titan Blade",
+  "pack": 13,
+  "packTitle": "Custom 3D Swords",
+  "category": "Fantasy",
+  "author": "EnderElite99",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/custom-3d-swords",
+  "looks": {
+   "netherite_sword": "rainsskins:custom-3d-swords-titan-blade/netherite_sword"
+  }
+ },
+ {
+  "id": "custom-3d-swords-dragon-blade",
+  "title": "Custom 3D Swords: Dragon Blade",
+  "pack": 13,
+  "packTitle": "Custom 3D Swords",
+  "category": "Fantasy",
+  "author": "EnderElite99",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/custom-3d-swords",
+  "looks": {
+   "netherite_sword": "rainsskins:custom-3d-swords-dragon-blade/netherite_sword"
+  }
+ },
+ {
+  "id": "custom-3d-swords-fire-blade",
+  "title": "Custom 3D Swords: Fire Blade",
+  "pack": 13,
+  "packTitle": "Custom 3D Swords",
+  "category": "Fantasy",
+  "author": "EnderElite99",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/custom-3d-swords",
+  "looks": {
+   "netherite_sword": "rainsskins:custom-3d-swords-fire-blade/netherite_sword"
+  }
+ },
+ {
+  "id": "real-mace",
+  "title": "Realistic Mace 3D",
+  "pack": 14,
+  "packTitle": "Realistic Mace 3D",
+  "category": "3D Classic",
+  "author": "Rodger",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/real-mace",
+  "looks": {
+   "mace": "rainsskins:real-mace/mace"
+  }
+ },
+ {
+  "id": "mace-but-3d-resourcepack",
+  "title": "Mace but 3D",
+  "pack": 15,
+  "packTitle": "Mace but 3D",
+  "category": "3D Classic",
+  "author": "Volery",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/mace-but-3d-resourcepack",
+  "looks": {
+   "mace": "rainsskins:mace-but-3d-resourcepack/mace"
+  }
+ },
+ {
+  "id": "alternate-3d-trident",
+  "title": "Alternate 3D Trident",
+  "pack": 17,
+  "packTitle": "Alternate 3D Trident",
+  "category": "3D Classic",
+  "author": "gewoonwifi",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/alternate-3d-trident",
+  "looks": {
+   "trident": "rainsskins:alternate-3d-trident/trident"
+  }
+ },
+ {
+  "id": "spear-3d",
+  "title": "Spear 3D",
+  "pack": 19,
+  "packTitle": "Spear 3D",
+  "category": "3D Classic",
+  "author": "papaotchima",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/spear-3d",
+  "looks": {
+   "wooden_spear": "rainsskins:spear-3d/wooden_spear",
+   "stone_spear": "rainsskins:spear-3d/stone_spear",
+   "copper_spear": "rainsskins:spear-3d/copper_spear",
+   "iron_spear": "rainsskins:spear-3d/iron_spear",
+   "golden_spear": "rainsskins:spear-3d/golden_spear",
+   "diamond_spear": "rainsskins:spear-3d/diamond_spear",
+   "netherite_spear": "rainsskins:spear-3d/netherite_spear"
+  }
+ },
+ {
+  "id": "the-spear-3d",
+  "title": "Spear 3D",
+  "pack": 20,
+  "packTitle": "Spear 3D",
+  "category": "3D Classic",
+  "author": "JUPITER_X",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/the-spear-3d",
+  "looks": {
+   "wooden_spear": "rainsskins:the-spear-3d/wooden_spear",
+   "stone_spear": "rainsskins:the-spear-3d/stone_spear",
+   "copper_spear": "rainsskins:the-spear-3d/copper_spear",
+   "iron_spear": "rainsskins:the-spear-3d/iron_spear",
+   "golden_spear": "rainsskins:the-spear-3d/golden_spear",
+   "diamond_spear": "rainsskins:the-spear-3d/diamond_spear",
+   "netherite_spear": "rainsskins:the-spear-3d/netherite_spear"
+  }
+ },
+ {
+  "id": "brays-better-3d-bow",
+  "title": "Bray's Better Bow & Arrows",
+  "pack": 21,
+  "packTitle": "Bray's Better Bow & Arrows",
+  "category": "3D Classic",
+  "author": "Braytonks",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/brays-better-3d-bow",
+  "looks": {
+   "bow": "rainsskins:brays-better-3d-bow/bow",
+   "crossbow": "rainsskins:brays-better-3d-bow/crossbow"
+  }
+ },
+ {
+  "id": "3dcrossbowbow",
+  "title": "3D Crossbow and bow",
+  "pack": 22,
+  "packTitle": "3D Crossbow and bow",
+  "category": "3D Classic",
+  "author": "Ghost",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/3dcrossbowbow",
+  "looks": {
+   "bow": "rainsskins:3dcrossbowbow/bow",
+   "crossbow": "rainsskins:3dcrossbowbow/crossbow"
+  }
+ },
+ {
+  "id": "custom-3d-bow-auto-bow",
+  "title": "Custom 3D Bow: Auto Bow",
+  "pack": 23,
+  "packTitle": "Custom 3D Bow",
+  "category": "Fantasy",
+  "author": "EnderElite99",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/custom-3d-bow",
+  "looks": {
+   "bow": "rainsskins:custom-3d-bow-auto-bow/bow"
+  }
+ },
+ {
+  "id": "alternate-3d-bow",
+  "title": "Alternate 3D Bow",
+  "pack": 24,
+  "packTitle": "Alternate 3D Bow",
+  "category": "3D Classic",
+  "author": "keyschain",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/alternate-3d-bow",
+  "looks": {
+   "bow": "rainsskins:alternate-3d-bow/bow"
+  }
+ },
+ {
+  "id": "alternate-3d-crossbow",
+  "title": "Alternate 3D Crossbow",
+  "pack": 25,
+  "packTitle": "Alternate 3D Crossbow",
+  "category": "3D Classic",
+  "author": "keyschain",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/alternate-3d-crossbow",
+  "looks": {
+   "crossbow": "rainsskins:alternate-3d-crossbow/crossbow"
+  }
+ },
+ {
+  "id": "compound-bow",
+  "title": "Compound Bow",
+  "pack": 26,
+  "packTitle": "Compound Bow",
+  "category": "Modern",
+  "author": "CapTommy",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/compound-bow",
+  "looks": {
+   "bow": "rainsskins:compound-bow/bow"
+  }
+ },
+ {
+  "id": "bow-crossbow-reworked",
+  "title": "Bow & Crossbow Reworked",
+  "pack": 27,
+  "packTitle": "Bow & Crossbow Reworked",
+  "category": "3D Classic",
+  "author": "GAMER_TIGE99",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/bow-crossbow-reworked",
+  "looks": {
+   "bow": "rainsskins:bow-crossbow-reworked/bow",
+   "crossbow": "rainsskins:bow-crossbow-reworked/crossbow"
+  }
+ },
+ {
+  "id": "bow-plus",
+  "title": "Bow+",
+  "pack": 28,
+  "packTitle": "Bow+",
+  "category": "Fantasy",
+  "author": "Doggy_0307",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/bow.plus",
+  "looks": {
+   "bow": "rainsskins:bow-plus/bow"
+  }
+ },
+ {
+  "id": "sriwijayabow-by-fabiyansyah09-sriwijaya-bow",
+  "title": "Sriwijaya Bow: Sriwijaya Bow",
+  "pack": 29,
+  "packTitle": "Sriwijaya Bow",
+  "category": "Fantasy",
+  "author": "fabiyan1149",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/sriwijayabow-by-fabiyansyah09",
+  "looks": {
+   "bow": "rainsskins:sriwijayabow-by-fabiyansyah09-sriwijaya-bow/bow"
+  }
+ },
+ {
+  "id": "fox-bow-pink-snow-fox-bow",
+  "title": "Fox Bow: Pink Snow Fox Bow",
+  "pack": 31,
+  "packTitle": "Fox Bow",
+  "category": "Cute & Fun",
+  "author": "_Skretch",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/fox-bow",
+  "looks": {
+   "bow": "rainsskins:fox-bow-pink-snow-fox-bow/bow"
+  }
+ },
+ {
+  "id": "fox-bow-pink-fox-bow",
+  "title": "Fox Bow: Pink Fox Bow",
+  "pack": 31,
+  "packTitle": "Fox Bow",
+  "category": "Cute & Fun",
+  "author": "_Skretch",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/fox-bow",
+  "looks": {
+   "bow": "rainsskins:fox-bow-pink-fox-bow/bow"
+  }
+ },
+ {
+  "id": "fox-bow-classic-snow-fox-bow",
+  "title": "Fox Bow: Classic Snow Fox Bow",
+  "pack": 31,
+  "packTitle": "Fox Bow",
+  "category": "Cute & Fun",
+  "author": "_Skretch",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/fox-bow",
+  "looks": {
+   "bow": "rainsskins:fox-bow-classic-snow-fox-bow/bow"
+  }
+ },
+ {
+  "id": "fox-bow-classic-fox-bow",
+  "title": "Fox Bow: Classic Fox Bow",
+  "pack": 31,
+  "packTitle": "Fox Bow",
+  "category": "Cute & Fun",
+  "author": "_Skretch",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/fox-bow",
+  "looks": {
+   "bow": "rainsskins:fox-bow-classic-fox-bow/bow"
+  }
+ },
+ {
+  "id": "slingshot",
+  "title": "Bows into Slingshots",
+  "pack": 32,
+  "packTitle": "Bows into Slingshots",
+  "category": "Cute & Fun",
+  "author": "ux92",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/slingshot",
+  "looks": {
+   "bow": "rainsskins:slingshot/bow"
+  }
+ },
+ {
+  "id": "reimagined-tools",
+  "title": "Reimagined Tools",
+  "pack": 36,
+  "packTitle": "Reimagined Tools",
+  "category": "3D Classic",
+  "author": "CosmicWolf",
+  "license": "CC0-1.0",
+  "url": "https://modrinth.com/resourcepack/reimagined-tools",
+  "looks": {
+   "wooden_sword": "rainsskins:reimagined-tools/wooden_sword",
+   "stone_sword": "rainsskins:reimagined-tools/stone_sword",
+   "iron_sword": "rainsskins:reimagined-tools/iron_sword",
+   "golden_sword": "rainsskins:reimagined-tools/golden_sword",
+   "diamond_sword": "rainsskins:reimagined-tools/diamond_sword",
+   "netherite_sword": "rainsskins:reimagined-tools/netherite_sword",
+   "wooden_axe": "rainsskins:reimagined-tools/wooden_axe",
+   "stone_axe": "rainsskins:reimagined-tools/stone_axe",
+   "iron_axe": "rainsskins:reimagined-tools/iron_axe",
+   "golden_axe": "rainsskins:reimagined-tools/golden_axe",
+   "diamond_axe": "rainsskins:reimagined-tools/diamond_axe",
+   "netherite_axe": "rainsskins:reimagined-tools/netherite_axe",
+   "wooden_pickaxe": "rainsskins:reimagined-tools/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:reimagined-tools/stone_pickaxe",
+   "iron_pickaxe": "rainsskins:reimagined-tools/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:reimagined-tools/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:reimagined-tools/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:reimagined-tools/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "chicknturtles-3d-tools",
+  "title": "ChicknTurtle's 3D Tools",
+  "pack": 37,
+  "packTitle": "ChicknTurtle's 3D Tools",
+  "category": "3D Classic",
+  "author": "ChicknTurtle",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/chicknturtles-3d-tools",
+  "looks": {
+   "wooden_sword": "rainsskins:chicknturtles-3d-tools/wooden_sword",
+   "stone_sword": "rainsskins:chicknturtles-3d-tools/stone_sword",
+   "copper_sword": "rainsskins:chicknturtles-3d-tools/copper_sword",
+   "iron_sword": "rainsskins:chicknturtles-3d-tools/iron_sword",
+   "golden_sword": "rainsskins:chicknturtles-3d-tools/golden_sword",
+   "diamond_sword": "rainsskins:chicknturtles-3d-tools/diamond_sword",
+   "netherite_sword": "rainsskins:chicknturtles-3d-tools/netherite_sword",
+   "wooden_axe": "rainsskins:chicknturtles-3d-tools/wooden_axe",
+   "stone_axe": "rainsskins:chicknturtles-3d-tools/stone_axe",
+   "copper_axe": "rainsskins:chicknturtles-3d-tools/copper_axe",
+   "iron_axe": "rainsskins:chicknturtles-3d-tools/iron_axe",
+   "golden_axe": "rainsskins:chicknturtles-3d-tools/golden_axe",
+   "diamond_axe": "rainsskins:chicknturtles-3d-tools/diamond_axe",
+   "netherite_axe": "rainsskins:chicknturtles-3d-tools/netherite_axe",
+   "wooden_pickaxe": "rainsskins:chicknturtles-3d-tools/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:chicknturtles-3d-tools/stone_pickaxe",
+   "copper_pickaxe": "rainsskins:chicknturtles-3d-tools/copper_pickaxe",
+   "iron_pickaxe": "rainsskins:chicknturtles-3d-tools/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:chicknturtles-3d-tools/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:chicknturtles-3d-tools/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:chicknturtles-3d-tools/netherite_pickaxe",
+   "wooden_spear": "rainsskins:chicknturtles-3d-tools/wooden_spear",
+   "stone_spear": "rainsskins:chicknturtles-3d-tools/stone_spear",
+   "copper_spear": "rainsskins:chicknturtles-3d-tools/copper_spear",
+   "iron_spear": "rainsskins:chicknturtles-3d-tools/iron_spear",
+   "golden_spear": "rainsskins:chicknturtles-3d-tools/golden_spear",
+   "diamond_spear": "rainsskins:chicknturtles-3d-tools/diamond_spear",
+   "netherite_spear": "rainsskins:chicknturtles-3d-tools/netherite_spear",
+   "mace": "rainsskins:chicknturtles-3d-tools/mace",
+   "trident": "rainsskins:chicknturtles-3d-tools/trident"
+  }
+ },
+ {
+  "id": "alternate-3d-tools",
+  "title": "Alternate 3D Tools",
+  "pack": 38,
+  "packTitle": "Alternate 3D Tools",
+  "category": "3D Classic",
+  "author": "keyschain",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/alternate-3d-tools",
+  "looks": {
+   "wooden_axe": "rainsskins:alternate-3d-tools/wooden_axe",
+   "stone_axe": "rainsskins:alternate-3d-tools/stone_axe",
+   "iron_axe": "rainsskins:alternate-3d-tools/iron_axe",
+   "golden_axe": "rainsskins:alternate-3d-tools/golden_axe",
+   "diamond_axe": "rainsskins:alternate-3d-tools/diamond_axe",
+   "netherite_axe": "rainsskins:alternate-3d-tools/netherite_axe",
+   "wooden_pickaxe": "rainsskins:alternate-3d-tools/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:alternate-3d-tools/stone_pickaxe",
+   "iron_pickaxe": "rainsskins:alternate-3d-tools/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:alternate-3d-tools/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:alternate-3d-tools/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:alternate-3d-tools/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "alternate-3d-tools-rock-and-stone",
+  "title": "Alternate 3D Tools: Rock And Stone",
+  "pack": 38,
+  "packTitle": "Alternate 3D Tools",
+  "category": "3D Classic",
+  "author": "keyschain",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/alternate-3d-tools",
+  "looks": {
+   "netherite_pickaxe": "rainsskins:alternate-3d-tools-rock-and-stone/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "some-stuff-tools",
+  "title": "Some Stuff - Tools",
+  "pack": 39,
+  "packTitle": "Some Stuff - Tools",
+  "category": "Fantasy",
+  "author": "BoboTweaks",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/some-stuff-tools",
+  "looks": {
+   "wooden_sword": "rainsskins:some-stuff-tools/wooden_sword",
+   "stone_sword": "rainsskins:some-stuff-tools/stone_sword",
+   "copper_sword": "rainsskins:some-stuff-tools/copper_sword",
+   "iron_sword": "rainsskins:some-stuff-tools/iron_sword",
+   "golden_sword": "rainsskins:some-stuff-tools/golden_sword",
+   "diamond_sword": "rainsskins:some-stuff-tools/diamond_sword",
+   "netherite_sword": "rainsskins:some-stuff-tools/netherite_sword",
+   "wooden_axe": "rainsskins:some-stuff-tools/wooden_axe",
+   "stone_axe": "rainsskins:some-stuff-tools/stone_axe",
+   "copper_axe": "rainsskins:some-stuff-tools/copper_axe",
+   "iron_axe": "rainsskins:some-stuff-tools/iron_axe",
+   "golden_axe": "rainsskins:some-stuff-tools/golden_axe",
+   "diamond_axe": "rainsskins:some-stuff-tools/diamond_axe",
+   "netherite_axe": "rainsskins:some-stuff-tools/netherite_axe",
+   "wooden_pickaxe": "rainsskins:some-stuff-tools/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:some-stuff-tools/stone_pickaxe",
+   "copper_pickaxe": "rainsskins:some-stuff-tools/copper_pickaxe",
+   "iron_pickaxe": "rainsskins:some-stuff-tools/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:some-stuff-tools/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:some-stuff-tools/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:some-stuff-tools/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "cool-tools",
+  "title": "Cool Tools",
+  "pack": 40,
+  "packTitle": "Cool Tools",
+  "category": "Fantasy",
+  "author": "Hahchek",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/cool-tools",
+  "looks": {
+   "wooden_sword": "rainsskins:cool-tools/wooden_sword",
+   "stone_sword": "rainsskins:cool-tools/stone_sword",
+   "copper_sword": "rainsskins:cool-tools/copper_sword",
+   "iron_sword": "rainsskins:cool-tools/iron_sword",
+   "golden_sword": "rainsskins:cool-tools/golden_sword",
+   "diamond_sword": "rainsskins:cool-tools/diamond_sword",
+   "netherite_sword": "rainsskins:cool-tools/netherite_sword",
+   "wooden_axe": "rainsskins:cool-tools/wooden_axe",
+   "stone_axe": "rainsskins:cool-tools/stone_axe",
+   "copper_axe": "rainsskins:cool-tools/copper_axe",
+   "iron_axe": "rainsskins:cool-tools/iron_axe",
+   "golden_axe": "rainsskins:cool-tools/golden_axe",
+   "diamond_axe": "rainsskins:cool-tools/diamond_axe",
+   "netherite_axe": "rainsskins:cool-tools/netherite_axe",
+   "wooden_pickaxe": "rainsskins:cool-tools/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:cool-tools/stone_pickaxe",
+   "copper_pickaxe": "rainsskins:cool-tools/copper_pickaxe",
+   "iron_pickaxe": "rainsskins:cool-tools/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:cool-tools/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:cool-tools/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:cool-tools/netherite_pickaxe",
+   "wooden_spear": "rainsskins:cool-tools/wooden_spear",
+   "stone_spear": "rainsskins:cool-tools/stone_spear",
+   "copper_spear": "rainsskins:cool-tools/copper_spear",
+   "iron_spear": "rainsskins:cool-tools/iron_spear",
+   "golden_spear": "rainsskins:cool-tools/golden_spear",
+   "diamond_spear": "rainsskins:cool-tools/diamond_spear",
+   "netherite_spear": "rainsskins:cool-tools/netherite_spear",
+   "mace": "rainsskins:cool-tools/mace",
+   "trident": "rainsskins:cool-tools/trident",
+   "bow": "rainsskins:cool-tools/bow",
+   "crossbow": "rainsskins:cool-tools/crossbow"
+  }
+ },
+ {
+  "id": "fancy-tools",
+  "title": "Fancy tools",
+  "pack": 41,
+  "packTitle": "Fancy tools",
+  "category": "Fantasy",
+  "author": "DeadbushCarrot",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/fancy-tools",
+  "looks": {
+   "wooden_sword": "rainsskins:fancy-tools/wooden_sword",
+   "stone_sword": "rainsskins:fancy-tools/stone_sword",
+   "iron_sword": "rainsskins:fancy-tools/iron_sword",
+   "golden_sword": "rainsskins:fancy-tools/golden_sword",
+   "diamond_sword": "rainsskins:fancy-tools/diamond_sword",
+   "netherite_sword": "rainsskins:fancy-tools/netherite_sword",
+   "wooden_axe": "rainsskins:fancy-tools/wooden_axe",
+   "stone_axe": "rainsskins:fancy-tools/stone_axe",
+   "iron_axe": "rainsskins:fancy-tools/iron_axe",
+   "golden_axe": "rainsskins:fancy-tools/golden_axe",
+   "diamond_axe": "rainsskins:fancy-tools/diamond_axe",
+   "netherite_axe": "rainsskins:fancy-tools/netherite_axe",
+   "stone_pickaxe": "rainsskins:fancy-tools/stone_pickaxe",
+   "iron_pickaxe": "rainsskins:fancy-tools/iron_pickaxe",
+   "diamond_pickaxe": "rainsskins:fancy-tools/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:fancy-tools/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "better-pickaxes",
+  "title": "Better Pickaxes",
+  "pack": 43,
+  "packTitle": "Better Pickaxes",
+  "category": "3D Classic",
+  "author": "NotSluggas",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/better-pickaxes",
+  "looks": {
+   "wooden_pickaxe": "rainsskins:better-pickaxes/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:better-pickaxes/stone_pickaxe",
+   "copper_pickaxe": "rainsskins:better-pickaxes/copper_pickaxe",
+   "iron_pickaxe": "rainsskins:better-pickaxes/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:better-pickaxes/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:better-pickaxes/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:better-pickaxes/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "simple-3d-pickaxes-by-lucas",
+  "title": "Simple 3D Pickaxes by Lucas",
+  "pack": 45,
+  "packTitle": "Simple 3D Pickaxes by Lucas",
+  "category": "3D Classic",
+  "author": "LucasWang12345",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/simple-3d-pickaxes-by-lucas",
+  "looks": {
+   "wooden_pickaxe": "rainsskins:simple-3d-pickaxes-by-lucas/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:simple-3d-pickaxes-by-lucas/stone_pickaxe",
+   "copper_pickaxe": "rainsskins:simple-3d-pickaxes-by-lucas/copper_pickaxe",
+   "iron_pickaxe": "rainsskins:simple-3d-pickaxes-by-lucas/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:simple-3d-pickaxes-by-lucas/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:simple-3d-pickaxes-by-lucas/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:simple-3d-pickaxes-by-lucas/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "smith-works3d",
+  "title": "Smith Works - 3d",
+  "pack": 46,
+  "packTitle": "Smith Works - 3d",
+  "category": "3D Classic",
+  "author": "Pingoh",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/smith-works3d",
+  "looks": {
+   "wooden_sword": "rainsskins:smith-works3d/wooden_sword",
+   "stone_sword": "rainsskins:smith-works3d/stone_sword",
+   "iron_sword": "rainsskins:smith-works3d/iron_sword",
+   "golden_sword": "rainsskins:smith-works3d/golden_sword",
+   "diamond_sword": "rainsskins:smith-works3d/diamond_sword",
+   "netherite_sword": "rainsskins:smith-works3d/netherite_sword",
+   "wooden_axe": "rainsskins:smith-works3d/wooden_axe",
+   "stone_axe": "rainsskins:smith-works3d/stone_axe",
+   "iron_axe": "rainsskins:smith-works3d/iron_axe",
+   "golden_axe": "rainsskins:smith-works3d/golden_axe",
+   "diamond_axe": "rainsskins:smith-works3d/diamond_axe",
+   "netherite_axe": "rainsskins:smith-works3d/netherite_axe",
+   "wooden_pickaxe": "rainsskins:smith-works3d/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:smith-works3d/stone_pickaxe",
+   "iron_pickaxe": "rainsskins:smith-works3d/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:smith-works3d/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:smith-works3d/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:smith-works3d/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "slim-pickings",
+  "title": "Slim Pickings",
+  "pack": 47,
+  "packTitle": "Slim Pickings",
+  "category": "3D Classic",
+  "author": "moonst0ne",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/slim-pickings",
+  "looks": {
+   "wooden_pickaxe": "rainsskins:slim-pickings/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:slim-pickings/stone_pickaxe",
+   "iron_pickaxe": "rainsskins:slim-pickings/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:slim-pickings/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:slim-pickings/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:slim-pickings/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "shadowstone-tools",
+  "title": "Shadowstone Tools: onyx X netherite",
+  "pack": 48,
+  "packTitle": "Shadowstone Tools: onyx X netherite",
+  "category": "Fantasy",
+  "author": "abdouahabch7",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/shadowstone-tools",
+  "looks": {
+   "netherite_sword": "rainsskins:shadowstone-tools/netherite_sword",
+   "netherite_axe": "rainsskins:shadowstone-tools/netherite_axe",
+   "netherite_pickaxe": "rainsskins:shadowstone-tools/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "glacial-gear",
+  "title": "Glacial Gear",
+  "pack": 49,
+  "packTitle": "Glacial Gear",
+  "category": "Fantasy",
+  "author": "abdouahabch7",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/glacial-gear",
+  "looks": {
+   "diamond_sword": "rainsskins:glacial-gear/diamond_sword",
+   "diamond_axe": "rainsskins:glacial-gear/diamond_axe",
+   "diamond_pickaxe": "rainsskins:glacial-gear/diamond_pickaxe"
+  }
+ },
+ {
+  "id": "valkyrian-netherite-reforged-v2",
+  "title": "Valkyrian Netherite Reforged V2",
+  "pack": 50,
+  "packTitle": "Valkyrian Netherite Reforged V2",
+  "category": "Fantasy",
+  "author": "Orenxo",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/valkyrian-netherite-reforged-v2",
+  "looks": {
+   "wooden_sword": "rainsskins:valkyrian-netherite-reforged-v2/wooden_sword",
+   "stone_sword": "rainsskins:valkyrian-netherite-reforged-v2/stone_sword",
+   "iron_sword": "rainsskins:valkyrian-netherite-reforged-v2/iron_sword",
+   "golden_sword": "rainsskins:valkyrian-netherite-reforged-v2/golden_sword",
+   "diamond_sword": "rainsskins:valkyrian-netherite-reforged-v2/diamond_sword",
+   "netherite_sword": "rainsskins:valkyrian-netherite-reforged-v2/netherite_sword",
+   "wooden_axe": "rainsskins:valkyrian-netherite-reforged-v2/wooden_axe",
+   "stone_axe": "rainsskins:valkyrian-netherite-reforged-v2/stone_axe",
+   "iron_axe": "rainsskins:valkyrian-netherite-reforged-v2/iron_axe",
+   "golden_axe": "rainsskins:valkyrian-netherite-reforged-v2/golden_axe",
+   "diamond_axe": "rainsskins:valkyrian-netherite-reforged-v2/diamond_axe",
+   "netherite_axe": "rainsskins:valkyrian-netherite-reforged-v2/netherite_axe",
+   "wooden_pickaxe": "rainsskins:valkyrian-netherite-reforged-v2/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:valkyrian-netherite-reforged-v2/stone_pickaxe",
+   "iron_pickaxe": "rainsskins:valkyrian-netherite-reforged-v2/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:valkyrian-netherite-reforged-v2/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:valkyrian-netherite-reforged-v2/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:valkyrian-netherite-reforged-v2/netherite_pickaxe",
+   "mace": "rainsskins:valkyrian-netherite-reforged-v2/mace",
+   "trident": "rainsskins:valkyrian-netherite-reforged-v2/trident",
+   "bow": "rainsskins:valkyrian-netherite-reforged-v2/bow",
+   "crossbow": "rainsskins:valkyrian-netherite-reforged-v2/crossbow"
+  }
+ },
+ {
+  "id": "cute-pickaxes",
+  "title": "Cute pickaxes",
+  "pack": 51,
+  "packTitle": "Cute pickaxes",
+  "category": "Cute & Fun",
+  "author": "AbraPikachu",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/cute-pickaxes",
+  "looks": {
+   "wooden_pickaxe": "rainsskins:cute-pickaxes/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:cute-pickaxes/stone_pickaxe",
+   "iron_pickaxe": "rainsskins:cute-pickaxes/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:cute-pickaxes/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:cute-pickaxes/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:cute-pickaxes/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "smiling-pickaxe",
+  "title": "smiling pickaxe",
+  "pack": 52,
+  "packTitle": "smiling pickaxe",
+  "category": "Cute & Fun",
+  "author": "erez43",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/smiling-pickaxe",
+  "looks": {
+   "wooden_pickaxe": "rainsskins:smiling-pickaxe/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:smiling-pickaxe/stone_pickaxe",
+   "copper_pickaxe": "rainsskins:smiling-pickaxe/copper_pickaxe",
+   "iron_pickaxe": "rainsskins:smiling-pickaxe/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:smiling-pickaxe/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:smiling-pickaxe/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:smiling-pickaxe/netherite_pickaxe"
+  }
+ },
+ {
+  "id": "fish-netherite-pickaxe",
+  "title": "Fish Netherite Pickaxe",
+  "pack": 53,
+  "packTitle": "Fish Netherite Pickaxe",
+  "category": "Cute & Fun",
+  "author": "memphis_",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/fish-netherite-pickaxe",
+  "looks": {
+   "netherite_pickaxe": "rainsskins:fish-netherite-pickaxe/netherite_pickaxe",
+   "iron_spear": "rainsskins:fish-netherite-pickaxe/iron_spear",
+   "diamond_spear": "rainsskins:fish-netherite-pickaxe/diamond_spear",
+   "netherite_spear": "rainsskins:fish-netherite-pickaxe/netherite_spear"
+  }
+ }
+]

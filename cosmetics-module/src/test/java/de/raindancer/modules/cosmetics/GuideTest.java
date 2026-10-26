@@ -17,6 +17,8 @@ class GuideTest {
         assertThat(HelpLint.of(Path.of("src/main/resources/rains-help"))
                 .module("cosmetics")
                 .settings(CosmeticsSettings.class, CosmeticsSettings.DEFAULTS)
+                .settings(SkinSettings.class, SkinSettings.DEFAULTS)
+                .otherTopics("chat-support")
                 .commands(new CosmeticsModule().commands().stream().map(ModuleCommand::name).toList())
                 .problems()).isEmpty();
     }

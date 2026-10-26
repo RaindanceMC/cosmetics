@@ -86,6 +86,18 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
                         "<dark_gray>Click to choose."),
                 click -> new TagMenu(services, viewer, this).open());
 
+        boolean skinsHere = services.skins().mayUse(viewer);
+        ItemStack skinsIcon = Icons.of(Material.DIAMOND_SWORD, "<#E8B98A>Weapon skins ☕",
+                "<gray>A thank-you for supporting the server:", "<gray>new looks for your weapons.", "",
+                "<dark_gray>Hold a weapon and click.");
+        band(MenuLayout.RULES, 2, skinsHere ? skinsIcon
+                        : Icons.locked(skinsIcon, "A thank-you for supporters — /support"),
+                click -> {
+                    if (skinsHere) {
+                        new SkinMenu(services, viewer, this).open();
+                    }
+                });
+
         ItemStack unlocksIcon = Icons.of(Material.GOLD_INGOT, "<white>Unlocks",
                 "<gray>What this server sells: colours,", "<gray>gradients, particles and more.", "",
                 "<dark_gray>Click to see the prices.");

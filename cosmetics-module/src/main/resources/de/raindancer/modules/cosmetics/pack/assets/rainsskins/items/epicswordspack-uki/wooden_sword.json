@@ -1,0 +1,1 @@
+{"model":{"type":"minecraft:select","property":"minecraft:display_context","cases":[{"when":["thirdperson_lefthand","firstperson_lefthand"],"model":{"type":"minecraft:model","model":"rainsskins:epicswordspack-uki/epicswordpack/item/uki_left"}}],"fallback":{"type":"minecraft:model","model":"rainsskins:epicswordspack-uki/epicswordpack/item/uki"}}}

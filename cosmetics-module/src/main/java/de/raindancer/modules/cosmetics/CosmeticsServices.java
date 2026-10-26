@@ -39,7 +39,9 @@ public record CosmeticsServices(
         ICosmeticsScreensOpener screens,
         de.raindancer.modules.cosmetics.service.UnlockService unlocks,
         RainsCore core,
-        de.raindancer.modules.cosmetics.service.TagService tags) {
+        de.raindancer.modules.cosmetics.service.TagService tags,
+        de.raindancer.modules.cosmetics.skins.SkinService skins,
+        de.raindancer.core.data.settings.SettingsStore<de.raindancer.modules.cosmetics.SkinSettings> skinSettings) {
 
     public Catalogue offered() {
         return catalogue.get();

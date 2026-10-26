@@ -93,6 +93,16 @@ public final class CosmeticsCommand implements ICosmeticsCommand {
                         live.particles().wings()).open();
                 case "teleport", "tp" -> live.screens().teleports(player);
                 case "tags", "tag" -> new de.raindancer.modules.cosmetics.screen.TagMenu(live, player, null).open();
+                case "skins", "skin" -> {
+                    if (args.length > 1 && args[1].equalsIgnoreCase("admin")
+                            && player.hasPermission(de.raindancer.modules.cosmetics.util.PermissionNodes.ADMIN)) {
+                        new de.raindancer.modules.cosmetics.screen.SkinAdminMenu(live, player, null).open();
+                    } else if (live.skins().mayUse(player)) {
+                        new de.raindancer.modules.cosmetics.screen.SkinMenu(live, player, null).open();
+                    } else {
+                        live.messages().send(player, "cosmetics.skins.none-left");
+                    }
+                }
                 default -> live.screens().hub(player);
             }
             return;

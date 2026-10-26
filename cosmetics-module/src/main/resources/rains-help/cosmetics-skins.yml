@@ -1,0 +1,27 @@
+id: cosmetics-skins
+title: Weapon skins
+summary: "New looks for your weapons — a thank-you for supporting the server."
+intro: |
+  Support the server, and your sword can look like a katana. Fair trade, I'd say.
+icon: DIAMOND_SWORD
+category: Looks & cosmetics
+order: 12
+module: cosmetics
+when: cosmetics-skins:skins.enabled
+aliases: [skins, skin, weapon skins]
+keywords: [katana, scythe, bow, pickaxe, unlock, supporter, coffee]
+related: [cosmetics, chat-support]
+sections:
+  - question: How do I get skins?
+    title: Unlocking
+    text: |
+      Skins are a thank-you for supporting the server ({cmd:/support}). For every <white>{setting:cosmetics-skins:skins.cents-per-skin}</white> cents you gave, you unlock one skin of your choice, for good. Supporters also earn skins by playing: one every 5 hours of active play to start, faster the more you gave, up to one every <white>{setting:cosmetics-skins:skins.fastest-minutes-per-skin}</white> minutes.
+  - question: How do I put a skin on?
+    title: Wearing one
+    text: |
+      Hold the weapon, then {cmd:/cosmetics skins}. You see the skins made for that weapon, sorted by kind. Click one of yours to put it on, a locked one to unlock it, or "Surprise me!" to unlock random ones — every skin as likely as any other, never one twice. Click the weapon in the bottom row to take its skin off. An unlocked skin goes on as many of your own weapons as you like.
+  - question: What if somebody else has my weapon?
+    title: Lending and losing
+    when: cosmetics-skins:skins.hide-with-others
+    text: |
+      While somebody else carries your skinned weapon, it looks normal; back with you, it shows its skin again. Skins are looks only — they never change what a weapon does, and an enchantment's own look goes over them.

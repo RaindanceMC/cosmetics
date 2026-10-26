@@ -41,6 +41,16 @@ public final class PermissionNodes {
     public static final String ADMIN = "rainscosmetics.admin";
     /** Everything that is for sale, without buying it — staff trying cosmetics out. */
     public static final String FREE = "rainscosmetics.free";
+    /** Weapon skins at all — every supporter has it through {@code rains.supporter}. */
+    public static final String SKINS = "rainscosmetics.skins";
+    /** Every skin, without unlocking any. */
+    public static final String SKINS_ALL = "rainscosmetics.skins.all";
+    /** One skin by id: {@code rainscosmetics.skin.<id>}. */
+    public static final String SKIN_PREFIX = "rainscosmetics.skin.";
+    /** Extra unlocks given by hand: {@code rainscosmetics.skins.unlocks.<n>}. */
+    public static final String SKIN_UNLOCKS_PREFIX = "rainscosmetics.skins.unlocks.";
+    /** The coffee-bean trail — every supporter has it through {@code rains.supporter}. */
+    public static final String PARTICLE_COFFEE = "rainscosmetics.particle.coffee";
 
     private PermissionNodes() {
     }
@@ -80,6 +90,13 @@ public final class PermissionNodes {
         nodes.add(new Permission(PRESET_ALL, "Wear every restricted preset", PermissionDefault.OP));
         nodes.add(new Permission(FREE, "Use every cosmetic that is for sale without buying it", PermissionDefault.OP));
         nodes.add(new Permission(ADMIN, "Reset somebody else's name style, reload the palette",
+                PermissionDefault.OP));
+        // Operators by default, like every staff-only node here; supporters get the first and the last through
+        // rains.supporter, which RainsCore gives each of them.
+        nodes.add(new Permission(SKINS, "Put weapon skins on your own weapons (every supporter has it)",
+                PermissionDefault.OP));
+        nodes.add(new Permission(SKINS_ALL, "Have every weapon skin without unlocking any", PermissionDefault.OP));
+        nodes.add(new Permission(PARTICLE_COFFEE, "Wear the coffee-bean trail (every supporter has it)",
                 PermissionDefault.OP));
         return nodes;
     }

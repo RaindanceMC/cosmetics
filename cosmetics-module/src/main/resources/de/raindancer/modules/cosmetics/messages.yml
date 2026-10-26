@@ -167,6 +167,21 @@ cosmetics:
     switched-off: "<red>Cosmetics are not for sale on this server right now."
     hint: "<gray>Some cosmetics are for sale: <white>/cosmetics</white> → Unlocks."
 
+  skins:
+    worn: "<#C8A27A>☕ <#F3E3CC>It wears <white><skin></white> now."
+    removed: "<gray>The skin is off."
+    locked: "<#E8B98A>That skin is not yours yet — unlock it first."
+    somebody-elses: "<red>That weapon's skin belongs to somebody else."
+    not-a-weapon: "<gray>Hold the weapon you want to dress first."
+    not-for-this: "<gray>That skin is not made for this weapon."
+    none-left: "<#D9BFA0>You have no unlocks left. <white>/support</white> <#D9BFA0>earns more — and supporters earn them just by playing."
+    switched-off: "<gray>That skin is switched off here."
+    unlocked: "<#C8A27A>☕ <#F3E3CC>Unlocked <white><skin></white>! Thank you for your support."
+    random-head: "<#C8A27A>☕ <#F3E3CC><bold>Surprise!</bold> <#D9BFA0>You unlocked <white><count></white> skin(s):"
+    random-line: "<#D9BFA0>  • <white><skin></white> <dark_gray>(<category>)"
+    random-none: "<#C8A27A>☕ <#F3E3CC>You have every skin there is. Thank you!"
+    toggled: "<gray><white><skin></white> is <state> now."
+
   help-particles:
     - "<gold><bold>Your particles"
     - "<gray>Pick a particle — left-click to see it, right-click to wear it."

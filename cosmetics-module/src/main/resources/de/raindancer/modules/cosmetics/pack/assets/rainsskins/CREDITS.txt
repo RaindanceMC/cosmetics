@@ -1,0 +1,49 @@
+Weapon skins in this pack, by the people who made them.
+Every pack was converted for RainsCosmetics: its models and textures were copied into the rainsskins
+namespace and wired to item definitions, so they dress single items instead of replacing vanilla ones.
+Nothing else was changed. Licences: https://spdx.org/licenses/
+
+Actually 3D Equipment! (3D Tools & Weapons) by MattCrowberry (CC-BY-4.0), version r1.0, https://modrinth.com/resourcepack/3d-equipment
+(not) Epic swords pack by EpicSurg (Apache-2.0), version 1.5, https://modrinth.com/resourcepack/epicswordspack
+Berserker Tools & Weapons by O3kar (Apache-2.0), version 0.0.1, https://modrinth.com/resourcepack/berserker-tools-weapons
+Karambit Swords by subzerofr (MIT), version 1.2.1, https://modrinth.com/resourcepack/karambit-swords
+Simple Katana Swords by creeperguy14 (MIT), version simple-katana-swords_v1, https://modrinth.com/resourcepack/simple-katana-swords
+Initial Katanas by Fikket_ (CC0-1.0), version 1.0, https://modrinth.com/resourcepack/initial-katanas
+Katana «Flower of the Sea» by CLASS565 (CC-BY-4.0), version 1.1, https://modrinth.com/resourcepack/katana-flower-of-the-sea
+Scythes Vanilla Pack by Drift007_ (MIT), version CIT-1.4, https://modrinth.com/resourcepack/scythes-vanilla-pack
+Netherite Sword Plus (Scythe) by memphis_ (Apache-2.0), version 1.0, https://modrinth.com/resourcepack/netherite-sword-plus
+Diamond Sword Plus (Scythe) by memphis_ (Apache-2.0), version 1.0, https://modrinth.com/resourcepack/diamond-sword-plus
+Cool Scythe by snapeed7 (MIT), version Cool_Scythe_1.1, https://modrinth.com/resourcepack/cool-scythe
+Custom 3D Swords by EnderElite99 (MIT), version 1.00, https://modrinth.com/resourcepack/custom-3d-swords
+Realistic Mace 3D by Rodger (Apache-2.0), version 2.7_1.21.X-26.X, https://modrinth.com/resourcepack/real-mace
+Mace but 3D by Volery (MIT), version 1.21.9+, https://modrinth.com/resourcepack/mace-but-3d-resourcepack
+Alternate 3D Trident by gewoonwifi (CC-BY-4.0), version 1.0, https://modrinth.com/resourcepack/alternate-3d-trident
+Spear 3D by papaotchima (CC-BY-4.0), version 1.1, https://modrinth.com/resourcepack/spear-3d
+Spear 3D by JUPITER_X (MIT), version 1.0-25w41a, https://modrinth.com/resourcepack/the-spear-3d
+Bray's Better Bow & Arrows by Braytonks (MIT), version 1.2.5, https://modrinth.com/resourcepack/brays-better-3d-bow
+3D Crossbow and bow by Ghost (MIT), version 0.1, https://modrinth.com/resourcepack/3dcrossbowbow
+Custom 3D Bow by EnderElite99 (MIT), version 1.00, https://modrinth.com/resourcepack/custom-3d-bow
+Alternate 3D Bow by keyschain (CC-BY-4.0), version 1.0.1, https://modrinth.com/resourcepack/alternate-3d-bow
+Alternate 3D Crossbow by keyschain (CC-BY-4.0), version 1.0.1, https://modrinth.com/resourcepack/alternate-3d-crossbow
+Compound Bow by CapTommy (MIT), version 26.3, https://modrinth.com/resourcepack/compound-bow
+Bow & Crossbow Reworked by GAMER_TIGE99 (MIT), version 26.2, https://modrinth.com/resourcepack/bow-crossbow-reworked
+Bow+ by Doggy_0307 (MIT), version 3.0v, https://modrinth.com/resourcepack/bow.plus
+Sriwijaya Bow by fabiyan1149 (Apache-2.0), version V1, https://modrinth.com/resourcepack/sriwijayabow-by-fabiyansyah09
+Fox Bow by _Skretch (MIT), version 1, https://modrinth.com/resourcepack/fox-bow
+Bows into Slingshots by ux92 (MIT), version 1.0, https://modrinth.com/resourcepack/slingshot
+Reimagined Tools by CosmicWolf (CC0-1.0), version 1.1.6, https://modrinth.com/resourcepack/reimagined-tools
+ChicknTurtle's 3D Tools by ChicknTurtle (MIT), version 1.3, https://modrinth.com/resourcepack/chicknturtles-3d-tools
+Alternate 3D Tools by keyschain (CC-BY-4.0), version 1.0, https://modrinth.com/resourcepack/alternate-3d-tools
+Some Stuff - Tools by BoboTweaks (MIT), version 1.21.6-1.21.10, https://modrinth.com/resourcepack/some-stuff-tools
+Cool Tools by Hahchek (CC-BY-4.0), version 1.0.2, https://modrinth.com/resourcepack/cool-tools
+Fancy tools by DeadbushCarrot (MIT), version PGA-V1, https://modrinth.com/resourcepack/fancy-tools
+Better Pickaxes by NotSluggas (MIT), version 1.1.0, https://modrinth.com/resourcepack/better-pickaxes
+Simple 3D Pickaxes by Lucas by LucasWang12345 (CC-BY-4.0), version 1.0, https://modrinth.com/resourcepack/simple-3d-pickaxes-by-lucas
+Smith Works - 3d by Pingoh (MIT), version V1, https://modrinth.com/resourcepack/smith-works3d
+Slim Pickings by moonst0ne (MIT), version 1.1, https://modrinth.com/resourcepack/slim-pickings
+Shadowstone Tools: onyx X netherite by abdouahabch7 (MIT), version 1.0, https://modrinth.com/resourcepack/shadowstone-tools
+Glacial Gear by abdouahabch7 (MIT), version 1.0, https://modrinth.com/resourcepack/glacial-gear
+Valkyrian Netherite Reforged V2 by Orenxo (MIT), version 1.0.4, https://modrinth.com/resourcepack/valkyrian-netherite-reforged-v2
+Cute pickaxes by AbraPikachu (CC-BY-4.0), version 1.21.7, https://modrinth.com/resourcepack/cute-pickaxes
+smiling pickaxe by erez43 (MIT), version v2.0, https://modrinth.com/resourcepack/smiling-pickaxe
+Fish Netherite Pickaxe by memphis_ (Apache-2.0), version 1.0, https://modrinth.com/resourcepack/fish-netherite-pickaxe

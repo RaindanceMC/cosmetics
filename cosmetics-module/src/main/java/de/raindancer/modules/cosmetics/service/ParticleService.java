@@ -137,8 +137,6 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
 
     // ------------------------------------------------------------------ choosing
 
-    private volatile java.util.function.Predicate<java.util.UUID> supporters = who -> false;
-
     /** Hands in what decides who has bought what. Without it, permissions alone decide, as ever. */
     public void entitlements(Entitlements fresh) {
         this.entitlements = fresh == null ? Entitlements.PERMISSIONS : fresh;
@@ -162,7 +160,7 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
 
     public Verdict judge(Player who, String particle) {
         return rule.judge(particle, mayUse(who), settings.blocked(), ParticleShows.canShow(particle),
-                supporters.test(who.getUniqueId()));
+                who.hasPermission(de.raindancer.modules.cosmetics.util.PermissionNodes.PARTICLE_COFFEE));
     }
 
     /**
@@ -176,10 +174,6 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
                 .filter(ParticleShows::canShow).filter(name -> !blocked.contains(name)).sorted().toList();
     }
 
-    /** Who has bought the owner a coffee; nobody until the module hands Core's list in. */
-    public void supporters(java.util.function.Predicate<java.util.UUID> fresh) {
-        this.supporters = fresh == null ? who -> false : fresh;
-    }
 
     public boolean wear(Player who, String particle, boolean announce) {
         Verdict verdict = judge(who, particle);

@@ -23,6 +23,8 @@ public final class CosmeticsCommands {
                         .aliased("cosmetic")
                         .taking("(nothing) — opens the menu",
                                 "name | particle — opens that page",
+                                "skins — weapon skins for what you hold (supporters)",
+                                "skins admin — staff: switch weapon skins on and off",
                                 "particle <particle> — wears a vanilla particle",
                                 "particle shape ambient|aura|halo|trail|spiral — how it is drawn",
                                 "particle colour <colour> — for dust and the tinted ones",

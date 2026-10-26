@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.21.0")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.22.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -126,12 +126,35 @@ public final class CosmeticsModule implements FlexModule {
                         context.core().messages(), settings.current());
         names.entitlements(unlocks);
         particles.entitlements(unlocks);
-        particles.supporters(context.core().supporters()::isSupporter);
         teleports.entitlements(unlocks);
+        // Weapon skins: a thank-you for supporters, through rains.supporter, which Core gives every one of them.
+        var skinSettings = context.settings(SkinSettings.class, SkinSettings.DEFAULTS);
+        var skinUnlocks = new de.raindancer.modules.cosmetics.skins.SkinUnlocks(context.dataFolder());
+        skinUnlocks.load();
+        var skinUnlocksWatch = skinUnlocks.watch();
+        context.closeWith(skinUnlocksWatch::close);
+        context.closeWith(skinUnlocks::save);
+        var skins = new de.raindancer.modules.cosmetics.skins.SkinService(context.plugin(), server, context.core(),
+                de.raindancer.modules.cosmetics.skins.SkinCatalogue.bundled(), skinUnlocks, skinSettings::current);
+        var supporter = de.raindancer.core.social.support.SupporterPermission.permission(server.getPluginManager());
+        supporter.getChildren().put(PermissionNodes.SKINS, true);
+        supporter.getChildren().put(PermissionNodes.PARTICLE_COFFEE, true);
+        supporter.recalculatePermissibles();
+        de.raindancer.modules.cosmetics.skins.SkinPack.contribute(context.plugin(), context.core());
+        context.closeWith(() -> de.raindancer.modules.cosmetics.skins.SkinPack.withdraw(context.core()));
+        context.listener(new de.raindancer.modules.cosmetics.skins.SkinListener(context.plugin(), skins));
+        // Every skinned item, every two seconds: a skin follows its owner whichever way the item travelled.
+        var skinTimer = Scheduling.globalTimer(context.plugin(), 40, 40, task -> skins.refreshEveryone());
+        if (skinTimer != null) {
+            context.closeWith(skinTimer::cancel);
+        }
+        skinSettings.onChange(fresh -> skins.refreshEveryone());
+        log.info("{} weapon skin(s) in the catalogue.", skins.catalogue().all().size());
+
         services = new CosmeticsServices(context.plugin(), server, log, context.core().messages(),
                 context.chat().brand(), catalogue::current, settings::current, names, particles, reloading,
                 clearing, teleports, watch, context.core().vanish(), new LiveScreens(), unlocks,
-                context.core(), tags);
+                context.core(), tags, skins, skinSettings);
         // What admin mode swaps with the rest of a side: the worn particle, wings and teleport looks (all kept under
         // rainscosmetics: in the player's data) and the name style, so an admin wears different cosmetics as admin.
         de.raindancer.core.data.loadout.SideData.Part worn =
