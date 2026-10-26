@@ -232,6 +232,7 @@ def name_variants(definition):
             when = case.get('when')
             names = when if isinstance(when, list) else [when]
             label = next((n if isinstance(n, str) else n.get('text', '') for n in names if n), '')
+            label = re.sub(r'[\u0400-\u04FF]+', '', label).strip() or label
             out.append((label, case['model']))
         return out, model.get('fallback')
     return [], None
@@ -276,6 +277,8 @@ def cit_variants(root):
             label = re.sub(r'^(i)?(regex|pattern|ipattern|iregex):', '', props.get('nbt.display.Name', name[:-11]))
             label = re.sub(r'[\\^$.*+?()\[\]{}|]', '', label).strip() or name[:-11]
             label = re.sub(r'[_]+', ' ', label).strip().title()
+            # Some packs name a variant twice, Latin and Cyrillic run together; the menu shows the Latin
+            label = re.sub(r'[\u0400-\u04FF]+', '', label).strip() or label
             rel = os.path.relpath(dirpath, os.path.join(root, 'assets'))
             ns = rel.split(os.sep)[0]
             base = '/'.join(rel.split(os.sep)[1:])
