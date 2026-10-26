@@ -46,7 +46,7 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
 
     @Override
     protected Component title() {
-        return MINI.deserialize("<dark_gray>Weapon skins");
+        return MINI.deserialize("<dark_gray>Skins");
     }
 
     @Override

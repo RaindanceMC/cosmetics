@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/handheld","textures":{"layer0":"rainsskins:fish-netherite-pickaxe/minecraft/item/netherite_pickaxe"}}
+{
+ "parent": "minecraft:item/handheld",
+ "textures": {
+  "layer0": "rainsskins:item/fish-netherite-pickaxe/minecraft/item/netherite_pickaxe"
+ }
+}

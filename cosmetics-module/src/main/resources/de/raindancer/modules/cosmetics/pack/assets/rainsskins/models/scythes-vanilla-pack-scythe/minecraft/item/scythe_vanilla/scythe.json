@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/mace","textures":{"layer0":"rainsskins:scythes-vanilla-pack-scythe/minecraft/item/scythe_vanilla/scythe"}}
+{
+ "parent": "minecraft:item/mace",
+ "textures": {
+  "layer0": "rainsskins:item/scythes-vanilla-pack-scythe/minecraft/item/scythe_vanilla/scythe"
+ }
+}

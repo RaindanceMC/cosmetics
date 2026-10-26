@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/handheld","textures":{"layer0":"rainsskins:better-pickaxes/minecraft/item/diamond_pickaxe"}}
+{
+ "parent": "minecraft:item/handheld",
+ "textures": {
+  "layer0": "rainsskins:item/better-pickaxes/minecraft/item/diamond_pickaxe"
+ }
+}

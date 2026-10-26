@@ -1,1 +1,9 @@
-{"format_version":"1.21.11","credit":"Bray was here :)","parent":"minecraft:item/generated","textures":{"particle":"rainsskins:brays-better-3d-bow/minecraft/item/bow/bow","layer0":"rainsskins:brays-better-3d-bow/minecraft/item/bow/bow"}}
+{
+ "format_version": "1.21.11",
+ "credit": "Bray was here :)",
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "particle": "rainsskins:item/brays-better-3d-bow/minecraft/item/bow/bow",
+  "layer0": "rainsskins:item/brays-better-3d-bow/minecraft/item/bow/bow"
+ }
+}

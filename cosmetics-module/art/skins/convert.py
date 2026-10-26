@@ -103,7 +103,7 @@ class Pack:
             self.problems.append('missing texture ' + ref)
             self.problems_for.setdefault(self.target, []).append('missing texture ' + ref)
             return 'minecraft:item/barrier'
-        ours = f'{self.skin}/{ns}/{path}'
+        ours = f'item/{self.skin}/{ns}/{path}'   # item/: the only folder the items atlas stitches
         dest = os.path.join(OUT, 'assets', NS, 'textures', ours + '.png')
         if dest not in self.copied:
             os.makedirs(os.path.dirname(dest), exist_ok=True)
@@ -121,7 +121,7 @@ class Pack:
             return ref if ':' in ref else 'minecraft:' + ref
         if self.relative(ref, '.json'):
             path = os.path.relpath(src[:-5], self.root).replace(os.sep, '/')
-        ours = f'{self.skin}/{ns}/{path}'
+        ours = f'item/{self.skin}/{ns}/{path}'   # item/: the only folder the items atlas stitches
         dest = os.path.join(OUT, 'assets', NS, 'models', ours + '.json')
         if dest in self.copied:
             return f'{NS}:{ours}'

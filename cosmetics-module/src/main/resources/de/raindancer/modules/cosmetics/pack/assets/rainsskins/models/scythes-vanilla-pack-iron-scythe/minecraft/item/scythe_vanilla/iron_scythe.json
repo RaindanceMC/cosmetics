@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/iron_sword","textures":{"layer0":"rainsskins:scythes-vanilla-pack-iron-scythe/minecraft/item/scythe_vanilla/iron_scythe"}}
+{
+ "parent": "minecraft:item/iron_sword",
+ "textures": {
+  "layer0": "rainsskins:item/scythes-vanilla-pack-iron-scythe/minecraft/item/scythe_vanilla/iron_scythe"
+ }
+}

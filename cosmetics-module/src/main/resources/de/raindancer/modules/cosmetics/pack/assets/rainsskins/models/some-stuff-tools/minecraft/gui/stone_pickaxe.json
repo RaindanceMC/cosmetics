@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"rainsskins:some-stuff-tools/some-stuff/item/stone_pickaxe"}}
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "rainsskins:item/some-stuff-tools/some-stuff/item/stone_pickaxe"
+ }
+}

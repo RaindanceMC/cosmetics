@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/bow","textures":{"layer0":"rainsskins:bow-plus/minecraft/item/bow_pulling_2"}}
+{
+ "parent": "minecraft:item/bow",
+ "textures": {
+  "layer0": "rainsskins:item/bow-plus/minecraft/item/bow_pulling_2"
+ }
+}

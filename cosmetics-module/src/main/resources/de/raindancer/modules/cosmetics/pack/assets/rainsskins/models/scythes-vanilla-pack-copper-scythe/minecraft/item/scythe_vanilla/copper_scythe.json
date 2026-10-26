@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/copper_sword","textures":{"layer0":"rainsskins:scythes-vanilla-pack-copper-scythe/minecraft/item/scythe_vanilla/copper_scythe"}}
+{
+ "parent": "minecraft:item/copper_sword",
+ "textures": {
+  "layer0": "rainsskins:item/scythes-vanilla-pack-copper-scythe/minecraft/item/scythe_vanilla/copper_scythe"
+ }
+}

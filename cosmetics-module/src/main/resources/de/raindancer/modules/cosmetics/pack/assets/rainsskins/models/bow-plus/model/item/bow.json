@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"rainsskins:bow-plus/minecraft/item/bow"}}
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "rainsskins:item/bow-plus/minecraft/item/bow"
+ }
+}

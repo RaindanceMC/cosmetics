@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/handheld","textures":{"layer0":"rainsskins:shadowstone-tools/minecraft/item/netherite_pickaxe"}}
+{
+ "parent": "minecraft:item/handheld",
+ "textures": {
+  "layer0": "rainsskins:item/shadowstone-tools/minecraft/item/netherite_pickaxe"
+ }
+}

@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/wooden_sword","textures":{"layer0":"rainsskins:scythes-vanilla-pack-wooden-scythe/minecraft/item/scythe_vanilla/wooden_scythe"}}
+{
+ "parent": "minecraft:item/wooden_sword",
+ "textures": {
+  "layer0": "rainsskins:item/scythes-vanilla-pack-wooden-scythe/minecraft/item/scythe_vanilla/wooden_scythe"
+ }
+}

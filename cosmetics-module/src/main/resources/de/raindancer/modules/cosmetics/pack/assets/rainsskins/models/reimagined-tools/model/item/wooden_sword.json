@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/handheld","textures":{"layer0":"rainsskins:reimagined-tools/minecraft/item/wooden_sword"}}
+{
+ "parent": "minecraft:item/handheld",
+ "textures": {
+  "layer0": "rainsskins:item/reimagined-tools/minecraft/item/wooden_sword"
+ }
+}

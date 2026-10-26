@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"rainsskins:3d-equipment/minecraft/item/crossbow_pulling_0"}}
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "rainsskins:item/3d-equipment/minecraft/item/crossbow_pulling_0"
+ }
+}

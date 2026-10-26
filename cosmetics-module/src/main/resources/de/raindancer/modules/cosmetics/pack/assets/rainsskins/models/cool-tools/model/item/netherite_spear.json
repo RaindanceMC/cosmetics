@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"rainsskins:cool-tools/minecraft/item/netherite_spear"}}
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "rainsskins:item/cool-tools/minecraft/item/netherite_spear"
+ }
+}

@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/golden_sword","textures":{"layer0":"rainsskins:scythes-vanilla-pack-golden-scythe/minecraft/item/scythe_vanilla/golden_scythe"}}
+{
+ "parent": "minecraft:item/golden_sword",
+ "textures": {
+  "layer0": "rainsskins:item/scythes-vanilla-pack-golden-scythe/minecraft/item/scythe_vanilla/golden_scythe"
+ }
+}

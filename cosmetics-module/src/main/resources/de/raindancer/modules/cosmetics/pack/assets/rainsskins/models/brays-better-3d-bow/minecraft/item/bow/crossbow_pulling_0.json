@@ -1,1 +1,8 @@
-{"format_version":"1.21.11","credit":"Bray was here :)","parent":"rainsskins:brays-better-3d-bow/minecraft/item/crossbow","textures":{"layer0":"rainsskins:brays-better-3d-bow/minecraft/item/bow/crossbow_pulling_0"}}
+{
+ "format_version": "1.21.11",
+ "credit": "Bray was here :)",
+ "parent": "rainsskins:brays-better-3d-bow/minecraft/item/crossbow",
+ "textures": {
+  "layer0": "rainsskins:item/brays-better-3d-bow/minecraft/item/bow/crossbow_pulling_0"
+ }
+}

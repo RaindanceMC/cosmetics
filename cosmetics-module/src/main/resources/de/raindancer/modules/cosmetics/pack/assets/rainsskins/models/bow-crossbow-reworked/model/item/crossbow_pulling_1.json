@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/crossbow","textures":{"layer0":"rainsskins:bow-crossbow-reworked/minecraft/item/crossbow_pulling_1"}}
+{
+ "parent": "minecraft:item/crossbow",
+ "textures": {
+  "layer0": "rainsskins:item/bow-crossbow-reworked/minecraft/item/crossbow_pulling_1"
+ }
+}

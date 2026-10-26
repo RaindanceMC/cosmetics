@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/handheld","textures":{"layer0":"rainsskins:smiling-pickaxe/minecraft/item/stone_pickaxe"}}
+{
+ "parent": "minecraft:item/handheld",
+ "textures": {
+  "layer0": "rainsskins:item/smiling-pickaxe/minecraft/item/stone_pickaxe"
+ }
+}

@@ -1,1 +1,6 @@
-{"parent":"minecraft:item/bow","textures":{"layer0":"rainsskins:valkyrian-netherite-reforged-v2/minecraft/item/bow_pulling_2"}}
+{
+ "parent": "minecraft:item/bow",
+ "textures": {
+  "layer0": "rainsskins:item/valkyrian-netherite-reforged-v2/minecraft/item/bow_pulling_2"
+ }
+}

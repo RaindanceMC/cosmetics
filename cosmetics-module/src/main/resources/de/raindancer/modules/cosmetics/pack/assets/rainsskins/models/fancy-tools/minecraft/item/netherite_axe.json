@@ -1,1 +1,6 @@
-{"parent":"rainsskins:fancy-tools/minecraft/item/handheld","textures":{"layer0":"rainsskins:fancy-tools/minecraft/item/netherite_axe"}}
+{
+ "parent": "rainsskins:fancy-tools/minecraft/item/handheld",
+ "textures": {
+  "layer0": "rainsskins:item/fancy-tools/minecraft/item/netherite_axe"
+ }
+}

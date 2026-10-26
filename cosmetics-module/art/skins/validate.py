@@ -1,4 +1,5 @@
-"""Checks a converted skins pack: every item definition's models, their parents and textures must exist.
+"""Checks a converted skins pack: every item definition's models, their parents and textures must exist, and our
+textures must sit where the game stitches them into an atlas.
 
     python3 -I validate.py <pack dir> <vanilla dir> <catalogue.json>
 """
@@ -6,6 +7,11 @@ import json, os, sys
 
 PACK, VANILLA, CATALOGUE = sys.argv[1:4]
 vanilla_textures = {l.strip()[len('assets/minecraft/textures/'):-4] for l in open(os.path.join(VANILLA, 'textures.txt')) if l.strip().endswith('.png')}
+
+
+# The client only stitches these folders (of any namespace) into the atlases item models draw from; a texture
+# anywhere else exists in the pack and still renders as the magenta-black checkerboard.
+ATLASED = ('item/', 'block/')
 
 
 def split(ref):
@@ -41,6 +47,8 @@ def check_model(ref, seen, problems):
             continue
         if ns == 'minecraft' and path in vanilla_textures:
             continue
+        if not path.startswith(ATLASED):
+            problems.append('texture outside the item/block atlas ' + value)
         if not os.path.isfile(os.path.join(PACK, 'assets', ns, 'textures', path + '.png')):
             problems.append('texture ' + value)
 
