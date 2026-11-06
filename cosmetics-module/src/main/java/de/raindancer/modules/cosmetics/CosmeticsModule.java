@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.23.0")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.24.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -95,6 +95,10 @@ public final class CosmeticsModule implements FlexModule {
                         context.core().travelShow(), particles, settings.current());
         teleports.start();
         context.closeWith(teleports::stop);
+        // Other plugins' cosmetics (fishing's rod skins) are put on here too, as doors on the cosmetics page.
+        Runnable page = () -> { };
+        de.raindancer.core.ui.cosmetic.CosmeticDoors.host(page);
+        context.closeWith(() -> de.raindancer.core.ui.cosmetic.CosmeticDoors.unhost(page));
         // The teleport look is read back from the player's data whenever that changes: on a network Core puts what
         // they chose elsewhere on them a moment after they join, and joins here are covered by the same check.
         // Core's wardrobe for name tags: which of a guild's tag and stars somebody wears, from their data.

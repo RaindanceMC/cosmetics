@@ -28,6 +28,10 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
 
     private static final MiniMessage MINI = MiniMessage.miniMessage();
 
+    /** Where other plugins' doors go, in order: beside the weapon skins and tags, then the row below. */
+    private static final int[][] DOOR_PLACES = {{MenuLayout.RULES, 6}, {MenuLayout.LAND, 2}, {MenuLayout.LAND, 4},
+            {MenuLayout.LAND, 6}, {MenuLayout.LAND, 3}, {MenuLayout.LAND, 5}};
+
     private final CosmeticsServices services;
 
     public CosmeticsMenu(CosmeticsServices services, Player viewer) {
@@ -97,6 +101,20 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
                         new SkinMenu(services, viewer, this).open();
                     }
                 });
+
+        // The other plugins' cosmetics, beside the weapon skins: fishing's rod skins and whatever comes next.
+        List<de.raindancer.core.ui.cosmetic.CosmeticDoor> doors = de.raindancer.core.ui.cosmetic.CosmeticDoors.doors();
+        for (int n = 0; n < doors.size() && n < DOOR_PLACES.length; n++) {
+            de.raindancer.core.ui.cosmetic.CosmeticDoor door = doors.get(n);
+            java.util.Optional<String> locked = door.locked(viewer);
+            ItemStack doorIcon = door.icon(viewer);
+            band(DOOR_PLACES[n][0], DOOR_PLACES[n][1], locked.isEmpty() ? doorIcon : Icons.locked(doorIcon, locked.get()),
+                    click -> {
+                        if (door.locked(viewer).isEmpty()) {
+                            door.open(viewer, this);
+                        }
+                    });
+        }
 
         ItemStack unlocksIcon = Icons.of(Material.GOLD_INGOT, "<white>Unlocks",
                 "<gray>What this server sells: colours,", "<gray>gradients, particles and more.", "",

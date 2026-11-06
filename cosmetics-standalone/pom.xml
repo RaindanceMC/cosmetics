@@ -34,7 +34,8 @@
         <!-- 0.18.0: network — the teleport look is read back from the player's data whenever it changes (a look chosen on another server now plays after arriving, no relog), and /cosmetics clear takes the particle off somebody on another server. -->
         <!-- 0.18.1: its per-player store is Core's KeyedDocument (no change in behaviour). -->
         <!-- 0.19.0: /cosmetics tags — players take the guild tag and its stars off their name, or wear them again; kept in their data, so on every server. Needs RainsCore with NameBadges wardrobe. -->
-        <plugin.version>0.23.0</plugin.version>
+        <!-- 0.24.0: other plugins' cosmetics on the cosmetics page — fishing's rod skins as a door beside the weapon skins (Core's CosmeticDoors). -->
+        <plugin.version>0.24.0</plugin.version>
     </properties>
 
     <dependencies>
