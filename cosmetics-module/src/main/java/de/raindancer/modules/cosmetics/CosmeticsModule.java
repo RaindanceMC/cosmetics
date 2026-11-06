@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.24.0")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.25.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -85,6 +85,11 @@ public final class CosmeticsModule implements FlexModule {
                 context.core().messages(), settings.current(), reservations);
         particles.start();
         context.closeWith(particles::stop);
+        // A pet's name and particles: what the player may paint and wear on themselves.
+        de.raindancer.modules.cosmetics.service.CoreGrants grants =
+                new de.raindancer.modules.cosmetics.service.CoreGrants(names::styleGrantsOf, particles::wearable);
+        grants.install();
+        context.closeWith(grants::uninstall);
         ReloadService reloading = new ReloadService(settings, catalogue, server, log);
         ClearService clearing = new ClearService(names, particles, context.core().messages(),
                 context.core().audit(),

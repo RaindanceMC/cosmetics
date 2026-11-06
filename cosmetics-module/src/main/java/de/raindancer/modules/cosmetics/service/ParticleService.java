@@ -175,6 +175,11 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
     }
 
 
+    /** Every particle this player may wear right now — what they may put on what they own, too. */
+    public List<String> wearable(Player who) {
+        return offered().stream().filter(particle -> !judge(who, particle).isRefused()).toList();
+    }
+
     public boolean wear(Player who, String particle, boolean announce) {
         Verdict verdict = judge(who, particle);
         if (verdict.isRefused()) {
