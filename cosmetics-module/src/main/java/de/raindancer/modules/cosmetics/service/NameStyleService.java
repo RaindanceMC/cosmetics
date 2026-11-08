@@ -3,6 +3,7 @@ package de.raindancer.modules.cosmetics.service;
 import de.raindancer.core.platform.rule.Verdict;
 import de.raindancer.core.ui.choose.StyleGrants;
 import de.raindancer.core.ui.identity.Identities;
+import de.raindancer.core.ui.identity.ReservedNames;
 import de.raindancer.core.ui.identity.Nametags;
 import de.raindancer.core.ui.messages.Messages;
 import de.raindancer.core.ui.text.Gradients;
@@ -24,6 +25,7 @@ import org.bukkit.permissions.Permissible;
 import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 import java.util.function.Supplier;
 
@@ -215,6 +217,33 @@ public final class NameStyleService implements ICosmeticsService {
             return false;
         }
         return wear(who, preset.style());
+    }
+
+    /** The player's own collection of styles (Core's {@link ReservedNames}); empty for nearly everybody. */
+    public List<ReservedNames.Preset> ownPresets(Player who) {
+        return ReservedNames.presetsOf(who.getUniqueId());
+    }
+
+    /** One of the player's own presets, put on — see {@link #wearOwn}. */
+    public boolean wear(Player who, ReservedNames.Preset preset) {
+        return preset != null && wearOwn(who, preset.style());
+    }
+
+    /**
+     * Puts on one of the player's own presets. Theirs whatever this server grants — they are their own — and only
+     * theirs: a style that is not in their collection is refused here.
+     */
+    public boolean wearOwn(Player who, NameStyle style) {
+        boolean own = ownPresets(who).stream().anyMatch(preset -> preset.style().equals(style));
+        if (!own) {
+            return false;
+        }
+        if (!identities.setNameStyle(who.getUniqueId(), style)) {
+            messages.send(who, "cosmetics.name.not-saved");
+            return false;
+        }
+        messages.send(who, "cosmetics.name.set", "name", painted(who.getName(), style));
+        return true;
     }
 
     /** Takes the style off by id, so it works for somebody who is not here. @return whether it was saved */

@@ -66,6 +66,13 @@ public final class NameStyleMenu extends Menu implements ICosmeticsScreen {
                         .maxStops(names.maxStops())
                         .open());
 
+        // Only for somebody with a collection of their own: nobody else is shown that there could be one.
+        if (!names.ownPresets(viewer).isEmpty()) {
+            band(MenuLayout.LAND, 6, Icons.of(Material.AMETHYST_SHARD, "<light_purple>Your presets",
+                            "<gray>Your own name styles, nobody else's.", "", "<dark_gray>Click to pick one."),
+                    click -> new OwnPresetMenu(services, viewer, this).open());
+        }
+
         band(MenuLayout.LAND, 4, Icons.of(Material.NAME_TAG, "<white>Preview your nametag",
                         "<gray>Closes this and floats the name over",
                         "<gray>your head in front of you for a moment.", "",
