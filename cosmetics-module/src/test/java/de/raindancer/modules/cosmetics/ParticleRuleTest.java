@@ -122,7 +122,7 @@ class ParticleRuleTest {
     }
 
     @org.junit.jupiter.api.Test
-    @org.junit.jupiter.api.DisplayName("coloured wings are drawn every tick to live one tick; everything else at the server's pace, its animation unhurried")
+    @org.junit.jupiter.api.DisplayName("coloured wings are drawn every second tick to live two; everything else at the server's pace, its animation unhurried")
     void pace() {
         var rule = new de.raindancer.modules.cosmetics.rules.ParticleRule();
 
@@ -132,7 +132,8 @@ class ParticleRuleTest {
         org.assertj.core.api.Assertions.assertThat(rule.everyTick(ParticleShape.WINGS, true, true))
                 .as("natural wings are the particle as Minecraft draws it, at the server's pace").isFalse();
 
-        org.assertj.core.api.Assertions.assertThat(rule.drawsNow(7, 4, true)).isTrue();
+        org.assertj.core.api.Assertions.assertThat(rule.drawsNow(8, 4, true)).isTrue();
+        org.assertj.core.api.Assertions.assertThat(rule.drawsNow(7, 4, true)).isFalse();
         org.assertj.core.api.Assertions.assertThat(rule.drawsNow(7, 4, false)).isFalse();
         org.assertj.core.api.Assertions.assertThat(rule.drawsNow(8, 4, false)).isTrue();
         // A halo drawn every fourth tick moves on one frame per draw, as it always did.
@@ -193,5 +194,28 @@ class ParticleRuleTest {
                 .isAllowed()).as("everything else as before").isTrue();
         org.assertj.core.api.Assertions.assertThat(rule.judge("COFFEE", true, java.util.Set.of("COFFEE"), true, true)
                 .reason()).as("an owner can still block it").isEqualTo("cosmetics.refused.particle-blocked");
+    }
+
+    @org.junit.jupiter.api.Test
+    @org.junit.jupiter.api.DisplayName("wings are drawn every WING_STEP ticks, wearers staggered over the phases, each point living a full step")
+    void wingsArePacedAndStaggered() {
+        var rule = new de.raindancer.modules.cosmetics.rules.ParticleRule();
+        int step = de.raindancer.modules.cosmetics.rules.ParticleRule.WING_STEP;
+
+        long drawsPhase0 = java.util.stream.LongStream.range(0, 40).filter(t -> rule.drawsNow(t, 4, true, 0)).count();
+        org.assertj.core.api.Assertions.assertThat(drawsPhase0).isEqualTo(40 / step);
+        for (long t = 0; t < 40; t++) {
+            int drawing = 0;
+            for (int phase = 0; phase < step; phase++) {
+                drawing += rule.drawsNow(t, 4, true, phase) ? 1 : 0;
+            }
+            org.assertj.core.api.Assertions.assertThat(drawing).as("tick %d", t).isEqualTo(1);
+        }
+        org.assertj.core.api.Assertions.assertThat(rule.wingLifetime()).isEqualTo(step);
+        java.util.Set<Integer> phases = new java.util.HashSet<>();
+        for (int i = 0; i < 50; i++) {
+            phases.add(rule.phase(java.util.UUID.randomUUID()));
+        }
+        org.assertj.core.api.Assertions.assertThat(phases).containsExactlyInAnyOrder(0, 1);
     }
 }

@@ -44,6 +44,9 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
     /** How far away a particle is still drawn for somebody. */
     private static final double RANGE = 32;
 
+    /** Wings are fine detail: past this they are a smudge, and not worth a packet per point. */
+    private static final double WING_RANGE = 24;
+
     private final Plugin plugin;
     private final Server server;
     private final Vanish vanish;
@@ -80,8 +83,8 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
 
     public synchronized void start() {
         stop();
-        // Every tick: coloured wings are redrawn each tick (see ParticleRule.everyTick); the rest is
-        // skipped in draw() until its own turn comes round.
+        // Every tick, because wearers are staggered over the wing pace (see ParticleRule.drawsNow); what is
+        // not due is skipped in draw().
         timer = Scheduling.globalTimer(plugin, 1, 1, task -> {
             long tick = ticks.incrementAndGet();
             for (Player player : server.getOnlinePlayers()) {
@@ -122,7 +125,7 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
         }
         boolean everyTick = rule.everyTick(choice.shape(), ParticleShows.takesColour(choice.particle()),
                 choice.natural());
-        if (!rule.drawsNow(tick, now.everyTicks(), everyTick)) {
+        if (!rule.drawsNow(tick, now.everyTicks(), everyTick, rule.phase(wearer.getUniqueId()))) {
             return;
         }
         // Wings drawn naturally show a third of their points each time, so a flame or a leaf — which
@@ -132,7 +135,8 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
                 rule.count(rule.allowed(choice.density(), slot.mayUltra(wearer)), now.count(), now.maxCount()),
                 choice.shape(),
                 rule.frame(rule.animationTick(tick, now.everyTicks(), everyTick), choice.speed()),
-                RANGE, viewer -> viewer.equals(wearer) || SEES.isOn(viewer), everyTick ? 1 : null, share);
+                everyTick ? WING_RANGE : RANGE, viewer -> viewer.equals(wearer) || SEES.isOn(viewer),
+                everyTick ? rule.wingLifetime() : null, share);
     }
 
     // ------------------------------------------------------------------ choosing

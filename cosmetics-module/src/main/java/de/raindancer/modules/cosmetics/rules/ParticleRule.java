@@ -77,8 +77,8 @@ public final class ParticleRule implements ICosmeticsRule {
     }
 
     /**
-     * Whether this is drawn every tick: coloured wings, whose points live exactly one tick so a beating
-     * wing never shows two frames at once. A particle without a colour cannot be given a lifetime, and
+     * Whether this is drawn at the wing pace ({@link #WING_STEP} ticks): coloured wings, whose points live exactly
+     * until the next draw so a beating wing never shows two frames at once. A particle without a colour cannot be given a lifetime, and
      * drawn every tick it would pile up — so it keeps the server's pace.
      */
     public boolean everyTick(de.raindancer.core.ui.effect.ParticleShape shape, boolean takesColour, boolean natural) {
@@ -102,9 +102,26 @@ public final class ParticleRule implements ICosmeticsRule {
         return new Worn(de.raindancer.modules.cosmetics.model.ParticleChoice.NONE, wings.isNone() ? particle : wings);
     }
 
+    /** Coloured wings are redrawn every this many ticks (about ten beats a second) instead of every tick. */
+    public static final int WING_STEP = 2;
+
     /** Whether to draw on this game tick. */
     public boolean drawsNow(long tick, int every, boolean everyTick) {
-        return everyTick || tick % Math.max(1, every) == 0;
+        return drawsNow(tick, every, everyTick, 0);
+    }
+
+    /** @param phase which of the {@link #WING_STEP} offsets this wearer draws on, so they do not all draw on one tick */
+    public boolean drawsNow(long tick, int every, boolean everyTick, int phase) {
+        return everyTick ? (tick + phase) % WING_STEP == 0 : tick % Math.max(1, every) == 0;
+    }
+
+    public int phase(java.util.UUID wearer) {
+        return Math.floorMod(wearer.hashCode(), WING_STEP);
+    }
+
+    /** How long a paced point lives: until the next draw, so wings neither flicker nor smear. */
+    public int wingLifetime() {
+        return WING_STEP;
     }
 
     /** The tick a shape's animation is at: one step per draw, however often that is. */
