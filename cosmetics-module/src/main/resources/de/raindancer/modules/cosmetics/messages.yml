@@ -94,6 +94,18 @@ cosmetics:
     particle-unknown: "<red><white><detail></white> is not a particle that can be worn."
     particle-blocked: "<red><white><detail></white> is not allowed here — it would cover everybody's screen."
     particle-supporters: "<#C8A27A>☕ <#D9BFA0>The coffee-bean trail is a thank-you for supporters. <white>/support</white> <#D9BFA0>says how."
+    particle-prime: "<#FFC93C>✦ <#FFF4C2>That trail is a Prime perk. <white>/prime</white> <#FFF4C2>says how to get Prime."
+    particle-creators: "<#9146FF>▶ <#BF94FF>The Twitch trail is for creators — Twitch and YouTube streamers on this server."
+    creator-preset: "<#9146FF>▶ <#BF94FF>The <white><detail></white> <#BF94FF>look is for creators, and can't be rebuilt by hand."
+
+  flair:
+    set: "<green><category> is now <white><option></white>."
+    taken-off: "<green>Your <category> is off."
+    unknown: "<red><white><detail></white> is not a flair option. <gray>Try /cosmetics flair."
+    refused-prime: "<#FFC93C>✦ <#FFF4C2><white><option></white> <#FFF4C2>is a Prime perk. <white>/prime</white> <#FFF4C2>says how to get Prime."
+    refused-creator: "<#9146FF>▶ <#BF94FF><white><option></white> <#BF94FF>is for creators — Twitch and YouTube streamers on this server."
+    dropped: "<gray>Some of your flair is taken off — it needs Prime or creator."
+    locked: "A Prime perk — /prime"
 
   help:
     - "<gold><bold>Your name"
@@ -108,6 +120,7 @@ cosmetics:
     - "<gray>Your name: colours, gradients and presets."
     - "<gray>Particles: a vanilla particle drawn around you."
     - "<gray>Teleports: what you sound and look like coming and going."
+    - "<gray>Flair: a tag, join lines and kill effects — Prime's, and creators' Twitch extras."
 
   help-teleport:
     - "<gold><bold>Your teleports"
@@ -190,3 +203,10 @@ cosmetics:
     - "<gray>Density sets how many are drawn — from a light dusting to a proper cloud."
     - "<gray>Speed sets how fast it moves round you."
     - "<dark_gray>Hidden while you are vanished, invisible or spectating."
+
+  help-flair:
+    - "<gold><bold>Your flair"
+    - "<gray>Looks only, nothing that helps you play: a tag in front of your name,"
+    - "<gray>the line when you join and leave, an effect when you win a fight or fall."
+    - "<gray>Click a row to go through its options; right-click goes back."
+    - "<gray>Prime has them all. Creators have their Twitch extras."

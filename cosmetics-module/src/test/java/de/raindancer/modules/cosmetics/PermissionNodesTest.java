@@ -42,7 +42,34 @@ class PermissionNodesTest {
                 .containsEntry(PermissionNodes.CLEAR, PermissionDefault.TRUE)
                 .containsEntry(PermissionNodes.CLEAR_OTHERS, PermissionDefault.OP)
                 .containsEntry(PermissionNodes.ADMIN, PermissionDefault.OP);
-        assertThat(declared).doesNotContainValue(PermissionDefault.FALSE);
+        assertThat(declared).containsEntry(PermissionNodes.CREATOR, PermissionDefault.FALSE)
+                .containsEntry(PermissionNodes.FLAIR, PermissionDefault.FALSE);
+        assertThat(declared.entrySet().stream().filter(e -> e.getValue() == PermissionDefault.FALSE).map(Map.Entry::getKey))
+                .as("only the two perks that are given, never assumed").containsExactlyInAnyOrder(
+                        PermissionNodes.CREATOR, PermissionNodes.FLAIR);
+    }
+
+    @Test
+    @DisplayName("rainscosmetics.creator carries the creator presets and nothing else — no particles, no skins, no flair")
+    void creatorNode() {
+        Permission creator = PermissionNodes.declared().stream()
+                .filter(p -> p.getName().equals(PermissionNodes.CREATOR)).findFirst().orElseThrow();
+
+        assertThat(creator.getDefault()).isEqualTo(PermissionDefault.FALSE);
+        assertThat(creator.getChildren().keySet()).containsExactlyInAnyOrderElementsOf(
+                de.raindancer.modules.cosmetics.creator.CreatorPerks.presetNodes());
+        assertThat(creator.getChildren()).doesNotContainKeys(PermissionNodes.PARTICLES, PermissionNodes.SKINS,
+                PermissionNodes.FLAIR, PermissionNodes.FREE, PermissionNodes.LIBRARY);
+    }
+
+    @Test
+    @DisplayName("a creator preset is nobody's by default, not even an operator's; any other restricted one still is")
+    void creatorPresetNodes() {
+        List<Permission> nodes = PermissionNodes.declaredFor(List.of(
+                new Preset("twitch", "Twitch", NameStyle.NONE, true),
+                new Preset("vip", "VIP", NameStyle.NONE, true)));
+        assertThat(defaults(nodes)).containsEntry("rainscosmetics.preset.twitch", PermissionDefault.FALSE)
+                .containsEntry("rainscosmetics.preset.vip", PermissionDefault.OP);
     }
 
     @Test

@@ -419,6 +419,9 @@ public final class CatalogueFile {
             // Prime's monthly drops (prime-drops.yml): restricted, worn by whoever paid for that month.
             new ShippedPreset("harbor-sunset", "Harbor Sunset", List.of("#6EC1EA", "#F6B83D", "#F2843A"), List.of("bold"), true, true),
             new ShippedPreset("first-frost", "First Frost", List.of("#e0f7ff", "#8fd3fe", "#4a90e2", "#e0f7ff"), List.of("italic"), true, true),
+            // The creators' Twitch looks: restricted, and nobody's without rainscosmetics.creator (see CreatorPerks).
+            new ShippedPreset("twitch", "Twitch", List.of("#9146FF", "#BF94FF", "#9146FF", "#772CE8"), List.of("bold"), true, true),
+            new ShippedPreset("twitch-glitch", "Twitch glitch", List.of("#9146FF", "#00E5FF", "#9146FF", "#FF3C78", "#9146FF"), List.of(), true, true),
             new ShippedPreset("prism", "Prism", List.of("#ff0000", "#ff8000", "#ffff00", "#00ff00", "#00ffff", "#0080ff", "#8000ff", "#ff00ff"), List.of("bold"), true, true),
             new ShippedPreset("pride", "Pride", List.of("#e40303", "#ff8c00", "#ffed00", "#008026", "#004dff", "#750787"), List.of(), false, true),
             new ShippedPreset("trans", "Trans", List.of("#5bcefa", "#f5a9b8", "#ffffff", "#f5a9b8", "#5bcefa"), List.of(), false, false),

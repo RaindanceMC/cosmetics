@@ -98,9 +98,18 @@ public final class NameStyleService implements ICosmeticsService {
         }
         Set<String> presets = new HashSet<>();
         Set<String> sold = new HashSet<>();
+        Set<String> exclusive = new HashSet<>();
         boolean every = who.hasPermission(PermissionNodes.PRESET_ALL);
         for (Preset preset : catalogue.get().presets()) {
             String key = Unlock.preset(preset.id());
+            if (de.raindancer.modules.cosmetics.creator.CreatorPerks.isCreatorPreset(preset.id())) {
+                // Only the creator node (through its child) holds these: rainscosmetics.preset.* is not enough.
+                exclusive.add(preset.id());
+                if (who.hasPermission(preset.permission())) {
+                    presets.add(preset.id());
+                }
+                continue;
+            }
             if (held.priced(key)) {
                 sold.add(preset.id());
                 if (held.allowed(who, key, preset.permission())) {
@@ -113,7 +122,8 @@ public final class NameStyleService implements ICosmeticsService {
         return new Grants(held.allowed(who, Unlock.NAME_COLOUR, PermissionNodes.NAME_COLOUR),
                 held.allowed(who, Unlock.NAME_GRADIENT, PermissionNodes.NAME_GRADIENT),
                 held.allowed(who, Unlock.NAME_ANY_COLOUR, PermissionNodes.NAME_ANY_COLOUR),
-                held.allowed(who, Unlock.NAME_ANIMATED, PermissionNodes.NAME_ANIMATED), decorations, presets, sold);
+                held.allowed(who, Unlock.NAME_ANIMATED, PermissionNodes.NAME_ANIMATED), decorations, presets, sold,
+                exclusive);
     }
 
     /**

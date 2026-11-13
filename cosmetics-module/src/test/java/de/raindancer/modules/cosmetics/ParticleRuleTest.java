@@ -197,6 +197,61 @@ class ParticleRuleTest {
     }
 
     @org.junit.jupiter.api.Test
+    @org.junit.jupiter.api.DisplayName("with Prime-only on, the coffee trail is a Prime perk and a player without it is told so")
+    void coffeeForPrime() {
+        var rule = new de.raindancer.modules.cosmetics.rules.ParticleRule();
+
+        org.assertj.core.api.Assertions.assertThat(rule.judge("COFFEE", true, java.util.Set.of(), true, false, true)
+                .reason()).isEqualTo("cosmetics.refused.particle-prime");
+        org.assertj.core.api.Assertions.assertThat(rule.judge("COFFEE", true, java.util.Set.of(), true, true, true)
+                .isAllowed()).isTrue();
+        org.assertj.core.api.Assertions.assertThat(rule.judge("COFFEE", true, java.util.Set.of(), true, false, false)
+                .reason()).as("off: the supporters' thank-you, as ever").isEqualTo("cosmetics.refused.particle-supporters");
+    }
+
+    @org.junit.jupiter.api.Test
+    @org.junit.jupiter.api.DisplayName("the Twitch trail is for creators, the stardust for Prime; each refuses everybody else with its own words")
+    void creatorAndPrimeTrails() {
+        var rule = new de.raindancer.modules.cosmetics.rules.ParticleRule();
+
+        org.assertj.core.api.Assertions.assertThat(rule.judge("TWITCH", true, java.util.Set.of(), true, false, true)
+                .reason()).isEqualTo("cosmetics.refused.particle-creators");
+        org.assertj.core.api.Assertions.assertThat(rule.judge("twitch", true, java.util.Set.of(), true, false, false)
+                .reason()).isEqualTo("cosmetics.refused.particle-creators");
+        org.assertj.core.api.Assertions.assertThat(rule.judge("TWITCH", true, java.util.Set.of(), true, true, true)
+                .isAllowed()).isTrue();
+        org.assertj.core.api.Assertions.assertThat(rule.judge("STARDUST", true, java.util.Set.of(), true, false, true)
+                .reason()).isEqualTo("cosmetics.refused.particle-prime");
+        org.assertj.core.api.Assertions.assertThat(rule.judge("STARDUST", true, java.util.Set.of(), true, false, false)
+                .reason()).as("flair is Prime's with the setting off too").isEqualTo("cosmetics.refused.particle-prime");
+        org.assertj.core.api.Assertions.assertThat(rule.judge("STARDUST", true, java.util.Set.of(), true, true, false)
+                .isAllowed()).isTrue();
+        org.assertj.core.api.Assertions.assertThat(rule.judge("TWITCH", true, java.util.Set.of("TWITCH"), true, true, true)
+                .reason()).as("an owner can block them too").isEqualTo("cosmetics.refused.particle-blocked");
+    }
+
+    @org.junit.jupiter.api.Test
+    @org.junit.jupiter.api.DisplayName("an own particle needs its node, not the particles node: a creator without Prime may wear the Twitch trail")
+    void ownNeedsItsOwnNode() {
+        var owns = de.raindancer.modules.cosmetics.util.OwnParticles.class;
+        org.assertj.core.api.Assertions.assertThat(owns.getName()).isNotNull();
+        org.assertj.core.api.Assertions.assertThat(
+                        de.raindancer.modules.cosmetics.util.OwnParticles.nodeFor("coffee"))
+                .contains(de.raindancer.modules.cosmetics.util.PermissionNodes.PARTICLE_COFFEE);
+        org.assertj.core.api.Assertions.assertThat(
+                        de.raindancer.modules.cosmetics.util.OwnParticles.nodeFor(" Twitch "))
+                .contains(de.raindancer.modules.cosmetics.util.PermissionNodes.CREATOR);
+        org.assertj.core.api.Assertions.assertThat(
+                        de.raindancer.modules.cosmetics.util.OwnParticles.nodeFor("STARDUST"))
+                .contains(de.raindancer.modules.cosmetics.util.PermissionNodes.FLAIR);
+        org.assertj.core.api.Assertions.assertThat(
+                de.raindancer.modules.cosmetics.util.OwnParticles.nodeFor("FLAME")).isEmpty();
+        org.assertj.core.api.Assertions.assertThat(de.raindancer.modules.cosmetics.util.OwnParticles.ALL)
+                .as("every particle Core draws itself has a gate here")
+                .containsExactlyInAnyOrderElementsOf(de.raindancer.core.ui.effect.ParticleShows.owns());
+    }
+
+    @org.junit.jupiter.api.Test
     @org.junit.jupiter.api.DisplayName("wings are drawn every WING_STEP ticks, wearers staggered over the phases, each point living a full step")
     void wingsArePacedAndStaggered() {
         var rule = new de.raindancer.modules.cosmetics.rules.ParticleRule();

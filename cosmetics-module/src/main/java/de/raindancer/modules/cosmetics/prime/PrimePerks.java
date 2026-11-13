@@ -27,6 +27,12 @@ public final class PrimePerks {
 
     public static final Set<String> GATED = gated();
 
+    /** Prime's flair: new with Prime, so it is Prime's whether or not Prime-only is on. */
+    public static final Set<String> FLAIR = Set.of(PermissionNodes.FLAIR);
+
+    /** Everything {@code rains.prime} can get from here; {@link #apply} clears these before putting the right ones back. */
+    private static final Set<String> OURS = ours();
+
     private PrimePerks() {
     }
 
@@ -42,23 +48,50 @@ public final class PrimePerks {
         return Set.copyOf(nodes);
     }
 
-    /** The children {@code rains.prime} gets for cosmetics. */
-    public static Set<String> forPrime(boolean primeOnly) {
-        if (!primeOnly) {
-            return Set.of();
-        }
+    private static Set<String> ours() {
         Set<String> nodes = new LinkedHashSet<>(GATED);
         nodes.add(PermissionNodes.SKINS);
         nodes.add(PermissionNodes.SKINS_ALL);
+        nodes.add(PermissionNodes.PARTICLE_COFFEE);
+        nodes.addAll(FLAIR);
+        return Set.copyOf(nodes);
+    }
+
+    /** The children {@code rains.prime} gets for cosmetics. The creator node is never among them. */
+    public static Set<String> forPrime(boolean primeOnly) {
+        Set<String> nodes = new LinkedHashSet<>();
+        if (primeOnly) {
+            nodes.addAll(GATED);
+            nodes.add(PermissionNodes.SKINS);
+            nodes.add(PermissionNodes.SKINS_ALL);
+            nodes.add(PermissionNodes.PARTICLE_COFFEE);
+        }
+        nodes.addAll(FLAIR);
         return nodes;
     }
 
+    /** What staff's {@link #PERKS} node holds: the gated ones to try, and the flair. */
     public static Set<String> forPerksNode() {
-        return GATED;
+        Set<String> nodes = new LinkedHashSet<>(GATED);
+        nodes.addAll(FLAIR);
+        return nodes;
     }
 
     public static boolean supporterKeepsSkins(boolean primeOnly) {
         return !primeOnly;
+    }
+
+    /** The coffee-bean trail is every supporter's — unless Prime-only makes it a Prime perk. */
+    public static boolean supporterKeepsCoffee(boolean primeOnly) {
+        return !primeOnly;
+    }
+
+    private static void setChild(Permission parent, String node, boolean on) {
+        if (on) {
+            parent.getChildren().put(node, true);
+        } else {
+            parent.getChildren().remove(node);
+        }
     }
 
     /** On the global thread. Idempotent; switching back restores the declared defaults. */
@@ -77,28 +110,17 @@ public final class PrimePerks {
             if (gated != null) {
                 gated.setDefault(primeOnly ? PermissionDefault.FALSE : PermissionDefault.TRUE);
             }
-            if (primeOnly) {
-                perks.getChildren().put(node, true);
-                if (free != null) {
-                    free.getChildren().put(node, true);
-                }
-            } else {
-                perks.getChildren().remove(node);
-                if (free != null) {
-                    free.getChildren().remove(node);
-                }
+            if (free != null) {
+                setChild(free, node, primeOnly);
             }
         }
-        for (String node : List.of(PermissionNodes.SKINS, PermissionNodes.SKINS_ALL)) {
-            prime.getChildren().remove(node);
-        }
-        GATED.forEach(prime.getChildren()::remove);
+        Permission staff = perks;
+        staff.getChildren().clear();
+        forPerksNode().forEach(node -> staff.getChildren().put(node, true));
+        OURS.forEach(prime.getChildren()::remove);
         forPrime(primeOnly).forEach(node -> prime.getChildren().put(node, true));
-        if (supporterKeepsSkins(primeOnly)) {
-            supporter.getChildren().put(PermissionNodes.SKINS, true);
-        } else {
-            supporter.getChildren().remove(PermissionNodes.SKINS);
-        }
+        setChild(supporter, PermissionNodes.SKINS, supporterKeepsSkins(primeOnly));
+        setChild(supporter, PermissionNodes.PARTICLE_COFFEE, supporterKeepsCoffee(primeOnly));
         if (free != null) {
             touched.add(free);
         }

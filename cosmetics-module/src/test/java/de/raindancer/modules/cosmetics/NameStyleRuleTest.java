@@ -163,4 +163,38 @@ class NameStyleRuleTest {
         assertThat(judge(flowing, still).reason()).isEqualTo("cosmetics.refused.animated");
         assertThat(judge(flowing, EVERYBODY).isAllowed()).isTrue();
     }
+
+    private static final Preset TWITCH = new Preset("twitch", "Twitch",
+            new NameStyle(List.of(TextColor.fromHexString("#9146ff"), TextColor.fromHexString("#bf94ff")), Set.of(),
+                    true), true);
+    private static final Catalogue WITH_TWITCH = new Catalogue(CATALOGUE.palette(), List.of(SUNSET, TWITCH));
+
+    @Test
+    @DisplayName("a creator preset is the creator's alone: rebuilt by hand with every other perk, it is refused with its own words")
+    void creatorPresetIsNotRebuilt() {
+        Grants prime = new Grants(true, true, true, true, EnumSet.allOf(TextDecoration.class), Set.of(), Set.of(),
+                Set.of("twitch"));
+
+        Verdict refused = new NameStyleRule().judge(TWITCH.style(), prime, WITH_TWITCH, 8);
+
+        assertThat(refused.reason()).isEqualTo("cosmetics.refused.creator-preset");
+        assertThat(refused.detail()).isEqualTo("Twitch");
+    }
+
+    @Test
+    @DisplayName("a creator who holds the node wears the preset, and has no other perk to do it with")
+    void creatorWearsIt() {
+        Grants creator = new Grants(false, false, false, false, Set.of(), Set.of("twitch"), Set.of(), Set.of("twitch"));
+
+        assertThat(new NameStyleRule().judge(TWITCH.style(), creator, WITH_TWITCH, 8).isAllowed()).isTrue();
+        assertThat(new NameStyleRule().mayUse(TWITCH, creator)).isTrue();
+        assertThat(new NameStyleRule().mayUse(TWITCH, Grants.NOTHING)).isFalse();
+    }
+
+    @Test
+    @DisplayName("other restricted presets behave as ever: worn without the node when every part is allowed")
+    void ordinaryRestrictedPresetsUnchanged() {
+        Grants all = new Grants(true, true, true, true, EnumSet.allOf(TextDecoration.class), Set.of());
+        assertThat(new NameStyleRule().judge(RAINBOW.style(), all, CATALOGUE, 8).isAllowed()).isTrue();
+    }
 }

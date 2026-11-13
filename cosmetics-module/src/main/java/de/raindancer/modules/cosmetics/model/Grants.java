@@ -17,12 +17,20 @@ import java.util.Set;
  * @param decorations the decorations they may switch on
  * @param presets     ids of the presets they hold that need holding: restricted ones, and sold ones they bought
  * @param sold        ids of the presets this server sells, which nobody wears without holding them
+ * @param exclusive   ids of the presets that belong to one group (the creators' Twitch looks): not worn without
+ *                    holding them, and not rebuilt by hand either
  */
 public record Grants(boolean colour, boolean gradient, boolean anyColour, boolean animated,
-                     Set<TextDecoration> decorations, Set<String> presets, Set<String> sold) {
+                     Set<TextDecoration> decorations, Set<String> presets, Set<String> sold, Set<String> exclusive) {
 
     /** Nobody may do anything — what a console asking on nobody's behalf gets. */
-    public static final Grants NOTHING = new Grants(false, false, false, false, Set.of(), Set.of(), Set.of());
+    public static final Grants NOTHING = new Grants(false, false, false, false, Set.of(), Set.of(), Set.of(), Set.of());
+
+    /** With no preset belonging to a group. */
+    public Grants(boolean colour, boolean gradient, boolean anyColour, boolean animated,
+                  Set<TextDecoration> decorations, Set<String> presets, Set<String> sold) {
+        this(colour, gradient, anyColour, animated, decorations, presets, sold, Set.of());
+    }
 
     /** With no preset for sale. */
     public Grants(boolean colour, boolean gradient, boolean anyColour, boolean animated,
@@ -40,5 +48,6 @@ public record Grants(boolean colour, boolean gradient, boolean anyColour, boolea
         decorations = Set.copyOf(decorations);
         presets = Set.copyOf(presets);
         sold = Set.copyOf(sold);
+        exclusive = Set.copyOf(exclusive);
     }
 }

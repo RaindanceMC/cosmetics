@@ -85,8 +85,13 @@ public final class CosmeticsCommand implements ICosmeticsCommand {
             teleport(live, sender, Arrays.copyOfRange(args, 1, args.length));
             return;
         }
+        if (first.equals("flair") && args.length > 1) {
+            flair(live, sender, Arrays.copyOfRange(args, 1, args.length));
+            return;
+        }
         if (sender instanceof Player player) {
             switch (first) {
+                case "flair" -> new de.raindancer.modules.cosmetics.screen.FlairMenu(live, player, null).open();
                 case "name" -> live.screens().nameStyle(player);
                 case "particle", "particles" -> live.screens().particles(player);
                 case "wings" -> new de.raindancer.modules.cosmetics.screen.ParticleMenu(live, player, null,
@@ -108,6 +113,21 @@ public final class CosmeticsCommand implements ICosmeticsCommand {
             return;
         }
         live.messages().send(sender, "cosmetics.usage");
+    }
+
+    /** {@code flair <tag|colour|join|kill|death> <option|off>} — the same as the flair page's rows. */
+    private void flair(CosmeticsServices live, CommandSender sender, String[] args) {
+        if (!(sender instanceof Player player)) {
+            live.messages().send(sender, "cosmetics.only-a-player");
+            return;
+        }
+        Optional<de.raindancer.modules.cosmetics.flair.FlairCategory> category =
+                de.raindancer.modules.cosmetics.flair.FlairCategory.of(args[0]);
+        if (category.isEmpty() || args.length != 2) {
+            new de.raindancer.modules.cosmetics.screen.FlairMenu(live, player, null).open();
+            return;
+        }
+        live.flair().choose(player, category.get(), args[1]);
     }
 
     /** {@code teleport depart|arrive|wait <sound or particle|default|none>} — the same as the menu's rows. */
@@ -373,6 +393,7 @@ public final class CosmeticsCommand implements ICosmeticsCommand {
             options.add("particle");
             options.add("wings");
             options.add("tags");
+            options.add("flair");
             options.add("clear");
             options.add("teleport");
             if (admin) {
@@ -447,6 +468,14 @@ public final class CosmeticsCommand implements ICosmeticsCommand {
         } else if (args[0].equalsIgnoreCase("clear") && args.length == 3
                 && ClearScope.of(args[1]).isPresent() && sender.hasPermission(PermissionNodes.CLEAR_OTHERS)) {
             options.addAll(knownPlayers(live, sender, args[2]));
+        } else if (args[0].equalsIgnoreCase("flair") && args.length == 2) {
+            for (de.raindancer.modules.cosmetics.flair.FlairCategory category
+                    : de.raindancer.modules.cosmetics.flair.FlairCategory.values()) {
+                options.add(category.id());
+            }
+        } else if (args[0].equalsIgnoreCase("flair") && args.length == 3 && sender instanceof Player who) {
+            de.raindancer.modules.cosmetics.flair.FlairCategory.of(args[1])
+                    .ifPresent(category -> options.addAll(live.flair().choices(who, category)));
         } else if (args[0].equalsIgnoreCase("name") && args.length == 2) {
             options.addAll(List.of("preset", "set", "reset"));
         } else if (args[0].equalsIgnoreCase("name") && args[1].equalsIgnoreCase("preset") && args.length == 3) {

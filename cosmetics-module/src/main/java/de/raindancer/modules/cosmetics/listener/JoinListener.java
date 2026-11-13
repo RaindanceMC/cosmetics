@@ -47,5 +47,6 @@ public final class JoinListener implements ICosmeticsListener {
         services.teleports().forget(player);
         services.watch().forget(player);
         services.tags().forget(player);
+        services.flair().forget(player);
     }
 }

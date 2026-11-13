@@ -49,8 +49,21 @@ public final class PermissionNodes {
     public static final String SKIN_PREFIX = "rainscosmetics.skin.";
     /** Extra unlocks given by hand: {@code rainscosmetics.skins.unlocks.<n>}. */
     public static final String SKIN_UNLOCKS_PREFIX = "rainscosmetics.skins.unlocks.";
-    /** The coffee-bean trail — every supporter has it through {@code rains.supporter}. */
+    /**
+     * The coffee-bean trail — every supporter has it through {@code rains.supporter}, or, with Prime-only on, only
+     * Prime through {@code rains.prime} (see {@code PrimePerks}).
+     */
     public static final String PARTICLE_COFFEE = "rainscosmetics.particle.coffee";
+    /**
+     * The creators' Twitch cosmetics: the Twitch trail, the Twitch name presets and the Twitch options of the flair
+     * page. Given by hand or by a creator group; a child of nothing — not Prime, not staff, not {@link #FREE}.
+     */
+    public static final String CREATOR = "rainscosmetics.creator";
+    /**
+     * Prime's flair: the stardust trail, a tag in front of the name, join and leave lines, kill and death effects.
+     * Looks only — nothing that touches progress, money, claims, PvP or survival. A child of {@code rains.prime}.
+     */
+    public static final String FLAIR = "rainscosmetics.flair";
     /**
      * The whole sounds and particles library: particles and teleport looks even where they are for sale, and any
      * sound — every supporter has it through {@code rains.supporter}. Not Ultra density: that one is about load.
@@ -101,21 +114,32 @@ public final class PermissionNodes {
         nodes.add(new Permission(SKINS, "Put weapon skins on your own weapons (every supporter has it)",
                 PermissionDefault.OP));
         nodes.add(new Permission(SKINS_ALL, "Have every weapon skin without unlocking any", PermissionDefault.OP));
-        nodes.add(new Permission(PARTICLE_COFFEE, "Wear the coffee-bean trail (every supporter has it)",
+        nodes.add(new Permission(PARTICLE_COFFEE, "Wear the coffee-bean trail (supporters, or Prime where Prime-only is on)",
                 PermissionDefault.OP));
+        nodes.add(new Permission(CREATOR, "The creators' Twitch cosmetics: trail, name presets and flair options",
+                PermissionDefault.FALSE, creatorChildren()));
+        nodes.add(new Permission(FLAIR, "Prime's flair: stardust trail, tag, join and leave lines, kill and death effects",
+                PermissionDefault.FALSE));
         nodes.add(new Permission(LIBRARY, "Every particle, teleport look and sound, without buying them "
                 + "(every supporter has it)", PermissionDefault.OP,
                 java.util.Map.of(PARTICLES, true, TELEPORT, true, TELEPORT_ANY_SOUND, true)));
         return nodes;
     }
 
-    /** One node per restricted preset, operators by default. Called again after a reload adds some. */
+    private static java.util.Map<String, Boolean> creatorChildren() {
+        java.util.Map<String, Boolean> children = new java.util.LinkedHashMap<>();
+        de.raindancer.modules.cosmetics.creator.CreatorPerks.presetNodes().forEach(node -> children.put(node, true));
+        return children;
+    }
+
+    /** One node per restricted preset, operators by default — creators' ones nobody's. Called again after a reload adds some. */
     public static List<Permission> declaredFor(List<Preset> presets) {
         List<Permission> nodes = new ArrayList<>();
         for (Preset preset : presets) {
             if (preset.restricted()) {
                 nodes.add(new Permission(preset.permission(), "Wear the " + preset.title() + " preset",
-                        PermissionDefault.OP));
+                        de.raindancer.modules.cosmetics.creator.CreatorPerks.isCreatorPreset(preset.id())
+                                ? PermissionDefault.FALSE : PermissionDefault.OP));
             }
         }
         return nodes;

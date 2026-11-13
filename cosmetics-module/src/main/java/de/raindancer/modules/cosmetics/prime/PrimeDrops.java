@@ -64,7 +64,8 @@ public record PrimeDrops(SortedMap<YearMonth, Drop> drops) {
             }
             List<String> unlocks = drop.getStringList("unlocks").stream().map(String::trim)
                     .filter(node -> {
-                        boolean fine = node.startsWith(ALLOWED_PREFIX) && !node.contains("*") && !NEVER.contains(node);
+                        boolean fine = node.startsWith(ALLOWED_PREFIX) && !node.contains("*") && !NEVER.contains(node)
+                                && !de.raindancer.modules.cosmetics.creator.CreatorPerks.neverDropped().contains(node);
                         if (!fine) {
                             warn.accept("prime-drops " + key + ": '" + node + "' is not a cosmetic — left out.");
                         }

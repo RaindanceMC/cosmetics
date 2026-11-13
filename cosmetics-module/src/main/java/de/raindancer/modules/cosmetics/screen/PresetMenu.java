@@ -68,7 +68,8 @@ public final class PresetMenu extends PaginatedMenu<Preset> implements ICosmetic
         }
         return services.unlocks().keyOfPreset(preset)
                 .map(key -> Icons.locked(icon, "Costs " + services.unlocks().priceText(key) + " — click to buy it"))
-                .orElseGet(() -> Icons.locked(icon, "Needs " + preset.permission()));
+                .orElseGet(() -> Icons.locked(icon, de.raindancer.modules.cosmetics.creator.CreatorPerks
+                        .isCreatorPreset(preset.id()) ? "For creators — Twitch and YouTube streamers" : "Needs " + preset.permission()));
     }
 
     @Override

@@ -61,6 +61,7 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
 
     private volatile CosmeticsSettings settings;
     private volatile Entitlements entitlements = Entitlements.PERMISSIONS;
+    private volatile java.util.function.BooleanSupplier primeOnly = () -> false;
     private ScheduledTask timer;
 
     public ParticleService(Plugin plugin, Server server, Vanish vanish, Messages messages,
@@ -162,19 +163,29 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
         return settings.particlesEnabled() && entitlements.allowed(who, Unlock.PARTICLES, PermissionNodes.PARTICLES);
     }
 
+    /** Whether the coffee trail is Prime's rather than every supporter's: only words the refusal. */
+    public void primeOnly(java.util.function.BooleanSupplier primeOnly) {
+        this.primeOnly = primeOnly == null ? () -> false : primeOnly;
+    }
+
     public Verdict judge(Player who, String particle) {
-        return rule.judge(particle, mayUse(who), settings.blocked(), ParticleShows.canShow(particle),
-                who.hasPermission(de.raindancer.modules.cosmetics.util.PermissionNodes.PARTICLE_COFFEE));
+        java.util.Optional<String> own = de.raindancer.modules.cosmetics.util.OwnParticles.nodeFor(particle);
+        // An own particle is asked for by its own node: a creator without Prime wears the Twitch trail although the
+        // everyday particles are Prime's.
+        boolean held = own.isPresent() && who.hasPermission(own.get());
+        boolean may = held ? settings.particlesEnabled() : mayUse(who);
+        return rule.judge(particle, may, settings.blocked(), ParticleShows.canShow(particle), held,
+                primeOnly.getAsBoolean());
     }
 
     /**
-     * Every particle a player could wear here, for the picker and tab completion — Core's coffee too, which
-     * only a supporter may wear; anybody else picking it is told how to become one.
+     * Every particle a player could wear here, for the picker and tab completion — Core's own too (the coffee, the
+     * Twitch trail, the stardust), which only those with their node may wear; anybody else picking one is told who may.
      */
     public List<String> offered() {
         java.util.Set<String> blocked = settings.blocked();
         return java.util.stream.Stream.concat(Arrays.stream(Particle.values()).map(Enum::name),
-                        java.util.stream.Stream.of(ParticleShows.COFFEE))
+                        ParticleShows.owns().stream())
                 .filter(ParticleShows::canShow).filter(name -> !blocked.contains(name)).sorted().toList();
     }
 

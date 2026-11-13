@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.28.0")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.29.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -146,13 +146,24 @@ public final class CosmeticsModule implements FlexModule {
         var skins = new de.raindancer.modules.cosmetics.skins.SkinService(context.plugin(), server, context.core(),
                 de.raindancer.modules.cosmetics.skins.SkinCatalogue.bundled(), skinUnlocks, skinSettings::current);
         var supporter = de.raindancer.core.social.support.SupporterPermission.permission(server.getPluginManager());
-        supporter.getChildren().put(PermissionNodes.PARTICLE_COFFEE, true);
+        // The coffee trail is added (or, with Prime-only on, left out) by PrimePerks.apply below.
         supporter.getChildren().put(PermissionNodes.LIBRARY, true);
         supporter.recalculatePermissibles();
         // Prime: one switch turns the everyday cosmetics and skins into perks; the monthly drops on top.
         var primeSettings = context.settings(de.raindancer.modules.cosmetics.prime.PrimeSettings.class,
                 de.raindancer.modules.cosmetics.prime.PrimeSettings.DEFAULTS);
         de.raindancer.modules.cosmetics.prime.PrimePerks.apply(server.getPluginManager(), primeSettings.current().primeOnly());
+        particles.primeOnly(() -> primeSettings.current().primeOnly());
+        // Flair: Prime's tag, lines and effects and the creators' Twitch extras — looks only.
+        var flair = new de.raindancer.modules.cosmetics.flair.FlairService(
+                de.raindancer.modules.cosmetics.flair.FlairStore.persistent(),
+                player -> Scheduling.global(context.plugin(), () -> context.core().tablists().refresh()),
+                context.core().messages());
+        flair.install();
+        context.closeWith(flair::uninstall);
+        context.listener(new de.raindancer.modules.cosmetics.flair.FlairListener(flair,
+                context.core().effects(), context.core().vanish()::isVanished));
+        watch.flair(flair);
         var drops = new de.raindancer.modules.cosmetics.prime.PrimeDropService(context.plugin(),
                 de.raindancer.core.data.store.YamlStore.network(context.dataFolder().resolve("prime-drops.yml")),
                 context.core()::prime, () -> primeSettings.current().primeOnly(), warning -> log.warn("{}", warning));
@@ -164,6 +175,7 @@ public final class CosmeticsModule implements FlexModule {
             drops.sync(online);
             names.revalidate(online);
             particles.revalidate(online);
+            flair.revalidate(online);
         }));
         primeSettings.onChange(fresh -> Scheduling.global(context.plugin(), () -> {
             de.raindancer.modules.cosmetics.prime.PrimePerks.apply(server.getPluginManager(), fresh.primeOnly());
@@ -173,6 +185,7 @@ public final class CosmeticsModule implements FlexModule {
         var primeTimer = Scheduling.globalTimer(context.plugin(), 20L * 30, 20L * 30, task -> server.getOnlinePlayers()
                 .forEach(online -> Scheduling.entity(context.plugin(), online, () -> {
                     drops.sync(online);
+                    flair.revalidate(online);
                     // A Prime that ran out takes its name style along, as on the next join.
                     if (primeSettings.current().primeOnly()) {
                         names.revalidate(online);
@@ -196,7 +209,7 @@ public final class CosmeticsModule implements FlexModule {
         services = new CosmeticsServices(context.plugin(), server, log, context.core().messages(),
                 context.chat().brand(), catalogue::current, settings::current, names, particles, reloading,
                 clearing, teleports, watch, context.core().vanish(), new LiveScreens(), unlocks,
-                context.core(), tags, skins, skinSettings);
+                context.core(), tags, skins, skinSettings, flair);
         // What admin mode swaps with the rest of a side: the worn particle, wings and teleport looks (all kept under
         // rainscosmetics: in the player's data) and the name style, so an admin wears different cosmetics as admin.
         de.raindancer.core.data.loadout.SideData.Part worn =

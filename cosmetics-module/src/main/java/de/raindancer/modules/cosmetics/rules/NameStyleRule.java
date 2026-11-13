@@ -32,6 +32,10 @@ public final class NameStyleRule implements ICosmeticsRule {
             // Not rebuilt by hand either: whoever buys a preset buys exactly this look.
             return Verdict.refused("cosmetics.refused.sold-preset", preset.get().title());
         }
+        if (preset.isPresent() && grants.exclusive().contains(preset.get().id())) {
+            // The creators' looks are not rebuilt by hand with Prime's colour perks either.
+            return Verdict.refused("cosmetics.refused.creator-preset", preset.get().title());
+        }
         int ceiling = Math.max(1, Math.min(NameStyle.MAX_STOPS, maxStops));
         if (style.colours().size() > ceiling) {
             return Verdict.refused("cosmetics.refused.too-many-stops", ceiling);

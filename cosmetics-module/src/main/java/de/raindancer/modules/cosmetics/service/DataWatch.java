@@ -22,7 +22,7 @@ import java.util.function.BooleanSupplier;
  */
 public final class DataWatch implements ICosmeticsService {
 
-    private record Seen(TeleportLookChoice look, ParticleChoice worn, ParticleChoice wings, java.util.Set<String> tags) {
+    private record Seen(TeleportLookChoice look, ParticleChoice worn, ParticleChoice wings, java.util.Set<String> tags, String flair) {
     }
 
     private static final long PERIOD_TICKS = 20;
@@ -31,6 +31,7 @@ public final class DataWatch implements ICosmeticsService {
     private final TeleportLookService teleports;
     private final BooleanSupplier following;
     private final TagService tags;
+    private volatile de.raindancer.modules.cosmetics.flair.FlairService flair;
     private final Map<UUID, Seen> seen = new ConcurrentHashMap<>();
     private volatile ScheduledTask timer;
 
@@ -49,6 +50,11 @@ public final class DataWatch implements ICosmeticsService {
         this.teleports = teleports;
         this.following = following;
         this.tags = tags;
+    }
+
+    /** Flair is reloaded too when its data changes; set once, before the watch starts. */
+    public void flair(de.raindancer.modules.cosmetics.flair.FlairService service) {
+        this.flair = service;
     }
 
     @Override
@@ -82,6 +88,9 @@ public final class DataWatch implements ICosmeticsService {
         if (tags != null) {
             tags.load(who);
         }
+        if (flair != null) {
+            flair.load(who);
+        }
         if (following.getAsBoolean()) {
             teleports.refresh(who);
         } else {
@@ -97,6 +106,6 @@ public final class DataWatch implements ICosmeticsService {
 
     private Seen read(Player who) {
         return new Seen(teleports.stored(who), particles.current(who), particles.wings(who),
-                tags == null ? java.util.Set.of() : tags.stored(who));
+                tags == null ? java.util.Set.of() : tags.stored(who), flair == null ? null : flair.stored(who));
     }
 }

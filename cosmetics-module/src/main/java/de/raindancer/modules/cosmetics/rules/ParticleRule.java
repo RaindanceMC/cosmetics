@@ -1,6 +1,7 @@
 package de.raindancer.modules.cosmetics.rules;
 
 import de.raindancer.core.platform.rule.Verdict;
+import de.raindancer.modules.cosmetics.util.OwnParticles;
 
 import java.util.Locale;
 import java.util.Set;
@@ -16,14 +17,24 @@ public final class ParticleRule implements ICosmeticsRule {
         return judge(particle, mayUse, blocked, showable, false);
     }
 
-    /** @param supporter whether they bought the owner a coffee — Core's own coffee particle is their thank-you */
-    public Verdict judge(String particle, boolean mayUse, Set<String> blocked, boolean showable, boolean supporter) {
+    /** As below, with Prime-only off. */
+    public Verdict judge(String particle, boolean mayUse, Set<String> blocked, boolean showable, boolean ownHeld) {
+        return judge(particle, mayUse, blocked, showable, ownHeld, false);
+    }
+
+    /**
+     * @param ownHeld   whether they hold the node of Core's own particle they ask for (see {@link de.raindancer.modules.cosmetics.util.OwnParticles}):
+     *                  the supporter's coffee, the creator's Twitch trail, Prime's stardust
+     * @param primeOnly whether the coffee trail is Prime's rather than every supporter's — only words the refusal
+     */
+    public Verdict judge(String particle, boolean mayUse, Set<String> blocked, boolean showable, boolean ownHeld,
+                         boolean primeOnly) {
         Verdict plain = judgePlain(particle, mayUse, blocked, showable);
         if (plain.isRefused()) {
             return plain;
         }
-        if (de.raindancer.core.ui.effect.ParticleShows.isOwn(particle) && !supporter) {
-            return Verdict.refused("cosmetics.refused.particle-supporters");
+        if (de.raindancer.core.ui.effect.ParticleShows.isOwn(particle) && !ownHeld) {
+            return Verdict.refused(OwnParticles.refusal(particle, primeOnly));
         }
         return plain;
     }

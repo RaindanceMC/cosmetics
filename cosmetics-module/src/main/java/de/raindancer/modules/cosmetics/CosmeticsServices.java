@@ -41,7 +41,8 @@ public record CosmeticsServices(
         RainsCore core,
         de.raindancer.modules.cosmetics.service.TagService tags,
         de.raindancer.modules.cosmetics.skins.SkinService skins,
-        de.raindancer.core.data.settings.SettingsStore<de.raindancer.modules.cosmetics.SkinSettings> skinSettings) {
+        de.raindancer.core.data.settings.SettingsStore<de.raindancer.modules.cosmetics.SkinSettings> skinSettings,
+        de.raindancer.modules.cosmetics.flair.FlairService flair) {
 
     public Catalogue offered() {
         return catalogue.get();
