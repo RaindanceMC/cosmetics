@@ -23,6 +23,8 @@ public final class TagMenu extends Menu implements ICosmeticsScreen {
     private static final MiniMessage MINI = MiniMessage.miniMessage();
     /** Columns of one band, left to right. */
     private static final int[] COLUMNS = {1, 2, 3, 4, 5, 6, 7};
+    /** RanksModule.BADGE_OWNER: ranks are worn and chosen on /rank, shown here so they are found. */
+    private static final String RANKS = "ranks";
 
     private final CosmeticsServices services;
 
@@ -55,15 +57,37 @@ public final class TagMenu extends Menu implements ICosmeticsScreen {
     record Offered(NameBadges.Wearable wearable, Component badge) {
     }
 
+    /** The rank badge in front of this player's name (Ranks' own), as chat or else the tablist draws it. */
+    static Optional<Component> rankOf(java.util.UUID player) {
+        return NameBadges.preview(player, RANKS, NameBadges.Place.CHAT)
+                .or(() -> NameBadges.preview(player, RANKS, NameBadges.Place.TABLIST));
+    }
+
     @Override
     protected void render() {
         List<Offered> offered = offered(viewer.getUniqueId());
-        if (offered.isEmpty()) {
+        Optional<Component> rank = rankOf(viewer.getUniqueId());
+        boolean ranks = viewer.getServer().getCommandMap().getCommand("rank") != null;
+        int shown = 0;
+        if (rank.isPresent()) {
+            band(MenuLayout.WHO, COLUMNS[shown++], Icons.of(Material.GOLDEN_HELMET, "<white>Your rank",
+                            "<gray>Looks like: " + MINI.serialize(rank.get())
+                                    // the badge's font stays open in MiniMessage: the name must not be drawn in it
+                                    + "<font:minecraft:default> <white>" + viewer.getName(),
+                            "<gray>Which rank you wear, its colours", "<gray>and where it shows: on /rank.",
+                            "", ranks ? "<dark_gray>Click to open /rank." : ""),
+                    click -> {
+                        if (ranks) {
+                            viewer.closeInventory();
+                            viewer.performCommand("rank");
+                        }
+                    });
+        }
+        if (offered.isEmpty() && rank.isEmpty()) {
             band(MenuLayout.WHO, 4, Icons.of(Material.NAME_TAG, "<white>No tags yet",
                     "<gray>Tags come with what you are part of:",
                     "<gray>join a guild and its tag shows up here."));
         }
-        int shown = 0;
         for (Offered tag : offered) {
             if (shown == COLUMNS.length) {
                 break;
@@ -82,7 +106,7 @@ public final class TagMenu extends Menu implements ICosmeticsScreen {
                         refresh();
                     });
         }
-        if (viewer.getServer().getCommandMap().getCommand("rank") != null) {
+        if (ranks && rank.isEmpty()) {
             band(MenuLayout.RULES, 4, Icons.of(Material.GOLDEN_HELMET, "<white>Your rank",
                             "<gray>Which rank you wear, and where,", "<gray>is on its own page.", "",
                             "<dark_gray>Click to open /rank."),
