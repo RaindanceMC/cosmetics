@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/hardened-diamond-texture-pack-diamond"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/hardened-diamond-texture-pack-diamond"
+   }
+  ]
+ }
+}

@@ -1,0 +1,6 @@
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "rainsskins:item/armour/jappa-styled-armor-retextures-gold/chestplate"
+ }
+}

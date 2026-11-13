@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "rainsskins:item/armour/wooden-leather-armor-leather/helmet",
+  "layer1": "rainsskins:item/armour/wooden-leather-armor-leather/helmet_overlay"
+ }
+}

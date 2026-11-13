@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/jappa-styled-armor-retextures-iron"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/jappa-styled-armor-retextures-iron"
+   }
+  ]
+ }
+}

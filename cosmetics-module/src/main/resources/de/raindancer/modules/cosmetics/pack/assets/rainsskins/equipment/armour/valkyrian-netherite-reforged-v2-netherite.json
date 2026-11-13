@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite"
+   }
+  ]
+ }
+}

@@ -1,0 +1,6 @@
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "rainsskins:item/armour/adinas-port-of-kits-cutie-flowers-netherite/helmet"
+ }
+}

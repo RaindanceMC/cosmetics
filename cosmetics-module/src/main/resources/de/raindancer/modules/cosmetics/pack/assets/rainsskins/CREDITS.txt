@@ -47,3 +47,25 @@ Valkyrian Netherite Reforged V2 by Orenxo (MIT), version 1.0.4, https://modrinth
 Cute pickaxes by AbraPikachu (CC-BY-4.0), version 1.21.7, https://modrinth.com/resourcepack/cute-pickaxes
 smiling pickaxe by erez43 (MIT), version v2.0, https://modrinth.com/resourcepack/smiling-pickaxe
 Fish Netherite Pickaxe by memphis_ (Apache-2.0), version 1.0, https://modrinth.com/resourcepack/fish-netherite-pickaxe
+
+Armour skins, converted the same way into worn layers (equipment assets) and icons:
+Jappa-Styled Armor Retextures by ATOMICtheCrow (CC-BY-4.0), version 1.21.5, https://modrinth.com/resourcepack/jappa-styled-armor-retextures
+Valkyrian Netherite Reforged V2 by Orenxo (MIT), version 1.0.4, https://modrinth.com/resourcepack/valkyrian-netherite-reforged-v2
+Netherite Armor by ItsSory (MIT), version NetheriteArmor, https://modrinth.com/resourcepack/netherite-armor
+Frostburn by MayhemForge (MIT), version 1.0, https://modrinth.com/resourcepack/frostburn
+Purple diamond armor by Mr_frugal (MIT), version 1.0.0_instillation_1, https://modrinth.com/resourcepack/purple-diamond-armor
+pink iron by QiroliOfficial (Apache-2.0), version 1.2, https://modrinth.com/resourcepack/pink-iron
+Gold Remastered by MidasDaEpik (MIT), version 1.2, https://modrinth.com/resourcepack/midas_gold
+Better armor by klimmer13631 (MIT), version 1.0.0, https://modrinth.com/resourcepack/better-armor-by-klimmer
+IZeeXeS's netherite armor by IZeeXeS (MIT), version 1.0-1.16-1.19, https://modrinth.com/resourcepack/izeexes-netherite-armor
+white netherite armor by LISXMC (MIT), version 1.1, https://modrinth.com/resourcepack/lisxmccreations
+Plate Armor + by MrNoobNub (Unlicense), version v1.0.2, https://modrinth.com/resourcepack/plate-armor-plus
+Wooden Leather Armor by lord_bobbo (MIT), version 1.0, https://modrinth.com/resourcepack/wooden-leather-armor
+Adina's Kit's Cutie Flowers by adinathedev (BSD-3-Clause), version R1.3, https://modrinth.com/resourcepack/adinas-port-of-kits-cutie-flowers
+Unobstructive Armor by Antikyth (CC-BY-SA-4.0), version 1.2, https://modrinth.com/resourcepack/unobstructive-armor
+Mob Masks Armour by SirJumpy8772 (LGPL-3.0-only), version v1, https://modrinth.com/resourcepack/mob-masks-armour
+S33R Sakura Hotbar by S33R_OF_PYR3 (MIT), version 16.1.1, https://modrinth.com/resourcepack/sakura-hotbar
+CrystalCore by MR_POPCORN_9234 (MIT), version 1.1, https://modrinth.com/resourcepack/crystalcore
+Hardened Diamond Texture Pack by MemeThief (CC0-1.0), version 1.21+, https://modrinth.com/resourcepack/hardened-diamond-texture-pack
+[Soup´s] Knight Armor by s0up-Ilt0n (GPL-3.0-only), version 1.1, https://modrinth.com/resourcepack/soups-knight-armor
+Fiona's Minimal Armors by FionaBagel (WTFPL), version 9.0, https://modrinth.com/resourcepack/fionas-armors

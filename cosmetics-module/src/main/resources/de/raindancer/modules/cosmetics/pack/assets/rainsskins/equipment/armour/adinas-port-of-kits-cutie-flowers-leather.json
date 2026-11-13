@@ -1,0 +1,26 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-leather",
+    "dyeable": {
+     "color_when_undyed": -6265536
+    }
+   },
+   {
+    "texture": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-leather_overlay"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-leather",
+    "dyeable": {
+     "color_when_undyed": -6265536
+    }
+   },
+   {
+    "texture": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-leather_overlay"
+   }
+  ]
+ }
+}

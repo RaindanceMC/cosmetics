@@ -1,5 +1,906 @@
 [
  {
+  "id": "armour-jappa-styled-armor-retextures-chainmail",
+  "title": "Jappa Chainmail",
+  "pack": 0,
+  "packTitle": "Jappa-Styled Armor Retextures",
+  "category": "Armour",
+  "author": "ATOMICtheCrow",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/jappa-styled-armor-retextures",
+  "looks": {
+   "chainmail_helmet": "rainsskins:armour/jappa-styled-armor-retextures-chainmail/helmet",
+   "chainmail_chestplate": "rainsskins:armour/jappa-styled-armor-retextures-chainmail/chestplate",
+   "chainmail_leggings": "rainsskins:armour/jappa-styled-armor-retextures-chainmail/leggings",
+   "chainmail_boots": "rainsskins:armour/jappa-styled-armor-retextures-chainmail/boots"
+  },
+  "equipment": "rainsskins:armour/jappa-styled-armor-retextures-chainmail"
+ },
+ {
+  "id": "armour-jappa-styled-armor-retextures-iron",
+  "title": "Jappa Iron",
+  "pack": 0,
+  "packTitle": "Jappa-Styled Armor Retextures",
+  "category": "Armour",
+  "author": "ATOMICtheCrow",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/jappa-styled-armor-retextures",
+  "looks": {
+   "iron_helmet": "rainsskins:armour/jappa-styled-armor-retextures-iron/helmet",
+   "iron_chestplate": "rainsskins:armour/jappa-styled-armor-retextures-iron/chestplate",
+   "iron_leggings": "rainsskins:armour/jappa-styled-armor-retextures-iron/leggings",
+   "iron_boots": "minecraft:iron_boots"
+  },
+  "equipment": "rainsskins:armour/jappa-styled-armor-retextures-iron"
+ },
+ {
+  "id": "armour-jappa-styled-armor-retextures-gold",
+  "title": "Jappa Gold",
+  "pack": 0,
+  "packTitle": "Jappa-Styled Armor Retextures",
+  "category": "Armour",
+  "author": "ATOMICtheCrow",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/jappa-styled-armor-retextures",
+  "looks": {
+   "golden_helmet": "rainsskins:armour/jappa-styled-armor-retextures-gold/helmet",
+   "golden_chestplate": "rainsskins:armour/jappa-styled-armor-retextures-gold/chestplate",
+   "golden_leggings": "rainsskins:armour/jappa-styled-armor-retextures-gold/leggings",
+   "golden_boots": "rainsskins:armour/jappa-styled-armor-retextures-gold/boots"
+  },
+  "equipment": "rainsskins:armour/jappa-styled-armor-retextures-gold"
+ },
+ {
+  "id": "armour-jappa-styled-armor-retextures-diamond",
+  "title": "Jappa Diamond",
+  "pack": 0,
+  "packTitle": "Jappa-Styled Armor Retextures",
+  "category": "Armour",
+  "author": "ATOMICtheCrow",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/jappa-styled-armor-retextures",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/jappa-styled-armor-retextures-diamond/helmet",
+   "diamond_chestplate": "rainsskins:armour/jappa-styled-armor-retextures-diamond/chestplate",
+   "diamond_leggings": "rainsskins:armour/jappa-styled-armor-retextures-diamond/leggings",
+   "diamond_boots": "rainsskins:armour/jappa-styled-armor-retextures-diamond/boots"
+  },
+  "equipment": "rainsskins:armour/jappa-styled-armor-retextures-diamond"
+ },
+ {
+  "id": "armour-valkyrian-netherite-reforged-v2-netherite",
+  "title": "Valkyrian Netherite",
+  "pack": 0,
+  "packTitle": "Valkyrian Netherite Reforged V2",
+  "category": "Armour",
+  "author": "Orenxo",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/valkyrian-netherite-reforged-v2",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite/helmet",
+   "netherite_chestplate": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite/chestplate",
+   "netherite_leggings": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite/leggings",
+   "netherite_boots": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite/boots"
+  },
+  "equipment": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite"
+ },
+ {
+  "id": "armour-valkyrian-netherite-reforged-v2-turtle-scute",
+  "title": "Valkyrian Turtle",
+  "pack": 0,
+  "packTitle": "Valkyrian Netherite Reforged V2",
+  "category": "Armour",
+  "author": "Orenxo",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/valkyrian-netherite-reforged-v2",
+  "looks": {
+   "turtle_helmet": "rainsskins:armour/valkyrian-netherite-reforged-v2-turtle-scute/helmet"
+  },
+  "equipment": "rainsskins:armour/valkyrian-netherite-reforged-v2-turtle-scute"
+ },
+ {
+  "id": "armour-netherite-armor-netherite",
+  "title": "Modern Netherite",
+  "pack": 0,
+  "packTitle": "Netherite Armor",
+  "category": "Armour",
+  "author": "ItsSory",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/netherite-armor",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/netherite-armor-netherite/helmet",
+   "netherite_chestplate": "rainsskins:armour/netherite-armor-netherite/chestplate",
+   "netherite_leggings": "rainsskins:armour/netherite-armor-netherite/leggings",
+   "netherite_boots": "rainsskins:armour/netherite-armor-netherite/boots"
+  },
+  "equipment": "rainsskins:armour/netherite-armor-netherite"
+ },
+ {
+  "id": "armour-frostburn-diamond",
+  "title": "Frostburn Diamond",
+  "pack": 0,
+  "packTitle": "Frostburn",
+  "category": "Armour",
+  "author": "MayhemForge",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/frostburn",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/frostburn-diamond/helmet",
+   "diamond_chestplate": "rainsskins:armour/frostburn-diamond/chestplate",
+   "diamond_leggings": "rainsskins:armour/frostburn-diamond/leggings",
+   "diamond_boots": "rainsskins:armour/frostburn-diamond/boots"
+  },
+  "equipment": "rainsskins:armour/frostburn-diamond"
+ },
+ {
+  "id": "armour-purple-diamond-armor-diamond",
+  "title": "Purple Diamond",
+  "pack": 0,
+  "packTitle": "Purple diamond armor",
+  "category": "Armour",
+  "author": "Mr_frugal",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/purple-diamond-armor",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/purple-diamond-armor-diamond/helmet",
+   "diamond_chestplate": "rainsskins:armour/purple-diamond-armor-diamond/chestplate",
+   "diamond_leggings": "rainsskins:armour/purple-diamond-armor-diamond/leggings",
+   "diamond_boots": "rainsskins:armour/purple-diamond-armor-diamond/boots"
+  },
+  "equipment": "rainsskins:armour/purple-diamond-armor-diamond"
+ },
+ {
+  "id": "armour-pink-iron-iron",
+  "title": "Pink Iron",
+  "pack": 0,
+  "packTitle": "pink iron",
+  "category": "Armour",
+  "author": "QiroliOfficial",
+  "license": "Apache-2.0",
+  "url": "https://modrinth.com/resourcepack/pink-iron",
+  "looks": {
+   "iron_helmet": "rainsskins:armour/pink-iron-iron/helmet",
+   "iron_chestplate": "rainsskins:armour/pink-iron-iron/chestplate",
+   "iron_leggings": "rainsskins:armour/pink-iron-iron/leggings",
+   "iron_boots": "rainsskins:armour/pink-iron-iron/boots"
+  },
+  "equipment": "rainsskins:armour/pink-iron-iron"
+ },
+ {
+  "id": "armour-midas-gold-gold",
+  "title": "Midas Gold",
+  "pack": 0,
+  "packTitle": "Gold Remastered",
+  "category": "Armour",
+  "author": "MidasDaEpik",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/midas_gold",
+  "looks": {
+   "golden_helmet": "rainsskins:armour/midas-gold-gold/helmet",
+   "golden_chestplate": "rainsskins:armour/midas-gold-gold/chestplate",
+   "golden_leggings": "rainsskins:armour/midas-gold-gold/leggings",
+   "golden_boots": "rainsskins:armour/midas-gold-gold/boots"
+  },
+  "equipment": "rainsskins:armour/midas-gold-gold"
+ },
+ {
+  "id": "armour-better-armor-by-klimmer-iron",
+  "title": "Klimmer Iron",
+  "pack": 0,
+  "packTitle": "Better armor",
+  "category": "Armour",
+  "author": "klimmer13631",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/better-armor-by-klimmer",
+  "looks": {
+   "iron_helmet": "rainsskins:armour/better-armor-by-klimmer-iron/helmet",
+   "iron_chestplate": "rainsskins:armour/better-armor-by-klimmer-iron/chestplate",
+   "iron_boots": "minecraft:iron_boots"
+  },
+  "equipment": "rainsskins:armour/better-armor-by-klimmer-iron"
+ },
+ {
+  "id": "armour-better-armor-by-klimmer-gold",
+  "title": "Klimmer Gold",
+  "pack": 0,
+  "packTitle": "Better armor",
+  "category": "Armour",
+  "author": "klimmer13631",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/better-armor-by-klimmer",
+  "looks": {
+   "golden_helmet": "rainsskins:armour/better-armor-by-klimmer-gold/helmet",
+   "golden_chestplate": "minecraft:golden_chestplate",
+   "golden_boots": "minecraft:golden_boots"
+  },
+  "equipment": "rainsskins:armour/better-armor-by-klimmer-gold"
+ },
+ {
+  "id": "armour-better-armor-by-klimmer-diamond",
+  "title": "Klimmer Diamond",
+  "pack": 0,
+  "packTitle": "Better armor",
+  "category": "Armour",
+  "author": "klimmer13631",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/better-armor-by-klimmer",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/better-armor-by-klimmer-diamond/helmet",
+   "diamond_chestplate": "rainsskins:armour/better-armor-by-klimmer-diamond/chestplate",
+   "diamond_boots": "minecraft:diamond_boots"
+  },
+  "equipment": "rainsskins:armour/better-armor-by-klimmer-diamond"
+ },
+ {
+  "id": "armour-better-armor-by-klimmer-netherite",
+  "title": "Klimmer Netherite",
+  "pack": 0,
+  "packTitle": "Better armor",
+  "category": "Armour",
+  "author": "klimmer13631",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/better-armor-by-klimmer",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/better-armor-by-klimmer-netherite/helmet",
+   "netherite_chestplate": "rainsskins:armour/better-armor-by-klimmer-netherite/chestplate",
+   "netherite_boots": "minecraft:netherite_boots"
+  },
+  "equipment": "rainsskins:armour/better-armor-by-klimmer-netherite"
+ },
+ {
+  "id": "armour-izeexes-netherite-armor-netherite",
+  "title": "Techno Netherite",
+  "pack": 0,
+  "packTitle": "IZeeXeS's netherite armor",
+  "category": "Armour",
+  "author": "IZeeXeS",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/izeexes-netherite-armor",
+  "looks": {
+   "netherite_helmet": "minecraft:netherite_helmet",
+   "netherite_chestplate": "minecraft:netherite_chestplate",
+   "netherite_leggings": "minecraft:netherite_leggings",
+   "netherite_boots": "minecraft:netherite_boots"
+  },
+  "equipment": "rainsskins:armour/izeexes-netherite-armor-netherite"
+ },
+ {
+  "id": "armour-lisxmccreations-netherite",
+  "title": "White Netherite",
+  "pack": 0,
+  "packTitle": "white netherite armor",
+  "category": "Armour",
+  "author": "LISXMC",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/lisxmccreations",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/lisxmccreations-netherite/helmet",
+   "netherite_chestplate": "rainsskins:armour/lisxmccreations-netherite/chestplate",
+   "netherite_leggings": "rainsskins:armour/lisxmccreations-netherite/leggings",
+   "netherite_boots": "rainsskins:armour/lisxmccreations-netherite/boots"
+  },
+  "equipment": "rainsskins:armour/lisxmccreations-netherite"
+ },
+ {
+  "id": "armour-plate-armor-plus-iron",
+  "title": "Plate Iron",
+  "pack": 0,
+  "packTitle": "Plate Armor +",
+  "category": "Armour",
+  "author": "MrNoobNub",
+  "license": "Unlicense",
+  "url": "https://modrinth.com/resourcepack/plate-armor-plus",
+  "looks": {
+   "iron_helmet": "minecraft:iron_helmet",
+   "iron_chestplate": "rainsskins:armour/plate-armor-plus-iron/chestplate",
+   "iron_leggings": "minecraft:iron_leggings",
+   "iron_boots": "minecraft:iron_boots"
+  },
+  "equipment": "rainsskins:armour/plate-armor-plus-iron"
+ },
+ {
+  "id": "armour-wooden-leather-armor-leather",
+  "title": "Wooden Leather",
+  "pack": 0,
+  "packTitle": "Wooden Leather Armor",
+  "category": "Armour",
+  "author": "lord_bobbo",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/wooden-leather-armor",
+  "looks": {
+   "leather_helmet": "rainsskins:armour/wooden-leather-armor-leather/helmet",
+   "leather_chestplate": "rainsskins:armour/wooden-leather-armor-leather/chestplate",
+   "leather_leggings": "rainsskins:armour/wooden-leather-armor-leather/leggings",
+   "leather_boots": "rainsskins:armour/wooden-leather-armor-leather/boots"
+  },
+  "equipment": "rainsskins:armour/wooden-leather-armor-leather"
+ },
+ {
+  "id": "armour-adinas-port-of-kits-cutie-flowers-leather",
+  "title": "Flowers Leather",
+  "pack": 0,
+  "packTitle": "Adina's Kit's Cutie Flowers",
+  "category": "Armour",
+  "author": "adinathedev",
+  "license": "BSD-3-Clause",
+  "url": "https://modrinth.com/resourcepack/adinas-port-of-kits-cutie-flowers",
+  "looks": {
+   "leather_helmet": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-leather/helmet",
+   "leather_chestplate": "minecraft:leather_chestplate",
+   "leather_leggings": "minecraft:leather_leggings"
+  },
+  "equipment": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-leather"
+ },
+ {
+  "id": "armour-adinas-port-of-kits-cutie-flowers-chainmail",
+  "title": "Flowers Chainmail",
+  "pack": 0,
+  "packTitle": "Adina's Kit's Cutie Flowers",
+  "category": "Armour",
+  "author": "adinathedev",
+  "license": "BSD-3-Clause",
+  "url": "https://modrinth.com/resourcepack/adinas-port-of-kits-cutie-flowers",
+  "looks": {
+   "chainmail_helmet": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-chainmail/helmet",
+   "chainmail_chestplate": "minecraft:chainmail_chestplate",
+   "chainmail_leggings": "minecraft:chainmail_leggings"
+  },
+  "equipment": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-chainmail"
+ },
+ {
+  "id": "armour-adinas-port-of-kits-cutie-flowers-copper",
+  "title": "Flowers Copper",
+  "pack": 0,
+  "packTitle": "Adina's Kit's Cutie Flowers",
+  "category": "Armour",
+  "author": "adinathedev",
+  "license": "BSD-3-Clause",
+  "url": "https://modrinth.com/resourcepack/adinas-port-of-kits-cutie-flowers",
+  "looks": {
+   "copper_helmet": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-copper/helmet",
+   "copper_chestplate": "minecraft:copper_chestplate",
+   "copper_leggings": "minecraft:copper_leggings"
+  },
+  "equipment": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-copper"
+ },
+ {
+  "id": "armour-adinas-port-of-kits-cutie-flowers-iron",
+  "title": "Flowers Iron",
+  "pack": 0,
+  "packTitle": "Adina's Kit's Cutie Flowers",
+  "category": "Armour",
+  "author": "adinathedev",
+  "license": "BSD-3-Clause",
+  "url": "https://modrinth.com/resourcepack/adinas-port-of-kits-cutie-flowers",
+  "looks": {
+   "iron_helmet": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-iron/helmet",
+   "iron_chestplate": "minecraft:iron_chestplate",
+   "iron_leggings": "minecraft:iron_leggings"
+  },
+  "equipment": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-iron"
+ },
+ {
+  "id": "armour-adinas-port-of-kits-cutie-flowers-gold",
+  "title": "Flowers Gold",
+  "pack": 0,
+  "packTitle": "Adina's Kit's Cutie Flowers",
+  "category": "Armour",
+  "author": "adinathedev",
+  "license": "BSD-3-Clause",
+  "url": "https://modrinth.com/resourcepack/adinas-port-of-kits-cutie-flowers",
+  "looks": {
+   "golden_helmet": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-gold/helmet",
+   "golden_chestplate": "minecraft:golden_chestplate",
+   "golden_leggings": "minecraft:golden_leggings"
+  },
+  "equipment": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-gold"
+ },
+ {
+  "id": "armour-adinas-port-of-kits-cutie-flowers-diamond",
+  "title": "Flowers Diamond",
+  "pack": 0,
+  "packTitle": "Adina's Kit's Cutie Flowers",
+  "category": "Armour",
+  "author": "adinathedev",
+  "license": "BSD-3-Clause",
+  "url": "https://modrinth.com/resourcepack/adinas-port-of-kits-cutie-flowers",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-diamond/helmet",
+   "diamond_chestplate": "minecraft:diamond_chestplate",
+   "diamond_leggings": "minecraft:diamond_leggings"
+  },
+  "equipment": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-diamond"
+ },
+ {
+  "id": "armour-adinas-port-of-kits-cutie-flowers-netherite",
+  "title": "Flowers Netherite",
+  "pack": 0,
+  "packTitle": "Adina's Kit's Cutie Flowers",
+  "category": "Armour",
+  "author": "adinathedev",
+  "license": "BSD-3-Clause",
+  "url": "https://modrinth.com/resourcepack/adinas-port-of-kits-cutie-flowers",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-netherite/helmet",
+   "netherite_chestplate": "minecraft:netherite_chestplate",
+   "netherite_leggings": "minecraft:netherite_leggings"
+  },
+  "equipment": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-netherite"
+ },
+ {
+  "id": "armour-adinas-port-of-kits-cutie-flowers-turtle-scute",
+  "title": "Flowers Turtle",
+  "pack": 0,
+  "packTitle": "Adina's Kit's Cutie Flowers",
+  "category": "Armour",
+  "author": "adinathedev",
+  "license": "BSD-3-Clause",
+  "url": "https://modrinth.com/resourcepack/adinas-port-of-kits-cutie-flowers",
+  "looks": {
+   "turtle_helmet": "minecraft:turtle_helmet"
+  },
+  "equipment": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-turtle-scute"
+ },
+ {
+  "id": "armour-unobstructive-armor-leather",
+  "title": "Unobstructive Leather",
+  "pack": 0,
+  "packTitle": "Unobstructive Armor",
+  "category": "Armour",
+  "author": "Antikyth",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/unobstructive-armor",
+  "looks": {
+   "leather_helmet": "rainsskins:armour/unobstructive-armor-leather/helmet",
+   "leather_chestplate": "minecraft:leather_chestplate",
+   "leather_leggings": "minecraft:leather_leggings",
+   "leather_boots": "minecraft:leather_boots"
+  },
+  "equipment": "rainsskins:armour/unobstructive-armor-leather"
+ },
+ {
+  "id": "armour-unobstructive-armor-iron",
+  "title": "Unobstructive Iron",
+  "pack": 0,
+  "packTitle": "Unobstructive Armor",
+  "category": "Armour",
+  "author": "Antikyth",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/unobstructive-armor",
+  "looks": {
+   "iron_helmet": "rainsskins:armour/unobstructive-armor-iron/helmet",
+   "iron_chestplate": "minecraft:iron_chestplate",
+   "iron_leggings": "minecraft:iron_leggings",
+   "iron_boots": "minecraft:iron_boots"
+  },
+  "equipment": "rainsskins:armour/unobstructive-armor-iron"
+ },
+ {
+  "id": "armour-unobstructive-armor-gold",
+  "title": "Unobstructive Gold",
+  "pack": 0,
+  "packTitle": "Unobstructive Armor",
+  "category": "Armour",
+  "author": "Antikyth",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/unobstructive-armor",
+  "looks": {
+   "golden_helmet": "rainsskins:armour/unobstructive-armor-gold/helmet",
+   "golden_chestplate": "minecraft:golden_chestplate",
+   "golden_leggings": "minecraft:golden_leggings",
+   "golden_boots": "minecraft:golden_boots"
+  },
+  "equipment": "rainsskins:armour/unobstructive-armor-gold"
+ },
+ {
+  "id": "armour-unobstructive-armor-diamond",
+  "title": "Unobstructive Diamond",
+  "pack": 0,
+  "packTitle": "Unobstructive Armor",
+  "category": "Armour",
+  "author": "Antikyth",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/unobstructive-armor",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/unobstructive-armor-diamond/helmet",
+   "diamond_chestplate": "minecraft:diamond_chestplate",
+   "diamond_leggings": "minecraft:diamond_leggings",
+   "diamond_boots": "minecraft:diamond_boots"
+  },
+  "equipment": "rainsskins:armour/unobstructive-armor-diamond"
+ },
+ {
+  "id": "armour-unobstructive-armor-netherite",
+  "title": "Unobstructive Netherite",
+  "pack": 0,
+  "packTitle": "Unobstructive Armor",
+  "category": "Armour",
+  "author": "Antikyth",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/unobstructive-armor",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/unobstructive-armor-netherite/helmet",
+   "netherite_chestplate": "minecraft:netherite_chestplate",
+   "netherite_leggings": "minecraft:netherite_leggings",
+   "netherite_boots": "minecraft:netherite_boots"
+  },
+  "equipment": "rainsskins:armour/unobstructive-armor-netherite"
+ },
+ {
+  "id": "armour-mob-masks-armour-chainmail",
+  "title": "Mob Mask Chainmail",
+  "pack": 0,
+  "packTitle": "Mob Masks Armour",
+  "category": "Armour",
+  "author": "SirJumpy8772",
+  "license": "LGPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/mob-masks-armour",
+  "looks": {
+   "chainmail_helmet": "minecraft:chainmail_helmet",
+   "chainmail_chestplate": "minecraft:chainmail_chestplate",
+   "chainmail_boots": "minecraft:chainmail_boots"
+  },
+  "equipment": "rainsskins:armour/mob-masks-armour-chainmail"
+ },
+ {
+  "id": "armour-mob-masks-armour-copper",
+  "title": "Mob Mask Copper",
+  "pack": 0,
+  "packTitle": "Mob Masks Armour",
+  "category": "Armour",
+  "author": "SirJumpy8772",
+  "license": "LGPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/mob-masks-armour",
+  "looks": {
+   "copper_helmet": "minecraft:copper_helmet",
+   "copper_chestplate": "minecraft:copper_chestplate",
+   "copper_boots": "minecraft:copper_boots"
+  },
+  "equipment": "rainsskins:armour/mob-masks-armour-copper"
+ },
+ {
+  "id": "armour-mob-masks-armour-iron",
+  "title": "Mob Mask Iron",
+  "pack": 0,
+  "packTitle": "Mob Masks Armour",
+  "category": "Armour",
+  "author": "SirJumpy8772",
+  "license": "LGPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/mob-masks-armour",
+  "looks": {
+   "iron_helmet": "minecraft:iron_helmet",
+   "iron_chestplate": "minecraft:iron_chestplate",
+   "iron_boots": "minecraft:iron_boots"
+  },
+  "equipment": "rainsskins:armour/mob-masks-armour-iron"
+ },
+ {
+  "id": "armour-mob-masks-armour-gold",
+  "title": "Mob Mask Gold",
+  "pack": 0,
+  "packTitle": "Mob Masks Armour",
+  "category": "Armour",
+  "author": "SirJumpy8772",
+  "license": "LGPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/mob-masks-armour",
+  "looks": {
+   "golden_helmet": "minecraft:golden_helmet",
+   "golden_chestplate": "minecraft:golden_chestplate",
+   "golden_boots": "minecraft:golden_boots"
+  },
+  "equipment": "rainsskins:armour/mob-masks-armour-gold"
+ },
+ {
+  "id": "armour-mob-masks-armour-diamond",
+  "title": "Mob Mask Diamond",
+  "pack": 0,
+  "packTitle": "Mob Masks Armour",
+  "category": "Armour",
+  "author": "SirJumpy8772",
+  "license": "LGPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/mob-masks-armour",
+  "looks": {
+   "diamond_helmet": "minecraft:diamond_helmet",
+   "diamond_chestplate": "minecraft:diamond_chestplate",
+   "diamond_boots": "minecraft:diamond_boots"
+  },
+  "equipment": "rainsskins:armour/mob-masks-armour-diamond"
+ },
+ {
+  "id": "armour-mob-masks-armour-netherite",
+  "title": "Mob Mask Netherite",
+  "pack": 0,
+  "packTitle": "Mob Masks Armour",
+  "category": "Armour",
+  "author": "SirJumpy8772",
+  "license": "LGPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/mob-masks-armour",
+  "looks": {
+   "netherite_helmet": "minecraft:netherite_helmet",
+   "netherite_chestplate": "minecraft:netherite_chestplate",
+   "netherite_boots": "minecraft:netherite_boots"
+  },
+  "equipment": "rainsskins:armour/mob-masks-armour-netherite"
+ },
+ {
+  "id": "armour-mob-masks-armour-turtle-scute",
+  "title": "Mob Mask Turtle",
+  "pack": 0,
+  "packTitle": "Mob Masks Armour",
+  "category": "Armour",
+  "author": "SirJumpy8772",
+  "license": "LGPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/mob-masks-armour",
+  "looks": {
+   "turtle_helmet": "minecraft:turtle_helmet"
+  },
+  "equipment": "rainsskins:armour/mob-masks-armour-turtle-scute"
+ },
+ {
+  "id": "armour-sakura-hotbar-netherite",
+  "title": "Sakura Netherite",
+  "pack": 0,
+  "packTitle": "S33R Sakura Hotbar",
+  "category": "Armour",
+  "author": "S33R_OF_PYR3",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/sakura-hotbar",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/sakura-hotbar-netherite/helmet",
+   "netherite_chestplate": "rainsskins:armour/sakura-hotbar-netherite/chestplate",
+   "netherite_leggings": "rainsskins:armour/sakura-hotbar-netherite/leggings",
+   "netherite_boots": "rainsskins:armour/sakura-hotbar-netherite/boots"
+  },
+  "equipment": "rainsskins:armour/sakura-hotbar-netherite"
+ },
+ {
+  "id": "armour-crystalcore-netherite",
+  "title": "Crystal Netherite",
+  "pack": 0,
+  "packTitle": "CrystalCore",
+  "category": "Armour",
+  "author": "MR_POPCORN_9234",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/crystalcore",
+  "looks": {
+   "netherite_helmet": "minecraft:netherite_helmet",
+   "netherite_chestplate": "minecraft:netherite_chestplate",
+   "netherite_leggings": "minecraft:netherite_leggings",
+   "netherite_boots": "minecraft:netherite_boots"
+  },
+  "equipment": "rainsskins:armour/crystalcore-netherite"
+ },
+ {
+  "id": "armour-hardened-diamond-texture-pack-diamond",
+  "title": "Hardened Diamond",
+  "pack": 0,
+  "packTitle": "Hardened Diamond Texture Pack",
+  "category": "Armour",
+  "author": "MemeThief",
+  "license": "CC0-1.0",
+  "url": "https://modrinth.com/resourcepack/hardened-diamond-texture-pack",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/hardened-diamond-texture-pack-diamond/helmet",
+   "diamond_chestplate": "rainsskins:armour/hardened-diamond-texture-pack-diamond/chestplate",
+   "diamond_leggings": "rainsskins:armour/hardened-diamond-texture-pack-diamond/leggings",
+   "diamond_boots": "rainsskins:armour/hardened-diamond-texture-pack-diamond/boots"
+  },
+  "equipment": "rainsskins:armour/hardened-diamond-texture-pack-diamond"
+ },
+ {
+  "id": "armour-soups-knight-armor-leather",
+  "title": "Knight Leather",
+  "pack": 0,
+  "packTitle": "[Soup´s] Knight Armor",
+  "category": "Armour",
+  "author": "s0up-Ilt0n",
+  "license": "GPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/soups-knight-armor",
+  "looks": {
+   "leather_helmet": "rainsskins:armour/soups-knight-armor-leather/helmet",
+   "leather_chestplate": "rainsskins:armour/soups-knight-armor-leather/chestplate",
+   "leather_boots": "minecraft:leather_boots"
+  },
+  "equipment": "rainsskins:armour/soups-knight-armor-leather"
+ },
+ {
+  "id": "armour-soups-knight-armor-chainmail",
+  "title": "Knight Chainmail",
+  "pack": 0,
+  "packTitle": "[Soup´s] Knight Armor",
+  "category": "Armour",
+  "author": "s0up-Ilt0n",
+  "license": "GPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/soups-knight-armor",
+  "looks": {
+   "chainmail_helmet": "rainsskins:armour/soups-knight-armor-chainmail/helmet",
+   "chainmail_chestplate": "rainsskins:armour/soups-knight-armor-chainmail/chestplate",
+   "chainmail_boots": "minecraft:chainmail_boots"
+  },
+  "equipment": "rainsskins:armour/soups-knight-armor-chainmail"
+ },
+ {
+  "id": "armour-soups-knight-armor-copper",
+  "title": "Knight Copper",
+  "pack": 0,
+  "packTitle": "[Soup´s] Knight Armor",
+  "category": "Armour",
+  "author": "s0up-Ilt0n",
+  "license": "GPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/soups-knight-armor",
+  "looks": {
+   "copper_helmet": "rainsskins:armour/soups-knight-armor-copper/helmet",
+   "copper_chestplate": "rainsskins:armour/soups-knight-armor-copper/chestplate",
+   "copper_boots": "minecraft:copper_boots"
+  },
+  "equipment": "rainsskins:armour/soups-knight-armor-copper"
+ },
+ {
+  "id": "armour-soups-knight-armor-iron",
+  "title": "Knight Iron",
+  "pack": 0,
+  "packTitle": "[Soup´s] Knight Armor",
+  "category": "Armour",
+  "author": "s0up-Ilt0n",
+  "license": "GPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/soups-knight-armor",
+  "looks": {
+   "iron_helmet": "rainsskins:armour/soups-knight-armor-iron/helmet",
+   "iron_chestplate": "rainsskins:armour/soups-knight-armor-iron/chestplate",
+   "iron_boots": "minecraft:iron_boots"
+  },
+  "equipment": "rainsskins:armour/soups-knight-armor-iron"
+ },
+ {
+  "id": "armour-soups-knight-armor-gold",
+  "title": "Knight Gold",
+  "pack": 0,
+  "packTitle": "[Soup´s] Knight Armor",
+  "category": "Armour",
+  "author": "s0up-Ilt0n",
+  "license": "GPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/soups-knight-armor",
+  "looks": {
+   "golden_helmet": "rainsskins:armour/soups-knight-armor-gold/helmet",
+   "golden_chestplate": "rainsskins:armour/soups-knight-armor-gold/chestplate",
+   "golden_boots": "minecraft:golden_boots"
+  },
+  "equipment": "rainsskins:armour/soups-knight-armor-gold"
+ },
+ {
+  "id": "armour-soups-knight-armor-diamond",
+  "title": "Knight Diamond",
+  "pack": 0,
+  "packTitle": "[Soup´s] Knight Armor",
+  "category": "Armour",
+  "author": "s0up-Ilt0n",
+  "license": "GPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/soups-knight-armor",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/soups-knight-armor-diamond/helmet",
+   "diamond_chestplate": "rainsskins:armour/soups-knight-armor-diamond/chestplate",
+   "diamond_boots": "minecraft:diamond_boots"
+  },
+  "equipment": "rainsskins:armour/soups-knight-armor-diamond"
+ },
+ {
+  "id": "armour-soups-knight-armor-netherite",
+  "title": "Knight Netherite",
+  "pack": 0,
+  "packTitle": "[Soup´s] Knight Armor",
+  "category": "Armour",
+  "author": "s0up-Ilt0n",
+  "license": "GPL-3.0-only",
+  "url": "https://modrinth.com/resourcepack/soups-knight-armor",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/soups-knight-armor-netherite/helmet",
+   "netherite_chestplate": "rainsskins:armour/soups-knight-armor-netherite/chestplate",
+   "netherite_boots": "minecraft:netherite_boots"
+  },
+  "equipment": "rainsskins:armour/soups-knight-armor-netherite"
+ },
+ {
+  "id": "armour-fionas-armors-leather",
+  "title": "Minimal Leather",
+  "pack": 0,
+  "packTitle": "Fiona's Minimal Armors",
+  "category": "Armour",
+  "author": "FionaBagel",
+  "license": "WTFPL",
+  "url": "https://modrinth.com/resourcepack/fionas-armors",
+  "looks": {
+   "leather_helmet": "minecraft:leather_helmet",
+   "leather_chestplate": "minecraft:leather_chestplate",
+   "leather_boots": "minecraft:leather_boots"
+  },
+  "equipment": "rainsskins:armour/fionas-armors-leather"
+ },
+ {
+  "id": "armour-fionas-armors-copper",
+  "title": "Minimal Copper",
+  "pack": 0,
+  "packTitle": "Fiona's Minimal Armors",
+  "category": "Armour",
+  "author": "FionaBagel",
+  "license": "WTFPL",
+  "url": "https://modrinth.com/resourcepack/fionas-armors",
+  "looks": {
+   "copper_helmet": "minecraft:copper_helmet",
+   "copper_chestplate": "minecraft:copper_chestplate",
+   "copper_leggings": "minecraft:copper_leggings",
+   "copper_boots": "minecraft:copper_boots"
+  },
+  "equipment": "rainsskins:armour/fionas-armors-copper"
+ },
+ {
+  "id": "armour-fionas-armors-iron",
+  "title": "Minimal Iron",
+  "pack": 0,
+  "packTitle": "Fiona's Minimal Armors",
+  "category": "Armour",
+  "author": "FionaBagel",
+  "license": "WTFPL",
+  "url": "https://modrinth.com/resourcepack/fionas-armors",
+  "looks": {
+   "iron_helmet": "minecraft:iron_helmet",
+   "iron_chestplate": "minecraft:iron_chestplate",
+   "iron_leggings": "minecraft:iron_leggings",
+   "iron_boots": "minecraft:iron_boots"
+  },
+  "equipment": "rainsskins:armour/fionas-armors-iron"
+ },
+ {
+  "id": "armour-fionas-armors-gold",
+  "title": "Minimal Gold",
+  "pack": 0,
+  "packTitle": "Fiona's Minimal Armors",
+  "category": "Armour",
+  "author": "FionaBagel",
+  "license": "WTFPL",
+  "url": "https://modrinth.com/resourcepack/fionas-armors",
+  "looks": {
+   "golden_helmet": "minecraft:golden_helmet",
+   "golden_chestplate": "minecraft:golden_chestplate",
+   "golden_leggings": "minecraft:golden_leggings",
+   "golden_boots": "minecraft:golden_boots"
+  },
+  "equipment": "rainsskins:armour/fionas-armors-gold"
+ },
+ {
+  "id": "armour-fionas-armors-diamond",
+  "title": "Minimal Diamond",
+  "pack": 0,
+  "packTitle": "Fiona's Minimal Armors",
+  "category": "Armour",
+  "author": "FionaBagel",
+  "license": "WTFPL",
+  "url": "https://modrinth.com/resourcepack/fionas-armors",
+  "looks": {
+   "diamond_helmet": "minecraft:diamond_helmet",
+   "diamond_chestplate": "minecraft:diamond_chestplate",
+   "diamond_leggings": "minecraft:diamond_leggings",
+   "diamond_boots": "minecraft:diamond_boots"
+  },
+  "equipment": "rainsskins:armour/fionas-armors-diamond"
+ },
+ {
+  "id": "armour-fionas-armors-netherite",
+  "title": "Minimal Netherite",
+  "pack": 0,
+  "packTitle": "Fiona's Minimal Armors",
+  "category": "Armour",
+  "author": "FionaBagel",
+  "license": "WTFPL",
+  "url": "https://modrinth.com/resourcepack/fionas-armors",
+  "looks": {
+   "netherite_helmet": "minecraft:netherite_helmet",
+   "netherite_chestplate": "minecraft:netherite_chestplate",
+   "netherite_leggings": "minecraft:netherite_leggings",
+   "netherite_boots": "minecraft:netherite_boots"
+  },
+  "equipment": "rainsskins:armour/fionas-armors-netherite"
+ },
+ {
   "id": "3d-equipment",
   "title": "Actually 3D Equipment!",
   "pack": 2,
@@ -363,9 +1264,9 @@
  },
  {
   "id": "katana-flower-of-the-sea-flower-of-the-sea",
-  "title": "Katana \u00abFlower of the Sea\u00bb: Flower Of The Sea",
+  "title": "Katana «Flower of the Sea»: Flower Of The Sea",
   "pack": 8,
-  "packTitle": "Katana \u00abFlower of the Sea\u00bb",
+  "packTitle": "Katana «Flower of the Sea»",
   "category": "Katana & Blades",
   "author": "CLASS565",
   "license": "CC-BY-4.0",

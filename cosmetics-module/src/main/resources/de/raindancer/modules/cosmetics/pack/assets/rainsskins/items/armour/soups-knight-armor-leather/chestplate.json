@@ -1,0 +1,12 @@
+{
+ "model": {
+  "type": "minecraft:model",
+  "model": "rainsskins:armour/soups-knight-armor-leather/chestplate",
+  "tints": [
+   {
+    "type": "minecraft:dye",
+    "default": -6265536
+   }
+  ]
+ }
+}

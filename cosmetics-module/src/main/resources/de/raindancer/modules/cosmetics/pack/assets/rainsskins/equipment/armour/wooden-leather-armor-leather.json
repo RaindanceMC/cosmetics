@@ -1,0 +1,26 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/wooden-leather-armor-leather",
+    "dyeable": {
+     "color_when_undyed": -6265536
+    }
+   },
+   {
+    "texture": "rainsskins:armour/wooden-leather-armor-leather_overlay"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/wooden-leather-armor-leather",
+    "dyeable": {
+     "color_when_undyed": -6265536
+    }
+   },
+   {
+    "texture": "rainsskins:armour/wooden-leather-armor-leather_overlay"
+   }
+  ]
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/soups-knight-armor-leather",
+    "dyeable": {
+     "color_when_undyed": -6265536
+    }
+   },
+   {
+    "texture": "rainsskins:armour/soups-knight-armor-leather_overlay"
+   }
+  ]
+ }
+}

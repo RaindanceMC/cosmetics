@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-chainmail"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/adinas-port-of-kits-cutie-flowers-chainmail"
+   }
+  ]
+ }
+}
