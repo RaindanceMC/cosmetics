@@ -186,12 +186,13 @@ class SkinCatalogueTest {
         List<SkinCatalogue.Skin> twitch = SkinCatalogue.bundled().all().stream().filter(SkinCatalogue.Skin::creator).toList();
 
         assertThat(twitch).extracting(SkinCatalogue.Skin::title)
-                .contains("Glitchblade", "Glitchblade RGB", "Pixel Chopper", "Pixel Pick");
+                .contains("Glitchblade", "Glitchblade RGB", "Pixel Chopper", "Pixel Pick", "Glitchplate", "Glitchplate Night");
         for (SkinCatalogue.Skin skin : twitch) {
             assertThat(skin.id()).startsWith("twitch-");
             assertThat(skin.category()).isEqualTo("Twitch");
-            assertThat(skin.equipment()).as(skin.id()).isNull();
-            assertThat(skin.looks().keySet()).as(skin.id()).allMatch(item -> !SkinCatalogue.isArmour(item));
+            boolean armour = skin.equipment() != null;
+            assertThat(skin.looks().keySet()).as(skin.id())
+                    .allMatch(item -> SkinCatalogue.isArmour(item) == armour, "all armour or all weapons");
             assertThat(skin.looks().values()).as(skin.id()).allMatch(look -> look.startsWith("rainsskins:" + skin.id() + "/"));
             assertThat(skin.license()).as("our own work: no third party to credit").isEqualTo("Own work");
         }
@@ -201,5 +202,71 @@ class SkinCatalogueTest {
         assertThat(SkinCatalogue.bundled().all().stream().filter(skin -> skin.id().startsWith("twitch-")))
                 .as("everything called twitch is a creator skin").allMatch(SkinCatalogue.Skin::creator);
         assertThat(SkinCatalogue.CATEGORIES).contains("Twitch");
+    }
+
+    @Test
+    @DisplayName("the Twitch armour: two full sets for creators, each worn as its own equipment asset, any material takes the look")
+    void twitchArmour() throws Exception {
+        List<SkinCatalogue.Skin> armour = SkinCatalogue.bundled().all().stream()
+                .filter(skin -> skin.creator() && skin.equipment() != null).toList();
+
+        assertThat(armour).extracting(SkinCatalogue.Skin::title).containsExactlyInAnyOrder("Glitchplate", "Glitchplate Night");
+        List<String> files = SkinPack.files();
+        for (SkinCatalogue.Skin skin : armour) {
+            assertThat(skin.equipment()).isEqualTo("rainsskins:" + skin.id());
+            for (String item : List.of("netherite_helmet", "iron_chestplate", "leather_leggings", "copper_boots", "turtle_helmet")) {
+                assertThat(skin.dresses(item)).as(skin.id() + " " + item).isTrue();
+                assertThat(skin.equipmentFor(item)).as(skin.id() + " " + item).contains(skin.equipment());
+            }
+            assertThat(skin.dresses("diamond_sword")).isFalse();
+            assertThat(files).contains("assets/rainsskins/equipment/" + skin.id() + ".json",
+                    "assets/rainsskins/textures/entity/equipment/humanoid/" + skin.id() + ".png",
+                    "assets/rainsskins/textures/entity/equipment/humanoid_leggings/" + skin.id() + ".png");
+            for (String piece : List.of("helmet", "chestplate", "leggings", "boots")) {
+                assertThat(files).contains("assets/rainsskins/textures/item/" + skin.id() + "/" + piece + ".png",
+                        "assets/rainsskins/models/" + skin.id() + "/" + piece + ".json",
+                        "assets/rainsskins/items/" + skin.id() + "/" + piece + ".json");
+            }
+        }
+    }
+
+    private static java.awt.image.BufferedImage worn(String skin, String layer) throws Exception {
+        try (java.io.InputStream in = SkinCatalogueTest.class.getResourceAsStream(
+                "/de/raindancer/modules/cosmetics/pack/assets/rainsskins/textures/entity/equipment/" + layer + "/" + skin + ".png")) {
+            return javax.imageio.ImageIO.read(in);
+        }
+    }
+
+    private static boolean painted(java.awt.image.BufferedImage image, int x0, int y0, int x1, int y1) {
+        for (int y = y0; y < y1; y++) {
+            for (int x = x0; x < x1; x++) {
+                if ((image.getRGB(x, y) >>> 24) != 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Test
+    @DisplayName("the worn layers are 64x32 and paint each piece where it is worn — boots only at the foot, leggings not at the foot")
+    void twitchArmourLayers() throws Exception {
+        for (String skin : List.of("twitch-glitchplate", "twitch-glitchplate-night")) {
+            java.awt.image.BufferedImage outer = worn(skin, "humanoid");
+            java.awt.image.BufferedImage inner = worn(skin, "humanoid_leggings");
+            assertThat(outer.getWidth()).isEqualTo(64);
+            assertThat(outer.getHeight()).isEqualTo(32);
+            assertThat(inner.getWidth()).isEqualTo(64);
+            assertThat(inner.getHeight()).isEqualTo(32);
+            assertThat(painted(outer, 0, 0, 32, 16)).as(skin + " helmet").isTrue();
+            assertThat(painted(outer, 16, 16, 40, 32)).as(skin + " chestplate body").isTrue();
+            assertThat(painted(outer, 40, 16, 56, 32)).as(skin + " sleeves").isTrue();
+            assertThat(painted(outer, 0, 28, 16, 32)).as(skin + " boots at the foot").isTrue();
+            assertThat(painted(outer, 0, 20, 16, 28)).as(skin + " boots leave the legs bare").isFalse();
+            assertThat(painted(inner, 0, 20, 16, 28)).as(skin + " leggings on the legs").isTrue();
+            assertThat(painted(inner, 0, 28, 16, 32)).as(skin + " leggings stop above the foot").isFalse();
+            assertThat(painted(inner, 16, 20, 40, 24)).as(skin + " belt").isTrue();
+            assertThat(painted(inner, 0, 0, 64, 16)).as(skin + " no hat in the leggings layer").isFalse();
+        }
     }
 }

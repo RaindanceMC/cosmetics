@@ -80,6 +80,42 @@
   "creator": true
  },
  {
+  "id": "twitch-glitchplate",
+  "title": "Glitchplate",
+  "pack": -1,
+  "packTitle": "Twitch set (own work)",
+  "category": "Twitch",
+  "author": "Raindancer118",
+  "license": "Own work",
+  "url": "https://github.com/RaindanceMC/cosmetics",
+  "looks": {
+   "diamond_helmet": "rainsskins:twitch-glitchplate/helmet",
+   "diamond_chestplate": "rainsskins:twitch-glitchplate/chestplate",
+   "diamond_leggings": "rainsskins:twitch-glitchplate/leggings",
+   "diamond_boots": "rainsskins:twitch-glitchplate/boots"
+  },
+  "equipment": "rainsskins:twitch-glitchplate",
+  "creator": true
+ },
+ {
+  "id": "twitch-glitchplate-night",
+  "title": "Glitchplate Night",
+  "pack": -1,
+  "packTitle": "Twitch set (own work)",
+  "category": "Twitch",
+  "author": "Raindancer118",
+  "license": "Own work",
+  "url": "https://github.com/RaindanceMC/cosmetics",
+  "looks": {
+   "diamond_helmet": "rainsskins:twitch-glitchplate-night/helmet",
+   "diamond_chestplate": "rainsskins:twitch-glitchplate-night/chestplate",
+   "diamond_leggings": "rainsskins:twitch-glitchplate-night/leggings",
+   "diamond_boots": "rainsskins:twitch-glitchplate-night/boots"
+  },
+  "equipment": "rainsskins:twitch-glitchplate-night",
+  "creator": true
+ },
+ {
   "id": "armour-jappa-styled-armor-retextures-chainmail",
   "title": "Jappa Chainmail",
   "pack": 0,

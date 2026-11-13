@@ -69,4 +69,4 @@ CrystalCore by MR_POPCORN_9234 (MIT), version 1.1, https://modrinth.com/resource
 Hardened Diamond Texture Pack by MemeThief (CC0-1.0), version 1.21+, https://modrinth.com/resourcepack/hardened-diamond-texture-pack
 [Soup´s] Knight Armor by s0up-Ilt0n (GPL-3.0-only), version 1.1, https://modrinth.com/resourcepack/soups-knight-armor
 Fiona's Minimal Armors by FionaBagel (WTFPL), version 9.0, https://modrinth.com/resourcepack/fionas-armors
-Twitch set (Glitchblade, Glitchblade RGB, Pixel Chopper, Pixel Pick) by Raindancer118, own work for the server's creators (art/skins/twitch.py).
+Twitch set (Glitchblade, Glitchblade RGB, Pixel Chopper, Pixel Pick, Glitchplate, Glitchplate Night armour) by Raindancer118, own work for the server's creators (art/skins/twitch.py).

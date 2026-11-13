@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:twitch-glitchplate-night"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:twitch-glitchplate-night"
+   }
+  ]
+ }
+}
