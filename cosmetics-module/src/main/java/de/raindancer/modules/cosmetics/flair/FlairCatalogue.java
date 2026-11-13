@@ -51,6 +51,27 @@ public final class FlairCatalogue {
                     "<#9146FF>▶ <player> <#BF94FF>logs in — chat, say hi",
                     "<#9146FF>▶ <player> <#BF94FF>signs off — thanks for watching"),
 
+            // Heard by those within about 32 blocks (a volume of 2 carries twice vanilla's 16) and the one who joins.
+            FlairOption.chime("amethyst", "Amethyst chime", PRIME,
+                    FlairEffect.chime("block.amethyst_block.chime", 2f, 1.2f)),
+            FlairOption.chime("bell", "Bell", PRIME, FlairEffect.chime("block.bell.use", 2f, 1.4f)),
+            FlairOption.chime("starfall", "Starfall", PRIME,
+                    FlairEffect.chime("entity.firework_rocket.twinkle", 2f, 1f,
+                            new FlairEffect.Note("entity.firework_rocket.twinkle_far", 2f, 1.3f, 220))),
+            FlairOption.chime("harp", "Harp", PRIME, FlairEffect.chime("block.note_block.harp", 2f, 1f,
+                    new FlairEffect.Note("block.note_block.harp", 2f, 1.26f, 150),
+                    new FlairEffect.Note("block.note_block.harp", 2f, 1.5f, 300))),
+            FlairOption.chime("twitch", "Going live", CREATOR, FlairEffect.chime("block.note_block.bit", 2f, 1f,
+                    new FlairEffect.Note("block.note_block.bit", 2f, 1.5f, 140),
+                    new FlairEffect.Note("block.note_block.pling", 2f, 1.8f, 280))),
+
+            FlairOption.teleport("amethyst", "Amethyst", PRIME, "block.amethyst_block.chime", "block.amethyst_block.resonate"),
+            FlairOption.teleport("bell", "Bell", PRIME, "block.bell.use", "block.bell.resonate"),
+            FlairOption.teleport("starfall", "Starfall", PRIME, "entity.firework_rocket.twinkle",
+                    "entity.firework_rocket.twinkle_far"),
+            FlairOption.teleport("harp", "Harp", PRIME, "block.note_block.harp", "block.note_block.chime"),
+            FlairOption.teleport("allay", "Allay", PRIME, "entity.allay.item_thrown", "entity.allay.item_given"),
+
             FlairOption.effect(FlairCategory.KILL, "lightning", "Thunderstrike", PRIME,
                     new FlairEffect(List.of(Burst.of("ELECTRIC_SPARK", 24, 0.6, 0.2)),
                             "entity.lightning_bolt.thunder", 0.6f, 1.2f, true)),

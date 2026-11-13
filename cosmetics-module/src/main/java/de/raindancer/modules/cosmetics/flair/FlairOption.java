@@ -23,6 +23,15 @@ public record FlairOption(FlairCategory category, String id, String title, Strin
         return new FlairOption(FlairCategory.JOIN, id, title, node, join, quit, null, null);
     }
 
+    static FlairOption chime(String id, String title, String node, FlairEffect effect) {
+        return new FlairOption(FlairCategory.JOIN_SOUND, id, title, node, null, null, null, effect);
+    }
+
+    /** @param depart the sound key at departure, {@code arrive} at arrival */
+    static FlairOption teleport(String id, String title, String node, String depart, String arrive) {
+        return new FlairOption(FlairCategory.TELEPORT, id, title, node, depart, arrive, null, null);
+    }
+
     static FlairOption effect(FlairCategory category, String id, String title, String node, FlairEffect effect) {
         return new FlairOption(category, id, title, node, null, null, null, effect);
     }

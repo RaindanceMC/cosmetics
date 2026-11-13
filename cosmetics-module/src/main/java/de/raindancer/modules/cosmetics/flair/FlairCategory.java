@@ -11,6 +11,10 @@ public enum FlairCategory {
     COLOUR("colour", "Tag colour"),
     /** The lines said when they join and leave. */
     JOIN("join", "Join and leave"),
+    /** The chime played where they join, to those near. */
+    JOIN_SOUND("sound", "Join chime"),
+    /** Their sound for departing and arriving in a teleport. */
+    TELEPORT("teleport", "Teleport sound"),
     /** What plays where they win a fight. */
     KILL("kill", "Kill effect"),
     /** What plays where they die. */

@@ -229,4 +229,54 @@ class FlairServiceTest {
         assertThat(flair.mayOpen(creator)).isTrue();
         assertThat(flair.mayOpen(player("nobody"))).isFalse();
     }
+
+    @Test
+    @DisplayName("picking a chime or a teleport sound plays it once for the one who picked, so they hear what they chose")
+    void auditions() {
+        List<String> heard = new ArrayList<>();
+        flair.preview((who, option) -> heard.add(who.getUniqueId() + ":" + option.category() + ":" + option.id()));
+        Player prime = player("listener", PermissionNodes.FLAIR);
+
+        flair.choose(prime, FlairCategory.JOIN_SOUND, "bell");
+        flair.choose(prime, FlairCategory.TELEPORT, "harp");
+        flair.choose(prime, FlairCategory.TAG, "star");
+        flair.choose(prime, FlairCategory.JOIN_SOUND, "off");
+        flair.choose(player("plain2"), FlairCategory.JOIN_SOUND, "bell");
+
+        assertThat(heard).containsExactly(prime.getUniqueId() + ":JOIN_SOUND:bell", prime.getUniqueId() + ":TELEPORT:harp");
+    }
+
+    @Test
+    @DisplayName("the chime and the teleport sound of a player are asked for by uuid, and gone when Prime is")
+    void chimeAndTeleportByUuid() {
+        Set<String> held = new HashSet<>(Set.of(PermissionNodes.FLAIR));
+        Player prime = mock(Player.class);
+        UUID id = UUID.nameUUIDFromBytes("chimer".getBytes());
+        when(prime.getUniqueId()).thenReturn(id);
+        when(prime.hasPermission(anyString())).thenAnswer(call -> held.contains(call.<String>getArgument(0)));
+        flair.choose(prime, FlairCategory.JOIN_SOUND, "amethyst");
+        flair.choose(prime, FlairCategory.TELEPORT, "bell");
+
+        assertThat(flair.joinChime(id)).isPresent();
+        assertThat(flair.teleportSound(id)).isPresent();
+
+        held.clear();
+        flair.revalidate(prime);
+
+        assertThat(flair.joinChime(id)).isEmpty();
+        assertThat(flair.teleportSound(id)).isEmpty();
+    }
+
+    @Test
+    @DisplayName("a creator picks Going live; Prime does not get it, and the cycle offers each their own")
+    void goingLive() {
+        Player creator = player("streamer", PermissionNodes.CREATOR);
+        Player prime = player("subscriber", PermissionNodes.FLAIR);
+
+        assertThat(flair.choose(creator, FlairCategory.JOIN_SOUND, "twitch")).isTrue();
+        assertThat(flair.choose(prime, FlairCategory.JOIN_SOUND, "twitch")).isFalse();
+        assertThat(flair.choices(creator, FlairCategory.JOIN_SOUND)).containsExactly("off", "twitch");
+        assertThat(flair.choices(prime, FlairCategory.JOIN_SOUND)).doesNotContain("twitch").contains("amethyst", "bell");
+        assertThat(flair.choices(creator, FlairCategory.TELEPORT)).containsExactly("off");
+    }
 }

@@ -45,6 +45,8 @@ public final class FlairMenu extends Menu implements ICosmeticsScreen {
             case TAG -> Material.NAME_TAG;
             case COLOUR -> Material.PURPLE_DYE;
             case JOIN -> Material.OAK_DOOR;
+            case JOIN_SOUND -> Material.NOTE_BLOCK;
+            case TELEPORT -> Material.ENDER_PEARL;
             case KILL -> Material.FIREWORK_ROCKET;
             case DEATH -> Material.SKELETON_SKULL;
         };

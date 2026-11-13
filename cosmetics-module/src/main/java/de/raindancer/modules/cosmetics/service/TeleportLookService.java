@@ -48,6 +48,7 @@ public final class TeleportLookService implements ICosmeticsService, TravelLooks
     private final TeleportLookRule rule = new TeleportLookRule();
     private final Map<UUID, TeleportLookChoice> chosen = new ConcurrentHashMap<>();
 
+    private volatile java.util.function.Function<UUID, java.util.Optional<String[]>> styles = who -> java.util.Optional.empty();
     private volatile CosmeticsSettings settings;
     private volatile Entitlements entitlements = Entitlements.PERMISSIONS;
 
@@ -79,7 +80,18 @@ public final class TeleportLookService implements ICosmeticsService, TravelLooks
         if (!settings.teleportLooks()) {
             return TravelLook.SERVERS;
         }
-        return chosen.getOrDefault(traveller, TeleportLookChoice.SERVERS).toLook();
+        TeleportLookChoice choice = chosen.getOrDefault(traveller, TeleportLookChoice.SERVERS);
+        // Prime's teleport sound fills what the player left to the server; their own picks stay.
+        java.util.Optional<String[]> style = styles.apply(traveller);
+        if (style.isPresent()) {
+            choice = choice.withStyle(style.get()[0], style.get()[1]);
+        }
+        return choice.toLook();
+    }
+
+    /** Where a Prime teleport sound (departure, arrival) is asked for by traveller; set once at start-up. */
+    public void styles(java.util.function.Function<UUID, java.util.Optional<String[]>> fresh) {
+        this.styles = fresh == null ? who -> java.util.Optional.empty() : fresh;
     }
 
     /**

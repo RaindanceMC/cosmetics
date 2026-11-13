@@ -35,6 +35,36 @@ class FlairCatalogueTest {
         assertThat(primeIn(FlairCategory.JOIN)).hasSizeGreaterThanOrEqualTo(4);
         assertThat(primeIn(FlairCategory.KILL)).hasSizeGreaterThanOrEqualTo(4);
         assertThat(primeIn(FlairCategory.DEATH)).hasSizeGreaterThanOrEqualTo(3);
+        assertThat(primeIn(FlairCategory.JOIN_SOUND)).hasSizeGreaterThanOrEqualTo(4);
+        assertThat(primeIn(FlairCategory.TELEPORT)).hasSizeGreaterThanOrEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("creators have their own join chime, Going live, besides Prime's")
+    void creatorChime() {
+        FlairOption live = FlairCatalogue.find(FlairCategory.JOIN_SOUND, "twitch").orElseThrow();
+        assertThat(live.node()).isEqualTo(PermissionNodes.CREATOR);
+        assertThat(live.title()).isEqualTo("Going live");
+        assertThat(live.effect().then()).as("two notes, rising").isNotEmpty();
+        assertThat(FlairCatalogue.of(FlairCategory.TELEPORT)).allMatch(o -> o.node().equals(PermissionNodes.FLAIR));
+    }
+
+    @Test
+    @DisplayName("a join chime is only sound, loud enough to carry about 32 blocks and no further; a teleport sound is two vanilla keys")
+    void sounds() {
+        for (FlairOption chime : FlairCatalogue.of(FlairCategory.JOIN_SOUND)) {
+            FlairEffect effect = chime.effect();
+            assertThat(effect.bursts()).as(chime.id()).isEmpty();
+            assertThat(effect.lightning()).as(chime.id()).isFalse();
+            assertThat(effect.sound()).as(chime.id()).matches("[a-z0-9_]+(\\.[a-z0-9_]+)+");
+            assertThat(effect.volume()).as(chime.id()).isBetween(1.5f, 2.0f);
+            effect.then().forEach(note -> assertThat(note.key()).matches("[a-z0-9_]+(\\.[a-z0-9_]+)+"));
+        }
+        for (FlairOption style : FlairCatalogue.of(FlairCategory.TELEPORT)) {
+            assertThat(style.text()).as(style.id()).matches("[a-z0-9_]+(\\.[a-z0-9_]+)+");
+            assertThat(style.text2()).as(style.id()).matches("[a-z0-9_]+(\\.[a-z0-9_]+)+");
+            assertThat(style.effect()).isNull();
+        }
     }
 
     private static List<FlairOption> primeIn(FlairCategory category) {
@@ -82,6 +112,9 @@ class FlairCatalogueTest {
     @DisplayName("an effect is only a look and a sound — something to see, small enough not to lag a crowd")
     void effects() {
         for (FlairOption option : FlairCatalogue.all()) {
+            if (option.category() == FlairCategory.JOIN_SOUND) {
+                continue;
+            }
             if (option.category() != FlairCategory.KILL && option.category() != FlairCategory.DEATH) {
                 assertThat(option.effect()).as(option.id()).isNull();
                 continue;

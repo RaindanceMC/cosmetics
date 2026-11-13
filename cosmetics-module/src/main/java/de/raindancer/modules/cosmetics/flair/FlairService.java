@@ -33,6 +33,7 @@ public final class FlairService implements ICosmeticsService {
     private final Messages messages;
     private final FlairRule rule = new FlairRule();
     private final Map<UUID, FlairChoice> worn = new ConcurrentHashMap<>();
+    private volatile java.util.function.BiConsumer<Player, FlairOption> audition = (who, option) -> { };
 
     /** @param redraw draws a player's name again in chat, the tablist and above their head */
     public FlairService(FlairStore store, Consumer<UUID> redraw, Messages messages) {
@@ -68,6 +69,19 @@ public final class FlairService implements ICosmeticsService {
 
     public Optional<FlairEffect> deathEffect(UUID player) {
         return rule.effect(effective(player), FlairCategory.DEATH);
+    }
+
+    public Optional<FlairEffect> joinChime(UUID player) {
+        return rule.effect(effective(player), FlairCategory.JOIN_SOUND);
+    }
+
+    public Optional<FlairOption> teleportSound(UUID player) {
+        return rule.teleport(effective(player));
+    }
+
+    /** Called with what somebody has just picked in the sound categories, so it can be played to them once. */
+    public void preview(java.util.function.BiConsumer<Player, FlairOption> audition) {
+        this.audition = audition == null ? (who, option) -> { } : audition;
     }
 
     public FlairRule rule() {
@@ -132,6 +146,9 @@ public final class FlairService implements ICosmeticsService {
         store.write(player, stored.with(category, option.get().id()));
         load(player);
         messages.send(player, "cosmetics.flair.set", "category", category.title(), "option", option.get().title());
+        if (category == FlairCategory.JOIN_SOUND || category == FlairCategory.TELEPORT) {
+            audition.accept(player, option.get());
+        }
         return true;
     }
 

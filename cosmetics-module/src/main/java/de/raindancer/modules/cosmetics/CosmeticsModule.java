@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.32.0")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.33.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -161,7 +161,10 @@ public final class CosmeticsModule implements FlexModule {
                 context.core().messages());
         flair.install();
         context.closeWith(flair::uninstall);
-        context.listener(new de.raindancer.modules.cosmetics.flair.FlairListener(flair,
+        flair.preview((who, option) -> de.raindancer.modules.cosmetics.flair.FlairEffects.audition(
+                context.core().effects(), who, option));
+        teleports.styles(who -> flair.teleportSound(who).map(style -> new String[]{style.text(), style.text2()}));
+        context.listener(new de.raindancer.modules.cosmetics.flair.FlairListener(context.plugin(), flair,
                 context.core().effects(), context.core().vanish()::isVanished));
         watch.flair(flair);
         var drops = new de.raindancer.modules.cosmetics.prime.PrimeDropService(context.plugin(),

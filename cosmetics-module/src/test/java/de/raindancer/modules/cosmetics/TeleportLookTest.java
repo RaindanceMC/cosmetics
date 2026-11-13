@@ -117,4 +117,19 @@ class TeleportLookTest {
         assertThat(look.waitColour()).isNull();
         assertThat(look.waitDensity()).isNull();
     }
+
+    @Test
+    @DisplayName("a Prime teleport sound fills departure and arrival the player left to the server, and never overrides their own")
+    void styleFillsOnlyTheServers() {
+        TeleportLookChoice plain = TeleportLookChoice.SERVERS.withStyle("block.bell.use", "block.bell.resonate");
+        assertThat(plain.depart()).isEqualTo("block.bell.use");
+        assertThat(plain.arrive()).isEqualTo("block.bell.resonate");
+
+        TeleportLookChoice own = new TeleportLookChoice("entity.player.levelup", TeleportLookChoice.NONE, null, null)
+                .withStyle("block.bell.use", "block.bell.resonate");
+        assertThat(own.depart()).as("their own pick wins").isEqualTo("entity.player.levelup");
+        assertThat(own.arrive()).as("so does a deliberate silence").isEqualTo(TeleportLookChoice.NONE);
+        assertThat(own.toLook().arrive()).isEqualTo(TravelLook.NOTHING_HEARD);
+        assertThat(TeleportLookChoice.SERVERS.withStyle(null, null)).isEqualTo(TeleportLookChoice.SERVERS);
+    }
 }

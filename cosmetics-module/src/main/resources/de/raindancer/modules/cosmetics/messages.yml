@@ -208,6 +208,7 @@ cosmetics:
   help-flair:
     - "<gold><bold>Your flair"
     - "<gray>Looks only, nothing that helps you play: a tag in front of your name,"
-    - "<gray>the line when you join and leave, an effect when you win a fight or fall."
+    - "<gray>the line when you join and leave, a chime when you arrive, your teleport sound,"
+    - "<gray>an effect when you win a fight or fall."
     - "<gray>Click a row to go through its options; right-click goes back."
     - "<gray>Prime has them all. Creators have their Twitch extras."

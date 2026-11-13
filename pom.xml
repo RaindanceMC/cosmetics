@@ -22,7 +22,7 @@
     <properties>
         <rainscore.version>2.93.0</rainscore.version>
         <modules-wrapper.version>1.12.0</modules-wrapper.version>
-        <cosmetics-module.version>0.32.0</cosmetics-module.version>
+        <cosmetics-module.version>0.33.0</cosmetics-module.version>
     </properties>
 
     <modules>

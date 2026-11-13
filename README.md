@@ -34,3 +34,6 @@ A module's version is a property in this repository's root `pom.xml`, a plugin's
   alone; not unlocks, not `skins.all`, not Prime): Shadowstone Tools, Dragon Blade, Glacial Gear and the armour sets Purple
   Diamond, Sakura Netherite, Valkyrian Netherite, Modern Netherite. `art/skins/creator.py` sets the flags; run it after
   `convert.py`/`armour.py`.
+- **Prime sounds (0.33.0):** `/cosmetics flair sound <amethyst|bell|starfall|harp|off>` — a chime where you join, heard within
+  about 32 blocks; `flair teleport <amethyst|bell|starfall|harp|allay|off>` — your departure and arrival sound (your own
+  picks on the teleport page win). Creators have the extra join chime `twitch` (Going live).

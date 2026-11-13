@@ -8,7 +8,21 @@ import java.util.List;
  *
  * @param sound a sound key such as {@code entity.firework_rocket.blast}
  */
-public record FlairEffect(List<Burst> bursts, String sound, float volume, float pitch, boolean lightning) {
+public record FlairEffect(List<Burst> bursts, String sound, float volume, float pitch, boolean lightning,
+                          List<Note> then) {
+
+    public FlairEffect(List<Burst> bursts, String sound, float volume, float pitch, boolean lightning) {
+        this(bursts, sound, volume, pitch, lightning, List.of());
+    }
+
+    /** A further sound of the same effect, {@code delayMillis} after it started. */
+    public record Note(String key, float volume, float pitch, long delayMillis) {
+    }
+
+    /** Just sound — a chime — at {@code volume}, with more notes after it if given. */
+    public static FlairEffect chime(String sound, float volume, float pitch, Note... then) {
+        return new FlairEffect(List.of(), sound, volume, pitch, false, List.of(then));
+    }
 
     /**
      * @param spread how far the particles scatter on each axis

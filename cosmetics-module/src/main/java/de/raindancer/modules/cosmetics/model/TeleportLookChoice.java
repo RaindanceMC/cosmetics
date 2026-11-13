@@ -45,6 +45,17 @@ public record TeleportLookChoice(String depart, String arrive, String waitPartic
         };
     }
 
+    /**
+     * The same with a Prime teleport sound's departure and arrival put in where the player left it to the server —
+     * what they chose themselves, silence included, stays.
+     */
+    public TeleportLookChoice withStyle(String styleDepart, String styleArrive) {
+        String nextDepart = depart == null ? styleDepart : depart;
+        String nextArrive = arrive == null ? styleArrive : arrive;
+        return new TeleportLookChoice(nextDepart, nextArrive, waitParticle, tick, waitShape, waitColour, waitDensity,
+                waitColourTo);
+    }
+
     /** The same with one part changed; null puts that part back to the server's. */
     public TeleportLookChoice with(TeleportPart part, String value) {
         return switch (part) {

@@ -91,4 +91,19 @@ class FlairRuleTest {
         assertThat(rule.may(glitch, CREATOR)).isTrue();
         assertThat(rule.may(glitch, PRIME)).isFalse();
     }
+
+    @Test
+    @DisplayName("the join chime and the teleport sound are read off what they picked")
+    void chimeAndTeleport() {
+        FlairChoice choice = everything().with(FlairCategory.JOIN_SOUND, "bell").with(FlairCategory.TELEPORT, "harp");
+
+        assertThat(rule.effect(choice, FlairCategory.JOIN_SOUND)).isPresent();
+        assertThat(rule.teleport(choice)).isPresent().hasValueSatisfying(style -> assertThat(style.id()).isEqualTo("harp"));
+        assertThat(rule.teleport(FlairChoice.EMPTY)).isEmpty();
+        assertThat(rule.effective(choice, NOBODY).isEmpty()).isTrue();
+        assertThat(rule.effective(choice.with(FlairCategory.JOIN_SOUND, "twitch"), PRIME).get(FlairCategory.JOIN_SOUND))
+                .as("Going live is the creators'").isEmpty();
+        assertThat(rule.effective(FlairChoice.EMPTY.with(FlairCategory.JOIN_SOUND, "twitch"), CREATOR)
+                .get(FlairCategory.JOIN_SOUND)).contains("twitch");
+    }
 }

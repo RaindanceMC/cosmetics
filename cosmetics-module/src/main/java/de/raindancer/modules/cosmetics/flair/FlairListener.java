@@ -26,9 +26,12 @@ public final class FlairListener implements ICosmeticsListener {
     private final FlairService flair;
     private final Predicate<UUID> hidden;
     private final de.raindancer.core.ui.effect.Effects effects;
+    private final org.bukkit.plugin.Plugin plugin;
 
-    /** @param hidden whether somebody is vanished — their fights must not give them away */
-    public FlairListener(FlairService flair, de.raindancer.core.ui.effect.Effects effects, Predicate<UUID> hidden) {
+    /** @param hidden whether somebody is vanished — their fights and their chime must not give them away */
+    public FlairListener(org.bukkit.plugin.Plugin plugin, FlairService flair,
+                         de.raindancer.core.ui.effect.Effects effects, Predicate<UUID> hidden) {
+        this.plugin = plugin;
         this.flair = flair;
         this.effects = effects;
         this.hidden = hidden;
@@ -37,10 +40,18 @@ public final class FlairListener implements ICosmeticsListener {
     /** After the vanish listener, which empties the line of somebody hidden; only a line still there is replaced. */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onJoin(PlayerJoinEvent event) {
-        flair.load(event.getPlayer());
+        Player joined = event.getPlayer();
+        flair.load(joined);
         if (event.joinMessage() != null) {
-            say(event.getPlayer(), JoinLines.Kind.JOIN).ifPresent(event::joinMessage);
+            say(joined, JoinLines.Kind.JOIN).ifPresent(event::joinMessage);
         }
+        // A second later, when their client has the world: heard by those within about 32 blocks, never network-wide.
+        flair.joinChime(joined.getUniqueId()).ifPresent(chime ->
+                de.raindancer.core.platform.util.Scheduling.entityLater(plugin, joined, 30L, () -> {
+                    if (joined.isOnline() && !hidden.test(joined.getUniqueId())) {
+                        FlairEffects.chime(effects, joined.getLocation(), chime);
+                    }
+                }));
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

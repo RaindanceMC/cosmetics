@@ -44,5 +44,7 @@ class FlairChoiceTest {
         assertThat(FlairCategory.of("colour")).contains(FlairCategory.COLOUR);
         assertThat(FlairCategory.of("color")).contains(FlairCategory.COLOUR);
         assertThat(FlairCategory.of("wings")).isEmpty();
+        assertThat(FlairCategory.of("sound")).contains(FlairCategory.JOIN_SOUND);
+        assertThat(FlairCategory.of("teleport")).contains(FlairCategory.TELEPORT);
     }
 }

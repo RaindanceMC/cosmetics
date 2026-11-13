@@ -46,6 +46,11 @@ public final class FlairRule {
                 .map(option -> kind == JoinLines.Kind.JOIN ? option.text() : option.text2());
     }
 
+    /** The teleport sound they picked: its {@code text} is the departure key and {@code text2} the arrival's. */
+    public Optional<FlairOption> teleport(FlairChoice effective) {
+        return effective.get(FlairCategory.TELEPORT).flatMap(id -> FlairCatalogue.find(FlairCategory.TELEPORT, id));
+    }
+
     public Optional<FlairEffect> effect(FlairChoice effective, FlairCategory category) {
         return effective.get(category).flatMap(id -> FlairCatalogue.find(category, id)).map(FlairOption::effect);
     }
