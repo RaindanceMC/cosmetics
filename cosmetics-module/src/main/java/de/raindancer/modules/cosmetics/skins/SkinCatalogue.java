@@ -23,15 +23,31 @@ import java.util.regex.Pattern;
 public final class SkinCatalogue {
 
     /** The categories in the order the menu shows them. */
-    public static final List<String> CATEGORIES = List.of("Katana & Blades", "Scythe", "Fantasy", "3D Classic", "Modern",
-            "Cute & Fun");
+    public static final List<String> CATEGORIES = List.of("Armour", "Katana & Blades", "Scythe", "Fantasy", "3D Classic",
+            "Modern", "Cute & Fun");
 
     private static final Pattern WEAPON = Pattern.compile(
             "^(?:(?:wooden|stone|copper|iron|golden|diamond|netherite)_(sword|axe|pickaxe|spear)|(mace|trident|bow|crossbow))$");
+    private static final Pattern ARMOUR = Pattern.compile(
+            "^(?:leather|chainmail|copper|iron|golden|diamond|netherite|turtle)_(helmet|chestplate|leggings|boots)$");
 
-    /** @param looks item id (diamond_sword) to the item model that dresses it */
+    /**
+     * @param looks     item id (diamond_sword) to the item model that dresses it
+     * @param equipment for armour: the equipment asset ({@code rainsskins:frost}) it is worn as; null for weapons
+     */
     public record Skin(String id, String title, int pack, String packTitle, String category, String author,
-                       String license, String url, Map<String, String> looks) {
+                       String license, String url, Map<String, String> looks, String equipment) {
+
+        public Skin(String id, String title, int pack, String packTitle, String category, String author,
+                    String license, String url, Map<String, String> looks) {
+            this(id, title, pack, packTitle, category, author, license, url, looks, null);
+        }
+
+        /** The worn look for this item: only armour wears one, and only an armour skin has it. */
+        public Optional<String> equipmentFor(String item) {
+            return equipment == null || equipment.isBlank() || !isArmour(item) || !dresses(item)
+                    ? Optional.empty() : Optional.of(equipment);
+        }
 
         /** The look for this item: its own, or another of the same weapon type's. */
         public Optional<String> lookFor(String item) {
@@ -75,11 +91,19 @@ public final class SkinCatalogue {
         if (item == null) {
             return Optional.empty();
         }
+        Matcher armour = ARMOUR.matcher(item);
+        if (armour.matches()) {
+            return Optional.of(armour.group(1));
+        }
         Matcher matcher = WEAPON.matcher(item);
         if (!matcher.matches()) {
             return Optional.empty();
         }
         return Optional.of(matcher.group(1) != null ? matcher.group(1) : matcher.group(2));
+    }
+
+    public static boolean isArmour(String item) {
+        return item != null && ARMOUR.matcher(item).matches();
     }
 
     public List<Skin> all() {

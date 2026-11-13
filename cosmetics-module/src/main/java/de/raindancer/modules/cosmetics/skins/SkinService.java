@@ -199,10 +199,11 @@ public final class SkinService {
         }
         SkinSettings now = settings.get();
         String item = stack.getType().getKey().getKey();
-        String look = catalogue.byId(tag.get().skin()).flatMap(s -> s.lookFor(item)).orElse(null);
+        Optional<SkinCatalogue.Skin> skin = catalogue.byId(tag.get().skin());
+        String look = skin.flatMap(s -> s.lookFor(item)).orElse(null);
         SkinRules.Look decision = new SkinRules.Visibility(now.hideWithOthers(), now.showOutside()).decide(tag.get(),
                 holder, owns(tag.get().owner(), tag.get().skin()), now.enabled() && isOn(tag.get().skin()), look,
-                SkinItems.currentModel(stack));
+                SkinItems.currentModel(stack)).wearing(skin.flatMap(s -> s.equipmentFor(item)).orElse(null));
         return SkinItems.apply(stack, decision);
     }
 

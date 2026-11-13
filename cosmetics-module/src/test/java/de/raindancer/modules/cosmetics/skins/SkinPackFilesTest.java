@@ -48,7 +48,9 @@ class SkinPackFilesTest {
         List<String> outside = files().stream()
                 .filter(f -> f.startsWith("assets/" + NS + "/textures/") && f.endsWith(".png"))
                 .map(f -> f.substring(("assets/" + NS + "/textures/").length()))
-                .filter(f -> !f.startsWith("item/") && !f.startsWith("block/") && !f.startsWith("font/"))
+                .filter(f -> !f.startsWith("item/") && !f.startsWith("block/") && !f.startsWith("font/")
+                        // armour's worn layers: read by the equipment renderer, not an atlas
+                        && !f.startsWith("entity/equipment/humanoid/") && !f.startsWith("entity/equipment/humanoid_leggings/"))
                 .toList();
         assertThat(outside).isEmpty();
     }

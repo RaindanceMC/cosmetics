@@ -65,15 +65,17 @@ public final class SkinItems {
         String current = currentModel(stack);
         switch (look.kind()) {
             case SHOW -> {
-                if (look.model().equals(current)) {
-                    return false;
+                boolean changed = false;
+                if (!look.model().equals(current)) {
+                    stack.setData(DataComponentTypes.ITEM_MODEL, Key.key(look.model()));
+                    changed = true;
                 }
-                stack.setData(DataComponentTypes.ITEM_MODEL, Key.key(look.model()));
-                return true;
+                return wear(stack, look.equipment()) | changed;
             }
             case HIDE -> {
+                boolean changed = wear(stack, null);
                 if (current == null || !current.startsWith(SkinRules.OUR_NAMESPACE + ":")) {
-                    return false;
+                    return changed;
                 }
                 stack.resetData(DataComponentTypes.ITEM_MODEL);
                 return true;
@@ -82,5 +84,32 @@ public final class SkinItems {
                 return false;
             }
         }
+    }
+
+    /**
+     * Armour's worn look: the equippable component's asset, the rest of the component kept as the item had it. Null
+     * puts the item's own back — only where the asset is ours, so another plugin's armour is left alone.
+     *
+     * @return whether the stack changed
+     */
+    static boolean wear(ItemStack stack, String asset) {
+        io.papermc.paper.datacomponent.item.Equippable equippable = stack.getData(DataComponentTypes.EQUIPPABLE);
+        if (equippable == null) {
+            return false;
+        }
+        Key now = equippable.assetId();
+        if (asset == null) {
+            if (now == null || !now.namespace().equals(SkinRules.OUR_NAMESPACE)
+                    || !stack.isDataOverridden(DataComponentTypes.EQUIPPABLE)) {
+                return false;
+            }
+            stack.resetData(DataComponentTypes.EQUIPPABLE);
+            return true;
+        }
+        if (now != null && now.asString().equals(asset)) {
+            return false;
+        }
+        stack.setData(DataComponentTypes.EQUIPPABLE, equippable.toBuilder().assetId(Key.key(asset)).build());
+        return true;
     }
 }

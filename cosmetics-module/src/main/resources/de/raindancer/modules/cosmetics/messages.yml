@@ -172,7 +172,7 @@ cosmetics:
     removed: "<gray>The skin is off."
     locked: "<#E8B98A>That skin is not yours yet — unlock it first."
     somebody-elses: "<red>That weapon's skin belongs to somebody else."
-    not-a-weapon: "<gray>Hold the weapon you want to dress first."
+    not-a-weapon: "<gray>Hold the weapon or armour piece you want to dress first."
     not-for-this: "<gray>That skin is not made for this weapon."
     none-left: "<#D9BFA0>You have no unlocks left. <white>/support</white> <#D9BFA0>earns more — and supporters earn them just by playing."
     switched-off: "<gray>That skin is switched off here."

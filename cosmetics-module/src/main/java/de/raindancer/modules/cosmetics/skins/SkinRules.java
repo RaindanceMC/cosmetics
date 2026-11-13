@@ -84,15 +84,24 @@ public final class SkinRules {
     public enum Owns { YES, NO, UNKNOWN }
 
     /** What to do with an item's model: put the skin's on, take ours off, or leave it as it is. */
-    public record Look(Kind kind, String model) {
+    /** @param equipment for armour, the equipment asset it is worn as; null otherwise */
+    public record Look(Kind kind, String model, String equipment) {
 
         public enum Kind { SHOW, HIDE, LEAVE }
 
-        public static final Look HIDE = new Look(Kind.HIDE, null);
-        public static final Look LEAVE = new Look(Kind.LEAVE, null);
+        public static final Look HIDE = new Look(Kind.HIDE, null, null);
+        public static final Look LEAVE = new Look(Kind.LEAVE, null, null);
+
+        public Look(Kind kind, String model) {
+            this(kind, model, null);
+        }
 
         public static Look show(String model) {
-            return new Look(Kind.SHOW, model);
+            return new Look(Kind.SHOW, model, null);
+        }
+
+        public Look wearing(String asset) {
+            return kind == Kind.SHOW && asset != null ? new Look(kind, model, asset) : this;
         }
     }
 
