@@ -30,3 +30,7 @@ A module's version is a property in this repository's root `pom.xml`, a plugin's
 - `rainscosmetics.flair` (child of `rains.prime` and of staff's `rainscosmetics.perks`): the stardust trail, a tag
   (`/cosmetics flair tag|colour`), join and leave lines (`join`), kill and death effects (`kill`, `death`). Looks only.
   Join/leave lines are said through Core's `JoinLines`, which essentials' welcome asks.
+- **Creator skins (0.32.0):** seven existing skins are creator-only (`creator: true`, category Twitch, `rainscosmetics.creator`
+  alone; not unlocks, not `skins.all`, not Prime): Shadowstone Tools, Dragon Blade, Glacial Gear and the armour sets Purple
+  Diamond, Sakura Netherite, Valkyrian Netherite, Modern Netherite. `art/skins/creator.py` sets the flags; run it after
+  `convert.py`/`armour.py`.

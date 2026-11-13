@@ -1,121 +1,5 @@
 [
  {
-  "id": "twitch-glitchblade",
-  "title": "Glitchblade",
-  "pack": -1,
-  "packTitle": "Twitch set (own work)",
-  "category": "Twitch",
-  "author": "Raindancer118",
-  "license": "Own work",
-  "url": "https://github.com/RaindanceMC/cosmetics",
-  "looks": {
-   "wooden_sword": "rainsskins:twitch-glitchblade/wooden_sword",
-   "stone_sword": "rainsskins:twitch-glitchblade/stone_sword",
-   "copper_sword": "rainsskins:twitch-glitchblade/copper_sword",
-   "iron_sword": "rainsskins:twitch-glitchblade/iron_sword",
-   "golden_sword": "rainsskins:twitch-glitchblade/golden_sword",
-   "diamond_sword": "rainsskins:twitch-glitchblade/diamond_sword",
-   "netherite_sword": "rainsskins:twitch-glitchblade/netherite_sword"
-  },
-  "creator": true
- },
- {
-  "id": "twitch-glitchblade-rgb",
-  "title": "Glitchblade RGB",
-  "pack": -1,
-  "packTitle": "Twitch set (own work)",
-  "category": "Twitch",
-  "author": "Raindancer118",
-  "license": "Own work",
-  "url": "https://github.com/RaindanceMC/cosmetics",
-  "looks": {
-   "wooden_sword": "rainsskins:twitch-glitchblade-rgb/wooden_sword",
-   "stone_sword": "rainsskins:twitch-glitchblade-rgb/stone_sword",
-   "copper_sword": "rainsskins:twitch-glitchblade-rgb/copper_sword",
-   "iron_sword": "rainsskins:twitch-glitchblade-rgb/iron_sword",
-   "golden_sword": "rainsskins:twitch-glitchblade-rgb/golden_sword",
-   "diamond_sword": "rainsskins:twitch-glitchblade-rgb/diamond_sword",
-   "netherite_sword": "rainsskins:twitch-glitchblade-rgb/netherite_sword"
-  },
-  "creator": true
- },
- {
-  "id": "twitch-pixel-chopper",
-  "title": "Pixel Chopper",
-  "pack": -1,
-  "packTitle": "Twitch set (own work)",
-  "category": "Twitch",
-  "author": "Raindancer118",
-  "license": "Own work",
-  "url": "https://github.com/RaindanceMC/cosmetics",
-  "looks": {
-   "wooden_axe": "rainsskins:twitch-pixel-chopper/wooden_axe",
-   "stone_axe": "rainsskins:twitch-pixel-chopper/stone_axe",
-   "copper_axe": "rainsskins:twitch-pixel-chopper/copper_axe",
-   "iron_axe": "rainsskins:twitch-pixel-chopper/iron_axe",
-   "golden_axe": "rainsskins:twitch-pixel-chopper/golden_axe",
-   "diamond_axe": "rainsskins:twitch-pixel-chopper/diamond_axe",
-   "netherite_axe": "rainsskins:twitch-pixel-chopper/netherite_axe"
-  },
-  "creator": true
- },
- {
-  "id": "twitch-pixel-pick",
-  "title": "Pixel Pick",
-  "pack": -1,
-  "packTitle": "Twitch set (own work)",
-  "category": "Twitch",
-  "author": "Raindancer118",
-  "license": "Own work",
-  "url": "https://github.com/RaindanceMC/cosmetics",
-  "looks": {
-   "wooden_pickaxe": "rainsskins:twitch-pixel-pick/wooden_pickaxe",
-   "stone_pickaxe": "rainsskins:twitch-pixel-pick/stone_pickaxe",
-   "copper_pickaxe": "rainsskins:twitch-pixel-pick/copper_pickaxe",
-   "iron_pickaxe": "rainsskins:twitch-pixel-pick/iron_pickaxe",
-   "golden_pickaxe": "rainsskins:twitch-pixel-pick/golden_pickaxe",
-   "diamond_pickaxe": "rainsskins:twitch-pixel-pick/diamond_pickaxe",
-   "netherite_pickaxe": "rainsskins:twitch-pixel-pick/netherite_pickaxe"
-  },
-  "creator": true
- },
- {
-  "id": "twitch-glitchplate",
-  "title": "Glitchplate",
-  "pack": -1,
-  "packTitle": "Twitch set (own work)",
-  "category": "Twitch",
-  "author": "Raindancer118",
-  "license": "Own work",
-  "url": "https://github.com/RaindanceMC/cosmetics",
-  "looks": {
-   "diamond_helmet": "rainsskins:twitch-glitchplate/helmet",
-   "diamond_chestplate": "rainsskins:twitch-glitchplate/chestplate",
-   "diamond_leggings": "rainsskins:twitch-glitchplate/leggings",
-   "diamond_boots": "rainsskins:twitch-glitchplate/boots"
-  },
-  "equipment": "rainsskins:twitch-glitchplate",
-  "creator": true
- },
- {
-  "id": "twitch-glitchplate-night",
-  "title": "Glitchplate Night",
-  "pack": -1,
-  "packTitle": "Twitch set (own work)",
-  "category": "Twitch",
-  "author": "Raindancer118",
-  "license": "Own work",
-  "url": "https://github.com/RaindanceMC/cosmetics",
-  "looks": {
-   "diamond_helmet": "rainsskins:twitch-glitchplate-night/helmet",
-   "diamond_chestplate": "rainsskins:twitch-glitchplate-night/chestplate",
-   "diamond_leggings": "rainsskins:twitch-glitchplate-night/leggings",
-   "diamond_boots": "rainsskins:twitch-glitchplate-night/boots"
-  },
-  "equipment": "rainsskins:twitch-glitchplate-night",
-  "creator": true
- },
- {
   "id": "armour-jappa-styled-armor-retextures-chainmail",
   "title": "Jappa Chainmail",
   "pack": 0,
@@ -188,7 +72,7 @@
   "title": "Valkyrian Netherite",
   "pack": 0,
   "packTitle": "Valkyrian Netherite Reforged V2",
-  "category": "Armour",
+  "category": "Twitch",
   "author": "Orenxo",
   "license": "MIT",
   "url": "https://modrinth.com/resourcepack/valkyrian-netherite-reforged-v2",
@@ -198,7 +82,8 @@
    "netherite_leggings": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite/leggings",
    "netherite_boots": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite/boots"
   },
-  "equipment": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite"
+  "equipment": "rainsskins:armour/valkyrian-netherite-reforged-v2-netherite",
+  "creator": true
  },
  {
   "id": "armour-valkyrian-netherite-reforged-v2-turtle-scute",
@@ -219,7 +104,7 @@
   "title": "Modern Netherite",
   "pack": 0,
   "packTitle": "Netherite Armor",
-  "category": "Armour",
+  "category": "Twitch",
   "author": "ItsSory",
   "license": "MIT",
   "url": "https://modrinth.com/resourcepack/netherite-armor",
@@ -229,7 +114,8 @@
    "netherite_leggings": "rainsskins:armour/netherite-armor-netherite/leggings",
    "netherite_boots": "rainsskins:armour/netherite-armor-netherite/boots"
   },
-  "equipment": "rainsskins:armour/netherite-armor-netherite"
+  "equipment": "rainsskins:armour/netherite-armor-netherite",
+  "creator": true
  },
  {
   "id": "armour-frostburn-diamond",
@@ -253,7 +139,7 @@
   "title": "Purple Diamond",
   "pack": 0,
   "packTitle": "Purple diamond armor",
-  "category": "Armour",
+  "category": "Twitch",
   "author": "Mr_frugal",
   "license": "MIT",
   "url": "https://modrinth.com/resourcepack/purple-diamond-armor",
@@ -263,7 +149,8 @@
    "diamond_leggings": "rainsskins:armour/purple-diamond-armor-diamond/leggings",
    "diamond_boots": "rainsskins:armour/purple-diamond-armor-diamond/boots"
   },
-  "equipment": "rainsskins:armour/purple-diamond-armor-diamond"
+  "equipment": "rainsskins:armour/purple-diamond-armor-diamond",
+  "creator": true
  },
  {
   "id": "armour-pink-iron-iron",
@@ -757,7 +644,7 @@
   "title": "Sakura Netherite",
   "pack": 0,
   "packTitle": "S33R Sakura Hotbar",
-  "category": "Armour",
+  "category": "Twitch",
   "author": "S33R_OF_PYR3",
   "license": "MIT",
   "url": "https://modrinth.com/resourcepack/sakura-hotbar",
@@ -767,7 +654,8 @@
    "netherite_leggings": "rainsskins:armour/sakura-hotbar-netherite/leggings",
    "netherite_boots": "rainsskins:armour/sakura-hotbar-netherite/boots"
   },
-  "equipment": "rainsskins:armour/sakura-hotbar-netherite"
+  "equipment": "rainsskins:armour/sakura-hotbar-netherite",
+  "creator": true
  },
  {
   "id": "armour-crystalcore-netherite",
@@ -1593,13 +1481,14 @@
   "title": "Custom 3D Swords: Dragon Blade",
   "pack": 13,
   "packTitle": "Custom 3D Swords",
-  "category": "Fantasy",
+  "category": "Twitch",
   "author": "EnderElite99",
   "license": "MIT",
   "url": "https://modrinth.com/resourcepack/custom-3d-swords",
   "looks": {
    "netherite_sword": "rainsskins:custom-3d-swords-dragon-blade/netherite_sword"
-  }
+  },
+  "creator": true
  },
  {
   "id": "custom-3d-swords-fire-blade",
@@ -2181,7 +2070,7 @@
   "title": "Shadowstone Tools: onyx X netherite",
   "pack": 48,
   "packTitle": "Shadowstone Tools: onyx X netherite",
-  "category": "Fantasy",
+  "category": "Twitch",
   "author": "abdouahabch7",
   "license": "MIT",
   "url": "https://modrinth.com/resourcepack/shadowstone-tools",
@@ -2189,14 +2078,15 @@
    "netherite_sword": "rainsskins:shadowstone-tools/netherite_sword",
    "netherite_axe": "rainsskins:shadowstone-tools/netherite_axe",
    "netherite_pickaxe": "rainsskins:shadowstone-tools/netherite_pickaxe"
-  }
+  },
+  "creator": true
  },
  {
   "id": "glacial-gear",
   "title": "Glacial Gear",
   "pack": 49,
   "packTitle": "Glacial Gear",
-  "category": "Fantasy",
+  "category": "Twitch",
   "author": "abdouahabch7",
   "license": "MIT",
   "url": "https://modrinth.com/resourcepack/glacial-gear",
@@ -2204,7 +2094,8 @@
    "diamond_sword": "rainsskins:glacial-gear/diamond_sword",
    "diamond_axe": "rainsskins:glacial-gear/diamond_axe",
    "diamond_pickaxe": "rainsskins:glacial-gear/diamond_pickaxe"
-  }
+  },
+  "creator": true
  },
  {
   "id": "valkyrian-netherite-reforged-v2",

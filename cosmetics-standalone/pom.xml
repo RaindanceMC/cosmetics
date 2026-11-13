@@ -36,7 +36,7 @@
         <!-- 0.19.0: /cosmetics tags — players take the guild tag and its stars off their name, or wear them again; kept in their data, so on every server. Needs RainsCore with NameBadges wardrobe. -->
         <!-- 0.24.0: other plugins' cosmetics on the cosmetics page — fishing's rod skins as a door beside the weapon skins (Core's CosmeticDoors). -->
         <!-- 0.25.0: a pet's name may be painted and its particles worn as the player may their own (Core's NameStyleGrants and ParticleGrants, RainsCore 2.42.0+). -->
-        <plugin.version>0.31.0</plugin.version>
+        <plugin.version>0.32.0</plugin.version>
     </properties>
 
     <dependencies>

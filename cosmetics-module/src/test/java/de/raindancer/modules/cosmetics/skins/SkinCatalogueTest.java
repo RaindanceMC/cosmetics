@@ -91,11 +91,8 @@ class SkinCatalogueTest {
         for (SkinCatalogue.Skin skin : catalogue.all()) {
             assertThat(skin.looks()).as(skin.id()).isNotEmpty();
             assertThat(skin.author()).as(skin.id()).isNotBlank();
-            // Third-party art carries an open licence; the server's own (the creators' Twitch set) says so instead.
-            List<String> licences = skin.creator() && skin.author().equals("Raindancer118")
-                    ? List.of("Own work") : List.of("MIT", "CC-BY-4.0", "CC0-1.0", "Apache-2.0",
-                    "CC-BY-SA-4.0", "Zlib", "MPL-2.0", "Unlicense", "BSD-3-Clause", "LGPL-3.0-only", "GPL-3.0-only", "WTFPL");
-            assertThat(skin.license()).as(skin.id()).isIn(licences);
+            assertThat(skin.license()).as(skin.id()).isIn(List.of("MIT", "CC-BY-4.0", "CC0-1.0", "Apache-2.0",
+                    "CC-BY-SA-4.0", "Zlib", "MPL-2.0", "Unlicense", "BSD-3-Clause", "LGPL-3.0-only", "GPL-3.0-only", "WTFPL"));
             assertThat(SkinCatalogue.CATEGORIES).as(skin.id()).contains(skin.category());
             skin.looks().keySet().forEach(item -> assertThat(SkinCatalogue.kindOf(item)).as(item).isPresent());
         }
@@ -180,93 +177,65 @@ class SkinCatalogueTest {
         assertThat(read.byId("b").orElseThrow().unlockable()).isTrue();
     }
 
-    @Test
-    @DisplayName("the shipped Twitch set: purple weapon skins for creators — swords, an axe and a pickaxe, no armour")
-    void shippedTwitchSet() {
-        List<SkinCatalogue.Skin> twitch = SkinCatalogue.bundled().all().stream().filter(SkinCatalogue.Skin::creator).toList();
+    /** What creators have: existing, openly licensed skins from the packs — nothing modelled for the server. */
+    private static final List<String> CREATOR_WEAPONS = List.of("shadowstone-tools", "custom-3d-swords-dragon-blade",
+            "glacial-gear");
+    private static final List<String> CREATOR_ARMOUR = List.of("armour-purple-diamond-armor-diamond",
+            "armour-sakura-hotbar-netherite", "armour-valkyrian-netherite-reforged-v2-netherite",
+            "armour-netherite-armor-netherite");
 
-        assertThat(twitch).extracting(SkinCatalogue.Skin::title)
-                .contains("Glitchblade", "Glitchblade RGB", "Pixel Chopper", "Pixel Pick", "Glitchplate", "Glitchplate Night");
-        for (SkinCatalogue.Skin skin : twitch) {
-            assertThat(skin.id()).startsWith("twitch-");
-            assertThat(skin.category()).isEqualTo("Twitch");
-            boolean armour = skin.equipment() != null;
-            assertThat(skin.looks().keySet()).as(skin.id())
-                    .allMatch(item -> SkinCatalogue.isArmour(item) == armour, "all armour or all weapons");
-            assertThat(skin.looks().values()).as(skin.id()).allMatch(look -> look.startsWith("rainsskins:" + skin.id() + "/"));
-            assertThat(skin.license()).as("our own work: no third party to credit").isEqualTo("Own work");
+    @Test
+    @DisplayName("exactly the chosen skins are creator-only, in the Twitch category, with their packs' credits untouched")
+    void creatorSkins() {
+        SkinCatalogue catalogue = SkinCatalogue.bundled();
+        List<String> flagged = catalogue.all().stream().filter(SkinCatalogue.Skin::creator).map(SkinCatalogue.Skin::id).toList();
+
+        assertThat(flagged).containsExactlyInAnyOrderElementsOf(
+                java.util.stream.Stream.concat(CREATOR_WEAPONS.stream(), CREATOR_ARMOUR.stream()).toList());
+        for (String id : flagged) {
+            SkinCatalogue.Skin skin = catalogue.byId(id).orElseThrow();
+            assertThat(skin.category()).as(id).isEqualTo("Twitch");
+            assertThat(skin.unlockable()).as(id).isFalse();
+            assertThat(skin.author()).as(id + " keeps its author").isNotBlank().isNotEqualTo("Raindancer118");
+            assertThat(skin.license()).as(id + " keeps its licence").isNotEqualTo("Own work");
+            assertThat(skin.url()).as(id).startsWith("https://modrinth.com/resourcepack/");
         }
-        assertThat(twitch.stream().anyMatch(skin -> skin.dresses("iron_sword"))).isTrue();
-        assertThat(twitch.stream().anyMatch(skin -> skin.dresses("netherite_axe"))).isTrue();
-        assertThat(twitch.stream().anyMatch(skin -> skin.dresses("golden_pickaxe"))).isTrue();
-        assertThat(SkinCatalogue.bundled().all().stream().filter(skin -> skin.id().startsWith("twitch-")))
-                .as("everything called twitch is a creator skin").allMatch(SkinCatalogue.Skin::creator);
-        assertThat(SkinCatalogue.CATEGORIES).contains("Twitch");
+        assertThat(CREATOR_WEAPONS).allMatch(id -> catalogue.byId(id).orElseThrow().equipment() == null);
+        assertThat(CREATOR_ARMOUR).allMatch(id -> catalogue.byId(id).orElseThrow().equipment() != null);
+        assertThat(CREATOR_WEAPONS.stream().anyMatch(id -> catalogue.byId(id).orElseThrow().dresses("iron_sword"))).isTrue();
+        assertThat(CREATOR_WEAPONS.stream().anyMatch(id -> catalogue.byId(id).orElseThrow().dresses("iron_axe"))).isTrue();
+        assertThat(CREATOR_WEAPONS.stream().anyMatch(id -> catalogue.byId(id).orElseThrow().dresses("iron_pickaxe"))).isTrue();
     }
 
     @Test
-    @DisplayName("the Twitch armour: two full sets for creators, each worn as its own equipment asset, any material takes the look")
-    void twitchArmour() throws Exception {
-        List<SkinCatalogue.Skin> armour = SkinCatalogue.bundled().all().stream()
-                .filter(skin -> skin.creator() && skin.equipment() != null).toList();
+    @DisplayName("every other skin is unchanged: armour stays in Armour, nobody's weapon skin moved, all of them unlockable")
+    void otherSkinsUnchanged() {
+        List<SkinCatalogue.Skin> others = SkinCatalogue.bundled().all().stream().filter(skin -> !skin.creator()).toList();
 
-        assertThat(armour).extracting(SkinCatalogue.Skin::title).containsExactlyInAnyOrder("Glitchplate", "Glitchplate Night");
+        assertThat(others.stream().filter(skin -> skin.equipment() != null)).hasSize(51)
+                .allMatch(skin -> skin.category().equals("Armour"));
+        assertThat(SkinCatalogue.bundled().all().stream().filter(skin -> skin.equipment() != null)).hasSize(55);
+        assertThat(others).allMatch(skin -> !skin.category().equals("Twitch")).allMatch(SkinCatalogue.Skin::unlockable);
+        assertThat(others).hasSize(124 - 7);
+    }
+
+    @Test
+    @DisplayName("nothing modelled for the server is in the pack: the self-made Twitch skins are gone, files and all")
+    void nothingSelfMade() throws Exception {
+        assertThat(SkinCatalogue.bundled().all()).noneMatch(skin -> skin.id().startsWith("twitch-"));
+        assertThat(SkinPack.files()).noneMatch(file -> file.contains("twitch"));
+        assertThat(SkinCatalogue.bundled().all()).noneMatch(skin -> skin.author().equals("Raindancer118"));
+    }
+
+    @Test
+    @DisplayName("a creator armour skin ships its worn layers like every other armour skin")
+    void creatorArmourShips() throws Exception {
         List<String> files = SkinPack.files();
-        for (SkinCatalogue.Skin skin : armour) {
-            assertThat(skin.equipment()).isEqualTo("rainsskins:" + skin.id());
-            for (String item : List.of("netherite_helmet", "iron_chestplate", "leather_leggings", "copper_boots", "turtle_helmet")) {
-                assertThat(skin.dresses(item)).as(skin.id() + " " + item).isTrue();
-                assertThat(skin.equipmentFor(item)).as(skin.id() + " " + item).contains(skin.equipment());
-            }
-            assertThat(skin.dresses("diamond_sword")).isFalse();
-            assertThat(files).contains("assets/rainsskins/equipment/" + skin.id() + ".json",
-                    "assets/rainsskins/textures/entity/equipment/humanoid/" + skin.id() + ".png",
-                    "assets/rainsskins/textures/entity/equipment/humanoid_leggings/" + skin.id() + ".png");
-            for (String piece : List.of("helmet", "chestplate", "leggings", "boots")) {
-                assertThat(files).contains("assets/rainsskins/textures/item/" + skin.id() + "/" + piece + ".png",
-                        "assets/rainsskins/models/" + skin.id() + "/" + piece + ".json",
-                        "assets/rainsskins/items/" + skin.id() + "/" + piece + ".json");
-            }
-        }
-    }
-
-    private static java.awt.image.BufferedImage worn(String skin, String layer) throws Exception {
-        try (java.io.InputStream in = SkinCatalogueTest.class.getResourceAsStream(
-                "/de/raindancer/modules/cosmetics/pack/assets/rainsskins/textures/entity/equipment/" + layer + "/" + skin + ".png")) {
-            return javax.imageio.ImageIO.read(in);
-        }
-    }
-
-    private static boolean painted(java.awt.image.BufferedImage image, int x0, int y0, int x1, int y1) {
-        for (int y = y0; y < y1; y++) {
-            for (int x = x0; x < x1; x++) {
-                if ((image.getRGB(x, y) >>> 24) != 0) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    @Test
-    @DisplayName("the worn layers are 64x32 and paint each piece where it is worn — boots only at the foot, leggings not at the foot")
-    void twitchArmourLayers() throws Exception {
-        for (String skin : List.of("twitch-glitchplate", "twitch-glitchplate-night")) {
-            java.awt.image.BufferedImage outer = worn(skin, "humanoid");
-            java.awt.image.BufferedImage inner = worn(skin, "humanoid_leggings");
-            assertThat(outer.getWidth()).isEqualTo(64);
-            assertThat(outer.getHeight()).isEqualTo(32);
-            assertThat(inner.getWidth()).isEqualTo(64);
-            assertThat(inner.getHeight()).isEqualTo(32);
-            assertThat(painted(outer, 0, 0, 32, 16)).as(skin + " helmet").isTrue();
-            assertThat(painted(outer, 16, 16, 40, 32)).as(skin + " chestplate body").isTrue();
-            assertThat(painted(outer, 40, 16, 56, 32)).as(skin + " sleeves").isTrue();
-            assertThat(painted(outer, 0, 28, 16, 32)).as(skin + " boots at the foot").isTrue();
-            assertThat(painted(outer, 0, 20, 16, 28)).as(skin + " boots leave the legs bare").isFalse();
-            assertThat(painted(inner, 0, 20, 16, 28)).as(skin + " leggings on the legs").isTrue();
-            assertThat(painted(inner, 0, 28, 16, 32)).as(skin + " leggings stop above the foot").isFalse();
-            assertThat(painted(inner, 16, 20, 40, 24)).as(skin + " belt").isTrue();
-            assertThat(painted(inner, 0, 0, 64, 16)).as(skin + " no hat in the leggings layer").isFalse();
+        for (String id : CREATOR_ARMOUR) {
+            String asset = SkinCatalogue.bundled().byId(id).orElseThrow().equipment().substring("rainsskins:".length());
+            assertThat(files).as(id).contains("assets/rainsskins/equipment/" + asset + ".json");
+            assertThat(files.stream().filter(f -> f.startsWith("assets/rainsskins/textures/entity/equipment/")
+                    && f.endsWith("/" + asset + ".png"))).as(id).isNotEmpty();
         }
     }
 }
