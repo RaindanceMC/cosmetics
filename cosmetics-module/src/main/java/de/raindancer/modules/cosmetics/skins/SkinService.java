@@ -52,6 +52,17 @@ public final class SkinService {
         return settings.get();
     }
 
+    private volatile java.util.function.BooleanSupplier primeOnly = () -> false;
+
+    /** Whether skins are Prime's (Prime-only on) rather than coffee supporters': what the menus call them. */
+    public void primeOnly(java.util.function.BooleanSupplier primeOnly) {
+        this.primeOnly = primeOnly == null ? () -> false : primeOnly;
+    }
+
+    public boolean primeOnly() {
+        return primeOnly.getAsBoolean();
+    }
+
     public boolean mayUse(Player who) {
         return SkinRules.mayUse(settings.get().enabled(), who.hasPermission(PermissionNodes.SKINS),
                 who.hasPermission(PermissionNodes.CREATOR));
@@ -77,16 +88,10 @@ public final class SkinService {
                 who.hasPermission(PermissionNodes.SKIN_PREFIX + skin));
     }
 
-    /** For an item whose owner may be away: only a permission could say more, and only to somebody here. */
+    /** For an item whose owner may be away: their skin and their right to skins, which only they, here, can show. */
     SkinRules.Owns owns(UUID owner, String skin) {
-        if (!creatorSkin(skin) && unlocks.has(owner, skin)) {
-            return SkinRules.Owns.YES;
-        }
         Player online = server.getPlayer(owner);
-        if (online == null) {
-            return SkinRules.Owns.UNKNOWN;
-        }
-        return owns(online, skin) ? SkinRules.Owns.YES : SkinRules.Owns.NO;
+        return SkinRules.ownerHas(online != null, online != null && mayUse(online), online != null && owns(online, skin));
     }
 
     public int unlocksAllowed(Player who) {

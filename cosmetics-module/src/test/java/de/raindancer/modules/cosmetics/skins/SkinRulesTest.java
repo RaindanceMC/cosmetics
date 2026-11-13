@@ -170,4 +170,15 @@ class SkinRulesTest {
         assertThat(SkinRules.visible(false, false)).as("and not the supporters' ones").isFalse();
         assertThat(SkinRules.visible(false, true)).isTrue();
     }
+
+    @Test
+    @DisplayName("a skin shows only while its owner may still use skins: Prime ended, the look is off, and back with Prime")
+    void lookGoesWithThePerk() {
+        assertThat(SkinRules.ownerHas(true, true, true)).isEqualTo(SkinRules.Owns.YES);
+        assertThat(SkinRules.ownerHas(true, false, true)).as("unlocked once, but no Prime any more")
+                .isEqualTo(SkinRules.Owns.NO);
+        assertThat(SkinRules.ownerHas(true, true, false)).isEqualTo(SkinRules.Owns.NO);
+        assertThat(SkinRules.ownerHas(false, false, true)).as("away: only their permissions could say")
+                .isEqualTo(SkinRules.Owns.UNKNOWN);
+    }
 }

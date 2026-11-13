@@ -102,6 +102,17 @@ public final class SkinRules {
     /** Whether an item's owner still has its skin: UNKNOWN when only a permission could say and they are away. */
     public enum Owns { YES, NO, UNKNOWN }
 
+    /**
+     * Whether a skinned item's owner still has its look: the skin and the right to wear skins at all, so a look
+     * unlocked under Prime goes when Prime does, and comes back with it. Away, only their permissions could say.
+     */
+    public static Owns ownerHas(boolean online, boolean mayUse, boolean owns) {
+        if (!online) {
+            return Owns.UNKNOWN;
+        }
+        return mayUse && owns ? Owns.YES : Owns.NO;
+    }
+
     /** What to do with an item's model: put the skin's on, take ours off, or leave it as it is. */
     /** @param equipment for armour, the equipment asset it is worn as; null otherwise */
     public record Look(Kind kind, String model, String equipment) {

@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.34.0")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.35.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -154,6 +154,7 @@ public final class CosmeticsModule implements FlexModule {
                 de.raindancer.modules.cosmetics.prime.PrimeSettings.DEFAULTS);
         de.raindancer.modules.cosmetics.prime.PrimePerks.apply(server.getPluginManager(), primeSettings.current().primeOnly());
         particles.primeOnly(() -> primeSettings.current().primeOnly());
+        skins.primeOnly(() -> primeSettings.current().primeOnly());
         // Flair: Prime's tag, lines and effects and the creators' Twitch extras — looks only.
         var flair = new de.raindancer.modules.cosmetics.flair.FlairService(
                 de.raindancer.modules.cosmetics.flair.FlairStore.persistent(),
