@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.27.0")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.28.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -146,10 +146,42 @@ public final class CosmeticsModule implements FlexModule {
         var skins = new de.raindancer.modules.cosmetics.skins.SkinService(context.plugin(), server, context.core(),
                 de.raindancer.modules.cosmetics.skins.SkinCatalogue.bundled(), skinUnlocks, skinSettings::current);
         var supporter = de.raindancer.core.social.support.SupporterPermission.permission(server.getPluginManager());
-        supporter.getChildren().put(PermissionNodes.SKINS, true);
         supporter.getChildren().put(PermissionNodes.PARTICLE_COFFEE, true);
         supporter.getChildren().put(PermissionNodes.LIBRARY, true);
         supporter.recalculatePermissibles();
+        // Prime: one switch turns the everyday cosmetics and skins into perks; the monthly drops on top.
+        var primeSettings = context.settings(de.raindancer.modules.cosmetics.prime.PrimeSettings.class,
+                de.raindancer.modules.cosmetics.prime.PrimeSettings.DEFAULTS);
+        de.raindancer.modules.cosmetics.prime.PrimePerks.apply(server.getPluginManager(), primeSettings.current().primeOnly());
+        var drops = new de.raindancer.modules.cosmetics.prime.PrimeDropService(context.plugin(),
+                de.raindancer.core.data.store.YamlStore.network(context.dataFolder().resolve("prime-drops.yml")),
+                context.core()::prime, () -> primeSettings.current().primeOnly(), warning -> log.warn("{}", warning));
+        drops.load();
+        context.closeWith(drops.watch());
+        context.closeWith(drops::forgetEveryone);
+        context.listener(drops);
+        Runnable redrawPrime = () -> server.getOnlinePlayers().forEach(online -> Scheduling.entity(context.plugin(), online, () -> {
+            drops.sync(online);
+            names.revalidate(online);
+            particles.revalidate(online);
+        }));
+        primeSettings.onChange(fresh -> Scheduling.global(context.plugin(), () -> {
+            de.raindancer.modules.cosmetics.prime.PrimePerks.apply(server.getPluginManager(), fresh.primeOnly());
+            redrawPrime.run();
+        }));
+        // Prime is granted and runs out on any server; Core re-checks rains.prime every half minute, so do the same.
+        var primeTimer = Scheduling.globalTimer(context.plugin(), 20L * 30, 20L * 30, task -> server.getOnlinePlayers()
+                .forEach(online -> Scheduling.entity(context.plugin(), online, () -> {
+                    drops.sync(online);
+                    // A Prime that ran out takes its name style along, as on the next join.
+                    if (primeSettings.current().primeOnly()) {
+                        names.revalidate(online);
+                        particles.revalidate(online);
+                    }
+                })));
+        if (primeTimer != null) {
+            context.closeWith(primeTimer::cancel);
+        }
         de.raindancer.modules.cosmetics.skins.SkinPack.contribute(context.plugin(), context.core());
         context.closeWith(() -> de.raindancer.modules.cosmetics.skins.SkinPack.withdraw(context.core()));
         context.listener(new de.raindancer.modules.cosmetics.skins.SkinListener(context.plugin(), skins));
