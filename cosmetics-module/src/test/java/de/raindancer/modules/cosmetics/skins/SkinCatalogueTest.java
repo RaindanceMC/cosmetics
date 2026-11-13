@@ -91,8 +91,11 @@ class SkinCatalogueTest {
         for (SkinCatalogue.Skin skin : catalogue.all()) {
             assertThat(skin.looks()).as(skin.id()).isNotEmpty();
             assertThat(skin.author()).as(skin.id()).isNotBlank();
-            assertThat(skin.license()).as(skin.id()).isIn(List.of("MIT", "CC-BY-4.0", "CC0-1.0", "Apache-2.0",
-                    "CC-BY-SA-4.0", "Zlib", "MPL-2.0", "Unlicense", "BSD-3-Clause", "LGPL-3.0-only", "GPL-3.0-only", "WTFPL"));
+            // Third-party art carries an open licence; the server's own (the creators' Twitch set) says so instead.
+            List<String> licences = skin.creator() && skin.author().equals("Raindancer118")
+                    ? List.of("Own work") : List.of("MIT", "CC-BY-4.0", "CC0-1.0", "Apache-2.0",
+                    "CC-BY-SA-4.0", "Zlib", "MPL-2.0", "Unlicense", "BSD-3-Clause", "LGPL-3.0-only", "GPL-3.0-only", "WTFPL");
+            assertThat(skin.license()).as(skin.id()).isIn(licences);
             assertThat(SkinCatalogue.CATEGORIES).as(skin.id()).contains(skin.category());
             skin.looks().keySet().forEach(item -> assertThat(SkinCatalogue.kindOf(item)).as(item).isPresent());
         }
@@ -159,5 +162,44 @@ class SkinCatalogueTest {
             }
             assertThat(skin.looks().keySet()).as(skin.id()).isNotEmpty().allMatch(SkinCatalogue::isArmour);
         }
+    }
+
+    @Test
+    @DisplayName("a skin is for creators when the catalogue says so, and for everybody when it says nothing")
+    void creatorFlag() {
+        SkinCatalogue read = SkinCatalogue.read(new ByteArrayInputStream("""
+                [{"id":"a","title":"A","pack":0,"packTitle":"p","category":"Twitch","author":"x","license":"l","url":"u",
+                  "creator":true,"looks":{"diamond_sword":"rainsskins:a/diamond_sword"}},
+                 {"id":"b","title":"B","pack":0,"packTitle":"p","category":"Fantasy","author":"x","license":"l","url":"u",
+                  "looks":{"diamond_sword":"rainsskins:b/diamond_sword"}}]
+                """.getBytes(StandardCharsets.UTF_8)));
+
+        assertThat(read.byId("a").orElseThrow().creator()).isTrue();
+        assertThat(read.byId("a").orElseThrow().unlockable()).as("nobody unlocks it, nobody gets it by surprise").isFalse();
+        assertThat(read.byId("b").orElseThrow().creator()).isFalse();
+        assertThat(read.byId("b").orElseThrow().unlockable()).isTrue();
+    }
+
+    @Test
+    @DisplayName("the shipped Twitch set: purple weapon skins for creators — swords, an axe and a pickaxe, no armour")
+    void shippedTwitchSet() {
+        List<SkinCatalogue.Skin> twitch = SkinCatalogue.bundled().all().stream().filter(SkinCatalogue.Skin::creator).toList();
+
+        assertThat(twitch).extracting(SkinCatalogue.Skin::title)
+                .contains("Glitchblade", "Glitchblade RGB", "Pixel Chopper", "Pixel Pick");
+        for (SkinCatalogue.Skin skin : twitch) {
+            assertThat(skin.id()).startsWith("twitch-");
+            assertThat(skin.category()).isEqualTo("Twitch");
+            assertThat(skin.equipment()).as(skin.id()).isNull();
+            assertThat(skin.looks().keySet()).as(skin.id()).allMatch(item -> !SkinCatalogue.isArmour(item));
+            assertThat(skin.looks().values()).as(skin.id()).allMatch(look -> look.startsWith("rainsskins:" + skin.id() + "/"));
+            assertThat(skin.license()).as("our own work: no third party to credit").isEqualTo("Own work");
+        }
+        assertThat(twitch.stream().anyMatch(skin -> skin.dresses("iron_sword"))).isTrue();
+        assertThat(twitch.stream().anyMatch(skin -> skin.dresses("netherite_axe"))).isTrue();
+        assertThat(twitch.stream().anyMatch(skin -> skin.dresses("golden_pickaxe"))).isTrue();
+        assertThat(SkinCatalogue.bundled().all().stream().filter(skin -> skin.id().startsWith("twitch-")))
+                .as("everything called twitch is a creator skin").allMatch(SkinCatalogue.Skin::creator);
+        assertThat(SkinCatalogue.CATEGORIES).contains("Twitch");
     }
 }

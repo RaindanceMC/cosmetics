@@ -139,4 +139,35 @@ class SkinRulesTest {
         assertThat(rules.decide(tag, owner, SkinRules.Owns.YES, true, MODEL, "rainsskins:scythe/diamond_sword"))
                 .as("an older skin of ours is replaced").isEqualTo(SkinRules.Look.show(MODEL));
     }
+
+    @Test
+    @DisplayName("a creator skin is the creator node's alone: not unlocked, not skins.all, not a per-skin node")
+    void creatorSkinOwnership() {
+        // creatorSkin, hasCreator, unlocked, hasAll, hasOwnNode
+        assertThat(SkinRules.owns(true, true, false, false, false)).isTrue();
+        assertThat(SkinRules.owns(true, false, true, true, true)).isFalse();
+        assertThat(SkinRules.owns(true, false, false, false, false)).isFalse();
+        assertThat(SkinRules.owns(false, false, true, false, false)).isTrue();
+        assertThat(SkinRules.owns(false, false, false, true, false)).isTrue();
+        assertThat(SkinRules.owns(false, false, false, false, true)).isTrue();
+        assertThat(SkinRules.owns(false, true, false, false, false)).as("creator alone opens no ordinary skin").isFalse();
+    }
+
+    @Test
+    @DisplayName("a creator may use the skins page for the Twitch set without the supporters' skins node")
+    void creatorMayUsePage() {
+        assertThat(SkinRules.mayUse(true, false, true)).isTrue();
+        assertThat(SkinRules.mayUse(true, true, false)).isTrue();
+        assertThat(SkinRules.mayUse(true, false, false)).isFalse();
+        assertThat(SkinRules.mayUse(false, true, true)).as("switched off").isFalse();
+    }
+
+    @Test
+    @DisplayName("somebody who is not a creator sees a creator skin locked, a creator-only page shows only theirs")
+    void creatorSkinListing() {
+        assertThat(SkinRules.visible(true, true)).as("locked, but shown, so it can say who it is for").isTrue();
+        assertThat(SkinRules.visible(true, false)).as("a creator without the skins node sees theirs").isTrue();
+        assertThat(SkinRules.visible(false, false)).as("and not the supporters' ones").isFalse();
+        assertThat(SkinRules.visible(false, true)).isTrue();
+    }
 }

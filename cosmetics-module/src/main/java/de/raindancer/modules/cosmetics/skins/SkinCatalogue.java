@@ -23,8 +23,8 @@ import java.util.regex.Pattern;
 public final class SkinCatalogue {
 
     /** The categories in the order the menu shows them. */
-    public static final List<String> CATEGORIES = List.of("Armour", "Katana & Blades", "Scythe", "Fantasy", "3D Classic",
-            "Modern", "Cute & Fun");
+    public static final List<String> CATEGORIES = List.of("Twitch", "Armour", "Katana & Blades", "Scythe", "Fantasy",
+            "3D Classic", "Modern", "Cute & Fun");
 
     private static final Pattern WEAPON = Pattern.compile(
             "^(?:(?:wooden|stone|copper|iron|golden|diamond|netherite)_(sword|axe|pickaxe|spear)|(mace|trident|bow|crossbow))$");
@@ -34,13 +34,25 @@ public final class SkinCatalogue {
     /**
      * @param looks     item id (diamond_sword) to the item model that dresses it
      * @param equipment for armour: the equipment asset ({@code rainsskins:frost}) it is worn as; null for weapons
+     * @param creator   for creators only ({@code rainscosmetics.creator}): not unlocked, not given by {@code skins.all}
+     *                  or a per-skin node, and left out of the random unlock
      */
     public record Skin(String id, String title, int pack, String packTitle, String category, String author,
-                       String license, String url, Map<String, String> looks, String equipment) {
+                       String license, String url, Map<String, String> looks, String equipment, boolean creator) {
+
+        public Skin(String id, String title, int pack, String packTitle, String category, String author,
+                    String license, String url, Map<String, String> looks, String equipment) {
+            this(id, title, pack, packTitle, category, author, license, url, looks, equipment, false);
+        }
 
         public Skin(String id, String title, int pack, String packTitle, String category, String author,
                     String license, String url, Map<String, String> looks) {
-            this(id, title, pack, packTitle, category, author, license, url, looks, null);
+            this(id, title, pack, packTitle, category, author, license, url, looks, null, false);
+        }
+
+        /** Whether it can be unlocked with what somebody gave or at random — a creator skin cannot. */
+        public boolean unlockable() {
+            return !creator;
         }
 
         /** The worn look for this item: only armour wears one, and only an armour skin has it. */

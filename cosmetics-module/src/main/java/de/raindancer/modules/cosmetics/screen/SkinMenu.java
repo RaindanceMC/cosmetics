@@ -64,7 +64,8 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
     }
 
     private List<SkinCatalogue.Skin> forHeld() {
-        return skins.catalogue().offeredFor(held(), skins.settings().switchedOff());
+        return skins.catalogue().offeredFor(held(), skins.settings().switchedOff()).stream()
+                .filter(skin -> skins.visibleTo(viewer, skin)).toList();
     }
 
     @Override
@@ -100,6 +101,9 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
         if (owns) {
             lore.add("<green>Yours.");
             lore.add("<dark_gray>Click to put it on what you hold.");
+        } else if (skin.creator()) {
+            lore.add("<#9146FF>Creators only.");
+            lore.add("<dark_gray>For Twitch and YouTube streamers on this server.");
         } else if (left > 0) {
             lore.add("<#E8B98A>Locked.");
             lore.add("<dark_gray>Click to unlock it — " + (left == Integer.MAX_VALUE ? "as many as you like" : left + " left") + ".");
@@ -121,6 +125,10 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
     protected void onClick(SkinCatalogue.Skin skin, InventoryClickEvent event) {
         if (skins.owns(viewer, skin.id())) {
             put(skin);
+            return;
+        }
+        if (skin.creator()) {
+            services.messages().send(viewer, "cosmetics.skins.creators-only", "skin", skin.title());
             return;
         }
         if (skins.unlocksLeft(viewer) <= 0) {
@@ -215,6 +223,7 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
 
     private static Material iconOf(String category) {
         return switch (category) {
+            case "Twitch" -> Material.PURPLE_DYE;
             case "Katana & Blades" -> Material.IRON_SWORD;
             case "Scythe" -> Material.NETHERITE_HOE;
             case "Fantasy" -> Material.AMETHYST_SHARD;
@@ -235,6 +244,7 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
             case NOT_FOR_THIS_WEAPON -> "cosmetics.skins.not-for-this";
             case NONE_LEFT -> "cosmetics.skins.none-left";
             case OFF -> "cosmetics.skins.switched-off";
+            case CREATORS_ONLY -> "cosmetics.skins.creators-only";
         };
     }
 }

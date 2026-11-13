@@ -1,5 +1,85 @@
 [
  {
+  "id": "twitch-glitchblade",
+  "title": "Glitchblade",
+  "pack": -1,
+  "packTitle": "Twitch set (own work)",
+  "category": "Twitch",
+  "author": "Raindancer118",
+  "license": "Own work",
+  "url": "https://github.com/RaindanceMC/cosmetics",
+  "looks": {
+   "wooden_sword": "rainsskins:twitch-glitchblade/wooden_sword",
+   "stone_sword": "rainsskins:twitch-glitchblade/stone_sword",
+   "copper_sword": "rainsskins:twitch-glitchblade/copper_sword",
+   "iron_sword": "rainsskins:twitch-glitchblade/iron_sword",
+   "golden_sword": "rainsskins:twitch-glitchblade/golden_sword",
+   "diamond_sword": "rainsskins:twitch-glitchblade/diamond_sword",
+   "netherite_sword": "rainsskins:twitch-glitchblade/netherite_sword"
+  },
+  "creator": true
+ },
+ {
+  "id": "twitch-glitchblade-rgb",
+  "title": "Glitchblade RGB",
+  "pack": -1,
+  "packTitle": "Twitch set (own work)",
+  "category": "Twitch",
+  "author": "Raindancer118",
+  "license": "Own work",
+  "url": "https://github.com/RaindanceMC/cosmetics",
+  "looks": {
+   "wooden_sword": "rainsskins:twitch-glitchblade-rgb/wooden_sword",
+   "stone_sword": "rainsskins:twitch-glitchblade-rgb/stone_sword",
+   "copper_sword": "rainsskins:twitch-glitchblade-rgb/copper_sword",
+   "iron_sword": "rainsskins:twitch-glitchblade-rgb/iron_sword",
+   "golden_sword": "rainsskins:twitch-glitchblade-rgb/golden_sword",
+   "diamond_sword": "rainsskins:twitch-glitchblade-rgb/diamond_sword",
+   "netherite_sword": "rainsskins:twitch-glitchblade-rgb/netherite_sword"
+  },
+  "creator": true
+ },
+ {
+  "id": "twitch-pixel-chopper",
+  "title": "Pixel Chopper",
+  "pack": -1,
+  "packTitle": "Twitch set (own work)",
+  "category": "Twitch",
+  "author": "Raindancer118",
+  "license": "Own work",
+  "url": "https://github.com/RaindanceMC/cosmetics",
+  "looks": {
+   "wooden_axe": "rainsskins:twitch-pixel-chopper/wooden_axe",
+   "stone_axe": "rainsskins:twitch-pixel-chopper/stone_axe",
+   "copper_axe": "rainsskins:twitch-pixel-chopper/copper_axe",
+   "iron_axe": "rainsskins:twitch-pixel-chopper/iron_axe",
+   "golden_axe": "rainsskins:twitch-pixel-chopper/golden_axe",
+   "diamond_axe": "rainsskins:twitch-pixel-chopper/diamond_axe",
+   "netherite_axe": "rainsskins:twitch-pixel-chopper/netherite_axe"
+  },
+  "creator": true
+ },
+ {
+  "id": "twitch-pixel-pick",
+  "title": "Pixel Pick",
+  "pack": -1,
+  "packTitle": "Twitch set (own work)",
+  "category": "Twitch",
+  "author": "Raindancer118",
+  "license": "Own work",
+  "url": "https://github.com/RaindanceMC/cosmetics",
+  "looks": {
+   "wooden_pickaxe": "rainsskins:twitch-pixel-pick/wooden_pickaxe",
+   "stone_pickaxe": "rainsskins:twitch-pixel-pick/stone_pickaxe",
+   "copper_pickaxe": "rainsskins:twitch-pixel-pick/copper_pickaxe",
+   "iron_pickaxe": "rainsskins:twitch-pixel-pick/iron_pickaxe",
+   "golden_pickaxe": "rainsskins:twitch-pixel-pick/golden_pickaxe",
+   "diamond_pickaxe": "rainsskins:twitch-pixel-pick/diamond_pickaxe",
+   "netherite_pickaxe": "rainsskins:twitch-pixel-pick/netherite_pickaxe"
+  },
+  "creator": true
+ },
+ {
   "id": "armour-jappa-styled-armor-retextures-chainmail",
   "title": "Jappa Chainmail",
   "pack": 0,

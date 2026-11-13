@@ -23,7 +23,8 @@ import java.util.function.Supplier;
 /** Weapon skins for one server: who owns which, putting them on, and keeping every skinned item looking right. */
 public final class SkinService {
 
-    public enum Outcome { WORN, REMOVED, LOCKED, SOMEBODY_ELSES, NOT_A_WEAPON, NOT_FOR_THIS_WEAPON, NONE_LEFT, OFF }
+    public enum Outcome { WORN, REMOVED, LOCKED, SOMEBODY_ELSES, NOT_A_WEAPON, NOT_FOR_THIS_WEAPON, NONE_LEFT, OFF,
+        CREATORS_ONLY }
 
     private final Plugin plugin;
     private final Server server;
@@ -52,22 +53,33 @@ public final class SkinService {
     }
 
     public boolean mayUse(Player who) {
-        return settings.get().enabled() && who.hasPermission(PermissionNodes.SKINS);
+        return SkinRules.mayUse(settings.get().enabled(), who.hasPermission(PermissionNodes.SKINS),
+                who.hasPermission(PermissionNodes.CREATOR));
+    }
+
+    /** Whether the skins page lists this skin for them: the Twitch set to everybody there, the rest to those with skins. */
+    public boolean visibleTo(Player who, SkinCatalogue.Skin skin) {
+        return SkinRules.visible(skin.creator(), who.hasPermission(PermissionNodes.SKINS));
     }
 
     public boolean isOn(String skin) {
         return !settings.get().switchedOff().contains(skin) && catalogue.byId(skin).isPresent();
     }
 
-    /** Unlocked with what they gave, or given by permission. */
+    private boolean creatorSkin(String skin) {
+        return catalogue.byId(skin).filter(SkinCatalogue.Skin::creator).isPresent();
+    }
+
+    /** Unlocked with what they gave, or given by permission; a creator skin by the creator node alone. */
     public boolean owns(Player who, String skin) {
-        return unlocks.has(who.getUniqueId(), skin) || who.hasPermission(PermissionNodes.SKINS_ALL)
-                || who.hasPermission(PermissionNodes.SKIN_PREFIX + skin);
+        return SkinRules.owns(creatorSkin(skin), who.hasPermission(PermissionNodes.CREATOR),
+                unlocks.has(who.getUniqueId(), skin), who.hasPermission(PermissionNodes.SKINS_ALL),
+                who.hasPermission(PermissionNodes.SKIN_PREFIX + skin));
     }
 
     /** For an item whose owner may be away: only a permission could say more, and only to somebody here. */
     SkinRules.Owns owns(UUID owner, String skin) {
-        if (unlocks.has(owner, skin)) {
+        if (!creatorSkin(skin) && unlocks.has(owner, skin)) {
             return SkinRules.Owns.YES;
         }
         Player online = server.getPlayer(owner);
@@ -111,6 +123,9 @@ public final class SkinService {
         if (!isOn(skin) || owns(who, skin)) {
             return Outcome.OFF;
         }
+        if (creatorSkin(skin)) {
+            return Outcome.CREATORS_ONLY;
+        }
         if (unlocksLeft(who) <= 0) {
             return Outcome.NONE_LEFT;
         }
@@ -131,7 +146,8 @@ public final class SkinService {
                 owned.add(skin.id());
             }
         }
-        List<String> pool = catalogue.all().stream().map(SkinCatalogue.Skin::id).filter(this::isOn).toList();
+        List<String> pool = catalogue.all().stream().filter(SkinCatalogue.Skin::unlockable)
+                .map(SkinCatalogue.Skin::id).filter(this::isOn).toList();
         List<String> picked = SkinRules.pickRandom(pool, owned, take, random);
         picked.forEach(skin -> unlocks.unlock(who.getUniqueId(), skin, Instant.now()));
         if (!picked.isEmpty()) {
@@ -149,6 +165,9 @@ public final class SkinService {
         }
         if (!mayUse(who) || !isOn(skin)) {
             return Outcome.OFF;
+        }
+        if (creatorSkin(skin) && !owns(who, skin)) {
+            return Outcome.CREATORS_ONLY;
         }
         Optional<String> look = catalogue.byId(skin).flatMap(s -> s.lookFor(item));
         if (look.isEmpty()) {

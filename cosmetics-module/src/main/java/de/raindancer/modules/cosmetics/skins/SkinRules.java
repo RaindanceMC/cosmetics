@@ -70,6 +70,25 @@ public final class SkinRules {
         return java.util.List.copyOf(left.subList(0, Math.max(0, Math.min(count, left.size()))));
     }
 
+    /**
+     * Whether somebody has a skin. A creator skin is the creator node's alone — not unlocked, not {@code skins.all},
+     * not a per-skin node, so neither Prime nor a supporter gets it; an ordinary skin is unlocked or given by
+     * permission and the creator node does nothing for it.
+     */
+    public static boolean owns(boolean creatorSkin, boolean hasCreator, boolean unlocked, boolean hasAll, boolean hasOwnNode) {
+        return creatorSkin ? hasCreator : unlocked || hasAll || hasOwnNode;
+    }
+
+    /** Whether the skins page is theirs at all: supporters' skins node, or the creator node for the Twitch set. */
+    public static boolean mayUse(boolean enabled, boolean hasSkins, boolean hasCreator) {
+        return enabled && (hasSkins || hasCreator);
+    }
+
+    /** Whether a skin is listed for somebody: the creator set to everybody who may use the page, the rest to those with skins. */
+    public static boolean visible(boolean creatorSkin, boolean hasSkins) {
+        return creatorSkin || hasSkins;
+    }
+
     public enum Apply { WEAR, LOCKED, SOMEBODY_ELSES }
 
     /** @param owns whether {@code who} has the skin — unlocked, or given by permission */
