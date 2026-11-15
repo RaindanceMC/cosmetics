@@ -2,7 +2,7 @@ id: cosmetics
 title: Cosmetics
 summary: "Paint your name with colours, gradients and presets, and take it all off again."
 intro: |
-  Everybody else gets a plain name. You, dear {player}, can do better.
+  Style your name with colours, gradients and presets, and add particles and teleport effects.
 icon: NAME_TAG
 category: Looks & cosmetics
 order: 10
@@ -33,7 +33,7 @@ sections:
     title: Losing a style
     when: cosmetics:name-drop-without-permission
     text: |
-      When you join, a style you no longer have the permission for is taken off and you are told — your name is plain again.
+      When you join, a style you no longer have the permission for is taken off and you are told. Your name is plain again.
   - question: How do I take things off?
     title: Clearing
     permission: rainscosmetics.clear

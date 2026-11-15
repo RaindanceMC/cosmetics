@@ -2,7 +2,7 @@ id: cosmetics-shop
 title: Buying cosmetics
 summary: "What is for sale under Unlocks, what it costs, and what you keep for good."
 intro: |
-  Pretty things cost money. That is, famously, how pretty things work.
+  Some cosmetics cost money. You pay once and keep them.
 icon: GOLD_NUGGET
 category: Looks & cosmetics
 order: 13
@@ -15,7 +15,7 @@ sections:
   - question: How do I buy one?
     title: Unlocks
     text: |
-      Open {run:/cosmetics}, then <b>Unlocks</b>. Click what you want; the price is taken once and it is yours for good — also after restarts. Locked items elsewhere in the menu tell you their price.
+      Open {run:/cosmetics}, then <b>Unlocks</b>. Click what you want; the price is taken once and it is yours for good, also after restarts. Locked items elsewhere in the menu tell you their price.
   - question: What does it cost?
     title: Prices
     text: |

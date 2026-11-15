@@ -2,7 +2,7 @@ id: cosmetics-staff
 title: Cosmetics administration
 summary: "Clearing other players' cosmetics, reloading the palette and presets, and what the permissions do."
 intro: |
-  Somebody's name is too bright? You know what to do.
+  Clear other players' cosmetics, reload the palette and presets, and see which permissions apply.
 icon: COMMAND_BLOCK
 category: Staff
 order: 10
@@ -14,7 +14,7 @@ sections:
   - question: How do I take somebody's cosmetics off?
     title: Clearing others
     text: |
-      {cmd:/cosmetics name reset <player>} makes their name plain. {cmd:/cosmetics clear [name|particles|all] <player>} (needs rainscosmetics.clear.others) clears more; they are told. A particle only comes off while its owner is online; the name style can be cleared offline.
+      {cmd:/cosmetics name reset <player>} makes their name plain. {cmd:/cosmetics clear [name|particles|all] <player>} (needs rainscosmetics.clear.others) clears more. The player is told. A particle can only be cleared while its owner is online. The name style can be cleared offline.
   - question: How do I reload the palette?
     title: Reload
     text: |

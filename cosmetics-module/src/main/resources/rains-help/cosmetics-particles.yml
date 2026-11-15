@@ -2,7 +2,7 @@ id: cosmetics-particles
 title: Particles & wings
 summary: "A vanilla particle around you, how it is drawn and coloured, and wings on top."
 intro: |
-  Sparkle responsibly. The server watches the density, and so do I.
+  Pick a particle, set how it is drawn and coloured, and add wings if you like. The server limits how dense it can get.
 icon: BLAZE_POWDER
 category: Looks & cosmetics
 order: 11
@@ -16,7 +16,7 @@ sections:
   - question: How do I wear a particle?
     title: Wearing one
     text: |
-      On the particle page, left-click a particle to preview it, right-click to wear it. Or type {cmd:/cosmetics particle <particle>}; {cmd:/cosmetics particle off} takes it off. It is hidden while you are vanished, invisible or spectating. Some particles are not allowed: <white>{setting:cosmetics:particles-blocked}</white> — they cover or shake everybody's screen.
+      On the particle page, left-click a particle to preview it, right-click to wear it. Or type {cmd:/cosmetics particle <particle>}; {cmd:/cosmetics particle off} takes it off. It is hidden while you are vanished, invisible or spectating. Some particles are not allowed: <white>{setting:cosmetics:particles-blocked}</white>. They cover or shake everybody's screen.
   - question: How is it drawn?
     title: Shapes
     text: |
@@ -24,7 +24,7 @@ sections:
   - question: How thick and how fast?
     title: Density and speed
     text: |
-      {cmd:/cosmetics particle density light|normal|dense|very_dense} — you may pick up to <white>{setting:cosmetics:particles-max-count|count}</white> particles per point; the default is {setting:cosmetics:particles-count|count}. Staff with the ultra permission go past the ceiling. {cmd:/cosmetics particle speed slow|normal|fast|very_fast} sets how fast it moves. Everything is drawn every {setting:cosmetics:particles-every-ticks|ticks}.
+      {cmd:/cosmetics particle density light|normal|dense|very_dense}: you may pick up to <white>{setting:cosmetics:particles-max-count|count}</white> particles per point. The default is {setting:cosmetics:particles-count|count}. Staff with the ultra permission can go past that limit. {cmd:/cosmetics particle speed slow|normal|fast|very_fast} sets how fast it moves. Everything is drawn every {setting:cosmetics:particles-every-ticks|ticks}.
   - question: What about wings?
     title: Wings
     text: |
