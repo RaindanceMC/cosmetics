@@ -52,8 +52,6 @@ public final class CosmeticsModule implements FlexModule {
         context.core().messages().defineFrom(
                 CosmeticsModule.class.getResourceAsStream("messages.yml"),
                 context.chat().brand()::chatPrefix);
-        // The same lines said plainly, for a server whose Message tone is SERIOUS.
-        context.core().messages().seriousFrom(CosmeticsModule.class.getResourceAsStream("messages-serious.yml"));
 
         // Before the settings are bound, which take a 1.x config.yml over: the palette may still be in it.
         CatalogueFile catalogue = CatalogueFile.in(context.dataFolder());
