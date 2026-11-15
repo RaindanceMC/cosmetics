@@ -127,7 +127,7 @@ public final class CosmeticsModule implements FlexModule {
         unlockBook.load();
         context.closeWith(unlockBook.watch());
         if (!unlockBook.readable()) {
-            log.error("unlocks.yml could not be read. Nobody can buy a cosmetic until it is fixed — "
+            log.error("unlocks.yml could not be read. Nobody can buy a cosmetic until it is fixed. "
                     + "saving now would replace everybody's purchases.");
         }
         de.raindancer.modules.cosmetics.service.UnlockService unlocks =

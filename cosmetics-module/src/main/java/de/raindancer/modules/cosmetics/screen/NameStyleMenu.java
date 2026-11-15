@@ -96,7 +96,7 @@ public final class NameStyleMenu extends Menu implements ICosmeticsScreen {
     private ItemStack preview(NameStyle style) {
         String painted = MINI.serialize(NameStyleService.painted(viewer.getName(), style));
         return Icons.head(viewer.getUniqueId(), painted,
-                "<gray>How everybody sees you — in chat,",
+                "<gray>How everybody sees you: in chat,",
                 "<gray>in the player list and on your nickname.",
                 "",
                 "<dark_gray>" + services.names().describe(style));

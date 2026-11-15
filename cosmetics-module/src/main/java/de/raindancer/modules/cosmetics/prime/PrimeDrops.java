@@ -55,7 +55,7 @@ public record PrimeDrops(SortedMap<YearMonth, Drop> drops) {
             try {
                 month = YearMonth.parse(key.trim());
             } catch (DateTimeParseException notAMonth) {
-                warn.accept("prime-drops: '" + key + "' is not a month like 2026-11 — skipped.");
+                warn.accept("prime-drops: '" + key + "' is not a month like 2026-11, so it was skipped.");
                 continue;
             }
             ConfigurationSection drop = section.getConfigurationSection(key);
@@ -67,7 +67,7 @@ public record PrimeDrops(SortedMap<YearMonth, Drop> drops) {
                         boolean fine = node.startsWith(ALLOWED_PREFIX) && !node.contains("*") && !NEVER.contains(node)
                                 && !de.raindancer.modules.cosmetics.creator.CreatorPerks.neverDropped().contains(node);
                         if (!fine) {
-                            warn.accept("prime-drops " + key + ": '" + node + "' is not a cosmetic — left out.");
+                            warn.accept("prime-drops " + key + ": '" + node + "' is not a cosmetic, so it was left out.");
                         }
                         return fine;
                     }).toList();
@@ -104,7 +104,7 @@ public record PrimeDrops(SortedMap<YearMonth, Drop> drops) {
     public static final String SHIPPED = """
             # Prime-only drops, one per month. Whoever was Prime for any part of a month keeps that month's
             # drop and wears it whenever they are Prime; a month they did not pay for stays locked.
-            # unlocks: rainscosmetics.* nodes only — a restricted preset (rainscosmetics.preset.<id>, see the
+            # unlocks: rainscosmetics.* nodes only: a restricted preset (rainscosmetics.preset.<id>, see the
             # presets in config.yml), a weapon/armour skin (rainscosmetics.skin.<id>), the coffee trail …
             drops:
               "2026-11":

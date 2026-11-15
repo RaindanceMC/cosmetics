@@ -39,7 +39,7 @@ public final class FlairCatalogue {
                     "<#FFD966>✦ <player> <#FFF4C2>sparkles into the world",
                     "<#FFD966>✦ <player> <#FFF4C2>fades into stardust"),
             FlairOption.lines("royal", "Royal", PRIME,
-                    "<#FFC93C>♛ <player> <#FFF4C2>arrives — make way",
+                    "<#FFC93C>♛ <player> <#FFF4C2>arrives",
                     "<#FFC93C>♛ <player> <#FFF4C2>leaves the court"),
             FlairOption.lines("moon", "Moonrise", PRIME,
                     "<#B388FF>☾ <player> <#D7C4FF>rises",
@@ -48,8 +48,8 @@ public final class FlairCatalogue {
                     "<#69F0AE>✿ <player> <#C8F7DC>wanders in",
                     "<#69F0AE>✿ <player> <#C8F7DC>wanders off"),
             FlairOption.lines("twitch", "Going live", CREATOR,
-                    "<#9146FF>▶ <player> <#BF94FF>logs in — chat, say hi",
-                    "<#9146FF>▶ <player> <#BF94FF>signs off — thanks for watching"),
+                    "<#9146FF>▶ <player> <#BF94FF>logs in",
+                    "<#9146FF>▶ <player> <#BF94FF>signs off"),
 
             // Heard by those within about 32 blocks (a volume of 2 carries twice vanilla's 16) and the one who joins.
             FlairOption.chime("amethyst", "Amethyst chime", PRIME,

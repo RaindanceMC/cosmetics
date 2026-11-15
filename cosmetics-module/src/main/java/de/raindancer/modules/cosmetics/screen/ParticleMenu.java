@@ -183,7 +183,7 @@ public final class ParticleMenu extends Menu implements ICosmeticsScreen {
                                 : MINI.serialize(NameStyleService.painted("Gradient to " + gradientName,
                                 NameStyle.NONE.withColour(TextColor.color(choice.colourTo())))),
                         "<gray>Blends from your colour into this one",
-                        "<gray>along the shape — spine to tip on wings.", "",
+                        "<gray>along the shape (spine to tip on wings).", "",
                         "<dark_gray>Click to pick the colour it ends in.",
                         "<dark_gray>Right click for one colour again."),
                 "This particle has no colour",

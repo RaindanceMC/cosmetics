@@ -45,7 +45,7 @@ public final class PrimeDropService implements org.bukkit.event.Listener {
         store.writeTextIfAbsent(PrimeDrops.SHIPPED);
         YamlConfiguration read = store.readIfReadable().orElse(null);
         if (read == null) {
-            warn.accept("prime-drops.yml could not be read — no drops until it is fixed.");
+            warn.accept("prime-drops.yml could not be read. No drops until it is fixed.");
             drops = PrimeDrops.NONE;
             return;
         }

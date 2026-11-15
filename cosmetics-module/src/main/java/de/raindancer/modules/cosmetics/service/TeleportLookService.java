@@ -232,7 +232,7 @@ public final class TeleportLookService implements ICosmeticsService, TravelLooks
         @Override
         public String locked() {
             return entitlements.priced(Unlock.TELEPORT)
-                    ? "Costs " + entitlements.priceText(Unlock.TELEPORT) + " — buy it under Unlocks in /cosmetics"
+                    ? "Costs " + entitlements.priceText(Unlock.TELEPORT) + ". Buy it under Unlocks in /cosmetics"
                     : "Needs " + PermissionNodes.TELEPORT;
         }
 

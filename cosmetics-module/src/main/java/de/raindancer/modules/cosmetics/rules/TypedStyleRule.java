@@ -21,7 +21,7 @@ public final class TypedStyleRule implements ICosmeticsRule {
 
     public Parsed<NameStyle> read(List<String> words, Catalogue catalogue) {
         if (words.isEmpty()) {
-            return Parsed.no("Name at least one colour — a palette colour, a chat colour or a #hex code.");
+            return Parsed.no("Name at least one colour: a palette colour, a chat colour or a #hex code.");
         }
         // The palette first: on a server whose "red" is the dye's red, typing red means that red.
         de.raindancer.core.ui.text.TypedStyles.Read read = de.raindancer.core.ui.text.TypedStyles.read(words,

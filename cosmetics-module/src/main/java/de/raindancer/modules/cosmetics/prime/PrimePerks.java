@@ -100,7 +100,7 @@ public final class PrimePerks {
         Permission supporter = de.raindancer.core.social.support.SupporterPermission.permission(manager);
         Permission perks = manager.getPermission(PERKS);
         if (perks == null) {
-            perks = new Permission(PERKS, "Prime-only cosmetics without Prime — staff", PermissionDefault.OP);
+            perks = new Permission(PERKS, "Prime-only cosmetics without Prime (staff)", PermissionDefault.OP);
             manager.addPermission(perks);
         }
         Permission free = manager.getPermission(PermissionNodes.FREE);

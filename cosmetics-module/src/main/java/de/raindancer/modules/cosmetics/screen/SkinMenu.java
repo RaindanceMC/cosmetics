@@ -106,7 +106,7 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
             lore.add("<dark_gray>For Twitch and YouTube streamers on this server.");
         } else if (left > 0) {
             lore.add("<#E8B98A>Locked.");
-            lore.add("<dark_gray>Click to unlock it — " + (left == Integer.MAX_VALUE ? "as many as you like" : left + " left") + ".");
+            lore.add("<dark_gray>Click to unlock it (" + (left == Integer.MAX_VALUE ? "as many as you like" : left + " left") + ").");
         } else {
             lore.add("<#E8B98A>Locked.");
             lore.add("<dark_gray>Earn unlocks with /support, and supporters");
@@ -187,9 +187,9 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
             set(row + 2 + i, Icons.of(iconOf(each), (each.equals(category) ? "<#F3E3CC><b>" : "<white>") + each,
                     "<gray>" + count + " skin(s)"), click -> show(each));
         }
-        set(row + 8, Icons.of(Material.DECORATED_POT, "<#E8B98A>Surprise me!",
-                        "<gray>Unlocks skins you do not have yet, at random —",
-                        "<gray>every skin as likely as any other, never twice.",
+        set(row + 8, Icons.of(Material.DECORATED_POT, "<#E8B98A>Random skins",
+                        "<gray>Unlocks skins you do not have yet, at random.",
+                        "<gray>Every skin is equally likely, never twice.",
                         "<gray>Unlocks left: <white>" + leftText(), "",
                         "<dark_gray>Left-click: one · Right-click: five",
                         "<dark_gray>Shift-click: as many as you have (up to " + MOST_AT_ONCE + ")"),

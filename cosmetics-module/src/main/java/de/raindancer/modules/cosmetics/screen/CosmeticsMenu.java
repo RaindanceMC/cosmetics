@@ -92,8 +92,8 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
 
         boolean flairHere = services.flair().mayOpen(viewer);
         ItemStack flairIcon = Icons.of(Material.NETHER_STAR, "<#FFC93C>Flair ✦",
-                "<gray>A tag, your join and leave lines and", "<gray>effects for fights — looks only.",
-                "<gray>Prime's, and creators' Twitch extras.", "", "<dark_gray>Click to choose.");
+                "<gray>A tag, your join and leave lines and", "<gray>effects for fights. Looks only.",
+                "<gray>Prime has them all, creators get Twitch extras.", "", "<dark_gray>Click to choose.");
         band(MenuLayout.RULES, 7, flairHere ? flairIcon
                         : Icons.locked(flairIcon, MINI.serialize(services.messages().get("cosmetics.flair.locked"))),
                 click -> {
@@ -113,7 +113,7 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
                         "<dark_gray>Hold a weapon and click.");
         band(MenuLayout.RULES, 2, skinsHere ? skinsIcon
                         : Icons.locked(skinsIcon, skinsPrime ? MINI.serialize(services.messages().get("cosmetics.flair.locked"))
-                                : "A thank-you for supporters — /support"),
+                                : "For supporters. See /support"),
                 click -> {
                     if (skinsHere) {
                         new SkinMenu(services, viewer, this).open();

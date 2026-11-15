@@ -28,7 +28,7 @@ public record SkinSettings(
         boolean enabled,
 
         @In("cosmetics/skins") @Title("One skin unlocked per (cents)") @Range(min = 0, max = 100000)
-        @Describe("How much somebody has to have given, in cents, for each skin they unlock — 50 is one skin per "
+        @Describe("How much somebody has to have given, in cents, for each skin they unlock. 50 is one skin per "
                 + "50 ct. Zero: every supporter has every skin.")
         @Key("skins.cents-per-skin")
         int centsPerSkin,
@@ -41,7 +41,7 @@ public record SkinSettings(
 
         @In("cosmetics/skins") @Title("Skins from playtime (multiplier)")
         @Describe("Supporters also earn skins by playing: one per 5 hours of active play (away time does not count), "
-                + "times this — 2 is twice as fast, 0.5 half, 0 off. Others earn none.")
+                + "times this. 2 is twice as fast, 0.5 half, 0 off. Others earn none.")
         @Key("skins.playtime-multiplier")
         String playtimeMultiplier,
 
@@ -78,7 +78,7 @@ public record SkinSettings(
         boolean showOutside,
 
         @In("cosmetics/skins") @Title("Skins switched off")
-        @Describe("Skins nobody can pick or wear here, by id — easiest from /cosmetics skins admin.")
+        @Describe("Skins nobody can pick or wear here, by id. Easiest from /cosmetics skins admin.")
         @Key("skins.off")
         List<String> off) {
 

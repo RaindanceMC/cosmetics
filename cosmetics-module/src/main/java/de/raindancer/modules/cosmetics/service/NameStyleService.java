@@ -154,7 +154,7 @@ public final class NameStyleService implements ICosmeticsService {
     /** A feature for sale is greyed with the price and where to buy it, not the node it would otherwise need. */
     private static StyleGrants sold(StyleGrants grants, Entitlements held, StyleGrants.Feature feature, String key) {
         return held.priced(key)
-                ? grants.worded(feature, "Costs " + held.priceText(key) + " — buy it under Unlocks in /cosmetics")
+                ? grants.worded(feature, "Costs " + held.priceText(key) + ". Buy it under Unlocks in /cosmetics")
                 : grants;
     }
 

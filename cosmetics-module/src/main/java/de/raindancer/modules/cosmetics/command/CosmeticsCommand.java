@@ -324,7 +324,7 @@ public final class CosmeticsCommand implements ICosmeticsCommand {
                         .map(PaletteColour::colour).orElseGet(() -> NameStyle.colourOf(args[1])) : null;
                 if (to == null) {
                     live.messages().send(player, "cosmetics.not-a-style",
-                            "detail", "Name a palette colour, a chat colour or a #hex code — or off.");
+                            "detail", "Name a palette colour, a chat colour or a #hex code, or off.");
                     return;
                 }
                 if (slot.colourTo(player, to.value())) {

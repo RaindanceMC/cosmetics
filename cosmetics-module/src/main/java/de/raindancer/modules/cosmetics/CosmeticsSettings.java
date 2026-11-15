@@ -43,7 +43,7 @@ public record CosmeticsSettings(
 
         @In("cosmetics/names") @Title("Styled names above heads")
         @Describe("On: the name over everybody's head shows their colours, gradient, decorations and "
-                + "nickname — drawn by RainsCore, with the vanilla one hidden. Off: the plain vanilla "
+                + "nickname, drawn by RainsCore with the vanilla one hidden. Off: the plain vanilla "
                 + "nametag, and styles show in chat and the player list only.")
         @Key("name-above-head")
         boolean nameAboveHead,
@@ -76,7 +76,7 @@ public record CosmeticsSettings(
 
         @In("cosmetics/teleport") @Title("Players may choose their teleport effects")
         @Describe("Their own departure and arrival sound and the particles while they wait, for every "
-                + "teleport — homes, warps, /tpa, spawn. Off: everybody gets the server's, from Core's cues. "
+                + "teleport (homes, warps, /tpa, spawn). Off: everybody gets the server's, from Core's cues. "
                 + "What they picked is kept.")
         @Key("teleport-looks")
         boolean teleportLooks,

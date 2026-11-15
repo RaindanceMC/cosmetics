@@ -149,7 +149,7 @@ public final class ParticleService implements ICosmeticsService, ParticleSlot {
 
     private String lockedText() {
         return entitlements.priced(Unlock.PARTICLES)
-                ? "Costs " + entitlements.priceText(Unlock.PARTICLES) + " — buy it under Unlocks in /cosmetics"
+                ? "Costs " + entitlements.priceText(Unlock.PARTICLES) + ". Buy it under Unlocks in /cosmetics"
                 : "Needs " + PermissionNodes.PARTICLES;
     }
 
