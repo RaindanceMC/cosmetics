@@ -156,8 +156,8 @@ public final class CosmeticsDialog implements ICosmeticsScreen {
                         person -> askClearing(person.id())).open()));
         boolean mayClear = services.clearing().may(viewer, true);
         boolean wearing = !style.isEmpty() || !particle.isNone() || !wings.isNone() || new OtherDoors().wearing(viewer);
-        entries.add(new Entry("<red>Clear my cosmetics", "<gray>Takes off everything you wear: name style, particles,"
-                + " chat colour and the rest.\n<gray>Looks on items stay.", mayClear && wearing,
+        entries.add(new Entry("<red>Clear my cosmetics", "<gray>Takes off your name style, particles, chat colour"
+                + " and the rest.\n<gray>Weapon skins and other item looks stay.", mayClear && wearing,
                 !mayClear ? "Needs " + PermissionNodes.CLEAR : "You are not wearing anything", this::askClearingMine));
 
         entries.add(Entry.open("<gray>How this works", "<gray>What each of these is, and the commands.", this::help));
@@ -165,7 +165,7 @@ public final class CosmeticsDialog implements ICosmeticsScreen {
         String painted = MINI.serialize(NameStyleService.painted(viewer.getName(), style));
         String wornNow = particle.isNone() ? "<gray>No particle." : "<gray>Particle: <white>"
                 + ParticleCatalogue.readable(particle.particle()) + "</white>.";
-        return page(id, painted, wornNow + "\n<dark_gray>Pick what to change. Back on any page comes here.", entries);
+        return page(id, painted, wornNow, entries);
     }
 
     private void help() {
@@ -184,9 +184,9 @@ public final class CosmeticsDialog implements ICosmeticsScreen {
     }
 
     private void askClearingMine() {
-        confirmClear("Clear your cosmetics?", List.of("<gray>Your name goes back to plain, your particle is taken off,",
-                        "<gray>and so is everything else you wear, like your chat colour.",
-                        "<gray>Looks on items stay. What you own stays yours."),
+        confirmClear("Clear your cosmetics?", List.of("<gray>Your name goes back to plain and your particle comes off.",
+                        "<gray>So does everything else you wear, like your chat colour.",
+                        "<gray>Item looks stay, and nothing you bought is lost."),
                 () -> services.clearing().clear(viewer, viewer, ClearScope.ALL), this::open).show(viewer);
     }
 
