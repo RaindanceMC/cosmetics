@@ -92,6 +92,11 @@ public final class CosmeticsDialog implements ICosmeticsScreen {
         return page;
     }
 
+    /** Unlocks only where something is for sale; elsewhere it would be a grey button with nothing behind it. */
+    static boolean showsUnlocks(boolean selling, boolean priced) {
+        return selling && priced;
+    }
+
     static DialogPage confirmClear(String question, List<String> consequences, Runnable clear, Runnable back) {
         return DialogPage.titled(HEADING, "Clear").text("<white>" + question)
                 .text(String.join("\n", consequences))
@@ -139,10 +144,10 @@ public final class CosmeticsDialog implements ICosmeticsScreen {
             entries.add(doorEntry(door, here));
         }
 
-        boolean sold = services.unlocks().anySold();
-        entries.add(new Entry("<white>Unlocks", "<gray>What this server sells: colours, gradients, particles and more.",
-                sold, services.unlocks().selling() ? "No price is set yet." : "Cosmetics are not for sale on this server.",
-                () -> new UnlockMenu(services, viewer, here).open()));
+        if (showsUnlocks(services.unlocks().selling(), services.unlocks().anySold())) {
+            entries.add(Entry.open("<white>Unlocks", "<gray>What this server sells: colours, gradients, particles"
+                    + " and more.", () -> new UnlockMenu(services, viewer, here).open()));
+        }
         if (services.mayOpenSettings(viewer)) {
             entries.add(Entry.open("<white>Server settings", "<gray>Name styles, particles, teleport effects, and the"
                             + " prices with their switch.\n<dark_gray>Only people with the settings permission see this.",

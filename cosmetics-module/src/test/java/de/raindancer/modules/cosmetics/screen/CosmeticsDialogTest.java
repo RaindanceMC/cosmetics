@@ -119,4 +119,12 @@ class CosmeticsDialogTest {
         assertThat(cleared).hasValue(1);
         assertThat(back).hasValue(2);
     }
+
+    @Test
+    @DisplayName("Unlocks is there only while the server sells something: switched on and with a price set")
+    void unlocksOnlyWhenSold() {
+        assertThat(CosmeticsDialog.showsUnlocks(true, true)).isTrue();
+        assertThat(CosmeticsDialog.showsUnlocks(false, true)).as("selling switched off").isFalse();
+        assertThat(CosmeticsDialog.showsUnlocks(true, false)).as("no price set").isFalse();
+    }
 }
