@@ -1,21 +1,21 @@
 id: cosmetics-skins
 title: Weapon skins
-summary: "New looks for your weapons, unlocked by supporting the server."
+summary: "New looks for your weapons: who has them and how to put one on."
 intro: |
-  Supporters unlock weapon skins, for example a katana look for a sword.
+  New looks for your weapons, for example a katana look for a sword.
 icon: DIAMOND_SWORD
 category: Looks & cosmetics
 order: 12
 module: cosmetics
 when: cosmetics-skins:skins.enabled
 aliases: [skins, skin, weapon skins]
-keywords: [katana, scythe, bow, pickaxe, unlock, supporter, coffee]
+keywords: [katana, scythe, bow, pickaxe, unlock, prime, supporter, coffee]
 related: [cosmetics, chat-support]
 sections:
   - question: How do I get skins?
     title: Unlocking
     text: |
-      Skins are unlocked by supporting the server ({cmd:/support}). For every <white>{setting:cosmetics-skins:skins.cents-per-skin}</white> cents you gave, you unlock one skin of your choice, for good. Supporters also earn skins by playing: one every 5 hours of active play to start, faster the more you gave, up to one every <white>{setting:cosmetics-skins:skins.fastest-minutes-per-skin}</white> minutes.
+      {if:cosmetics-prime:prime.only}Every weapon skin is a Prime perk: Prime members have them all ({cmd:/prime}). Prime drops come on top for those who were Prime that month.{/if}{if:!cosmetics-prime:prime.only}Skins are unlocked by supporting the server ({cmd:/support}). For every <white>{setting:cosmetics-skins:skins.cents-per-skin}</white> cents you gave, you unlock one skin of your choice, for good. Supporters also earn skins by playing: one every 5 hours of active play to start, faster the more you gave, up to one every <white>{setting:cosmetics-skins:skins.fastest-minutes-per-skin}</white> minutes.{/if}
   - question: How do I put a skin on?
     title: Wearing one
     text: |

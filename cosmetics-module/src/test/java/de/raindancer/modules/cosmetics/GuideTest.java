@@ -18,6 +18,8 @@ class GuideTest {
                 .module("cosmetics")
                 .settings(CosmeticsSettings.class, CosmeticsSettings.DEFAULTS)
                 .settings(SkinSettings.class, SkinSettings.DEFAULTS)
+                .settings(de.raindancer.modules.cosmetics.prime.PrimeSettings.class,
+                        de.raindancer.modules.cosmetics.prime.PrimeSettings.DEFAULTS)
                 .otherTopics("chat-support")
                 .commands(new CosmeticsModule().commands().stream().map(ModuleCommand::name).toList())
                 .problems()).isEmpty();
