@@ -9,7 +9,7 @@ import de.raindancer.modules.api.ModuleContext;
 import de.raindancer.modules.api.ModuleInfo;
 import de.raindancer.modules.cosmetics.listener.JoinListener;
 import de.raindancer.modules.cosmetics.model.Catalogue;
-import de.raindancer.modules.cosmetics.screen.CosmeticsMenu;
+import de.raindancer.modules.cosmetics.screen.CosmeticsDialog;
 import de.raindancer.modules.cosmetics.screen.NameStyleMenu;
 import de.raindancer.modules.cosmetics.screen.ParticleMenu;
 import de.raindancer.modules.cosmetics.service.ClearService;
@@ -244,7 +244,8 @@ public final class CosmeticsModule implements FlexModule {
         // Hosted as a page Core can build, so their own commands open with Back leading here (Core 2.102.0).
         Object page;
         try {
-            de.raindancer.core.ui.cosmetic.CosmeticDoors.Page built = viewer -> new CosmeticsMenu(services, viewer);
+            de.raindancer.core.ui.cosmetic.CosmeticDoors.Page built =
+                    viewer -> CosmeticsDialog.returning(services, viewer);
             page = built;
             de.raindancer.core.ui.cosmetic.CosmeticDoors.host(built);
         } catch (LinkageError olderCore) {
@@ -268,23 +269,23 @@ public final class CosmeticsModule implements FlexModule {
 
         @Override
         public void hub(Player viewer) {
-            new CosmeticsMenu(services, viewer).open();
+            new CosmeticsDialog(services, viewer).open();
         }
 
         @Override
         public void nameStyle(Player viewer) {
-            new NameStyleMenu(services, viewer, new CosmeticsMenu(services, viewer)).open();
+            new NameStyleMenu(services, viewer, CosmeticsDialog.returning(services, viewer)).open();
         }
 
         @Override
         public void particles(Player viewer) {
-            new ParticleMenu(services, viewer, new CosmeticsMenu(services, viewer)).open();
+            new ParticleMenu(services, viewer, CosmeticsDialog.returning(services, viewer)).open();
         }
 
         @Override
         public void teleports(Player viewer) {
-            new de.raindancer.modules.cosmetics.screen.TeleportMenu(services, viewer, new CosmeticsMenu(services, viewer))
-                    .open();
+            new de.raindancer.modules.cosmetics.screen.TeleportMenu(services, viewer,
+                    CosmeticsDialog.returning(services, viewer)).open();
         }
     }
 
