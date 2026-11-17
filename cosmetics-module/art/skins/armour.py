@@ -5,7 +5,7 @@ namespace, nothing of vanilla replaced.
 
 Worn layers come from the new layout (textures/entity/equipment/humanoid[_leggings]/<material>.png) or the old one
 (textures/models/armor/<material>_layer_1|2.png); a skin offers only the pieces its layers actually paint. Icons are
-the pack's own item textures where it has them, else the vanilla item. Leather stays dyeable, like vanilla's. A layer
+the pack's own item textures where it has them (and they differ from vanilla's), else the vanilla item. Leather stays dyeable, like vanilla's. A layer
 the pack ships unchanged from vanilla (many packs carry every material and touch a few) is not a skin.
 Re-running replaces the armour skins of every pack whose zip is there; a pack not downloaded keeps its skins, files and
 credit line as they are, so a new pack can be added without fetching all the old ones again.
@@ -61,21 +61,23 @@ PACKS = {
     'soups-knight-armor': ('Knight', "[Soup´s] Knight Armor", 's0up-Ilt0n', 'GPL-3.0-only'),
     'fionas-armors': ('Minimal', "Fiona's Minimal Armors", 'FionaBagel', 'WTFPL'),
     # creators' (creator.py)
-    'ultimate-netherite': ('Ultimate', 'Netherite Armor/Tools - Ultimate Armor/Tools', 'Qubbius', 'CC-BY-4.0'),
-    'voidkiller0-pvp-pack': ('Voidkiller', 'Voidkiller0 pvp pack', 'Voidkiller0', 'CC-BY-4.0'),
+    'ametrine-pvp': ('Ametrine', 'Ametrine PvP', '4urqa', 'MIT'),
+    'cherry-pvp': ('Cherry', 'Cherry PVP', 'milogeek', 'MIT'),
     'vanillafrost': ('VanillaFrost', 'VanillaFrost', 'remagoel', 'CC-BY-4.0'),
     # Prime drop of March 2027 (drops.py)
-    'flowering-armor': ('Flowering', 'Flowering Armor', 'Astrum', 'CC0-1.0'),
     'even-better-armor-and-tools': ('Even Better', 'Even Better Armor and Tools', 'Evilaya_', 'MIT'),
+    'platinum': ('Platinum', 'Platinum', 'IkaruSilvus', 'CC-BY-4.0'),
+    'carrorate-craft-gears': ('CarroRate', 'CarroRate Craft Gear', 'CarroRateXMods', 'Apache-2.0'),
 }
 
 # Packs that change more materials than are wanted here: only these become skins.
 ONLY = {
-    'ultimate-netherite': ['netherite'],
-    'voidkiller0-pvp-pack': ['netherite'],
+    'ametrine-pvp': ['netherite'],
+    'cherry-pvp': ['diamond'],
     'vanillafrost': ['diamond'],
-    'flowering-armor': ['diamond', 'netherite'],
     'even-better-armor-and-tools': ['gold'],
+    'platinum': ['diamond'],
+    'carrorate-craft-gears': ['netherite'],
 }
 
 
@@ -138,7 +140,7 @@ def icon(z, prefix, piece):
     old_prefix = 'gold' if prefix == 'golden' else prefix
     for name in (f'{root}item/{prefix}_{piece}.png', f'{root}items/{old_prefix}_{piece}.png'):
         image = read_png(z, name)
-        if image is not None and image.width == image.height:
+        if image is not None and image.width == image.height and not vanilla(image, f'{root}item/{prefix}_{piece}.png'):
             overlay = read_png(z, name.replace('.png', '_overlay.png'))
             return image, overlay
     return None, None

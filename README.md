@@ -32,8 +32,8 @@ A module's version is a property in this repository's root `pom.xml`, a plugin's
   Join/leave lines are said through Core's `JoinLines`, which essentials' welcome asks.
 - **Creator skins (0.32.0):** seven existing skins are creator-only (`creator: true`, category Twitch, `rainscosmetics.creator`
   alone; not unlocks, not `skins.all`, not Prime): Shadowstone Tools, Dragon Blade, Glacial Gear and the armour sets Purple
-  Diamond, Sakura Netherite, Valkyrian Netherite, Modern Netherite; since 0.38.0 also Ultimate Netherite, Voidkiller
-  Netherite and VanillaFrost Diamond. `art/skins/creator.py` sets the flags; run it after `convert.py`/`armour.py`/
+  Diamond, Sakura Netherite, Valkyrian Netherite, Modern Netherite; since 0.38.0 also Ametrine Netherite, Cherry Diamond
+  and VanillaFrost Diamond. `art/skins/creator.py` sets the flags; run it after `convert.py`/`armour.py`/
   `shields.py`.
 - **Prime drop skins (0.38.0):** `"drop": "<month>"` in skins.json; only `rainscosmetics.skin.<id>` opens one (which
   prime-drops.yml gives that month's Prime members), not `skins.all`, not unlocks. 2027-01 and 2027-02 are shields

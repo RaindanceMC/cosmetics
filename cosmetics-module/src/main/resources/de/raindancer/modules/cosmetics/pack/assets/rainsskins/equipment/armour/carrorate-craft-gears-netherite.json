@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/carrorate-craft-gears-netherite"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/carrorate-craft-gears-netherite"
+   }
+  ]
+ }
+}

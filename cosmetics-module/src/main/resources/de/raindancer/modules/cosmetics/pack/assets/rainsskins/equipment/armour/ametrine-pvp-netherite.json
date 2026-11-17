@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/ametrine-pvp-netherite"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/ametrine-pvp-netherite"
+   }
+  ]
+ }
+}

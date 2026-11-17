@@ -184,8 +184,8 @@ class SkinCatalogueTest {
             "glacial-gear");
     private static final List<String> CREATOR_ARMOUR = List.of("armour-purple-diamond-armor-diamond",
             "armour-sakura-hotbar-netherite", "armour-valkyrian-netherite-reforged-v2-netherite",
-            "armour-netherite-armor-netherite", "armour-ultimate-netherite-netherite",
-            "armour-voidkiller0-pvp-pack-netherite", "armour-vanillafrost-diamond");
+            "armour-netherite-armor-netherite", "armour-ametrine-pvp-netherite",
+            "armour-cherry-pvp-diamond", "armour-vanillafrost-diamond");
 
     @Test
     @DisplayName("exactly the chosen skins are creator-only, in the Twitch category, with their packs' credits untouched")

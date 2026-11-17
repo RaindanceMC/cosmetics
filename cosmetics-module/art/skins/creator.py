@@ -22,8 +22,8 @@ CREATOR_SKINS = {
     'armour-sakura-hotbar-netherite': 'S33R Sakura netherite: dark plate with pink and green glitch pixels',
     'armour-valkyrian-netherite-reforged-v2-netherite': 'Valkyrian netherite: dark plate with cyan and orange glow',
     'armour-netherite-armor-netherite': 'Netherite Armor: dark plate with cyan accents',
-    'armour-ultimate-netherite-netherite': 'Ultimate Armor: deep blue plate with RGB pixels, like a lit-up keyboard',
-    'armour-voidkiller0-pvp-pack-netherite': 'Voidkiller0 netherite: bright orange plate, a stream alert to wear',
+    'armour-ametrine-pvp-netherite': 'Ametrine netherite: plate fading from pink to Twitch purple',
+    'armour-cherry-pvp-diamond': 'Cherry diamond: hot pink plate, loud on stream',
     'armour-vanillafrost-diamond': 'VanillaFrost diamond: clear ice plates, the armour to Glacial Gear',
 }
 

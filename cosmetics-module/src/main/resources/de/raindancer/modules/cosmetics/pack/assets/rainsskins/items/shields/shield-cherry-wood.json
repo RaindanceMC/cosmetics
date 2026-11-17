@@ -1,0 +1,14 @@
+{
+ "model": {
+  "type": "minecraft:condition",
+  "property": "minecraft:using_item",
+  "on_false": {
+   "type": "minecraft:model",
+   "model": "rainsskins:shields/shield-cherry-wood/shield"
+  },
+  "on_true": {
+   "type": "minecraft:model",
+   "model": "rainsskins:shields/shield-cherry-wood/shield_blocking"
+  }
+ }
+}

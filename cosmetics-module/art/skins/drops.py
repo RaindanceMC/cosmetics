@@ -16,10 +16,10 @@ RES = sys.argv[1]
 DROPS = {
     '2027-01': ('Shieldwall', ['shield-custom-shields-creeper', 'shield-custom-shields-dark-red',
                               'shield-custom-shields-mirror', 'shield-golden-spruce']),
-    '2027-02': ('Hold the Line', ['shield-custom-shields-rabbit', 'shield-custom-shields-red', 'shield-rounder-shields',
-                               'shield-warped-wood']),
-    '2027-03': ('In Bloom', ['armour-flowering-armor-diamond', 'armour-flowering-armor-netherite',
-                             'armour-even-better-armor-and-tools-gold']),
+    '2027-02': ('Hold the Line', ['shield-custom-shields-rabbit', 'shield-custom-shields-red',
+                                  'shield-cherry-wood', 'shield-warped-wood']),
+    '2027-03': ('Crown and Plate', ['armour-even-better-armor-and-tools-gold', 'armour-platinum-diamond',
+                                    'armour-carrorate-craft-gears-netherite']),
 }
 
 

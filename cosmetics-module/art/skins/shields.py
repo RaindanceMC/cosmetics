@@ -30,8 +30,8 @@ CARRIER_MODELS = ('assets/minecraft/models/item/shield.json', 'assets/minecraft/
 PACKS = {
     'custom-shields': ('Custom Shields', '6MHz', 'CC-BY-SA-4.0'),
     'golden-spruce-shield': ('Golden spruce shield', 'ThatCuteOne', 'CC-BY-4.0'),
-    'rounder-shields': ('Rounder Shields', 'CapTommy', 'MIT'),
     'warped-wood-shield': ('Warped Wood Shield', 'loomidex', 'MIT'),
+    'shieldrecolor': ('Shield Recolor', 'veadex', 'CC0-1.0'),
     CARRIER: ('Translucent Shield', 'yassooof (model by caisem)', 'MIT'),
 }
 
@@ -49,7 +49,8 @@ SHIELDS = {
                                      ('model', 'item/6mhz_shields/rabbit', 'item/6mhz_shields/rabbit_blocking')),
     'shield-custom-shields-red': ('Custom Shields: Red', 'custom-shields',
                                   ('model', 'item/6mhz_shields/red', 'item/6mhz_shields/red_blocking')),
-    'shield-rounder-shields': ('Round Shield', 'rounder-shields', ('model', 'item/shield', 'item/shield_blocking')),
+    'shield-cherry-wood': ('Cherry Wood Shield', 'shieldrecolor',
+                           ('texture', 'assets/minecraft/textures/entity/shield_base_nopattern.png')),
     'shield-warped-wood': ('Warped Wood Shield', 'warped-wood-shield',
                            ('texture', 'assets/minecraft/textures/entity/shield_base_nopattern.png')),
 }
@@ -159,6 +160,10 @@ def main():
         if rel.startswith(ours) and os.path.exists(os.path.join(PACK_OUT, rel)):
             os.remove(os.path.join(PACK_OUT, rel))
     files = [f for f in files if not f.startswith(ours)]
+    for top in ours:
+        for folder, _, _ in sorted(os.walk(os.path.join(PACK_OUT, top)), reverse=True):
+            if not os.listdir(folder):
+                os.rmdir(folder)
     out, skins, used = Writer(), [], []
     for sid, (title, slug, source) in SHIELDS.items():
         pack_title, author, licence = PACKS[slug]

@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/cherry-pvp-diamond"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/cherry-pvp-diamond"
+   }
+  ]
+ }
+}

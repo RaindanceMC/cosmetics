@@ -123,10 +123,10 @@ public record PrimeDrops(SortedMap<YearMonth, Drop> drops) {
               "2027-02":
                 title: Hold the Line
                 unlocks: [rainscosmetics.skin.shield-custom-shields-rabbit, rainscosmetics.skin.shield-custom-shields-red,
-                  rainscosmetics.skin.shield-rounder-shields, rainscosmetics.skin.shield-warped-wood]
+                  rainscosmetics.skin.shield-cherry-wood, rainscosmetics.skin.shield-warped-wood]
               "2027-03":
-                title: In Bloom
-                unlocks: [rainscosmetics.skin.armour-flowering-armor-diamond, rainscosmetics.skin.armour-flowering-armor-netherite,
-                  rainscosmetics.skin.armour-even-better-armor-and-tools-gold]
+                title: Crown and Plate
+                unlocks: [rainscosmetics.skin.armour-even-better-armor-and-tools-gold, rainscosmetics.skin.armour-platinum-diamond,
+                  rainscosmetics.skin.armour-carrorate-craft-gears-netherite]
             """;
 }
