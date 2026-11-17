@@ -143,4 +143,85 @@ class ClearServiceTest {
         verify(messages).send(eq(console), eq("cosmetics.clear.offline-particles"), any(Object[].class));
         verify(audit, never()).record(org.mockito.ArgumentMatchers.<AuditEntry.Builder>any());
     }
+
+    /** The other plugins' cosmetics (chat colour, elytra looks…), as Core's doors would report them. */
+    private static final class Others implements ClearService.Others {
+
+        private final java.util.Set<UUID> wearing = new java.util.HashSet<>();
+
+        @Override
+        public boolean wearing(Player player) {
+            return wearing.contains(player.getUniqueId());
+        }
+
+        @Override
+        public int takeOff(Player player) {
+            return wearing.remove(player.getUniqueId()) ? 1 : 0;
+        }
+    }
+
+    @Test
+    @DisplayName("clearing all of your own takes the other plugins' cosmetics off too")
+    void selfClearsOtherPlugins() {
+        Others others = new Others();
+        service.others(others);
+        Player me = online("Tom");
+        when(me.hasPermission(PermissionNodes.CLEAR)).thenReturn(true);
+        others.wearing.add(me.getUniqueId());
+
+        service.clear(me, me, ClearScope.ALL);
+
+        verify(names).strip(me.getUniqueId());
+        org.assertj.core.api.Assertions.assertThat(others.wearing).isEmpty();
+        verify(messages).send(eq(me), eq("cosmetics.clear.done"), eq("what"),
+                eq("name style, particle and other cosmetics"));
+    }
+
+    @Test
+    @DisplayName("wearing only another plugin's cosmetic is still something to clear")
+    void onlyOtherPlugins() {
+        Others others = new Others();
+        service.others(others);
+        Player me = online("Tom");
+        when(me.hasPermission(PermissionNodes.CLEAR)).thenReturn(true);
+        when(names.current(me.getUniqueId())).thenReturn(NameStyle.NONE);
+        when(particles.current(me)).thenReturn(ParticleChoice.NONE);
+        others.wearing.add(me.getUniqueId());
+
+        service.clear(me, me, ClearScope.ALL);
+
+        org.assertj.core.api.Assertions.assertThat(others.wearing).isEmpty();
+        verify(messages).send(eq(me), eq("cosmetics.clear.done"), eq("what"), eq("other cosmetics"));
+    }
+
+    @Test
+    @DisplayName("clearing just the name or just the particle leaves the other plugins' cosmetics on")
+    void narrowScopesLeaveOthers() {
+        Others others = new Others();
+        service.others(others);
+        Player me = online("Tom");
+        when(me.hasPermission(PermissionNodes.CLEAR)).thenReturn(true);
+        others.wearing.add(me.getUniqueId());
+
+        service.clear(me, me, ClearScope.NAME);
+        service.clear(me, me, ClearScope.PARTICLES);
+
+        org.assertj.core.api.Assertions.assertThat(others.wearing).contains(me.getUniqueId());
+    }
+
+    @Test
+    @DisplayName("staff clearing all of somebody online takes the other plugins' cosmetics off them as well")
+    void staffClearsOtherPlugins() {
+        Others others = new Others();
+        service.others(others);
+        Player staff = online("Mod");
+        Player victim = online("Griefer");
+        when(staff.hasPermission(PermissionNodes.CLEAR_OTHERS)).thenReturn(true);
+        others.wearing.add(victim.getUniqueId());
+
+        service.clear(staff, victim, ClearScope.ALL);
+
+        org.assertj.core.api.Assertions.assertThat(others.wearing).isEmpty();
+        verify(audit).record(org.mockito.ArgumentMatchers.<AuditEntry.Builder>any());
+    }
 }

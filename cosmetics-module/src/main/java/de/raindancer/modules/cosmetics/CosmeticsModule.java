@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.35.1")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.36.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -98,10 +98,6 @@ public final class CosmeticsModule implements FlexModule {
                         context.core().travelShow(), particles, settings.current());
         teleports.start();
         context.closeWith(teleports::stop);
-        // Other plugins' cosmetics (fishing's rod skins) are put on here too, as doors on the cosmetics page.
-        Runnable page = () -> { };
-        de.raindancer.core.ui.cosmetic.CosmeticDoors.host(page);
-        context.closeWith(() -> de.raindancer.core.ui.cosmetic.CosmeticDoors.unhost(page));
         // The teleport look is read back from the player's data whenever that changes: on a network Core puts what
         // they chose elsewhere on them a moment after they join, and joins here are covered by the same check.
         // Core's wardrobe for name tags: which of a guild's tag and stars somebody wears, from their data.
@@ -244,6 +240,21 @@ public final class CosmeticsModule implements FlexModule {
             }
         });
 
+        // Other plugins' cosmetics (chat colour, rod skins, elytra looks…) are put on here too, as doors on this page.
+        // Hosted as a page Core can build, so their own commands open with Back leading here (Core 2.102.0).
+        Object page;
+        try {
+            de.raindancer.core.ui.cosmetic.CosmeticDoors.Page built = viewer -> new CosmeticsMenu(services, viewer);
+            page = built;
+            de.raindancer.core.ui.cosmetic.CosmeticDoors.host(built);
+        } catch (LinkageError olderCore) {
+            page = (Runnable) () -> { };
+            de.raindancer.core.ui.cosmetic.CosmeticDoors.host(page);
+        }
+        Object hosted = page;
+        context.closeWith(() -> de.raindancer.core.ui.cosmetic.CosmeticDoors.unhost(hosted));
+        clearing.others(new de.raindancer.modules.cosmetics.util.OtherDoors());
+
         context.listener(new JoinListener(services));
         context.core().sharePlayerData("rainscosmetics");
         context.closeWith(() -> context.core().profiles().ifPresent(parts -> parts.forget("data:rainscosmetics")));
@@ -262,17 +273,18 @@ public final class CosmeticsModule implements FlexModule {
 
         @Override
         public void nameStyle(Player viewer) {
-            new NameStyleMenu(services, viewer, null).open();
+            new NameStyleMenu(services, viewer, new CosmeticsMenu(services, viewer)).open();
         }
 
         @Override
         public void particles(Player viewer) {
-            new ParticleMenu(services, viewer, null).open();
+            new ParticleMenu(services, viewer, new CosmeticsMenu(services, viewer)).open();
         }
 
         @Override
         public void teleports(Player viewer) {
-            new de.raindancer.modules.cosmetics.screen.TeleportMenu(services, viewer, null).open();
+            new de.raindancer.modules.cosmetics.screen.TeleportMenu(services, viewer, new CosmeticsMenu(services, viewer))
+                    .open();
         }
     }
 

@@ -120,4 +120,17 @@ class ClearRuleTest {
             assertThat(ClearScope.keys()).containsExactly("name", "particles", "all");
         }
     }
+
+    @Test
+    @DisplayName("another plugin's cosmetic alone is something to clear, but only when everything is cleared and they are here")
+    void otherPluginsAlone() {
+        assertThat(rule.judge(new ClearRule.Request(ClearScope.ALL, true, true, false, true, false, false, true))
+                .isAllowed()).isTrue();
+        assertThat(rule.plan(new ClearRule.Request(ClearScope.ALL, true, true, false, true, false, false, true))
+                .others()).isTrue();
+        assertThat(rule.judge(new ClearRule.Request(ClearScope.NAME, true, true, false, true, false, false, true))
+                .reason()).isEqualTo("cosmetics.clear.nothing");
+        assertThat(rule.plan(new ClearRule.Request(ClearScope.ALL, false, true, true, false, true, false, true))
+                .others()).isFalse();
+    }
 }

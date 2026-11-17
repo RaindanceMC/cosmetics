@@ -83,6 +83,31 @@ public final class ClearService implements ICosmeticsService {
         });
     }
 
+    /** The other plugins' cosmetics, worn on the player: Core's cosmetic doors in the plugin, a stand-in in tests. */
+    public interface Others {
+        Others NONE = new Others() {
+            @Override
+            public boolean wearing(Player player) {
+                return false;
+            }
+
+            @Override
+            public int takeOff(Player player) {
+                return 0;
+            }
+        };
+
+        boolean wearing(Player player);
+
+        int takeOff(Player player);
+    }
+
+    private volatile Others others = Others.NONE;
+
+    public void others(Others others) {
+        this.others = others == null ? Others.NONE : others;
+    }
+
     public void clear(CommandSender actor, OfflinePlayer target, ClearScope scope) {
         Player online = target.getPlayer();
         if (online == null) {
@@ -128,7 +153,8 @@ public final class ClearService implements ICosmeticsService {
         ClearRule.Request request = new ClearRule.Request(scope, self,
                 actor.hasPermission(PermissionNodes.CLEAR), actor.hasPermission(PermissionNodes.CLEAR_OTHERS),
                 online != null || remote != null, !names.current(target.getUniqueId()).isEmpty(),
-                online != null ? !particles.current(online).isNone() : remote != null && remote.hadParticles());
+                online != null ? !particles.current(online).isNone() : remote != null && remote.hadParticles(),
+                online != null && scope == ClearScope.ALL && others.wearing(online));
         Verdict verdict = rule.judge(request);
         if (verdict.isRefused()) {
             messages.send(actor, verdict.reason(), "player", shown);
@@ -142,8 +168,10 @@ public final class ClearService implements ICosmeticsService {
             particles.takeOff(online, false);
             particles.takeOffWings(online);
         }
-        String what = plan.name() && plan.particles() ? "name style and particle"
-                : plan.name() ? "name style" : "particle";
+        if (plan.others() && online != null) {
+            others.takeOff(online);
+        }
+        String what = what(plan);
         if (self) {
             messages.send(actor, "cosmetics.clear.done", "what", what);
         } else {
@@ -158,6 +186,24 @@ public final class ClearService implements ICosmeticsService {
         if (plan.particlesOutOfReach()) {
             messages.send(actor, "cosmetics.clear.offline-particles-note", "player", shown);
         }
+    }
+
+    /** "name style, particle and other cosmetics", or as much of it as was taken off. */
+    static String what(ClearRule.Plan plan) {
+        java.util.List<String> parts = new java.util.ArrayList<>();
+        if (plan.name()) {
+            parts.add("name style");
+        }
+        if (plan.particles()) {
+            parts.add("particle");
+        }
+        if (plan.others()) {
+            parts.add("other cosmetics");
+        }
+        if (parts.size() <= 1) {
+            return parts.isEmpty() ? "" : parts.get(0);
+        }
+        return String.join(", ", parts.subList(0, parts.size() - 1)) + " and " + parts.get(parts.size() - 1);
     }
 
     private void audit(CommandSender actor, OfflinePlayer target, String what) {

@@ -28,9 +28,8 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
 
     private static final MiniMessage MINI = MiniMessage.miniMessage();
 
-    /** Where other plugins' doors go, in order: beside the weapon skins and tags, then the row below. */
-    private static final int[][] DOOR_PLACES = {{MenuLayout.RULES, 6}, {MenuLayout.LAND, 2}, {MenuLayout.LAND, 4},
-            {MenuLayout.LAND, 6}, {MenuLayout.LAND, 3}, {MenuLayout.LAND, 5}};
+    /** How many other plugins' doors fit: one beside the weapon skins and tags, five in the row below. */
+    private static final int DOOR_PLACES = 6;
 
     private final CosmeticsServices services;
 
@@ -120,18 +119,30 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
                     }
                 });
 
-        // The other plugins' cosmetics, beside the weapon skins: fishing's rod skins and whatever comes next.
-        List<de.raindancer.core.ui.cosmetic.CosmeticDoor> doors = de.raindancer.core.ui.cosmetic.CosmeticDoors.doors();
-        for (int n = 0; n < doors.size() && n < DOOR_PLACES.length; n++) {
-            de.raindancer.core.ui.cosmetic.CosmeticDoor door = doors.get(n);
-            java.util.Optional<String> locked = door.locked(viewer);
-            ItemStack doorIcon = door.icon(viewer);
-            band(DOOR_PLACES[n][0], DOOR_PLACES[n][1], locked.isEmpty() ? doorIcon : Icons.locked(doorIcon, locked.get()),
-                    click -> {
-                        if (door.locked(viewer).isEmpty()) {
-                            door.open(viewer, this);
-                        }
-                    });
+        // The other plugins' cosmetics, beside the weapon skins: chat colour, rod skins, elytra looks and whatever comes
+        // next. More than fit: the last place leads to the rest, so none falls off the page.
+        de.raindancer.modules.cosmetics.model.DoorLayout<de.raindancer.core.ui.cosmetic.CosmeticDoor> layout =
+                de.raindancer.modules.cosmetics.model.DoorLayout.of(de.raindancer.core.ui.cosmetic.CosmeticDoors.doors(),
+                        DOOR_PLACES);
+        List<ItemStack> icons = new java.util.ArrayList<>();
+        List<java.util.function.Consumer<org.bukkit.event.inventory.InventoryClickEvent>> clicks =
+                new java.util.ArrayList<>();
+        for (de.raindancer.core.ui.cosmetic.CosmeticDoor door : layout.onPage()) {
+            icons.add(OtherDoorsMenu.iconOf(door, viewer));
+            clicks.add(click -> OtherDoorsMenu.enter(services, door, viewer, this));
+        }
+        if (!layout.more().isEmpty()) {
+            icons.add(Icons.of(Material.CHEST, "<white>More cosmetics",
+                    "<gray>" + layout.more().size() + " more, from the server's other plugins.", "",
+                    "<dark_gray>Click to see them."));
+            clicks.add(click -> new OtherDoorsMenu(services, viewer, this, layout.more()).open());
+        }
+        if (!icons.isEmpty()) {
+            band(MenuLayout.RULES, 6, icons.get(0), clicks.get(0));
+        }
+        List<Integer> columns = de.raindancer.modules.cosmetics.model.DoorLayout.rowColumns(icons.size() - 1);
+        for (int n = 0; n < columns.size(); n++) {
+            band(MenuLayout.LAND, columns.get(n), icons.get(n + 1), clicks.get(n + 1));
         }
 
         ItemStack unlocksIcon = Icons.of(Material.GOLD_INGOT, "<white>Unlocks",
@@ -156,16 +167,18 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
         boolean mayClearOthers = services.clearing().may(viewer, false);
         toolbar(4, mayClearOthers,
                 Icons.of(Material.SPONGE, "<white>Clear somebody else's",
-                        "<gray>Takes their name style and particle off.",
+                        "<gray>Takes everything they wear off.",
                         "<gray>Pick them from the list; you are asked first."),
                 "Needs " + PermissionNodes.CLEAR_OTHERS,
                 click -> new PlayerChooser(viewer, services.brand(), this, "Clear whose cosmetics?",
                         java.util.List.of(), person -> confirmClearing(person.id())).open());
 
         boolean mayClear = services.clearing().may(viewer, true);
-        boolean wearing = !style.isEmpty() || !particle.isNone() || !wings.isNone();
+        boolean wearing = !style.isEmpty() || !particle.isNone() || !wings.isNone()
+                || new de.raindancer.modules.cosmetics.util.OtherDoors().wearing(viewer);
         ItemStack clearIcon = Icons.of(Material.BARRIER, "<red>Clear my cosmetics",
-                "<gray>Takes your name style and your", "<gray>particle off.", "", "<dark_gray>Asks first.");
+                "<gray>Takes off everything you wear:", "<gray>name style, particles, chat colour",
+                "<gray>and the rest. Looks on items stay.", "", "<dark_gray>Asks first.");
         danger(mayClear && wearing ? clearIcon
                         : Icons.locked(clearIcon, !mayClear ? "Needs " + PermissionNodes.CLEAR
                                 : "You are not wearing anything"),
@@ -174,8 +187,9 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
                         return;
                     }
                     new ConfirmScreen(services, viewer, this, "Clear your cosmetics?",
-                            List.of("<gray>Your name goes back to plain and", "<gray>your particle is taken off.",
-                                    "<gray>Presets and colours have to be picked again."),
+                            List.of("<gray>Your name goes back to plain, your particle", "<gray>is taken off, and so is "
+                                    + "everything", "<gray>else you wear, like your chat colour.",
+                                    "<gray>Looks on items stay. What you own stays yours."),
                             () -> services.clearing().clear(viewer, viewer, ClearScope.ALL)).open();
                 });
     }
@@ -186,8 +200,8 @@ public final class CosmeticsMenu extends Menu implements ICosmeticsScreen {
         String name = target.getName() == null ? who.toString() : target.getName();
         Scheduling.entityLater(services.plugin(), viewer, 1L, () ->
                 new ConfirmScreen(services, viewer, this, "Clear " + name + "'s cosmetics?",
-                        List.of("<gray>Their name goes back to plain and their",
-                                "<gray>particle is taken off, if they are here.",
+                        List.of("<gray>Their name goes back to plain. Their particle",
+                                "<gray>and everything else they wear is taken", "<gray>off, if they are here.",
                                 "<gray>It goes in the audit log."),
                         () -> services.clearing().clear(viewer, target, ClearScope.ALL)).open());
     }

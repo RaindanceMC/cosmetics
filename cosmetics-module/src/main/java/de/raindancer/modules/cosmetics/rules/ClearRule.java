@@ -24,13 +24,19 @@ public final class ClearRule extends AbstractRule<ClearRule.Request> implements 
      * @param targetOnline   whether the target's particle can be reached right now
      * @param wearsName      whether the target has a name style at all
      * @param wearsParticle  whether the target wears a particle; unknown for offline targets, so false
+     * @param wearsOthers    whether the target wears another plugin's cosmetic (chat colour, elytra look…)
      */
     public record Request(ClearScope scope, boolean self, boolean maySelf, boolean mayOthers,
-                          boolean targetOnline, boolean wearsName, boolean wearsParticle) {
+                          boolean targetOnline, boolean wearsName, boolean wearsParticle, boolean wearsOthers) {
+
+        public Request(ClearScope scope, boolean self, boolean maySelf, boolean mayOthers,
+                       boolean targetOnline, boolean wearsName, boolean wearsParticle) {
+            this(scope, self, maySelf, mayOthers, targetOnline, wearsName, wearsParticle, false);
+        }
     }
 
-    /** What clearing would actually do. */
-    public record Plan(boolean name, boolean particles, boolean particlesOutOfReach) {
+    /** What clearing would actually do; {@code others} is the other plugins' cosmetics, only on "all". */
+    public record Plan(boolean name, boolean particles, boolean particlesOutOfReach, boolean others) {
     }
 
     @Override
@@ -45,7 +51,7 @@ public final class ClearRule extends AbstractRule<ClearRule.Request> implements 
             return Verdict.refused("cosmetics.clear.offline-particles");
         }
         Plan plan = plan(request);
-        if (!plan.name() && !plan.particles()) {
+        if (!plan.name() && !plan.particles() && !plan.others()) {
             return Verdict.refused("cosmetics.clear.nothing");
         }
         return Verdict.allowed();
@@ -56,6 +62,7 @@ public final class ClearRule extends AbstractRule<ClearRule.Request> implements 
         boolean reachable = request.targetOnline();
         boolean particles = request.scope().includesParticles() && reachable && request.wearsParticle();
         boolean outOfReach = request.scope().includesParticles() && !reachable;
-        return new Plan(name, particles, outOfReach);
+        boolean others = request.scope() == ClearScope.ALL && reachable && request.wearsOthers();
+        return new Plan(name, particles, outOfReach, others);
     }
 }
