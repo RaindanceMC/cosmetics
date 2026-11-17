@@ -33,7 +33,7 @@ import java.util.List;
  */
 public final class CosmeticsModule implements FlexModule {
 
-    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.36.2")
+    private static final ModuleInfo INFO = ModuleInfo.of("cosmetics", "Cosmetics", "0.37.0")
             .describedAs("Paint your own name and wear a particle effect")
             .by("Raindancer118");
 
@@ -260,9 +260,25 @@ public final class CosmeticsModule implements FlexModule {
         context.core().sharePlayerData("rainscosmetics");
         context.closeWith(() -> context.core().profiles().ifPresent(parts -> parts.forget("data:rainscosmetics")));
         CosmeticsCommands.ready(services);
+        offerPreferences(context);
 
         log.info("Cosmetics is up: {} palette colour(s), {} preset(s).",
                 loaded.palette().size(), loaded.presets().size());
+    }
+
+    private void offerPreferences(ModuleContext context) {
+        try {
+            var seeing = CosmeticsPreferences.seeParticles(() -> services.particles());
+            var door = CosmeticsPreferences.cosmetics(viewer -> new CosmeticsDialog(services, viewer).open());
+            de.raindancer.core.ui.preference.Preferences.offer(context.plugin(), seeing);
+            de.raindancer.core.ui.preference.Preferences.offer(context.plugin(), door);
+            context.closeWith(() -> {
+                de.raindancer.core.ui.preference.Preferences.withdraw(seeing);
+                de.raindancer.core.ui.preference.Preferences.withdraw(door);
+            });
+        } catch (LinkageError olderCore) {
+            context.log().info("RainsCore is older than 2.103.0: cosmetics are not on /preferences.");
+        }
     }
 
     private final class LiveScreens implements ICosmeticsScreensOpener {
