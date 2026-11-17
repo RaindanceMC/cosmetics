@@ -37,3 +37,6 @@ paper-global.yml
 # e2e: other plugins fetched from the registry.
 jars/
 __pycache__/
+
+# Preview renders for approving new skins, never shipped.
+previews-2027/

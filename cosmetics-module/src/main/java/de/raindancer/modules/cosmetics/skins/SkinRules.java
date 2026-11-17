@@ -76,7 +76,19 @@ public final class SkinRules {
      * permission and the creator node does nothing for it.
      */
     public static boolean owns(boolean creatorSkin, boolean hasCreator, boolean unlocked, boolean hasAll, boolean hasOwnNode) {
-        return creatorSkin ? hasCreator : unlocked || hasAll || hasOwnNode;
+        return owns(creatorSkin, false, hasCreator, unlocked, hasAll, hasOwnNode);
+    }
+
+    /**
+     * As above; a Prime drop skin is its own node's alone, which prime-drops.yml puts on the members of its month.
+     * {@code skins.all} is every Prime member's, so it must not open a drop.
+     */
+    public static boolean owns(boolean creatorSkin, boolean dropSkin, boolean hasCreator, boolean unlocked, boolean hasAll,
+                               boolean hasOwnNode) {
+        if (creatorSkin) {
+            return hasCreator;
+        }
+        return dropSkin ? hasOwnNode : unlocked || hasAll || hasOwnNode;
     }
 
     /** Whether the skins page is theirs at all: supporters' skins node, or the creator node for the Twitch set. */

@@ -1,5 +1,113 @@
 [
  {
+  "id": "armour-ultimate-netherite-netherite",
+  "title": "Ultimate Netherite",
+  "pack": 0,
+  "packTitle": "Netherite Armor/Tools - Ultimate Armor/Tools",
+  "category": "Twitch",
+  "author": "Qubbius",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/ultimate-netherite",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/ultimate-netherite-netherite/helmet",
+   "netherite_chestplate": "rainsskins:armour/ultimate-netherite-netherite/chestplate",
+   "netherite_leggings": "rainsskins:armour/ultimate-netherite-netherite/leggings",
+   "netherite_boots": "rainsskins:armour/ultimate-netherite-netherite/boots"
+  },
+  "equipment": "rainsskins:armour/ultimate-netherite-netherite",
+  "creator": true
+ },
+ {
+  "id": "armour-voidkiller0-pvp-pack-netherite",
+  "title": "Voidkiller Netherite",
+  "pack": 0,
+  "packTitle": "Voidkiller0 pvp pack",
+  "category": "Twitch",
+  "author": "Voidkiller0",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/voidkiller0-pvp-pack",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/voidkiller0-pvp-pack-netherite/helmet",
+   "netherite_chestplate": "rainsskins:armour/voidkiller0-pvp-pack-netherite/chestplate",
+   "netherite_leggings": "rainsskins:armour/voidkiller0-pvp-pack-netherite/leggings",
+   "netherite_boots": "rainsskins:armour/voidkiller0-pvp-pack-netherite/boots"
+  },
+  "equipment": "rainsskins:armour/voidkiller0-pvp-pack-netherite",
+  "creator": true
+ },
+ {
+  "id": "armour-vanillafrost-diamond",
+  "title": "VanillaFrost Diamond",
+  "pack": 0,
+  "packTitle": "VanillaFrost",
+  "category": "Twitch",
+  "author": "remagoel",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/vanillafrost",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/vanillafrost-diamond/helmet",
+   "diamond_chestplate": "rainsskins:armour/vanillafrost-diamond/chestplate",
+   "diamond_leggings": "rainsskins:armour/vanillafrost-diamond/leggings",
+   "diamond_boots": "rainsskins:armour/vanillafrost-diamond/boots"
+  },
+  "equipment": "rainsskins:armour/vanillafrost-diamond",
+  "creator": true
+ },
+ {
+  "id": "armour-flowering-armor-diamond",
+  "title": "Flowering Diamond",
+  "pack": 0,
+  "packTitle": "Flowering Armor",
+  "category": "Armour",
+  "author": "Astrum",
+  "license": "CC0-1.0",
+  "url": "https://modrinth.com/resourcepack/flowering-armor",
+  "looks": {
+   "diamond_helmet": "rainsskins:armour/flowering-armor-diamond/helmet",
+   "diamond_chestplate": "rainsskins:armour/flowering-armor-diamond/chestplate",
+   "diamond_leggings": "rainsskins:armour/flowering-armor-diamond/leggings",
+   "diamond_boots": "rainsskins:armour/flowering-armor-diamond/boots"
+  },
+  "equipment": "rainsskins:armour/flowering-armor-diamond",
+  "drop": "2027-03"
+ },
+ {
+  "id": "armour-flowering-armor-netherite",
+  "title": "Flowering Netherite",
+  "pack": 0,
+  "packTitle": "Flowering Armor",
+  "category": "Armour",
+  "author": "Astrum",
+  "license": "CC0-1.0",
+  "url": "https://modrinth.com/resourcepack/flowering-armor",
+  "looks": {
+   "netherite_helmet": "rainsskins:armour/flowering-armor-netherite/helmet",
+   "netherite_chestplate": "rainsskins:armour/flowering-armor-netherite/chestplate",
+   "netherite_leggings": "rainsskins:armour/flowering-armor-netherite/leggings",
+   "netherite_boots": "rainsskins:armour/flowering-armor-netherite/boots"
+  },
+  "equipment": "rainsskins:armour/flowering-armor-netherite",
+  "drop": "2027-03"
+ },
+ {
+  "id": "armour-even-better-armor-and-tools-gold",
+  "title": "Even Better Gold",
+  "pack": 0,
+  "packTitle": "Even Better Armor and Tools",
+  "category": "Armour",
+  "author": "Evilaya_",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/even-better-armor-and-tools",
+  "looks": {
+   "golden_helmet": "rainsskins:armour/even-better-armor-and-tools-gold/helmet",
+   "golden_chestplate": "rainsskins:armour/even-better-armor-and-tools-gold/chestplate",
+   "golden_leggings": "rainsskins:armour/even-better-armor-and-tools-gold/leggings",
+   "golden_boots": "rainsskins:armour/even-better-armor-and-tools-gold/boots"
+  },
+  "equipment": "rainsskins:armour/even-better-armor-and-tools-gold",
+  "drop": "2027-03"
+ },
+ {
   "id": "armour-jappa-styled-armor-retextures-chainmail",
   "title": "Jappa Chainmail",
   "pack": 0,
@@ -903,6 +1011,118 @@
    "netherite_boots": "minecraft:netherite_boots"
   },
   "equipment": "rainsskins:armour/fionas-armors-netherite"
+ },
+ {
+  "id": "shield-custom-shields-creeper",
+  "title": "Custom Shields: Creeper",
+  "pack": 0,
+  "packTitle": "Custom Shields",
+  "category": "Shields",
+  "author": "6MHz",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/custom-shields",
+  "looks": {
+   "shield": "rainsskins:shields/shield-custom-shields-creeper"
+  },
+  "drop": "2027-01"
+ },
+ {
+  "id": "shield-custom-shields-dark-red",
+  "title": "Custom Shields: Dark Red",
+  "pack": 0,
+  "packTitle": "Custom Shields",
+  "category": "Shields",
+  "author": "6MHz",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/custom-shields",
+  "looks": {
+   "shield": "rainsskins:shields/shield-custom-shields-dark-red"
+  },
+  "drop": "2027-01"
+ },
+ {
+  "id": "shield-custom-shields-mirror",
+  "title": "Custom Shields: Mirror",
+  "pack": 0,
+  "packTitle": "Custom Shields",
+  "category": "Shields",
+  "author": "6MHz",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/custom-shields",
+  "looks": {
+   "shield": "rainsskins:shields/shield-custom-shields-mirror"
+  },
+  "drop": "2027-01"
+ },
+ {
+  "id": "shield-golden-spruce",
+  "title": "Golden Spruce Shield",
+  "pack": 0,
+  "packTitle": "Golden spruce shield",
+  "category": "Shields",
+  "author": "ThatCuteOne",
+  "license": "CC-BY-4.0",
+  "url": "https://modrinth.com/resourcepack/golden-spruce-shield",
+  "looks": {
+   "shield": "rainsskins:shields/shield-golden-spruce"
+  },
+  "drop": "2027-01"
+ },
+ {
+  "id": "shield-custom-shields-rabbit",
+  "title": "Custom Shields: Rabbit",
+  "pack": 0,
+  "packTitle": "Custom Shields",
+  "category": "Shields",
+  "author": "6MHz",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/custom-shields",
+  "looks": {
+   "shield": "rainsskins:shields/shield-custom-shields-rabbit"
+  },
+  "drop": "2027-02"
+ },
+ {
+  "id": "shield-custom-shields-red",
+  "title": "Custom Shields: Red",
+  "pack": 0,
+  "packTitle": "Custom Shields",
+  "category": "Shields",
+  "author": "6MHz",
+  "license": "CC-BY-SA-4.0",
+  "url": "https://modrinth.com/resourcepack/custom-shields",
+  "looks": {
+   "shield": "rainsskins:shields/shield-custom-shields-red"
+  },
+  "drop": "2027-02"
+ },
+ {
+  "id": "shield-rounder-shields",
+  "title": "Round Shield",
+  "pack": 0,
+  "packTitle": "Rounder Shields",
+  "category": "Shields",
+  "author": "CapTommy",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/rounder-shields",
+  "looks": {
+   "shield": "rainsskins:shields/shield-rounder-shields"
+  },
+  "drop": "2027-02"
+ },
+ {
+  "id": "shield-warped-wood",
+  "title": "Warped Wood Shield",
+  "pack": 0,
+  "packTitle": "Warped Wood Shield",
+  "category": "Shields",
+  "author": "loomidex",
+  "license": "MIT",
+  "url": "https://modrinth.com/resourcepack/warped-wood-shield",
+  "looks": {
+   "shield": "rainsskins:shields/shield-warped-wood"
+  },
+  "drop": "2027-02"
  },
  {
   "id": "3d-equipment",

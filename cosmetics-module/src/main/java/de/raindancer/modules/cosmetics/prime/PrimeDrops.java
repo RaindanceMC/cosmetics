@@ -100,7 +100,10 @@ public record PrimeDrops(SortedMap<YearMonth, Drop> drops) {
         return nodes;
     }
 
-    /** What a fresh network starts with: the first two months' presets, shipped in the catalogue. */
+    /**
+     * What a fresh network starts with: the first two months' presets, then 2027's skins (shields, shields, armour;
+     * art/skins/drops.py marks them in skins.json). A network that already has its file adds these months by hand.
+     */
     public static final String SHIPPED = """
             # Prime-only drops, one per month. Whoever was Prime for any part of a month keeps that month's
             # drop and wears it whenever they are Prime; a month they did not pay for stays locked.
@@ -113,5 +116,17 @@ public record PrimeDrops(SortedMap<YearMonth, Drop> drops) {
               "2026-12":
                 title: First Frost
                 unlocks: [rainscosmetics.preset.first-frost]
+              "2027-01":
+                title: Shieldwall
+                unlocks: [rainscosmetics.skin.shield-custom-shields-creeper, rainscosmetics.skin.shield-custom-shields-dark-red,
+                  rainscosmetics.skin.shield-custom-shields-mirror, rainscosmetics.skin.shield-golden-spruce]
+              "2027-02":
+                title: Hold the Line
+                unlocks: [rainscosmetics.skin.shield-custom-shields-rabbit, rainscosmetics.skin.shield-custom-shields-red,
+                  rainscosmetics.skin.shield-rounder-shields, rainscosmetics.skin.shield-warped-wood]
+              "2027-03":
+                title: In Bloom
+                unlocks: [rainscosmetics.skin.armour-flowering-armor-diamond, rainscosmetics.skin.armour-flowering-armor-netherite,
+                  rainscosmetics.skin.armour-even-better-armor-and-tools-gold]
             """;
 }

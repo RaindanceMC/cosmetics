@@ -69,3 +69,15 @@ CrystalCore by MR_POPCORN_9234 (MIT), version 1.1, https://modrinth.com/resource
 Hardened Diamond Texture Pack by MemeThief (CC0-1.0), version 1.21+, https://modrinth.com/resourcepack/hardened-diamond-texture-pack
 [Soup´s] Knight Armor by s0up-Ilt0n (GPL-3.0-only), version 1.1, https://modrinth.com/resourcepack/soups-knight-armor
 Fiona's Minimal Armors by FionaBagel (WTFPL), version 9.0, https://modrinth.com/resourcepack/fionas-armors
+Netherite Armor/Tools - Ultimate Armor/Tools by Qubbius (CC-BY-4.0), version 1.20+, https://modrinth.com/resourcepack/ultimate-netherite
+Voidkiller0 pvp pack by Voidkiller0 (CC-BY-4.0), version v1, https://modrinth.com/resourcepack/voidkiller0-pvp-pack
+VanillaFrost by remagoel (CC-BY-4.0), version 1.21+, https://modrinth.com/resourcepack/vanillafrost
+Flowering Armor by Astrum (CC0-1.0), version 1.1, https://modrinth.com/resourcepack/flowering-armor
+Even Better Armor and Tools by Evilaya_ (MIT), version 1.0.0-release, https://modrinth.com/resourcepack/even-better-armor-and-tools
+
+Shield skins: the packs' shield models and textures copied into the rainsskins namespace, the textures under textures/item/, and wired to item definitions that switch to the blocking model while the shield is in use. A texture made for vanilla's shield is painted on Translucent Shield's cuboid model. Nothing else was changed; the converted CC-BY-SA files stay under CC-BY-SA-4.0.
+Custom Shields by 6MHz (CC-BY-SA-4.0), version 1.1.0, https://modrinth.com/resourcepack/custom-shields
+Golden spruce shield by ThatCuteOne (CC-BY-4.0), version 1.1.3, https://modrinth.com/resourcepack/golden-spruce-shield
+Rounder Shields by CapTommy (MIT), version 1.0, https://modrinth.com/resourcepack/rounder-shields
+Warped Wood Shield by loomidex (MIT), version 1.20.x, https://modrinth.com/resourcepack/warped-wood-shield
+Translucent Shield by yassooof (model by caisem) (MIT), version 1, https://modrinth.com/resourcepack/translucent-shield

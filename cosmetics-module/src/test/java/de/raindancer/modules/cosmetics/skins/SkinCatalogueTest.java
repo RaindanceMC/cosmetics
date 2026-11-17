@@ -44,6 +44,8 @@ class SkinCatalogueTest {
         assertThat(SkinCatalogue.kindOf("diamond_hoe")).isEmpty();
         assertThat(SkinCatalogue.kindOf("bowl")).isEmpty();
         assertThat(SkinCatalogue.kindOf("stick")).isEmpty();
+        assertThat(SkinCatalogue.kindOf("shield")).contains("shield");
+        assertThat(SkinCatalogue.isArmour("shield")).isFalse();
     }
 
     @Test
@@ -182,7 +184,8 @@ class SkinCatalogueTest {
             "glacial-gear");
     private static final List<String> CREATOR_ARMOUR = List.of("armour-purple-diamond-armor-diamond",
             "armour-sakura-hotbar-netherite", "armour-valkyrian-netherite-reforged-v2-netherite",
-            "armour-netherite-armor-netherite");
+            "armour-netherite-armor-netherite", "armour-ultimate-netherite-netherite",
+            "armour-voidkiller0-pvp-pack-netherite", "armour-vanillafrost-diamond");
 
     @Test
     @DisplayName("exactly the chosen skins are creator-only, in the Twitch category, with their packs' credits untouched")
@@ -208,15 +211,97 @@ class SkinCatalogueTest {
     }
 
     @Test
-    @DisplayName("every other skin is unchanged: armour stays in Armour, nobody's weapon skin moved, all of them unlockable")
+    @DisplayName("Prime keeps exactly what it was promised: 66 weapon skins and 51 armour sets, all unlockable")
     void otherSkinsUnchanged() {
-        List<SkinCatalogue.Skin> others = SkinCatalogue.bundled().all().stream().filter(skin -> !skin.creator()).toList();
+        List<SkinCatalogue.Skin> others = SkinCatalogue.bundled().all().stream()
+                .filter(skin -> !skin.creator() && skin.drop() == null).toList();
 
         assertThat(others.stream().filter(skin -> skin.equipment() != null)).hasSize(51)
                 .allMatch(skin -> skin.category().equals("Armour"));
-        assertThat(SkinCatalogue.bundled().all().stream().filter(skin -> skin.equipment() != null)).hasSize(55);
-        assertThat(others).allMatch(skin -> !skin.category().equals("Twitch")).allMatch(SkinCatalogue.Skin::unlockable);
-        assertThat(others).hasSize(124 - 7);
+        assertThat(others.stream().filter(skin -> skin.equipment() == null)).hasSize(66);
+        assertThat(others).allMatch(skin -> !skin.category().equals("Twitch")).allMatch(SkinCatalogue.Skin::unlockable)
+                .noneMatch(skin -> skin.dresses("shield"));
+        assertThat(SkinCatalogue.bundled().all().stream().filter(skin -> skin.equipment() != null)).hasSize(51 + 7 + 3);
+        assertThat(SkinCatalogue.bundled().all()).hasSize(124 + 3 + 3 + 8);
+    }
+
+    @Test
+    @DisplayName("a Prime drop skin names its month, is nobody's to unlock and is no creator skin")
+    void dropFlag() {
+        SkinCatalogue read = SkinCatalogue.read(new ByteArrayInputStream("""
+                [{"id":"a","title":"A","pack":0,"packTitle":"p","category":"Shields","author":"x","license":"l","url":"u",
+                  "drop":"2027-01","looks":{"shield":"rainsskins:shields/a"}},
+                 {"id":"b","title":"B","pack":0,"packTitle":"p","category":"Fantasy","author":"x","license":"l","url":"u",
+                  "looks":{"diamond_sword":"rainsskins:b/diamond_sword"}}]
+                """.getBytes(StandardCharsets.UTF_8)));
+
+        SkinCatalogue.Skin drop = read.byId("a").orElseThrow();
+        assertThat(drop.drop()).isEqualTo("2027-01");
+        assertThat(drop.dropMonth()).contains(java.time.YearMonth.of(2027, 1));
+        assertThat(drop.unlockable()).isFalse();
+        assertThat(drop.creator()).isFalse();
+        assertThat(drop.dresses("shield")).isTrue();
+        assertThat(drop.equipmentFor("shield")).isEmpty();
+        assertThat(read.byId("b").orElseThrow().drop()).isNull();
+        assertThat(read.byId("b").orElseThrow().dropMonth()).isEmpty();
+    }
+
+    @Test
+    @DisplayName("the 2027 drops: four shields in January, four in February, three armour sets in March")
+    void bundledDrops() {
+        SkinCatalogue catalogue = SkinCatalogue.bundled();
+        java.util.Map<String, List<SkinCatalogue.Skin>> byMonth = catalogue.all().stream()
+                .filter(skin -> skin.drop() != null)
+                .collect(java.util.stream.Collectors.groupingBy(SkinCatalogue.Skin::drop));
+
+        assertThat(byMonth.keySet()).containsExactlyInAnyOrder("2027-01", "2027-02", "2027-03");
+        for (String month : List.of("2027-01", "2027-02")) {
+            assertThat(byMonth.get(month)).as(month).hasSize(4).allSatisfy(skin -> {
+                assertThat(skin.category()).isEqualTo("Shields");
+                assertThat(skin.looks()).containsOnlyKeys("shield");
+                assertThat(skin.equipment()).isNull();
+            });
+        }
+        assertThat(byMonth.get("2027-03")).hasSize(3).allSatisfy(skin -> {
+            assertThat(skin.category()).isEqualTo("Armour");
+            assertThat(skin.equipment()).isNotNull();
+            assertThat(skin.looks().keySet()).allMatch(SkinCatalogue::isArmour);
+        });
+        assertThat(byMonth.values().stream().flatMap(List::stream)).allSatisfy(skin -> {
+            assertThat(skin.creator()).isFalse();
+            assertThat(skin.unlockable()).isFalse();
+            assertThat(skin.url()).startsWith("https://modrinth.com/resourcepack/");
+        });
+    }
+
+    @Test
+    @DisplayName("a shield skin ships an item definition that switches to its blocking model while in use")
+    void bundledShields() throws Exception {
+        List<String> files = SkinPack.files();
+        List<SkinCatalogue.Skin> shields = SkinCatalogue.bundled().all().stream()
+                .filter(skin -> skin.dresses("shield")).toList();
+        assertThat(shields).hasSize(8);
+        for (SkinCatalogue.Skin skin : shields) {
+            String look = skin.lookFor("shield").orElseThrow();
+            String item = "assets/rainsskins/items/" + look.substring("rainsskins:".length()) + ".json";
+            assertThat(files).as(skin.id()).contains(item);
+            com.google.gson.JsonObject model;
+            try (java.io.InputStream in = SkinCatalogueTest.class.getResourceAsStream(
+                    "/de/raindancer/modules/cosmetics/pack/" + item)) {
+                model = com.google.gson.JsonParser.parseString(new String(in.readAllBytes(), StandardCharsets.UTF_8))
+                        .getAsJsonObject().getAsJsonObject("model");
+            }
+            assertThat(model.get("type").getAsString()).as(skin.id()).isEqualTo("minecraft:condition");
+            assertThat(model.get("property").getAsString()).as(skin.id()).isEqualTo("minecraft:using_item");
+            assertThat(model.has("transformation")).as(skin.id() + ": vanilla's flip is for the entity renderer").isFalse();
+            for (String branch : List.of("on_true", "on_false")) {
+                com.google.gson.JsonObject node = model.getAsJsonObject(branch);
+                assertThat(node.get("type").getAsString()).as(skin.id()).isEqualTo("minecraft:model");
+                String ref = node.get("model").getAsString();
+                assertThat(ref).as(skin.id()).startsWith("rainsskins:");
+                assertThat(files).as(skin.id()).contains("assets/rainsskins/models/" + ref.substring("rainsskins:".length()) + ".json");
+            }
+        }
     }
 
     @Test

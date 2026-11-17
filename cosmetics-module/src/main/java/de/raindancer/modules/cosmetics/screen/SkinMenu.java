@@ -83,7 +83,7 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
     protected ItemStack emptyIcon() {
         if (SkinCatalogue.kindOf(held()).isEmpty()) {
             return Icons.of(Material.WOODEN_SWORD, "<white>Hold a weapon",
-                    "<gray>Swords, axes, pickaxes, spears, maces,", "<gray>tridents, bows and crossbows have skins.",
+                    "<gray>Swords, axes, pickaxes, spears, maces, tridents,", "<gray>bows, crossbows, shields and armour have skins.",
                     "", "<dark_gray>Take one in your hand and open this again.");
         }
         return Icons.of(Material.COBWEB, "<gray>No skins for this one here",
@@ -104,6 +104,9 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
         } else if (skin.creator()) {
             lore.add("<#9146FF>Creators only.");
             lore.add("<dark_gray>For Twitch and YouTube streamers on this server.");
+        } else if (skin.primeDrop()) {
+            lore.add("<#E8B98A>Prime drop, " + dropName(skin) + ".");
+            lore.add("<dark_gray>Yours if you were Prime that month.");
         } else if (left > 0) {
             lore.add("<#E8B98A>Locked.");
             lore.add("<dark_gray>Click to unlock it (" + (left == Integer.MAX_VALUE ? "as many as you like" : left + " left") + ").");
@@ -129,6 +132,10 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
         }
         if (skin.creator()) {
             services.messages().send(viewer, "cosmetics.skins.creators-only", "skin", skin.title());
+            return;
+        }
+        if (skin.primeDrop()) {
+            services.messages().send(viewer, "cosmetics.skins.prime-drop", "skin", skin.title(), "month", dropName(skin));
             return;
         }
         if (skins.unlocksLeft(viewer) <= 0) {
@@ -221,9 +228,15 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
         refresh();
     }
 
+    private static String dropName(SkinCatalogue.Skin skin) {
+        return skin.dropMonth().map(month -> month.getMonth().getDisplayName(java.time.format.TextStyle.FULL,
+                java.util.Locale.ENGLISH) + " " + month.getYear()).orElse(skin.drop());
+    }
+
     private static Material iconOf(String category) {
         return switch (category) {
             case "Twitch" -> Material.PURPLE_DYE;
+            case "Shields" -> Material.SHIELD;
             case "Katana & Blades" -> Material.IRON_SWORD;
             case "Scythe" -> Material.NETHERITE_HOE;
             case "Fantasy" -> Material.AMETHYST_SHARD;
@@ -245,6 +258,7 @@ public final class SkinMenu extends PaginatedMenu<SkinCatalogue.Skin> implements
             case NONE_LEFT -> "cosmetics.skins.none-left";
             case OFF -> "cosmetics.skins.switched-off";
             case CREATORS_ONLY -> "cosmetics.skins.creators-only";
+            case PRIME_DROP -> "cosmetics.skins.prime-drop";
         };
     }
 }

@@ -7,7 +7,8 @@ Worn layers come from the new layout (textures/entity/equipment/humanoid[_leggin
 (textures/models/armor/<material>_layer_1|2.png); a skin offers only the pieces its layers actually paint. Icons are
 the pack's own item textures where it has them, else the vanilla item. Leather stays dyeable, like vanilla's. A layer
 the pack ships unchanged from vanilla (many packs carry every material and touch a few) is not a skin.
-Re-running replaces every armour skin it made before.
+Re-running replaces the armour skins of every pack whose zip is there; a pack not downloaded keeps its skins, files and
+credit line as they are, so a new pack can be added without fetching all the old ones again.
 """
 import io
 import json
@@ -59,6 +60,22 @@ PACKS = {
     'hardened-diamond-texture-pack': ('Hardened', 'Hardened Diamond Texture Pack', 'MemeThief', 'CC0-1.0'),
     'soups-knight-armor': ('Knight', "[Soup´s] Knight Armor", 's0up-Ilt0n', 'GPL-3.0-only'),
     'fionas-armors': ('Minimal', "Fiona's Minimal Armors", 'FionaBagel', 'WTFPL'),
+    # creators' (creator.py)
+    'ultimate-netherite': ('Ultimate', 'Netherite Armor/Tools - Ultimate Armor/Tools', 'Qubbius', 'CC-BY-4.0'),
+    'voidkiller0-pvp-pack': ('Voidkiller', 'Voidkiller0 pvp pack', 'Voidkiller0', 'CC-BY-4.0'),
+    'vanillafrost': ('VanillaFrost', 'VanillaFrost', 'remagoel', 'CC-BY-4.0'),
+    # Prime drop of March 2027 (drops.py)
+    'flowering-armor': ('Flowering', 'Flowering Armor', 'Astrum', 'CC0-1.0'),
+    'even-better-armor-and-tools': ('Even Better', 'Even Better Armor and Tools', 'Evilaya_', 'MIT'),
+}
+
+# Packs that change more materials than are wanted here: only these become skins.
+ONLY = {
+    'ultimate-netherite': ['netherite'],
+    'voidkiller0-pvp-pack': ['netherite'],
+    'vanillafrost': ['diamond'],
+    'flowering-armor': ['diamond', 'netherite'],
+    'even-better-armor-and-tools': ['gold'],
 }
 
 
@@ -143,23 +160,50 @@ def save_json(data, rel, written):
     written.append(rel)
 
 
+def armour_id(rel):
+    """The armour skin a file of the pack belongs to (frostburn-iron), or None for anything else."""
+    parts = rel.split('/')
+    if rel.startswith(f'assets/{NS}/equipment/armour/'):
+        return parts[-1][:-len('.json')]
+    if rel.startswith(f'assets/{NS}/textures/entity/equipment/'):
+        return parts[-1][:-len('.png')].removesuffix('_overlay')
+    if '/armour/' in rel:
+        return parts[parts.index('armour') + 1]
+    return None
+
+
 def main():
     meta = json.load(open(os.path.join(PACKS_DIR, 'meta.json')))
+    present = {slug for slug in PACKS if os.path.exists(os.path.join(PACKS_DIR, slug + '.zip'))}
+    remade = {f'{slug}-{material}'.replace('_', '-') for slug in present for material in MATERIALS}
     catalogue_path = os.path.join(RES, 'skins.json')
-    catalogue = [skin for skin in json.load(open(catalogue_path, encoding='utf-8')) if skin.get('category') != 'Armour']
+    catalogue = [skin for skin in json.load(open(catalogue_path, encoding='utf-8'))
+                 if not (skin['id'].startswith('armour-') and skin['id'][len('armour-'):] in remade)]
     files_path = os.path.join(PACK_OUT, 'files.txt')
     files = [line.strip() for line in open(files_path) if line.strip()]
-    files = [f for f in files if not f.startswith(f'assets/{NS}/equipment/') and '/armour/' not in f
-             and not f.startswith(f'assets/{NS}/textures/entity/equipment/')]
+    for rel in files:
+        if armour_id(rel) in remade and os.path.exists(os.path.join(PACK_OUT, rel)):
+            os.remove(os.path.join(PACK_OUT, rel))
+    files = [f for f in files if armour_id(f) not in remade]
+    credits_path = os.path.join(PACK_OUT, f'assets/{NS}/CREDITS.txt')
+    text = open(credits_path, encoding='utf-8').read()
+    marker = '\nArmour skins'
+    old_credits = {line.rsplit('/', 1)[-1]: line for line in text.split(marker, 1)[-1].splitlines()[1:]
+                   if 'modrinth.com/resourcepack/' in line} if marker in text else {}
     written, skins, credits, skipped = [], [], [], []
     for slug, (short, pack_title, author, licence) in PACKS.items():
-        zip_path = os.path.join(PACKS_DIR, slug + '.zip')
-        if not os.path.exists(zip_path):
-            skipped.append(f'{slug}: not downloaded')
+        if slug not in present:
+            if slug in old_credits:
+                credits.append(old_credits[slug])
+                skipped.append(f'{slug}: not downloaded, kept as it was')
+            else:
+                skipped.append(f'{slug}: not downloaded')
             continue
-        z = zipfile.ZipFile(zip_path)
+        z = zipfile.ZipFile(os.path.join(PACKS_DIR, slug + '.zip'))
         made = 0
         for material, (_, prefix, label) in MATERIALS.items():
+            if slug in ONLY and material not in ONLY[slug]:
+                continue
             layers = worn(z, material)
             covered = pieces(layers, material)
             if not covered:
@@ -213,11 +257,9 @@ def main():
         f.write('\n')
     with open(files_path, 'w') as f:
         f.write('\n'.join(sorted(set(files + written))) + '\n')
-    credits_path = os.path.join(PACK_OUT, f'assets/{NS}/CREDITS.txt')
-    text = open(credits_path, encoding='utf-8').read()
-    marker = '\nArmour skins'
+    later = text[text.index('\nShield skins'):] if '\nShield skins' in text else ''   # shields.py's section
     text = text.split(marker)[0].rstrip('\n') + '\n' + marker + (
-        ', converted the same way into worn layers (equipment assets) and icons:\n' + '\n'.join(credits) + '\n')
+        ', converted the same way into worn layers (equipment assets) and icons:\n' + '\n'.join(credits) + '\n') + later
     open(credits_path, 'w', encoding='utf-8').write(text)
     print(f'{len(skins)} armour skins from {len(credits)} packs, {len(written)} files')
     for line in skipped:

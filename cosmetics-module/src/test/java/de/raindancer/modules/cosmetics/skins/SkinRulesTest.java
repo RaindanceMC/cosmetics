@@ -154,6 +154,18 @@ class SkinRulesTest {
     }
 
     @Test
+    @DisplayName("a Prime drop skin is its month's node alone: not unlocked, not skins.all, not the creator node")
+    void dropSkinOwnership() {
+        // creatorSkin, dropSkin, hasCreator, unlocked, hasAll, hasOwnNode
+        assertThat(SkinRules.owns(false, true, false, false, false, true)).as("the drop month's Prime member").isTrue();
+        assertThat(SkinRules.owns(false, true, false, false, true, false)).as("skins.all is every Prime member's").isFalse();
+        assertThat(SkinRules.owns(false, true, false, true, false, false)).as("an old unlock does not open it").isFalse();
+        assertThat(SkinRules.owns(false, true, true, false, false, false)).as("creators get theirs, not this").isFalse();
+        assertThat(SkinRules.owns(false, false, false, false, true, false)).as("ordinary skins as before").isTrue();
+        assertThat(SkinRules.owns(true, false, true, false, false, false)).isTrue();
+    }
+
+    @Test
     @DisplayName("a creator may use the skins page for the Twitch set without the supporters' skins node")
     void creatorMayUsePage() {
         assertThat(SkinRules.mayUse(true, false, true)).isTrue();

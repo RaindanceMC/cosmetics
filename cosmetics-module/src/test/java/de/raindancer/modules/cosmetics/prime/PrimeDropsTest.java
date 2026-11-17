@@ -68,4 +68,25 @@ class PrimeDropsTest {
                 .containsExactly("rainscosmetics.preset.ok");
         assertThat(warnings).hasSize(3);
     }
+
+    @Test
+    @DisplayName("the shipped drops: 2027 brings shields in January and February and armour in March, each its month's skins")
+    void shipped() throws Exception {
+        List<String> warnings = new ArrayList<>();
+        PrimeDrops drops = read(PrimeDrops.SHIPPED, warnings);
+        de.raindancer.modules.cosmetics.skins.SkinCatalogue catalogue =
+                de.raindancer.modules.cosmetics.skins.SkinCatalogue.bundled();
+
+        assertThat(warnings).isEmpty();
+        assertThat(drops.months()).contains(YearMonth.of(2027, 1), YearMonth.of(2027, 2), YearMonth.of(2027, 3));
+        for (YearMonth month : List.of(YearMonth.of(2027, 1), YearMonth.of(2027, 2), YearMonth.of(2027, 3))) {
+            List<String> unlocks = drops.of(month).orElseThrow().unlocks();
+            List<String> skins = catalogue.all().stream().filter(skin -> month.toString().equals(skin.drop()))
+                    .map(skin -> "rainscosmetics.skin." + skin.id()).toList();
+            assertThat(skins).as(month.toString()).isNotEmpty();
+            assertThat(unlocks).as(month + " unlocks exactly its own skins").containsExactlyInAnyOrderElementsOf(skins);
+        }
+        assertThat(drops.of(YearMonth.of(2026, 11)).orElseThrow().unlocks())
+                .containsExactly("rainscosmetics.preset.harbor-sunset");
+    }
 }

@@ -24,7 +24,7 @@ import java.util.function.Supplier;
 public final class SkinService {
 
     public enum Outcome { WORN, REMOVED, LOCKED, SOMEBODY_ELSES, NOT_A_WEAPON, NOT_FOR_THIS_WEAPON, NONE_LEFT, OFF,
-        CREATORS_ONLY }
+        CREATORS_ONLY, PRIME_DROP }
 
     private final Plugin plugin;
     private final Server server;
@@ -81,9 +81,13 @@ public final class SkinService {
         return catalogue.byId(skin).filter(SkinCatalogue.Skin::creator).isPresent();
     }
 
-    /** Unlocked with what they gave, or given by permission; a creator skin by the creator node alone. */
+    private boolean dropSkin(String skin) {
+        return catalogue.byId(skin).filter(SkinCatalogue.Skin::primeDrop).isPresent();
+    }
+
+    /** Unlocked with what they gave, or given by permission; a creator skin by the creator node alone, a drop by its own. */
     public boolean owns(Player who, String skin) {
-        return SkinRules.owns(creatorSkin(skin), who.hasPermission(PermissionNodes.CREATOR),
+        return SkinRules.owns(creatorSkin(skin), dropSkin(skin), who.hasPermission(PermissionNodes.CREATOR),
                 unlocks.has(who.getUniqueId(), skin), who.hasPermission(PermissionNodes.SKINS_ALL),
                 who.hasPermission(PermissionNodes.SKIN_PREFIX + skin));
     }
@@ -131,6 +135,9 @@ public final class SkinService {
         if (creatorSkin(skin)) {
             return Outcome.CREATORS_ONLY;
         }
+        if (dropSkin(skin)) {
+            return Outcome.PRIME_DROP;
+        }
         if (unlocksLeft(who) <= 0) {
             return Outcome.NONE_LEFT;
         }
@@ -173,6 +180,9 @@ public final class SkinService {
         }
         if (creatorSkin(skin) && !owns(who, skin)) {
             return Outcome.CREATORS_ONLY;
+        }
+        if (dropSkin(skin) && !owns(who, skin)) {
+            return Outcome.PRIME_DROP;
         }
         Optional<String> look = catalogue.byId(skin).flatMap(s -> s.lookFor(item));
         if (look.isEmpty()) {

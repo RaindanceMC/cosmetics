@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/voidkiller0-pvp-pack-netherite"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/voidkiller0-pvp-pack-netherite"
+   }
+  ]
+ }
+}

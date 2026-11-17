@@ -188,6 +188,7 @@ cosmetics:
     not-a-weapon: "<gray>Hold the weapon or armour piece you want to dress first."
     not-for-this: "<gray>That skin is not made for this weapon."
     creators-only: "<#9146FF>▶ <#BF94FF><white><skin></white> <#BF94FF>is a creator skin for Twitch and YouTube streamers on this server."
+    prime-drop: "<#E8B98A><white><skin></white> <#E8B98A>came with the Prime drop of <month>. It is for those who were Prime that month: <white>/prime</white>"
     none-left: "<#D9BFA0>You have no unlocks left. <white>/support</white> <#D9BFA0>says how to earn more. Supporters earn them by playing."
     switched-off: "<gray>That skin is switched off here."
     unlocked: "<#C8A27A>☕ <#F3E3CC>Unlocked <white><skin></white>. Thank you for your support."

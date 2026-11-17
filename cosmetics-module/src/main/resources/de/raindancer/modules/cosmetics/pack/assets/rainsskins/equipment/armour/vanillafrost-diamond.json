@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/vanillafrost-diamond"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/vanillafrost-diamond"
+   }
+  ]
+ }
+}

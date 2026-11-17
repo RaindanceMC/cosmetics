@@ -1,0 +1,14 @@
+{
+ "layers": {
+  "humanoid": [
+   {
+    "texture": "rainsskins:armour/even-better-armor-and-tools-gold"
+   }
+  ],
+  "humanoid_leggings": [
+   {
+    "texture": "rainsskins:armour/even-better-armor-and-tools-gold"
+   }
+  ]
+ }
+}

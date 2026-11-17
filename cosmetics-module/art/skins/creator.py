@@ -3,8 +3,8 @@
     python3 -I creator.py <module resources dir: .../de/raindancer/modules/cosmetics>
 
 Sets "creator": true and the category "Twitch" on the listed skins in skins.json, and nothing else — author, licence,
-url and credits stay the pack's. Run it again after convert.py and armour.py, which rewrite skins.json from the
-packs and know nothing of this. A creator skin is the creator node's alone (SkinRules.owns): not unlocked, not
+url and credits stay the pack's. Run it again after convert.py, armour.py and shields.py, which rewrite skins.json
+from the packs and know nothing of this; drops.py comes last. A creator skin is the creator node's alone (SkinRules.owns): not unlocked, not
 rainscosmetics.skins.all, not Prime's.
 """
 import json
@@ -22,6 +22,9 @@ CREATOR_SKINS = {
     'armour-sakura-hotbar-netherite': 'S33R Sakura netherite: dark plate with pink and green glitch pixels',
     'armour-valkyrian-netherite-reforged-v2-netherite': 'Valkyrian netherite: dark plate with cyan and orange glow',
     'armour-netherite-armor-netherite': 'Netherite Armor: dark plate with cyan accents',
+    'armour-ultimate-netherite-netherite': 'Ultimate Armor: deep blue plate with RGB pixels, like a lit-up keyboard',
+    'armour-voidkiller0-pvp-pack-netherite': 'Voidkiller0 netherite: bright orange plate, a stream alert to wear',
+    'armour-vanillafrost-diamond': 'VanillaFrost diamond: clear ice plates, the armour to Glacial Gear',
 }
 
 
